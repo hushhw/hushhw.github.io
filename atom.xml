@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hushhw.github.io/"/>
-  <updated>2017-12-21T07:08:41.543Z</updated>
+  <updated>2017-12-21T14:33:02.716Z</updated>
   <id>https://hushhw.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://hushhw.github.io/2017/12/21/%E3%80%8AWebGL%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%942-%E4%BD%BF%E7%94%A8-canvas-%E5%85%83%E7%B4%A0/"/>
     <id>https://hushhw.github.io/2017/12/21/《WebGL编程指南》学习笔记——2-使用-canvas-元素/</id>
     <published>2017-12-21T07:06:40.000Z</published>
-    <updated>2017-12-21T07:08:41.543Z</updated>
+    <updated>2017-12-21T14:33:02.716Z</updated>
     
     <summary type="html">
     
@@ -30,7 +30,7 @@
         
         
           &lt;p&gt;上一节初步认识了WebGL，这一小节我们来开始学习使用&amp;lt; canvas &amp;gt;元素绘制二维图形&lt;/p&gt;
-&lt;p&gt;下小节我们正式开始学习如何在&amp;lt; canvas
+&lt;p&gt;WebGL采用HTML5中新引入的&amp;lt; canvas &amp;gt;元素，它定义了网页上的绘图区域，如果没有WebGL，JS只能在&amp;lt; canvas
         
       
     
