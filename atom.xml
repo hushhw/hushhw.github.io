@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hushhw.github.io/"/>
-  <updated>2017-12-21T14:33:02.716Z</updated>
+  <updated>2017-12-23T16:12:14.377Z</updated>
   <id>https://hushhw.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《WebGL编程指南》学习笔记——3.在Canvas中使用WebGL</title>
+    <link href="https://hushhw.github.io/2017/12/24/%E3%80%8AWebGL%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%943-%E5%9C%A8Canvas%E4%B8%AD%E4%BD%BF%E7%94%A8WebGL/"/>
+    <id>https://hushhw.github.io/2017/12/24/《WebGL编程指南》学习笔记——3-在Canvas中使用WebGL/</id>
+    <published>2017-12-23T16:08:21.000Z</published>
+    <updated>2017-12-23T16:12:14.377Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;上一节学习了使用&amp;lt; canvas &amp;gt;元素绘制二维图形，这一节里面我们在&amp;lt; canvas &amp;gt;中使用WebGL&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这一小节中我们通过个实例来讲解在&amp;lt; canvas
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>《WebGL编程指南》学习笔记——2.使用&lt; canvas &gt;元素</title>
