@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hushhw.github.io/"/>
-  <updated>2017-12-23T16:12:14.377Z</updated>
+  <updated>2017-12-24T08:41:46.888Z</updated>
   <id>https://hushhw.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《WebGL编程指南》学习笔记——4.绘制一个点</title>
+    <link href="https://hushhw.github.io/2017/12/24/%E3%80%8AWebGL%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%944-%E7%BB%98%E5%88%B6%E4%B8%80%E4%B8%AA%E7%82%B9/"/>
+    <id>https://hushhw.github.io/2017/12/24/《WebGL编程指南》学习笔记——4-绘制一个点/</id>
+    <published>2017-12-24T08:39:08.000Z</published>
+    <updated>2017-12-24T08:41:46.888Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;之前，我们学习了如何建立一个WebGL程序，如何使用一些简单的WebGL相关函数。这一节，我们进一步在一个示例程序中绘制一个最简单的图形：一个点。这一小节中我们要弄懂一个重要的概念：着色器。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;我们进一步在一个示例程序中绘制一个最简单的图形：一个点。&lt;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>《WebGL编程指南》学习笔记——3.在Canvas中使用WebGL</title>
