@@ -234,7 +234,7 @@ a.gitment-footer-project-link,
 a.gitment-footer-project-link:visited,
 a.gitment-editor-login-link,
 a.gitment-editor-login-link:visited {
-  color: #42b983;
+  color: #0a245f;
 }
 
 a.gitment-editor-logout-link,
@@ -243,7 +243,7 @@ a.gitment-editor-logout-link:visited {
 }
 
 a.gitment-editor-logout-link:hover {
-  color: #42b983;
+  color: #0a245f;
   text-decoration: none;
 }
 
@@ -361,7 +361,7 @@ a.gitment-editor-footer-tip {
 }
 
 a.gitment-editor-footer-tip:hover {
-  color: #42b983;
+  color: #0a245f;
   text-decoration: none;
 }
 
@@ -392,7 +392,7 @@ a.gitment-editor-footer-tip:hover {
 .gitment-comments-init-btn {
   border-radius: 20px;
   color: #fff;
-  background-color: #42b983;
+  background-color: #0a245f;
 
   position: relative;
   display: inline-block;
@@ -416,13 +416,13 @@ a.gitment-editor-footer-tip:hover {
 
 .gitment-editor-submit:hover,
 .gitment-comments-init-btn:hover {
-  background-color: #42b983;
+  background-color: #0a245f;
 }
 
 .gitment-comments-init-btn:disabled,
 .gitment-editor-submit:disabled {
   color: rgba(255,255,255,0.75);
-  background-color: #42b983;
+  background-color: #0a245f;
   box-shadow: none;
 }
 
@@ -1104,8 +1104,8 @@ a.gitment-editor-footer-tip:hover {
 }
 
 .gitment-markdown .full-commit .btn-outline:not(:disabled):hover {
-  color: #42b983;
-  border-color: #42b983;
+  color: #0a245f;
+  border-color: #0a245f;
 }
 
 .gitment-markdown kbd {
@@ -1125,7 +1125,7 @@ a.gitment-editor-footer-tip:hover {
 .gitment-markdown :checked+.radio-label {
   position: relative;
   z-index: 1;
-  border-color: #42b983;
+  border-color: #0a245f;
 }
 
 .gitment-markdown .task-list-item {
