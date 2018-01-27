@@ -10,7 +10,7 @@
   
   <title>
     
-      hushhw&#39;s blog
+      Project | hushhw&#39;s blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -112,71 +112,54 @@
 </header>
 
     <div id="article-banner">
-  <h2>Archives</h2>
-  <p class="post-date">文章归档</p>
+  <h2>Projects</h2>
+  <p class="post-date">开源项目</p>
 </div>
-<main class="app-body" id="archives">
-  
-  
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2018
-  </h1>
-  <div class="section-list">
-    
-    
-      <div class="section-list-item">
-        <a href="/2018/01/25/浙江大学PAT题解目录/" class="archive-title">浙江大学PAT题解目录</a>
-        <p class="archive-date">01-25</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018/01/05/《计算机网络》复习笔记-1/" class="archive-title">《计算机网络》复习笔记</a>
-        <p class="archive-date">01-05</p>
-      </div>
-    
-  </div>
-</section>
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2017
-  </h1>
-  <div class="section-list">
-    
-    
-      <div class="section-list-item">
-        <a href="/2017/12/24/《WebGL编程指南》学习笔记——4-绘制一个点/" class="archive-title">《WebGL编程指南》学习笔记——4.绘制一个点</a>
-        <p class="archive-date">12-24</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017/12/24/《WebGL编程指南》学习笔记——3-在Canvas中使用WebGL/" class="archive-title">《WebGL编程指南》学习笔记——3.在Canvas中使用WebGL</a>
-        <p class="archive-date">12-24</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017/12/21/《WebGL编程指南》学习笔记——2-使用-canvas-元素/" class="archive-title">《WebGL编程指南》学习笔记——2.使用&lt; canvas &gt;元素</a>
-        <p class="archive-date">12-21</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017/12/21/《WebGL编程指南》学习笔记——1-WebGL概述/" class="archive-title">《WebGL编程指南》学习笔记——1.WebGL概述</a>
-        <p class="archive-date">12-21</p>
-      </div>
-    
-  </div>
-</section>
-  
+<main class="app-body project-app">
+  <div class="card-container" id="all-project"></div>
 </main>
-
 <script>
-  (function () {
-    var url = 'https://hushhw.github.io/archives/2018/index.html';
+  (function() {
+    var url = 'https://hushhw.github.io/project/index.html';
     $('#article-banner').geopattern(url);
-    $('.header').removeClass('fixed-header');
-  })();
+    $('.header').removeClass('fixed-header')
+    $.ajax({
+      headers: {
+        Accept: 'application/vnd.github.v3.raw'
+      },
+      type: 'get',
+      url: 'https://api.github.com/users/hushhw/repos',
+      success: function (data) {
+        var repos = data.sort(function(a, b) {
+          return (b.stargazers_count - a.stargazers_count)
+        }).slice(0, 6)
+        var cardHtml = repos.map(function(item) {
+          var description = item.description || ""
+          if (description.replace(/[\u0391-\uFFE5]/g, "aa").length > 72) {
+            description = description.slice(0, 72) + '...'
+          }
+          return (
+            '<section class="project-card">' + 
+              '<a class="card-wrap" href="'+ item.html_url +'" target="_blank">' +
+                '<div class="card-header" data-name="'+ item.name +'"></div>' +
+                '<h3 class="card-title">' + item.name + '</h3>' +
+                '<p class="card-description">' + description + '</p>' +
+                '<div class="card-footer">' +
+                  '<span><i class="fa fa-star"></i>'+ item.stargazers_count +'</span>' +
+                  '<span><i class="fa fa-code-fork"></i>' + item.forks_count +'</span>' +
+                '</div>' +
+              '</a>' +
+            '</section>'
+          )
+        }).join('')
+        $('#all-project').html(cardHtml)
+        $('.card-header').each(function() {
+          var name = $(this).data('name');
+          $(this).geopattern(name);
+        })
+      }
+    });
+  })()
 </script>
     <div class="scroll-top">
   <span class="arrow-icon"></span>
