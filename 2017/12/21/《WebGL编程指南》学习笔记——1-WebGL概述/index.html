@@ -45,7 +45,7 @@
       
         <li class="list-item">
           
-            <a href="/tags/" class="item-link">Tags</a>
+            <a href="/tag/" class="item-link">Tags</a>
           
         </li>
       
@@ -84,7 +84,7 @@
         
           <li class="menu-item">
             
-              <a href="/tags/" class="menu-link">Tags</a>
+              <a href="/tag/" class="menu-link">Tags</a>
             
           </li>
         
@@ -122,31 +122,38 @@
   <!-- Article START -->
   <article class="post-article">
     <section class="markdown-content"><p><strong>此系列用来记录我学习《WebGL编程指南》这本书后的心得，重点内容和总结</strong></p>
-<hr>
-
 <h2 id="WebGL概述"><a href="#WebGL概述" class="headerlink" title="WebGL概述"></a>WebGL概述</h2><p>　　WebGL，是一项用来在网页上绘制和渲染复杂三维图形（3D图形），并允许用户与之交互的技术。随着个人计算机和浏览器的性能越来越强，我们能够在Web上创建越来越精美、越来越复杂的3D图形。<a href="http://webglsamples.org/" target="_blank" rel="noopener">http://webglsamples.org/</a> 这个网址展示了Google发布的一些示例WebGL程序，在惊叹美轮美奂的效果的同时，我们发现发布和运行也变得非常简单。</p>
 <p>　　从传统意义上来说，为了显示三维图形，开发者需要使用C或C++语言，辅以专门的计算机图形库，如OpenGL或Direct3D，来开发一个独立的应用程序。现在有了WebGL，我们只需要向已经熟悉的HTML和JS中添加一些额外的三维图形学的代码，就可以在网页上显示三维图形了。</p>
 <p>　　WebGL是内嵌在浏览器中的，你不必安装插件和库就可以直接使用它。而且，因为它是基于浏览器的，你可以在多种平台上运行WebGL程序，而且使用起来有诸多便利点：</p>
 <ul>
-<li>你只需要一个<strong>文本编辑器</strong>和一个<strong>浏览器</strong>，就可以开始编写三维图形程序了。</li>
-<li>你可以使用通用的Web技术发布三维图形程序，展示给你的朋友和其他开发者</li>
-<li>你可以充分利用浏览器的功能。</li>
-<li>互联网上有大量现成的资料，它们可以帮助你学习WebGL，编写三维程序等。</li>
+<li><p>你只需要一个<strong>文本编辑器</strong>和一个<strong>浏览器</strong>，就可以开始编写三维图形程序了。</p>
+</li>
+<li><p>你可以使用通用的Web技术发布三维图形程序，展示给你的朋友和其他开发者</p>
+</li>
+<li><p>你可以充分利用浏览器的功能。</p>
+</li>
+<li><p>互联网上有大量现成的资料，它们可以帮助你学习WebGL，编写三维程序等。</p>
+</li>
 </ul>
 <hr>
 <h2 id="WebGL起源"><a href="#WebGL起源" class="headerlink" title="WebGL起源"></a>WebGL起源</h2><p>　　在个人计算机上使用最广泛的两种三维图形渲染技术是<strong>Direct3D</strong>和<strong>OpenGL</strong>。</p>
-<p>　　Direct3D是微软DirectX技术的一部分，是一套由微软控制的编程接口API，主要用在Windows平台。<br>OpenGL由于其开发和免费的特性，在多种平台上都有广泛的使用。Windows对OpenGL也提供了良好的支持，开发者也可以用它来代替Direct3D。</p>
+<p>　　Direct3D是微软DirectX技术的一部分，是一套由微软控制的编程接口API，主要用在Windows平台。 </p>
+<p>OpenGL由于其开发和免费的特性，在多种平台上都有广泛的使用。Windows对OpenGL也提供了良好的支持，开发者也可以用它来代替Direct3D。</p>
 <p>　　OpenGL最初由SGI开发，并在1992年发布为开源标准。多年以来，OpenGL发展了数个版本，并对三维图形开发，软件产品开发，甚至电影制作产生了深远影响。 </p>
 <p>　　虽然WebGL根植于OpenGL，但它实际上是从OpenGL的一个特殊版本OpenGL ES中派生出来的，后者专用于嵌入式计算机、智能手机、家用游戏机等设备。OpenGL ES于2003-2004年被首次提出，并在2007年（ES 2.0）和2012年（ES 3.0）进行了两次升级，<strong>WebGL是基于OpenGL ES 2.0的</strong>。</p>
-<p>下图显示了OpenGL、OpenGL ES 1.1/2.0/3.0和WebGL的关系。<br><img src="http://images.cnitblog.com/blog/332382/201412/222059338585675.png" alt="图片来源www.cnblogs.com/mirror-pc/p/4178897.html"></p>
+<p>下图显示了OpenGL、OpenGL ES 1.1/2.0/3.0和WebGL的关系。 </p>
+<p><img src="http://images.cnitblog.com/blog/332382/201412/222059338585675.png" alt="图片来源www.cnblogs.com/mirror-pc/p/4178897.html"></p>
 <p>从2.0版本开始，OpenGL支持了一项非常重要的特性，即<strong>可编程着色器方法</strong>。该特性被OpenGL ES 2.0继承，并成为了WebGL 1.0标准的核心部分。</p>
 <p>　　着色器，使用一种类似于C的编程语言实现了精美的视觉效果。编写着色器的语言又称为<strong>着色器语言</strong>。WebGL基于OpenGL ES 2.0，使用GLSL ES语言编写着色器。</p>
 <p>　　虽然WebGL强大到令人惊叹，但使用这项技术进行开发却异常简单：只需要一个文本编辑器（Notepad或TextEdit）和一个浏览器（Chrome）即可；并且不需要去搭建开发环境，因为WebGL是内嵌在浏览器中的。</p>
-<p>　　下图显示了WebGL程序的结构：<br>　　<img src="http://images.cnitblog.com/blog/332382/201412/222120593439118.png" alt="图片来源www.cnblogs.com/mirror-pc/p/4178897.html"></p>
-<p>　　由于GLSL ES通常是以字符串的形式在JavaScript中编写的，所以虽然WebGL网页更加复杂，但它仍然保持着与传统的动态网页相同的结构：只用到HTML文件和JavaScript文件。
-　　</p>
+<p>　　下图显示了WebGL程序的结构：</p>
+<p>　　<img src="http://images.cnitblog.com/blog/332382/201412/222120593439118.png" alt="图片来源www.cnblogs.com/mirror-pc/p/4178897.html"></p>
+<p>　　由于GLSL ES通常是以字符串的形式在JavaScript中编写的，所以虽然WebGL网页更加复杂，但它仍然保持着与传统的动态网页相同的结构：只用到HTML文件和JavaScript文件。</p>
+<p>　　</p>
 <blockquote>
-<p>文章内容借鉴于：<br>《WebGL编程指南》<br> <a href="https://www.cnblogs.com/mirror-pc/p/4178897.html" target="_blank" rel="noopener">https://www.cnblogs.com/mirror-pc/p/4178897.html</a></p>
+<p>文章内容借鉴于：             </p>
+<p>《WebGL编程指南》</p>
+<p> <a href="https://www.cnblogs.com/mirror-pc/p/4178897.html" target="_blank" rel="noopener">https://www.cnblogs.com/mirror-pc/p/4178897.html</a></p>
 </blockquote>
 </section>
     <!-- Tags START -->

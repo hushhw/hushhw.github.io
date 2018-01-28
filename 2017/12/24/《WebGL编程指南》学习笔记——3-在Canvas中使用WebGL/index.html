@@ -45,7 +45,7 @@
       
         <li class="list-item">
           
-            <a href="/tags/" class="item-link">Tags</a>
+            <a href="/tag/" class="item-link">Tags</a>
           
         </li>
       
@@ -84,7 +84,7 @@
         
           <li class="menu-item">
             
-              <a href="/tags/" class="menu-link">Tags</a>
+              <a href="/tag/" class="menu-link">Tags</a>
             
           </li>
         
@@ -124,30 +124,55 @@
     <section class="markdown-content"><ul>
 <li>上一节学习了使用&lt; canvas &gt;元素绘制二维图形，这一节里面我们在&lt; canvas &gt;中使用WebGL</li>
 </ul>
-<p>这一小节中我们通过个实例来讲解在&lt; canvas &gt;中使用WebGL<br>此系列我编写的源码都可以在我的github下载到：<a href="https://github.com/hushhw/WebGL-Programming-Guide/tree/master/01HelloCanvas" target="_blank" rel="noopener">https://github.com/hushhw/WebGL-Programming-Guide/tree/master/01HelloCanvas</a></p>
-<h2 id="HelloCanvas-html"><a href="#HelloCanvas-html" class="headerlink" title="HelloCanvas.html"></a>HelloCanvas.html</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=&quot;utf-8&quot; /&gt;</span><br><span class="line">	&lt;title&gt;Clear canvas&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body onload=&quot;main()&quot;&gt;</span><br><span class="line">	&lt;canvas id=&quot;webgl&quot; width=&quot;400&quot; height=&quot;400&quot;&gt;</span><br><span class="line">		Please use the browser supporting &quot;canvas&quot;</span><br><span class="line">	&lt;/canvas&gt;</span><br><span class="line"></span><br><span class="line">	&lt;script src=&quot;../lib/webgl-utils.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">	&lt;script src=&quot;../lib/webgl-debug.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">	&lt;script src=&quot;../lib/cuon-utils.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">	&lt;script src=&quot;HelloCanvas.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>这一小节中我们通过个实例来讲解在&lt; canvas &gt;中使用WebGL</p>
+<p>此系列我编写的源码都可以在我的github下载到：<a href="https://github.com/hushhw/WebGL-Programming-Guide/tree/master/01HelloCanvas" target="_blank" rel="noopener">https://github.com/hushhw/WebGL-Programming-Guide/tree/master/01HelloCanvas</a></p>
+<h2 id="HelloCanvas-html"><a href="#HelloCanvas-html" class="headerlink" title="HelloCanvas.html"></a>HelloCanvas.html</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line"></span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line"></span><br><span class="line">	&lt;meta charset=&quot;utf-8&quot; /&gt;</span><br><span class="line"></span><br><span class="line">	&lt;title&gt;Clear canvas&lt;/title&gt;</span><br><span class="line"></span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;body onload=&quot;main()&quot;&gt;</span><br><span class="line"></span><br><span class="line">	&lt;canvas id=&quot;webgl&quot; width=&quot;400&quot; height=&quot;400&quot;&gt;</span><br><span class="line"></span><br><span class="line">		Please use the browser supporting &quot;canvas&quot;</span><br><span class="line"></span><br><span class="line">	&lt;/canvas&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;script src=&quot;../lib/webgl-utils.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">	&lt;script src=&quot;../lib/webgl-debug.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">	&lt;script src=&quot;../lib/cuon-utils.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">	&lt;script src=&quot;HelloCanvas.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <p>在HelloCanvas.html文件中比较简单，需要注意的是需要引入一些其他的文件来支持webgl，文件下载可以到<a href="https://github.com/hushhw/WebGL-Programming-Guide/tree/master/lib自行下载。" target="_blank" rel="noopener">https://github.com/hushhw/WebGL-Programming-Guide/tree/master/lib自行下载。</a></p>
-<h2 id="HelloCanvas-js"><a href="#HelloCanvas-js" class="headerlink" title="HelloCanvas.js"></a>HelloCanvas.js</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//HelloCanvas.js</span><br><span class="line">function main()&#123;</span><br><span class="line">	//获取&lt;canvas&gt;元素</span><br><span class="line">	var canvas = document.getElementById(&apos;webgl&apos;);</span><br><span class="line"></span><br><span class="line">	//获取WebGl绘图上下文</span><br><span class="line">	var gl = getWebGLContext(canvas);</span><br><span class="line">	if(!gl)</span><br><span class="line">	&#123;</span><br><span class="line">		console.log(&apos;Failed to get the rendering context for WebGL&apos;);</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//指定清空&lt;canvas&gt;的颜色</span><br><span class="line">	gl.clearColor(1.0, 0.0, 0.0, 1.0);</span><br><span class="line"></span><br><span class="line">	//清空&lt;canvas&gt;</span><br><span class="line">	gl.clear(gl.COLOR_BUFFER_BIT);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="HelloCanvas-js"><a href="#HelloCanvas-js" class="headerlink" title="HelloCanvas.js"></a>HelloCanvas.js</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//HelloCanvas.js</span><br><span class="line"></span><br><span class="line">function main()&#123;</span><br><span class="line"></span><br><span class="line">	//获取&lt;canvas&gt;元素</span><br><span class="line"></span><br><span class="line">	var canvas = document.getElementById(&apos;webgl&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//获取WebGl绘图上下文</span><br><span class="line"></span><br><span class="line">	var gl = getWebGLContext(canvas);</span><br><span class="line"></span><br><span class="line">	if(!gl)</span><br><span class="line"></span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">		console.log(&apos;Failed to get the rendering context for WebGL&apos;);</span><br><span class="line"></span><br><span class="line">		return;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//指定清空&lt;canvas&gt;的颜色</span><br><span class="line"></span><br><span class="line">	gl.clearColor(1.0, 0.0, 0.0, 1.0);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//清空&lt;canvas&gt;</span><br><span class="line"></span><br><span class="line">	gl.clear(gl.COLOR_BUFFER_BIT);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>回顾一下上一篇提到的绘制二维图形的三个步骤：</p>
 <ul>
-<li>获取 &lt; canvas &gt; 元素 </li>
-<li>获取绘图上下文 </li>
-<li>设置 &lt; canvas &gt;颜色</li>
-<li>清空&lt; canvas &gt;</li>
+<li><p>获取 &lt; canvas &gt; 元素 </p>
+</li>
+<li><p>获取绘图上下文 </p>
+</li>
+<li><p>设置 &lt; canvas &gt;颜色</p>
+</li>
+<li><p>清空&lt; canvas &gt;</p>
+</li>
 </ul>
 <p>在main()函数中，我们通过id找到&lt; canvas &gt;标签，这里跟绘制2d图形的步骤是一模一样的。</p>
 <h3 id="获取绘图上下文"><a href="#获取绘图上下文" class="headerlink" title="获取绘图上下文"></a>获取绘图上下文</h3><p>在绘制2d图形的时候，我们是通过调用canvas的getContext方法，传入“2d”参数来获取2d图形的回绘图上下文的。</p>
 <p>这里需要解释一下，通常来说，我们应该使用canvas.getContext()函数来获取绘图上下文（就像之前那样）。但是在获取WebGL绘图上下文时，canvas.getContext()函数接收的参数，在不同浏览器中会不同（虽然大部分浏览器都接收字符串“expeimental-webgl”或“webgl”，但并非所有浏览器都这样），所以我们使用getWebGLContext(canvas)来隐藏不同浏览器之间的差异。</p>
-<p>getWebGLContext(canvas, opt_debug)函数位于cuon-utils.js文件中。<br>getWebGLContext(canvas, opt_debug)函数的功能是：获取WebGL绘图上下文；如果开启了debug属性，遇到错误时将在控制台显示错误消息。以下是该函数的具体说明：<br><img src="http://images.cnitblog.com/blog/332382/201412/232358247656436.png" alt="图片来源www.cnblogs.com/mirror-pc/p/4181398.html"></p>
-<h3 id="设置-lt-canvas-gt-颜色"><a href="#设置-lt-canvas-gt-颜色" class="headerlink" title="设置 &lt; canvas &gt;颜色"></a>设置 &lt; canvas &gt;颜色</h3><p>在获取到绘图上下文以后，我们就可以绘制图形了，并且可以绘制3d图形了；这也说明，WebGL已经调用成功，我们现在可以使用WebGL函数了。<br>　　<br>我们将上下文放到名为gl的变量中。有了这个上下文，我们就可以设置颜色来清除&lt; canvas &gt;标签指定的绘图区了。在之前绘制2d图形时，我们在绘制之前就指定了绘图颜色。在WebGL中，是相似的，清空绘图区之前也需要指定颜色。</p>
+<p>getWebGLContext(canvas, opt_debug)函数位于cuon-utils.js文件中。</p>
+<p>getWebGLContext(canvas, opt_debug)函数的功能是：获取WebGL绘图上下文；如果开启了debug属性，遇到错误时将在控制台显示错误消息。以下是该函数的具体说明：</p>
+<p><img src="http://images.cnitblog.com/blog/332382/201412/232358247656436.png" alt="图片来源www.cnblogs.com/mirror-pc/p/4181398.html"></p>
+<h3 id="设置-lt-canvas-gt-颜色"><a href="#设置-lt-canvas-gt-颜色" class="headerlink" title="设置 &lt; canvas &gt;颜色"></a>设置 &lt; canvas &gt;颜色</h3><p>在获取到绘图上下文以后，我们就可以绘制图形了，并且可以绘制3d图形了；这也说明，WebGL已经调用成功，我们现在可以使用WebGL函数了。</p>
+<p>　　</p>
+<p>我们将上下文放到名为gl的变量中。有了这个上下文，我们就可以设置颜色来清除&lt; canvas &gt;标签指定的绘图区了。在之前绘制2d图形时，我们在绘制之前就指定了绘图颜色。在WebGL中，是相似的，清空绘图区之前也需要指定颜色。</p>
 <p>gl.clearColor(RGBA)函数通过传入RGBA格式的颜色参数指定颜色。我们在代码中指定了黑色，也可以随意指定其他颜色。在绘制2d图形时，RGBA每个分量的取值范围是0-255之间；但是在WebGL中，每个分量的取值范围是0-1，这和OpenGL保持了一致。一旦指定了颜色，这个颜色就会驻存在WebGL系统中，直到你重新指定新的颜色。在这之前，你可以无数次的使用该颜色进行清除绘图区而无须重新指定。</p>
-<h3 id="清空-lt-canvas-gt"><a href="#清空-lt-canvas-gt" class="headerlink" title="清空&lt; canvas &gt;"></a>清空&lt; canvas &gt;</h3><p>最后调用这个函数，用之前指定的背景色清空（用背景色填充，擦除已经绘制的内容）绘图区域。<br>　　<br>清除绘图区我们使用 gl.clear(gl.COLOR_BUFFER_BIT)函数；你可能觉得很奇怪，参数不应该是表示绘图区的&lt; canvas &gt;吗？这是由于gl.Clear()函数继承自OpenGL，它基于多基本缓冲区模型，比二维绘图上下文要复杂得多。清空绘图区，实际上是在清空颜色缓冲区（通过指定的颜色去擦除已经绘制的内容），传递gl.COLOR_BUFFER_BIT参数就是在告诉WebGL清空颜色缓冲区。<br>　　<br>如果在使用该函数之前我们没有指定任何颜色，那么默认会以RGBA(0,0,0,0)作为清除颜色，这个颜色是全透明的，替换出来的结果就是什么颜色都没有，显示为浏览器本身的颜色。</p>
+<h3 id="清空-lt-canvas-gt"><a href="#清空-lt-canvas-gt" class="headerlink" title="清空&lt; canvas &gt;"></a>清空&lt; canvas &gt;</h3><p>最后调用这个函数，用之前指定的背景色清空（用背景色填充，擦除已经绘制的内容）绘图区域。</p>
+<p>　　</p>
+<p>清除绘图区我们使用 gl.clear(gl.COLOR_BUFFER_BIT)函数；你可能觉得很奇怪，参数不应该是表示绘图区的&lt; canvas &gt;吗？这是由于gl.Clear()函数继承自OpenGL，它基于多基本缓冲区模型，比二维绘图上下文要复杂得多。清空绘图区，实际上是在清空颜色缓冲区（通过指定的颜色去擦除已经绘制的内容），传递gl.COLOR_BUFFER_BIT参数就是在告诉WebGL清空颜色缓冲区。</p>
+<p>　　</p>
+<p>如果在使用该函数之前我们没有指定任何颜色，那么默认会以RGBA(0,0,0,0)作为清除颜色，这个颜色是全透明的，替换出来的结果就是什么颜色都没有，显示为浏览器本身的颜色。</p>
 <p>下小节我们正式开始学习如何使用WebGL绘制基本图形</p>
 <blockquote>
-<p>文章内容借鉴于：<br>《WebGL编程指南》<br><a href="http://www.cnblogs.com/mirror-pc/p/4181398.html" target="_blank" rel="noopener">http://www.cnblogs.com/mirror-pc/p/4181398.html</a><br><a href="http://blog.csdn.net/weixin_40282619/article/details/78030629" target="_blank" rel="noopener">http://blog.csdn.net/weixin_40282619/article/details/78030629</a></p>
+<p>文章内容借鉴于：</p>
+<p>《WebGL编程指南》</p>
+<p><a href="http://www.cnblogs.com/mirror-pc/p/4181398.html" target="_blank" rel="noopener">http://www.cnblogs.com/mirror-pc/p/4181398.html</a></p>
+<p><a href="http://blog.csdn.net/weixin_40282619/article/details/78030629" target="_blank" rel="noopener">http://blog.csdn.net/weixin_40282619/article/details/78030629</a></p>
 </blockquote>
 </section>
     <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#WebGL" >
+    <span class="tag-code">WebGL</span>
+  </a>
+
+      </div>
     
     <!-- Tags END -->
     <!-- 打赏 START -->

@@ -10,7 +10,7 @@
   
   <title>
     
-      page | hushhw&#39;s blog
+      tag | hushhw&#39;s blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -112,151 +112,101 @@
 </header>
 
     <div id="article-banner">
-  <h2>page</h2>
-  <p class="post-date">2018-01-27</p>
-  <div class="arrow-down">
-    <a href="javascript:;"></a>
-  </div>
+  <h2>Tags</h2>
+  <p class="post-date">标签检索</p>
 </div>
-<main class="app-body flex-box">
-  <!-- Article START -->
-  <article class="post-article">
-    <section class="markdown-content"></section>
-    <!-- Tags START -->
+<main class="app-body">
+  <div id="tag-cloud">
     
-    <!-- Tags END -->
-    <!-- 打赏 START -->
+      <a class="tag2" data-name="tag-WebGL">WebGL</a>
     
-      <div class="money-like">
-        <div class="reward-btn">
-          赏
-          <span class="money-code">
-            <span class="alipay-code">
-              <div class="code-image"></div>
-              <b>使用支付宝打赏</b>
-            </span>
-            <span class="wechat-code">
-              <div class="code-image"></div>
-              <b>使用微信打赏</b>
-            </span>
-          </span>
-        </div>
-        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
-      </div>
+      <a class="tag2" data-name="tag-PAT">PAT</a>
     
-    <!-- 打赏 END -->
-    <!-- 二维码 START -->
+      <a class="tag1" data-name="tag-复习笔记">复习笔记</a>
     
-      <div class="qrcode">
-        <canvas id="share-qrcode"></canvas>
-        <p class="notice">扫描二维码，分享此文章</p>
-      </div>
-    
-    <!-- 二维码 END -->
-    
-      <!-- Gitment START -->
-      <div id="comments"></div>
-      <!-- Gitment END -->
-    
-  </article>
-  <!-- Article END -->
-  <!-- Catalog START -->
-  
-    <aside class="catalog-container">
-  <div class="toc-main">
-    <strong class="toc-title">Catalog</strong>
-    
-      <ol class="nav">none</ol>
+      <a class="tag1" data-name="tag-计算机网络">计算机网络</a>
     
   </div>
-</aside>
   
-  <!-- Catalog END -->
+    <div class="tag-list">
+      <h3 class="tag-name" id="tag-WebGL">WebGL</h3>
+      
+        <ul class="tag-preview">
+          <li>
+            <a href="/2017/12/21/《WebGL编程指南》学习笔记——1-WebGL概述/">《WebGL编程指南》学习笔记——1.WebGL概述</a>
+          </li>
+        </ul>
+        
+        <ul class="tag-preview">
+          <li>
+            <a href="/2017/12/21/《WebGL编程指南》学习笔记——2-使用-canvas-元素/">《WebGL编程指南》学习笔记——2.使用< canvas >元素</a>
+          </li>
+        </ul>
+        
+        <ul class="tag-preview">
+          <li>
+            <a href="/2017/12/24/《WebGL编程指南》学习笔记——3-在Canvas中使用WebGL/">《WebGL编程指南》学习笔记——3.在Canvas中使用WebGL</a>
+          </li>
+        </ul>
+        
+        <ul class="tag-preview">
+          <li>
+            <a href="/2017/12/24/《WebGL编程指南》学习笔记——4-绘制一个点/">《WebGL编程指南》学习笔记——4.绘制一个点</a>
+          </li>
+        </ul>
+        
+    </div>
+    
+    <div class="tag-list">
+      <h3 class="tag-name" id="tag-PAT">PAT</h3>
+      
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/01/25/浙江大学PAT题解目录/">浙江大学PAT题解目录</a>
+          </li>
+        </ul>
+        
+    </div>
+    
+    <div class="tag-list">
+      <h3 class="tag-name" id="tag-复习笔记">复习笔记</h3>
+      
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/01/05/《计算机网络》复习笔记-1/">《计算机网络》复习笔记</a>
+          </li>
+        </ul>
+        
+    </div>
+    
+    <div class="tag-list">
+      <h3 class="tag-name" id="tag-计算机网络">计算机网络</h3>
+      
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/01/05/《计算机网络》复习笔记-1/">《计算机网络》复习笔记</a>
+          </li>
+        </ul>
+        
+    </div>
+    
 </main>
 
 <script>
   (function () {
-    var url = 'https://hushhw.github.io/page/index.html';
-    var banner = ''
-    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
-      $('#article-banner').css({
-        'background-image': 'url(' + banner + ')'
-      })
-    } else {
-      $('#article-banner').geopattern(url)
-    }
+    var url = 'https://hushhw.github.io/tag/index.html'
+    $('#article-banner').geopattern(url)
     $('.header').removeClass('fixed-header')
 
-     // error image
-    $(".markdown-content img").on('error', function() {
-      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
-      $(this).css({
-        'cursor': 'default'
-      })
-    })
-
-    // zoom image
-    $(".markdown-content img").on('click', function() {
-      var src = $(this).attr('src')
-      if (src !== 'http://file.muyutech.com/error-img.png') {
-        var imageW = $(this).width()
-        var imageH = $(this).height()
-        
-        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
-        zoom = zoom < 1 ? 1 : zoom
-        zoom = zoom > 2 ? 2 : zoom
-        var transY = (($(window).height() - imageH) / 2).toFixed(2)
-
-        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
-        $('.image-view-wrap').addClass('wrap-active')
-        $('.image-view-wrap img').css({
-          'width': `${imageW}`,
-          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
-        })
-        $('html').css('overflow', 'hidden')
-
-        $('.image-view-wrap').on('click', function() {
-          $(this).remove()
-          $('html').attr('style', '')
-        })
-      }
-    })
-
-    // qrcode
-    var qr = new QRious({
-      element: document.getElementById('share-qrcode'),
-      value: document.location.href
-    });
-
-    // gitment
-    var gitmentConfig = "hushhw";
-    if (gitmentConfig !== 'undefined') {
-      var gitment = new Gitment({
-        id: "page",
-        owner: "hushhw",
-        repo: "hushhw.github.io",
-        oauth: {
-          client_id: "66a8ca9ffb45c03358c1",
-          client_secret: "f8c4f55ca86ac99f07d3194a0a35ea7cdbdfbed9"
-        },
-        theme: {
-          render(state, instance) {
-            const container = document.createElement('div')
-            container.lang = "en-US"
-            container.className = 'gitment-container gitment-root-container'
-            container.appendChild(instance.renderHeader(state, instance))
-            container.appendChild(instance.renderEditor(state, instance))
-            container.appendChild(instance.renderComments(state, instance))
-            container.appendChild(instance.renderFooter(state, instance))
-            return container;
-          }
-        }
-      })
-      gitment.render(document.getElementById('comments'))
+    var tag = location.hash.replace('#', '')
+    if (tag) {
+      var tagId = "#tag-" + tag;
+      $("html, body").animate({
+        scrollTop: $(tagId).offset().top 
+      }, 400)
     }
   })();
 </script>
-
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>
