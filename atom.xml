@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hushhw.github.io/"/>
-  <updated>2018-02-01T13:58:26.907Z</updated>
+  <updated>2018-02-03T09:00:39.333Z</updated>
   <id>https://hushhw.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>“埃氏筛法”思想运用</title>
+    <link href="https://hushhw.github.io/2018/02/03/%E2%80%9C%E5%9F%83%E6%B0%8F%E7%AD%9B%E6%B3%95%E2%80%9D%E6%80%9D%E6%83%B3%E8%BF%90%E7%94%A8/"/>
+    <id>https://hushhw.github.io/2018/02/03/“埃氏筛法”思想运用/</id>
+    <published>2018-02-03T08:19:44.000Z</published>
+    <updated>2018-02-03T09:00:39.333Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;何为“埃氏筛法”&quot;&gt;&lt;a href=&quot;#何为“埃氏筛法”&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="acm" scheme="https://hushhw.github.io/tags/acm/"/>
+    
+      <category term="算法笔记" scheme="https://hushhw.github.io/tags/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>浙江大学PAT题解目录</title>
     <link href="https://hushhw.github.io/2018/01/25/%E6%B5%99%E6%B1%9F%E5%A4%A7%E5%AD%A6PAT%E9%A2%98%E8%A7%A3%E7%9B%AE%E5%BD%95/"/>
     <id>https://hushhw.github.io/2018/01/25/浙江大学PAT题解目录/</id>
     <published>2018-01-25T14:45:39.000Z</published>
-    <updated>2018-02-01T13:58:26.907Z</updated>
+    <updated>2018-02-03T09:02:56.762Z</updated>
     
     <summary type="html">
     
