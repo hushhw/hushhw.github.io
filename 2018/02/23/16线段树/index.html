@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="aEXOxeJU__4i99aRP765TFHVsu1lDxRKExENESoTDHo" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="ndXaD7apwJ" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算法笔记,线段树," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="hushhw's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="线段树基本概念线段树/区间树是一种非常常用的对区间数据进行操作的数据结构。  线段树是一棵二叉树（但不一定是完全二叉树！），它的每个节点均代表一个区间，且父节点代表的区间为左右子节点代表的区间之和。特别的，根节点代表的区间为所有节点代表区间之和，各个叶节点代表区间为单个点（即长度为1的区间）。 线段树结构树中的每一个结点表示了一个区间[a,b]。 a,b通常是整数。每一个叶子节点表示了一个单位区间">
+<meta name="keywords" content="算法笔记,线段树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线段树总结">
+<meta property="og:url" content="https://hushhw.cn/2018/02/23/16线段树/index.html">
+<meta property="og:site_name" content="hushhw&#39;s blog">
+<meta property="og:description" content="线段树基本概念线段树/区间树是一种非常常用的对区间数据进行操作的数据结构。  线段树是一棵二叉树（但不一定是完全二叉树！），它的每个节点均代表一个区间，且父节点代表的区间为左右子节点代表的区间之和。特别的，根节点代表的区间为所有节点代表区间之和，各个叶节点代表区间为单个点（即长度为1的区间）。 线段树结构树中的每一个结点表示了一个区间[a,b]。 a,b通常是整数。每一个叶子节点表示了一个单位区间">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xkwr3.com1.z0.glb.clouddn.com/interval_tree1.PNG">
+<meta property="og:updated_time" content="2018-02-22T17:22:43.819Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="线段树总结">
+<meta name="twitter:description" content="线段树基本概念线段树/区间树是一种非常常用的对区间数据进行操作的数据结构。  线段树是一棵二叉树（但不一定是完全二叉树！），它的每个节点均代表一个区间，且父节点代表的区间为左右子节点代表的区间之和。特别的，根节点代表的区间为所有节点代表区间之和，各个叶节点代表区间为单个点（即长度为1的区间）。 线段树结构树中的每一个结点表示了一个区间[a,b]。 a,b通常是整数。每一个叶子节点表示了一个单位区间">
+<meta name="twitter:image" content="http://7xkwr3.com1.z0.glb.clouddn.com/interval_tree1.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hushhw.cn/2018/02/23/16线段树/"/>
+
+
+
+
+
+  <title>线段树总结 | hushhw's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hushhw's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">身经百战见得多了</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-study">
+          <a href="/categories/学习" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            学习
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hushhw.cn/2018/02/23/16线段树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hushhw">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hushhw's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">线段树总结</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-23T01:21:28+08:00">
+                2018-02-23
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-23T01:22:43+08:00">
+                2018-02-23
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,474 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="线段树基本概念"><a href="#线段树基本概念" class="headerlink" title="线段树基本概念"></a>线段树基本概念</h3><p>线段树/区间树是一种非常常用的对区间数据进行操作的数据结构。 </p>
+<p>线段树是一棵二叉树（但不一定是完全二叉树！），它的每个节点均代表一个区间，且父节点代表的区间为左右子节点代表的区间之和。特别的，根节点代表的区间为所有节点代表区间之和，各个叶节点代表区间为单个点（即长度为1的区间）。</p>
+<h3 id="线段树结构"><a href="#线段树结构" class="headerlink" title="线段树结构"></a>线段树结构</h3><p>树中的每一个结点表示了一个区间[a,b]。 a,b通常是整数。每一个叶子节点表示了一个单位区间(长度为1)。对于每一个非叶结点所表示的结点[a,b]，其左儿子表示的区间为[a,(a+b)/2]，右儿子表示的区间为[(a+b)/2+1,b](除法去尾取整）。 </p>
+<p>如下图为区间[1, 9]的线段树：<br><img src="http://7xkwr3.com1.z0.glb.clouddn.com/interval_tree1.PNG" alt="线段树"></p>
+<h3 id="线段树性质"><a href="#线段树性质" class="headerlink" title="线段树性质"></a>线段树性质</h3><ol>
+<li>线段树为二分构造，若根节点对应区间为[a,b]，则其深度为 log2(b−a+1)(向上取整）。这样在进行更新查询操作的时候，操作的复杂度就可以为log(n)量级</li>
+<li>叶子节点的数目和根节点表示的区间长度相同</li>
+<li>若叶子节点的数目为N，则线段树的总节点数目为2*N-1。因为线段树的节点要么是0度，要么为2度，根据二叉树的性质可知。</li>
+<li>若叶子节点为N，要想用连续的数组表示一棵线段树，则数组的大小应该为<strong>4N</strong>。<br>因为，根据性质3，线段树总节点数目为2<em>N-1，又由于线段树不是完全二叉树，因此其最低的叶子一层并不是紧靠最左边，这样在其倒数第二层上的索引号接近2N的位置，按照2</em>index+1和2<em>index+2的方式来访问其左右子节点，这就导致整个数组的大小要约为 4</em>N.</li>
+<li>线段树上，任何一个区间被分解后得到的“终止”节点的数目都是log(n)量级。<br>因为每一层最多有两个“终止”节点，共log(n)层，这样在线段树上进行更新叶子节点和进行区间分解的时间复杂度都是O(logn)。</li>
+</ol>
+<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p>以<a href="http://lx.lanqiao.cn/problem.page?gpid=T18" target="_blank" rel="noopener">ALGO-8 操作格子</a> 为例，线段树的一些基本操作：</p>
+<ul>
+<li>建树</li>
+<li>区间求和</li>
+<li>区间取最值</li>
+<li>区间单点修改</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 100010</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> left,right;<span class="comment">//保存左右边界</span></span><br><span class="line">	<span class="keyword">int</span> sum,max;<span class="comment">//权值和最大值</span></span><br><span class="line">&#125;a[MAXN*<span class="number">3</span>+<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">imax</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="comment">//判断大小的函数   </span></span><br><span class="line">	<span class="keyword">return</span> a&gt;b?a:b;</span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">qMax</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;	<span class="comment">//que=3，求l到r最大权值</span></span><br><span class="line">	<span class="keyword">if</span>(l == a[n].left &amp;&amp; r == a[n].right)<span class="comment">//所求范围与左右范围相等 ，直接输出最大值   </span></span><br><span class="line">		<span class="keyword">return</span> a[n].max;  </span><br><span class="line">	<span class="keyword">int</span> middle = (a[n].left + a[n].right) / <span class="number">2</span>;  </span><br><span class="line">	<span class="keyword">if</span>(r &lt;= middle)  </span><br><span class="line">		<span class="keyword">return</span> qMax(n*<span class="number">2</span>, l, r);<span class="comment">//若所求范围在左孩子范围内，从左孩子寻找   </span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(l &gt; middle)  </span><br><span class="line">		<span class="keyword">return</span> qMax(n*<span class="number">2</span>+<span class="number">1</span>, l, r);<span class="comment">//若所求范围在右孩子范围内，从右孩子寻找  </span></span><br><span class="line">	<span class="keyword">else</span>   </span><br><span class="line">		<span class="keyword">return</span> imax(qMax(n*<span class="number">2</span>, l, middle), qMax(n*<span class="number">2</span>+<span class="number">1</span>, middle+<span class="number">1</span>, r));<span class="comment">//若范围在左右孩子之间，分别求最大值，然后求最终最大值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">qSum</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;	<span class="comment">//que=2，计算l到r的权值和</span></span><br><span class="line">	<span class="keyword">if</span>(l==a[n].left &amp;&amp; r==a[n].right)	<span class="comment">//若是叶子节点，左右相等，直接返回sum</span></span><br><span class="line">		<span class="keyword">return</span> a[n].sum;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> middle = (a[n].left+a[n].right)/<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">if</span>(r &lt;= middle)&#123; <span class="comment">//下面分情况讨论</span></span><br><span class="line">		<span class="keyword">return</span> qSum(n*<span class="number">2</span>, l, r);<span class="comment">//若在左孩子范围，从左孩子寻找</span></span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span>(l &gt; middle)&#123;</span><br><span class="line">		<span class="keyword">return</span> qSum(n*<span class="number">2</span>+<span class="number">1</span>, l, r);<span class="comment">//若在右孩子范围，从右孩子寻找</span></span><br><span class="line">	&#125; <span class="keyword">else</span>	&#123;					<span class="comment">//若在之间，分别求解相加</span></span><br><span class="line">		<span class="keyword">return</span> (qSum(n*<span class="number">2</span>, l, middle) + qSum(n*<span class="number">2</span>+<span class="number">1</span>, middle+<span class="number">1</span>, r));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> num)</span></span>&#123; </span><br><span class="line">	<span class="comment">//que=1,在区间[l,r]中将r的权值改为num，这题l==r</span></span><br><span class="line">	<span class="keyword">if</span>(l==a[n].left &amp;&amp; r==a[n].right)&#123;		<span class="comment">//下标与左右范围相等，存本数</span></span><br><span class="line">		a[n].sum = num;</span><br><span class="line">		a[n].max = num;</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> middle = (a[n].left+a[n].right)/<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">if</span>(r&lt;=middle)</span><br><span class="line">		change(n*<span class="number">2</span>, l, r, num);	<span class="comment">//更新左孩子</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(r&gt;middle)</span><br><span class="line">		change(n*<span class="number">2</span>+<span class="number">1</span>, l, r, num);	<span class="comment">//更新右孩子</span></span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		change(n*<span class="number">2</span>, l, middle, num);</span><br><span class="line">		change(n*<span class="number">2</span>+<span class="number">1</span>, middle+<span class="number">1</span>, r, num);</span><br><span class="line">	&#125;</span><br><span class="line">	a[n].sum = a[n*<span class="number">2</span>].sum + a[n*<span class="number">2</span>+<span class="number">1</span>].sum;	<span class="comment">//更新总和</span></span><br><span class="line">	a[n].max = imax(a[n*<span class="number">2</span>].max, a[n*<span class="number">2</span>+<span class="number">1</span>].max);	<span class="comment">//更新最大值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l==r)&#123;		<span class="comment">//如果左右间距相等,说明是叶子节点</span></span><br><span class="line">		a[n].left = l;</span><br><span class="line">		a[n].right = r;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[n].sum);</span><br><span class="line">		a[n].max = a[n].sum;</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> middle = (l+r)/<span class="number">2</span>;</span><br><span class="line">	a[n].left = l;		<span class="comment">//左边距</span></span><br><span class="line">	a[n].right = r;		<span class="comment">//右边距</span></span><br><span class="line">	build(n*<span class="number">2</span>, l, middle);	<span class="comment">//构建l至mid的左孩子</span></span><br><span class="line">	build(n*<span class="number">2</span>+<span class="number">1</span>, middle+<span class="number">1</span>, r);	<span class="comment">//构建mid+1到r的右孩子</span></span><br><span class="line"></span><br><span class="line">	a[n].sum = a[n*<span class="number">2</span>].sum + a[n*<span class="number">2</span>+<span class="number">1</span>].sum;</span><br><span class="line">	a[n].max = imax(a[n*<span class="number">2</span>].max, a[n*<span class="number">2</span>+<span class="number">1</span>].max);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,m;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">	build(<span class="number">1</span>,<span class="number">1</span>,n);	<span class="comment">//构建一个范围为1到n的线段树</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> que,b,c;</span><br><span class="line">	<span class="keyword">while</span>(m--)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;que, &amp;b, &amp;c);</span><br><span class="line">		<span class="keyword">switch</span>(que)&#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">				change(<span class="number">1</span>,b,b,c); <span class="keyword">break</span>;<span class="comment">//改变节点b的权值为c  </span></span><br><span class="line">			<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, qSum(<span class="number">1</span>,b,c)); <span class="keyword">break</span>;<span class="comment">//计算b至c范围内的权值和   </span></span><br><span class="line">			<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, qMax(<span class="number">1</span>,b,c)); <span class="keyword">break</span>;<span class="comment">//计算b至c范围内的最大权值   </span></span><br><span class="line">			<span class="keyword">default</span>: <span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>本文整理参考自：</p>
+<p><a href="https://www.cnblogs.com/gtarcoder/p/4786734.html" target="_blank" rel="noopener">https://www.cnblogs.com/gtarcoder/p/4786734.html</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    hushhw
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://hushhw.cn/2018/02/23/16线段树/" title="线段树总结">https://hushhw.cn/2018/02/23/16线段树/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法笔记/" rel="tag"># 算法笔记</a>
+          
+            <a href="/tags/线段树/" rel="tag"># 线段树</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/21/16LQOJ/" rel="next" title="LQOJ刷题总结">
+                <i class="fa fa-chevron-left"></i> LQOJ刷题总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/28/17逆序数/" rel="prev" title="树状数组和归并排序求逆序数">
+                树状数组和归并排序求逆序数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="hushhw" />
+            
+              <p class="site-author-name" itemprop="name">hushhw</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hushhw" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:hushhw123@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/hushhw123" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/hushhw" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/hu-song-19" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-tags"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/1929679982" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://blog.csdn.net/hushhw" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-tags"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.heyby.cn/" title="HEYBY" target="_blank">HEYBY</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#线段树基本概念"><span class="nav-number">1.</span> <span class="nav-text">线段树基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线段树结构"><span class="nav-number">2.</span> <span class="nav-text">线段树结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线段树性质"><span class="nav-number">3.</span> <span class="nav-text">线段树性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本操作"><span class="nav-number">4.</span> <span class="nav-text">基本操作</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hushhw</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">38.1k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '66a8ca9ffb45c03358c1',
+          clientSecret: 'f8c4f55ca86ac99f07d3194a0a35ea7cdbdfbed9',
+          repo: 'hushhw.github.io',
+          owner: 'hushhw',
+          admin: ['hushhw'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')
+       </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

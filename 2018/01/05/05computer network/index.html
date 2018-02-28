@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="aEXOxeJU__4i99aRP765TFHVsu1lDxRKExENESoTDHo" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="ndXaD7apwJ" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机网络,复习笔记," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="hushhw's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="计算机网络复习笔记 本复习笔记基于谢希仁的《计算机网络》第五版教材整理。  [TOC]  绪论1.1 计算机网络 计算机网络向用户提供的两个最重要的功能： 连通性 共享    1.2 因特网概述 因特网发展的三个阶段：  第一阶段：从单个网络 ARPANET 向互联网发展的过程。1983 年 TCP/IP 协议成为 ARPANET 上的标准协议。 第二阶段：建成三级结构的因特网：主干网、地区网和校">
+<meta name="keywords" content="计算机网络,复习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《计算机网络》复习笔记">
+<meta property="og:url" content="https://hushhw.cn/2018/01/05/05computer network/index.html">
+<meta property="og:site_name" content="hushhw&#39;s blog">
+<meta property="og:description" content="计算机网络复习笔记 本复习笔记基于谢希仁的《计算机网络》第五版教材整理。  [TOC]  绪论1.1 计算机网络 计算机网络向用户提供的两个最重要的功能： 连通性 共享    1.2 因特网概述 因特网发展的三个阶段：  第一阶段：从单个网络 ARPANET 向互联网发展的过程。1983 年 TCP/IP 协议成为 ARPANET 上的标准协议。 第二阶段：建成三级结构的因特网：主干网、地区网和校">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20140126135022484">
+<meta property="og:image" content="http://img.blog.csdn.net/20180105203650888?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHVzaGh3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20180105203859787?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHVzaGh3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20180105222431656?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHVzaGh3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20180105230449989?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHVzaGh3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20160204105742700">
+<meta property="og:image" content="http://img.blog.csdn.net/20160204114637729">
+<meta property="og:image" content="http://img.blog.csdn.net/20131017004657921?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZnR4Y19ibG9n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20180107020713763?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHVzaGh3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20180107023041372?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHVzaGh3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20180107023943820?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHVzaGh3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20180107045436621?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHVzaGh3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20180107045539001?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHVzaGh3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20180108005811225?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHVzaGh3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2018-02-07T10:53:42.081Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《计算机网络》复习笔记">
+<meta name="twitter:description" content="计算机网络复习笔记 本复习笔记基于谢希仁的《计算机网络》第五版教材整理。  [TOC]  绪论1.1 计算机网络 计算机网络向用户提供的两个最重要的功能： 连通性 共享    1.2 因特网概述 因特网发展的三个阶段：  第一阶段：从单个网络 ARPANET 向互联网发展的过程。1983 年 TCP/IP 协议成为 ARPANET 上的标准协议。 第二阶段：建成三级结构的因特网：主干网、地区网和校">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20140126135022484">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hushhw.cn/2018/01/05/05computer network/"/>
+
+
+
+
+
+  <title>《计算机网络》复习笔记 | hushhw's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hushhw's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">身经百战见得多了</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-study">
+          <a href="/categories/学习" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            学习
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hushhw.cn/2018/01/05/05computer network/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hushhw">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hushhw's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">《计算机网络》复习笔记</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-05T01:35:29+08:00">
+                2018-01-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-07T18:53:42+08:00">
+                2018-02-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  7,524 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  27 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="计算机网络复习笔记"><a href="#计算机网络复习笔记" class="headerlink" title="计算机网络复习笔记"></a>计算机网络复习笔记</h1><ul>
+<li>本复习笔记基于谢希仁的《计算机网络》第五版教材整理。</li>
+</ul>
+<p>[TOC]</p>
+<hr>
+<h2 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h2><h3 id="1-1-计算机网络"><a href="#1-1-计算机网络" class="headerlink" title="1.1 计算机网络"></a>1.1 计算机网络</h3><ol>
+<li>计算机网络向用户提供的两个最重要的功能：<ul>
+<li>连通性</li>
+<li>共享</li>
+</ul>
+</li>
+</ol>
+<h3 id="1-2-因特网概述"><a href="#1-2-因特网概述" class="headerlink" title="1.2 因特网概述"></a>1.2 因特网概述</h3><ol>
+<li><p>因特网发展的三个阶段：</p>
+<ul>
+<li>第一阶段：从单个网络 ARPANET 向互联网发展的过程。1983 年 TCP/IP 协议成为 ARPANET 上的标准协议。</li>
+<li>第二阶段：建成三级结构的因特网：主干网、地区网和校园网（或企业网）。</li>
+<li>第三阶段：形成多层次的ISP（Internet Service Provider 因特网服务提供者）结构的因特网</li>
+</ul>
+</li>
+<li><p>Internet 和 Internet 的区别：</p>
+<ul>
+<li><strong>internet</strong>：通用名词，它泛指由多个计算机网络互连而成的网络。</li>
+<li><strong>Internet</strong>：专用名词，它指当前全球最大的、开放的、由众多网络相互连接而成的特定计算机网络，它采用 TCP/IP 协议族作为通信的规则，且其前身是美国的 ARPANET。</li>
+</ul>
+</li>
+</ol>
+<h3 id="1-3-互联网的组成-P8"><a href="#1-3-互联网的组成-P8" class="headerlink" title="1.3 互联网的组成 P8"></a>1.3 互联网的组成 P8</h3><ul>
+<li><strong>边缘部分</strong>：有所有连接在因特网上的主机组成。这部分由<strong>用户直接使用</strong>，用来进行通信和资源共享。</li>
+<li><strong>核心部分</strong> : 由大量的网络和连接这些网络的路由器组成。这部分是<strong>为边缘部分提供服务的</strong>（提供连通性和交换）。</li>
+</ul>
+<ol>
+<li><p>处于边缘部分的用户通信方式 P9-P10</p>
+<ul>
+<li><p>客户服务器方式（<strong>C/S</strong>方式）：即Client/Server方式。（客户是服务的请求方，服务器是服务的提供方）</p>
+</li>
+<li><p>对等方式（<strong>P2P</strong>方式）：即Peer-to-Peer方式。（对等连接中的每一个主机既是客户又同时是服务器）</p>
+</li>
+</ul>
+</li>
+<li><p>核心部分的交换技术 P11-15</p>
+<ul>
+<li><strong>电路交换</strong> 的三个阶段：建立连接——通话——释放连接<br>在通话时，两用户之间占用端到端的资源，而由于绝大部分时间线路都是空闲的，所以线路的传输速率往往很低。</li>
+<li><strong>分组交换</strong> 的组成：报文、首部、分组。采用存储转发技术，即收到分组——存储分组——查询路由（路由选择协议）——转发分组。优点：高效、灵活、迅速、可靠。缺点：时延、开销。关键构件：路由器。</li>
+<li><strong>报文交换</strong> 整个报文传送到相邻结点，全部存储下来之后查询转发表，转发到下一个结点。<br><img src="http://img.blog.csdn.net/20140126135022484" alt="图片来源：blog.csdn.net/hcbbt/article/details/18271491"><br><img src="http://img.blog.csdn.net/20180105203650888?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHVzaGh3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></li>
+</ul>
+</li>
+</ol>
+<h3 id="1-4-计算机网络的类别-P17"><a href="#1-4-计算机网络的类别-P17" class="headerlink" title="1.4 计算机网络的类别 P17"></a>1.4 计算机网络的类别 P17</h3><ol>
+<li><p>分类</p>
+<ul>
+<li><p>按通信距离分：广域网、局域网、城域网</p>
+</li>
+<li><p>按信息交换方式分：电路交换网、分组交换网、总和交换网</p>
+</li>
+<li>按网络拓扑结构分：星型网、树型网、环型网、总线网</li>
+<li>按通信介质分：双绞线网、同轴电缆网、光纤网、卫星网</li>
+<li>按传输带宽分：基带网、宽带网</li>
+<li>按使用范围分：公用网、专用网</li>
+<li>按速率分：高速网、中速网、低速网</li>
+<li>按通信传播方式分：广播式、点到点式</li>
+</ul>
+</li>
+<li><p>性能指标（P18）：速率、带宽、时延</p>
+<ul>
+<li><strong>速率</strong>：指连接在计算机网络上的主机在数字信道上传送数据的速率。b/s（bps） 如100M以太网，实际是指100Mb/s。往往是指额定速率或标称速率。</li>
+<li><strong>带宽</strong>：数字信道所能传送的最高速率。b/s（bps）</li>
+<li><strong>吞吐量</strong>：单位时间内通过某个网络（或信道、接口）的实际数据量。其绝对上限值等于带宽。</li>
+<li><p><strong>时延</strong>：数据（一个报文或分组、甚至比特）从网络（或链路）的一段传送到另一端的时间，也称延迟。<br>&emsp; ① 发送时延：主机或路由器发送数据帧所需的时间，也就是从发送数据帧的第一个比特算起，到该帧的最后一个比特发送完毕所需的时间。也成传输时延。<br>发送时延 = 数据帧长度（b） / 信道带宽（b/s）<br>&emsp;② 传播时延：电磁波在信道中传输一定距离所需划分的时间。<br>传播时间 = 信道长度（m） / 传输速率（m/s）<br>&emsp;③ 处理时延：主机或路由器处理收到的分组所花费的时间。<br>&emsp;④ 排队时延：分组在输入队列中等待处理的时间加上其在输出队列中等待转发的时间。<br> 综上：总时延 = 发送时延 + 传播时延 + 处理时延 + 排队时延。<br>注：对于高速网络链路，提高的是发送速率而不是传播速率。</p>
+</li>
+<li><p>时延带宽积：传播时延 * 带宽。表示链路的容量。</p>
+</li>
+<li>往返时间RTT：从发送方发送数据开始，到发送发收到接收方的确认为止，所花费的时间。</li>
+<li>利用率：某信道有百分之几是被利用的（有数据通过）。而信道或网络利用率过高会产生非常大的时延。<br>当前时延=空闲时时延/（1-利用率）</li>
+</ul>
+</li>
+</ol>
+<h3 id="1-5-计算机网络的体系结构-P25"><a href="#1-5-计算机网络的体系结构-P25" class="headerlink" title="1.5 计算机网络的体系结构 P25"></a>1.5 计算机网络的体系结构 P25</h3><ol>
+<li><strong>网络协议</strong>：简称协议，是为了进行网络中的数据交换而建立的规则、标准或约定。</li>
+<li>网络协议的三要素<ul>
+<li>语法：数据与控制信息的结构或格式 </li>
+<li>语义：需要发出何种控制信息，完成何种动作以及做出何种响应</li>
+<li>同步：事件实现顺序的详细说明</li>
+</ul>
+</li>
+<li><strong>体系结构</strong>(architecture)是计算机网络的各层及其协议的集合</li>
+<li>五层协议的体系结构<ul>
+<li><strong>物理层</strong>：物理层的任务就是透明地传送比特流。（注意：传递信息的物理媒体，如双绞线、同轴电缆、光缆等，是在物理层的下面，当做第0 层。）物理层还要确定连接电缆插头的定义及连接法。</li>
+<li><strong>数据链路层</strong>：将网络层交下来的IP数据报组装成帧，在两个相邻结点间的链路上”透明“的传送以帧为单位的数据。每一帧包括数据和必要的控制信息。在收到数据时，控制信息使收到端直到哪个帧从哪个比特开始和结束。</li>
+<li><strong>网络层</strong>：选择合适的路由，使发送站的运输层所传下来的分组能够正确无误地按照地址找到目的站，并交付给目的站的运输层。网络层将运输层产生的报文或用户数据报封装成分组（IP数据报）或包进行传送。</li>
+<li><strong>运输层</strong>：向上一层的进行通信的两个进程之间提供一个可靠的端对端服务，使它们看不见运输层以下的数据通信的细节。（TCP、UDP）</li>
+<li><strong>应用层</strong>：直接为用户的应用进程提供服务（HTTP、FTP等）</li>
+</ul>
+</li>
+<li>OSI体系结构：物理层、数据链路层、网络层、运输层、会话层、表示层、应用层</li>
+<li><p>TCP/IP体系结构：网络接口层、网际层IP、运输层、应用层<br><img src="http://img.blog.csdn.net/20180105203859787?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHVzaGh3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="图片来源网络"></p>
+<p>​</p>
+</li>
+</ol>
+<h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2><h3 id="2-1-物理层下的传输媒体"><a href="#2-1-物理层下的传输媒体" class="headerlink" title="2.1 物理层下的传输媒体"></a>2.1 物理层下的传输媒体</h3><p><img src="http://img.blog.csdn.net/20180105222431656?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHVzaGh3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="图片来源网络"></p>
+<ol>
+<li>导向传输媒体<br>1.1. 双绞线<br>  双绞线已成为局域网中的主流传输媒体</li>
+</ol>
+<ul>
+<li><strong>屏蔽双绞线 STP</strong> (Shielded Twisted Pair)</li>
+<li><strong>无屏蔽双绞线 UTP</strong> (Unshielded Twisted Pair)</li>
+</ul>
+<p>  1.2. 同轴电缆</p>
+<ul>
+<li><strong>细缆</strong>（适合短距离，安装容易，造价低）</li>
+<li><p><strong>粗缆</strong>（适合较大局域网，布线距离长，可靠性好）</p>
+<p>1.3. 光纤<br>光纤有很好的抗电磁干扰特性和很宽的频带，主要用在环形网中</p>
+</li>
+<li><strong>多模光纤</strong>（用发光二极管，便宜，定向性较差）</li>
+<li><strong>单模光纤</strong>（注入激光二极管，定向性好）</li>
+</ul>
+<ol>
+<li>非导向传输媒体<br>微波、红外线、激光、卫星通信</li>
+</ol>
+<h3 id="2-2-关于信道的几个基本概念"><a href="#2-2-关于信道的几个基本概念" class="headerlink" title="2.2 关于信道的几个基本概念"></a>2.2 关于信道的几个基本概念</h3><ol>
+<li>通信方式</li>
+</ol>
+<ul>
+<li>单向通信（单工）</li>
+<li>双向交替通信（半双工）</li>
+<li>双向同时通信（全双工）</li>
+</ul>
+<ol>
+<li>基带信号：来自信源的信号。 带通信号：经过载波条之后的信号。基本带通调制方法：调幅(AM)、调频(FM)、调相(PM)</li>
+</ol>
+<h3 id="2-3-信道复用技术"><a href="#2-3-信道复用技术" class="headerlink" title="2.3 信道复用技术"></a>2.3 信道复用技术</h3><blockquote>
+<p>这部分掌握码分复用计算即可</p>
+</blockquote>
+<ul>
+<li>频分复用FDM (Frequency Division Multiplexing)：所有用户在同样的时间占用不同的频率带宽资源。</li>
+<li>时分复用TDM(Time Division Multiplexing)则是将时间划分为一段段等长的时分复用帧（TDM 帧）。</li>
+<li>统计时分复用 STDM(Statistic TDM)是改进的时分复用，明显地提高信道的利用率。</li>
+<li>波分复用 WDM (Wavelength Division Multiplexing)：光的频分复用</li>
+<li><p>码分复用 CDM (Code Division Multiplexing)常用的名词是<strong>码分多址 CDMA</strong>：有很强的抗干扰能力。</p>
+<p>码分多址的计算靠一个例题就基本会了：<br><img src="http://img.blog.csdn.net/20180105230449989?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHVzaGh3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="课后习题"></p>
+</li>
+</ul>
+<h2 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h2><p> 数据链路层使用的信道主要有以下两种类型：</p>
+<ul>
+<li>点对点信道</li>
+<li>广播信道</li>
+</ul>
+<h3 id="3-1-使用点对点信道的数据链路层"><a href="#3-1-使用点对点信道的数据链路层" class="headerlink" title="3.1 使用点对点信道的数据链路层"></a>3.1 使用点对点信道的数据链路层</h3><ol>
+<li><strong>链路</strong> ：从一个结点到相邻结点的一段物理线路</li>
+<li><p><strong>数据链路</strong> ：把实现这些协议的硬件和软件加载链路上<br>现在最常用的方法是使用适配器（即网卡）来实现这些协议的硬件和软件。一般的适配器都包括了数据链路层和物理层这两层的功能。</p>
+</li>
+<li><p>三个基本问题：</p>
+<ul>
+<li><strong>封装成帧</strong><br>就是在一段数据的前后分别添加首部（帧开始符SOH 01）和尾部（帧结束符EOT 04），然后就构成了一个帧。（数据部分&lt;=长度限制MTU）首部和尾部的一个重要作用就是进行帧定界。<br><strong>帧定界是分组交换的必然要求</strong></li>
+<li><strong>透明传输</strong><br>为了达到透明传输（即传输的数据部分不会因为包含SOH和EOT而出错），在数据中出现控制字符“SOH”或“EOT”的前面插入一个转义字符“ESC”(十六进制1B)<br><strong>透明传输避免消息符号与帧定界符号相混淆</strong></li>
+<li><strong>差错检测</strong><br>现实通信链路中比特在传输中会产生差错，传输错误的比特占比称为<strong>误码率BER</strong>，为了保证可靠性，通常通过<strong>循环冗余检验CRC</strong>来做差错检测。<br><strong>差错检测防止无效数据帧浪费后续路由上的传输和处理资源</strong></li>
+</ul>
+<blockquote>
+<p>CRC校验在计算机组成与结构中学过不做解释<br>会做课后习题7、8题即可</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="3-2点对点协议-PPP-P70"><a href="#3-2点对点协议-PPP-P70" class="headerlink" title="3.2点对点协议 PPP P70"></a>3.2点对点协议 PPP P70</h3><ol>
+<li>PPP协议的组成部分</li>
+</ol>
+<ul>
+<li>一个将 IP 数据报封装到串行链路的方法</li>
+<li>链路控制协议 LCP (Link Control Protocol)</li>
+<li>网络控制协议 NCP (Network Control Protocol)</li>
+</ul>
+<ol>
+<li>PPP协议的帧格式<br><img src="http://img.blog.csdn.net/20160204105742700" alt="图片来源：blog.csdn.net/cainv89/article/details/50614218"><br>首部：</li>
+</ol>
+<ul>
+<li>首部中的标志字段F(Flag)，规定为0x7E(符号0x表示它后面的字符是用十六进制表示的。十六进制的7E的二进制表示是01111110)，标志字段表示一个帧的开始。</li>
+<li>首部中的地址字段A规定为0xFF(即11111111)。</li>
+<li>首部中的控制字段C规定为0x03(即00000011)。</li>
+<li><p>首部中的2字节的协议字段：<br>(1)当协议字段为0x0021时，PPP帧的信息字段就是IP数据报。<br>(2)当协议字段为0xC021时，PPP帧的信息字段就是PPP链路控制协议LCP的数据。<br>(3)当协议字段为0x8021时，PPP帧的信息字段就是网络层的控制数据。</p>
+<p>尾部：</p>
+</li>
+<li>尾部中的第一个字段(2个字节)是使用CRC的帧检验序列FCS。</li>
+<li>尾部中的标志字段F(Flag)，规定为0x7E(符号0x表示它后面的字符是用十六进制表示的。十六进制的7E的二进制表示是01111110)，标志字段表示一个帧的结束。</li>
+</ul>
+<ol>
+<li><p>透明传输的实现方法<br>当信息字段中出现和标志字段一样的比特(0x7E)组合时，就必须采取一些措施使这种形式上和标志字段一样的比特组合不出现在信息字段中。</p>
+<ul>
+<li><p><strong>字节填充</strong>——PPP使用异步传输<br>当 PPP 用在异步传输时，就使用一种特殊的字符填充法：将每一个 0x7E字节变为(0x7D, 0x5E)，0x7D转变成为(0x7D, 0x5D)。ASCII 码的控制字符（即数值小于 0x20 的字符），则在前面要加入0x7D，同时将该字符的编码加以改变。</p>
+</li>
+<li><p><strong>零比特填充</strong>——PPP使用同步传输<br>只要发现有5个连续的1，则立即填入一个0<br><img src="http://img.blog.csdn.net/20160204114637729" alt="图片来源：blog.csdn.net/cainv89/article/details/50614218"></p>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>这部分考题很简单：见课后习题10</p>
+</blockquote>
+<ol>
+<li>PPP 协议的工作状态：<br>链路静止-建立物理层-链路建立-pc发LCP-NCP分配IP地址-链路打开，网络层建立。（释放时倒过来）</li>
+</ol>
+<h3 id="3-3-使用广播信道的数据链路层-P76"><a href="#3-3-使用广播信道的数据链路层-P76" class="headerlink" title="3.3 使用广播信道的数据链路层 P76"></a>3.3 使用广播信道的数据链路层 P76</h3><p>广播信道是一种一对多的通信，局域网使用的就是广播信道</p>
+<ol>
+<li>局域网的数据链路层（局域网的数据链路层被拆分为了两个子层）</li>
+</ol>
+<ul>
+<li>逻辑链路控制LLC子层：与传输媒体无关</li>
+<li>媒体接入控制MAC子层：和局域网都对LLC子层来说是透明的</li>
+</ul>
+<ol>
+<li><p>CSMA/CD 协议<br>以太网采用CSMA/CD协议的方式来协调总线上各计算机的工作。在使用CSMA/CD协议的时候，一个站不可能同时进行发送和接收，因此使用CSMA/CD协议的以太网不可能进行全双工通信而只能进行双向交替通信（半双工）。</p>
+<p>CSMA/CD是<strong>载波监听多点接入/碰撞检测</strong>（Carrier Sense Multiple Access with Collision Detection）的缩写，下面是CSMA/CD协议的要点：</p>
+</li>
+</ol>
+<ul>
+<li><strong>“多点接入”</strong>就是计算机以多点接入（动态媒体接入控制）的方式连接在一根总线上。</li>
+<li><strong>“载波监听”</strong>就是”发送前先监听”，即每一个站在发送数据前先要检测一下总线是否有其他站在发送数据，如有则暂时不要发送数据，要等到信道为空闲。</li>
+<li><p><strong>“碰撞检测”</strong>就是“边发送边监听”，即适配器边发送数据边检测信道上的信号电压的变化情况。当一个站检测到的信号电压摆动值超过一定的门限值时，就认为总线上至少有两个站同时在发送数据，表明产生了碰撞，就要立即停止发送，免得继续浪费网络资源，然后等待一段随机时间后再次发送。</p>
+<p> 把总线上的单程端到端传播时延记为τ，A 发送数据后，最迟要经过2τ才能知道自己发送的数据和其他站发送的数据有没有发生碰撞。</p>
+</li>
+</ul>
+<h3 id="3-4-以太网的MAC层"><a href="#3-4-以太网的MAC层" class="headerlink" title="3.4 以太网的MAC层"></a>3.4 以太网的MAC层</h3><ol>
+<li><p>MAC地址<br>“MAC地址”又叫做硬件地址或物理地址，实际上就是适配器地址或适配器标识符EUI-48。高位24位：厂家，低位24位由厂家自行指派</p>
+</li>
+<li><p>MAC帧的格式<br>常用的以太网MAC帧格式有两种标准 ： DIX Ethernet V2 标准IEEE 的 802.3 标准。V2使用较多，如图：<br><img src="http://img.blog.csdn.net/20131017004657921?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZnR4Y19ibG9n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="图片来源：见水印blog.csdn.net/ftxc_blog/article/details/12811235"><br>以太网V2的MAC帧较为简单，有五个字段组成。<br>前两个字段分别为6字长的目标地址和源地址字段。第三个字段是2字节的类型字段，用来标志上一层使用的是什么协议，以便把收到的MAC帧的数据上交给上一层的这个协议。后面数据字段46~1500字节，FCS字段4个字节。</p>
+</li>
+</ol>
+<h3 id="3-5-扩展的以太网"><a href="#3-5-扩展的以太网" class="headerlink" title="3.5 扩展的以太网"></a>3.5 扩展的以太网</h3><ol>
+<li><p>在物理层扩展—集线器 P91<br>现在，双绞线以太网成为以太网的主流类型，扩展主机和集线器之间的距离的一种简单方法就是使用光纤(通常是一对光纤)和一对光纤调制解调器。</p>
+<p>光纤调制解调器的作用，是进行电信号和光信号的转换。</p>
+</li>
+</ol>
+<ol>
+<li><p>在数据链路层扩展—网桥（自学习算法）P94<br><strong>注：在数据链路层扩展以太网要使用网桥</strong><br>网桥工作在数据链路层，它根据MAC帧的目的地址对收到的帧进行转发或过滤。当网桥收到一个帧时，并不是向所有的接口转发这个帧，而是检查此帧的目的MAC地址，然后再确定将该帧转发到哪一个接口，或者是把它丢弃(即过滤)。</p>
+<blockquote>
+<p>具体可以参考这篇博客：<br><a href="http://blog.csdn.net/cainv89/article/details/50651489" target="_blank" rel="noopener">http://blog.csdn.net/cainv89/article/details/50651489</a></p>
+</blockquote>
+</li>
+</ol>
+<ol>
+<li>虚拟局域网-交换机P98<br>多接口网桥即交换式集线器常称为以太网交换机。利用以太网交换机可以很方便地 实现虚拟局域网，虚拟局域网协议允许在以太网的帧格式中插入一个 4 字节的标识符，称为 VLAN 标记。</li>
+</ol>
+<h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><h3 id="4-1-网际协议IP"><a href="#4-1-网际协议IP" class="headerlink" title="4.1 网际协议IP"></a>4.1 网际协议IP</h3><p> 网际协议IP是TCP/IP体系中两个最重要的协议之一，也是最重要的因特网标准协议之一。与IP协议配套是用的四个协议：<br> 1.<strong>地址解析协议ARP</strong>：是解决同一个局域网上的主机或路由器的IP地址和硬件地址的映射问题。<br> 2.<strong>逆地址解析协议RARP</strong>：是解决同一个局域网上的主机或路由器的硬件地址和IP地址的映射问题。<br> 3.<strong>网际控制报文协议ICMP</strong>：提供差错报告和询问报文，以提高IP数据交付成功的机会<br> 4.<strong>网际组管理协议IGMP</strong>：：用于探寻、转发本局域网内的组成员关系。</p>
+<p> <img src="http://img.blog.csdn.net/20180107020713763?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHVzaGh3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="图片来源网络"></p>
+<h4 id="4-1-1-虚拟互连网络"><a href="#4-1-1-虚拟互连网络" class="headerlink" title="4.1.1 虚拟互连网络"></a>4.1.1 虚拟互连网络</h4><p> 因为没有一种单一的网络能够适应所有的用户需求，所以网络互连也变得困难，所以需要一些中间设备：</p>
+<ul>
+<li>物理层中间设备：转发器(repeater)</li>
+<li>数据链路层中间设备：网桥或桥接器(bridge)</li>
+<li>网络层中间设备：路由器(router)</li>
+<li><p>网络层以上的中间设备：网关(gateway)</p>
+<blockquote>
+<p> 具体各层的设备说明可以看这篇博客“网络设备”部分：<br> <a href="http://blog.csdn.net/hushhw/article/details/78489470" target="_blank" rel="noopener">http://blog.csdn.net/hushhw/article/details/78489470</a></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="4-1-2-分类的IP地址-P113"><a href="#4-1-2-分类的IP地址-P113" class="headerlink" title="4.1.2 分类的IP地址 P113"></a>4.1.2 分类的IP地址 P113</h4><p> <strong>IP 地址</strong>就是给每个连接在因特网上的主机（或路由器）分配一个在全世界范围是唯一的 32 位的标识符。由因特网名字与号码指派公司ICANN进行分配。</p>
+<p> IP地址编制方法的三个阶段：</p>
+<ul>
+<li>分类的IP地址</li>
+<li>子网的划分</li>
+<li>构成超网</li>
+</ul>
+<p> 每一类地址都由 <strong>网络号</strong> net-id和 <strong>主机号</strong> host-id组成<br> <strong>主机号中全0表示网络地址，全1表示广播地址</strong></p>
+<p> <img src="http://img.blog.csdn.net/20180107023041372?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHVzaGh3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="图片来源网络"><br> <img src="http://img.blog.csdn.net/20180107023943820?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHVzaGh3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="图片来源网络"></p>
+<ul>
+<li><p>A类</p>
+<ol>
+<li>由1字节的网络地址和3字节主机地址组成</li>
+<li>网络地址的最高位必须是“0“，可指派的网络数为128-2，减2的原因是0.0.0.0对应“本网络”，另外一个是127.0.0.1是本地软件的回环地址，用于测试自己电脑IP地址是否可用。</li>
+<li>地址范围1.0.0.0到126.255.255.255</li>
+<li>最大主机数为256<sup>3</sup>-2=16777214台，减2的原因是全0的主机号字段代表该IP地址是”本主机“，全1表示”所有的“，表示该网络上的所有主机</li>
+</ol>
+</li>
+<li><p>B类</p>
+<ol>
+<li>由2字节的网络地址和2字节主机地址组成</li>
+<li>网络地址的最高位必须是“10”，可指派的网络数为 2<sup>14</sup> -1，因为最高位为10，所以不存在全0全1的情况，但是B类网络地址128.0.0.0是不指派的，可指派最小网络地址是128.1.0.0</li>
+<li>地址范围128.0.0.0-191.255.255.255</li>
+<li>最大主机数为256<sup>2</sup>-2=65534台，减2同样是全0全1情况。</li>
+</ol>
+</li>
+<li><p>C类</p>
+<ol>
+<li>由3字节的网络地址和1字节主机地址组成</li>
+<li>网络地址的最高位必须是“110”，可指派的网络数为2<sup>21</sup>-1，192.0.0.0不指派，最小可指派网络地址是192.0.1.0</li>
+<li>地址范围192.0.0.0-223.255.255.255</li>
+<li>最大主机数为256-2=254台，减2同样是全0全1情况。</li>
+</ol>
+</li>
+<li><p>D类是多播地址，“lll0”开始</p>
+</li>
+<li><p>E类地址保留为今后使用，“llll0”开头</p>
+</li>
+</ul>
+<h4 id="4-1-3-IP地址与硬件地址"><a href="#4-1-3-IP地址与硬件地址" class="headerlink" title="4.1.3 IP地址与硬件地址"></a>4.1.3 IP地址与硬件地址</h4><p> <strong>硬件地址</strong>是数据链路层和物理层使用的地址<br> <strong>IP地址</strong>是网络层和以上各层使用的地址，是一种逻辑地址</p>
+<p> IP地址放在IP数据报的首部，而硬件地址放在MAC帧的首部。当数据报放入数据链路层的MAC帧中后，整个IP数据报就成为MAC帧的数据，因而在数据链路层看不见数据报的IP地址。</p>
+<h4 id="4-1-4-地址解析协议ARP"><a href="#4-1-4-地址解析协议ARP" class="headerlink" title="4.1.4 地址解析协议ARP"></a>4.1.4 地址解析协议ARP</h4><p> ARP是解决<strong>同一个局域网上</strong>的主机或路由器的 IP 地址和硬件地址的映射问题。</p>
+<p> 每一个主机都设有一个ARP高速缓存(ARP  cache)，里面有所在的局域网上的各主机和路由器的 IP 地址到硬件地址的映射表。<br> 如果所要找的主机和源主机不在同一个局域网上，那么就要通过 ARP 找到一个位于本局域网上的某个路由器的硬件地址，然后把分组发送给这个路由器，让这个路由器把分组转发给下一个网络。</p>
+<h4 id="4-1-5-IP数据报"><a href="#4-1-5-IP数据报" class="headerlink" title="4.1.5 IP数据报"></a>4.1.5 IP数据报</h4><ol>
+<li><p>IP数据报格式<br>一个IP数据报由首部（20 字节+可选字段）和数据两部分组成<br><img src="http://img.blog.csdn.net/20180107045436621?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHVzaGh3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="图片来源网络"><br><img src="http://img.blog.csdn.net/20180107045539001?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHVzaGh3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="图片来源网络"></p>
+</li>
+<li><p>分组转发<br> (1) 从数据报的首部提取目的主机的 IP 地址 D, 得出目的网络地址为 N。<br> (2) 若网络 N 与此路由器直接相连，则把数据报直接交付目的主机 D；否则是间接交付，执行(3)。<br> (3) 若路由表中有目的地址为 D 的特定主机路由，则把数据报传送给路由表中所指明的下一跳路由器；否则，执行(4)。<br> (4) 若路由表中有到达网络 N 的路由，则把数据报传送给路由表指明的下一跳路由器；否则，执行(5)。<br> (5) 若路由表中有一个默认路由，则把数据报传送给路由表中所指明的默认路由器；否则，执行(6)<br> (6) 报告转发分组出错。</p>
+</li>
+</ol>
+<h3 id="4-2-划分子网-P128"><a href="#4-2-划分子网-P128" class="headerlink" title="4.2 划分子网 P128"></a>4.2 划分子网 P128</h3><ol>
+<li><p>两级IP地址缺陷：</p>
+<ol>
+<li>IP 地址空间的利用率有时很低。</li>
+<li>给每一个物理网络分配一个网络号会使路由表变得太大因而使网络性能变坏。</li>
+<li>两级的 IP 地址不够灵活</li>
+</ol>
+</li>
+<li><p>子网划分的基本思路：</p>
+<ol>
+<li>划分子网纯属一个单位内部的事情，单位对外仍然表现为没有划分子网的网络。</li>
+<li>划分子网的方法是从主机号借用若干个位作为子网号。</li>
+<li>路由器在收到IP数据报后，按目标网络号和子网号定位目标子网</li>
+</ol>
+</li>
+<li><p>子网掩码<br>子网掩码是一个网络或一个子网的重要属性</p>
+</li>
+</ol>
+<blockquote>
+<p>这里要会已知IP地址，子网掩码，求网络地址</p>
+</blockquote>
+<h3 id="4-3-构造超网（无分类编址CIDR）"><a href="#4-3-构造超网（无分类编址CIDR）" class="headerlink" title="4.3 构造超网（无分类编址CIDR）"></a>4.3 构造超网（无分类编址CIDR）</h3><ol>
+<li><p><strong>CIDR（无分类域间路由选择）</strong>的主要特点：</p>
+<ul>
+<li>CIDR消除了传统的A、B、C类地址以及划分子网的概念，用<strong>网络前缀</strong>代替网络号和子网号，后面的部分指明主机。因此，CIDR使IP地址从三级编址(使用子网掩码)，又回到了两级编址，但这已是无分类的两级编址。</li>
+<li>CIDR把网络前缀相同的连续的IP地址组成一个”CIDR地址块”只要知道CIDR地址块中的任何一个地址，就可以知道这地址块的起始地址(即最小地址)和最大地址，以及地址块中的地址数。</li>
+</ul>
+</li>
+<li><p>地址掩码：是一连串的1和0组成，而1的个数救赎网络前缀长度。在斜线记法中。斜线后面的数字就是地址掩码中1的个数。</p>
+</li>
+<li><p>构成超网：由于一个CIDR地址块中含有很多地址，所以在路由表中就利用CIDR地址块来查找目标网络，这种地址的聚合常称为路由聚合，也称构成超网。</p>
+</li>
+</ol>
+<h3 id="4-4-网际控制报文协议ICMP"><a href="#4-4-网际控制报文协议ICMP" class="headerlink" title="4.4 网际控制报文协议ICMP"></a>4.4 网际控制报文协议ICMP</h3><p>为了更有效地转发IP数据报和提高交付成功的机会，在网际层使用了ICMP，ICMP允许主机或路由器报告差错情况和提供有关异常情况的报告。</p>
+<ol>
+<li><p>ICMP报文的种类</p>
+<ul>
+<li>ICMP差错报告报文</li>
+<li>ICMP询问报文</li>
+</ul>
+</li>
+<li><p>ICMP 差错报告报文共有 5 种：</p>
+<ul>
+<li>终点不可达</li>
+<li>源点抑制(Source quench)</li>
+<li>时间超过</li>
+<li>参数问题</li>
+<li>改变路由（重定向）(Redirect)</li>
+</ul>
+</li>
+<li><p>ICMP 询问报文有两种：</p>
+<ul>
+<li>回送请求和回答报文</li>
+<li>时间戳请求和回答报文</li>
+</ul>
+</li>
+</ol>
+<h3 id="4-5-路由选择协议"><a href="#4-5-路由选择协议" class="headerlink" title="4.5 路由选择协议"></a>4.5 路由选择协议</h3><ol>
+<li><p>两大类路由选择协议：</p>
+<ul>
+<li><strong>内部网关协议 IGP</strong>：一个自治系统内部使用的路由选择协议。有多种协议，如 RIP 和OSPF 协议。</li>
+<li><strong>外部网关协议EGP</strong>：一个自治系统的边界，将路由选择信息传递到另一个自治系统中。目前使用的就是BGP</li>
+</ul>
+<p>RIP协议的优缺点：</p>
+<ul>
+<li>RIP 存在的一个问题是当网络出现故障时，要经过比较长的时间才能将此信息传送到所有的路由器。</li>
+<li>RIP 协议最大的优点就是实现简单，开销较小。</li>
+<li>RIP 限制了网络的规模，它能使用的最大距离为 15（16 表示不可达）。</li>
+<li>路由器之间交换的路由信息是路由器中的完整路由表，因而随着网络规模的扩大，开销也就增加。   </li>
+</ul>
+<blockquote>
+<p>书上例题P149 例4-5<br>更新路由表</p>
+</blockquote>
+</li>
+</ol>
+<p> RIP是一种分布式的基于距离向量的路由选择协议，其主要特点：<br>（1）仅和相邻路由器交换信息。<br>（3）按固定的时间间隔交换路由信息，例如，每隔30秒。 </p>
+<p> OSPF最主要的特征就是使用分布式的链路状态协议，其主要特点：<br>（1）使用洪泛法向本自治系统中所有路由器发送信息。<br>（2）发送的信息是与本路由器相邻的所有路由器的链路状态。<br>（3）只有当链路状态发生变化时，路由器才用洪泛法向所有路由器发送此信息。 </p>
+<p> BGP是不同自治系统的路由器之间交换路由信息的协议，它采用路径向量路由选择协议，其主要特点：<br>（2）自治系统AS之间的路由选择必须考虑有关策略。<br>（3）BGP只能力求寻找一条能够到达目的网络且比较好的路由，而并非要寻找一条最佳路由。</p>
+<h2 id="运输层"><a href="#运输层" class="headerlink" title="运输层"></a>运输层</h2><h3 id="5-1-运输层协议概述"><a href="#5-1-运输层协议概述" class="headerlink" title="5.1 运输层协议概述"></a>5.1 运输层协议概述</h3><ol>
+<li><p>运输层功能</p>
+<ul>
+<li>运输层为应用进程之间提供端到端的逻辑通信（但网络层是为主机之间提供逻辑通信）</li>
+<li>运输层还要对收到的报文进行差错检测</li>
+<li>运输层需要有两种不同的运输协议，即面向连接的 <strong>TCP</strong> 和无连接的 <strong>UDP</strong></li>
+</ul>
+</li>
+<li><p>运输层的两个主要协议<br>TCP/IP 的运输层有两个不同的协议：</p>
+<ul>
+<li><strong>用户数据报协议 UDP</strong>(User Datagram Protocol)</li>
+<li><strong>传输控制协议 TCP</strong>(Transmission Control Protocol)</li>
+</ul>
+<p>UDP 在传送数据之前不需要先建立连接。对方的运输层在收到 UDP 报文后，不需要给出任何确认。虽然 UDP 不提供可靠交付，但在某些情况下 UDP 是一种最有效的工作方式。</p>
+<p>TCP 则提供面向连接的服务。TCP 不提供广播或多播服务。由于 TCP 要提供可靠的、面向连接的运输服务，因此不可避免地增加了许多的开销。这不仅使协议数据单元的首部增大很多，还要占用许多的处理机资源。  </p>
+</li>
+</ol>
+<p><img src="http://img.blog.csdn.net/20180108005811225?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHVzaGh3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="图片来源网络"></p>
+<ol>
+<li><p>运输层的端口<br>TCP/IP的运输层的端口用一个 16 位端口号进行标志<br>端口号只具备本地意义，即端口号只是为了标志本计算机应用层中的各进程。 </p>
+<p>客户发起通讯请求时，必须先知道对方服务器的IP地址和端口号，运输层的端口号分为下面三大类：</p>
+</li>
+</ol>
+<ul>
+<li><p>熟知端口号，数值一般为 0~1023。<br> 一些常用的数值端口号：<br>  <strong>FTP 21</strong><br>  <strong>LELNET 23</strong><br>  <strong>SMTP 25</strong><br>  <strong>DNS 53</strong><br>  <strong>TFTP 69</strong><br>  <strong>HTTP 80</strong><br>  <strong>SNMP 161</strong><br>  <strong>SNMP(trap) 162</strong></p>
+<ul>
+<li><p>登记端口号，数值为1024~49151，为没有熟知端口号的应用程序使用的。</p>
+</li>
+<li><p>客户端口号或短暂端口号，数值为49152~65535，留给客户进程选择暂时使用。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-2-用户数据报协议-UDP"><a href="#5-2-用户数据报协议-UDP" class="headerlink" title="5.2 用户数据报协议 UDP"></a>5.2 用户数据报协议 UDP</h3><ol>
+<li>UDP的主要特点：<ul>
+<li><strong>UDP 是无连接的</strong>，即发送数据之前不需要建立连接。</li>
+<li><strong>UDP 使用尽最大努力交付</strong>，即不保证可靠交付，同时也不使用拥塞控制</li>
+<li><strong>UDP 是面向报文的</strong></li>
+<li><strong>UDP 没有拥塞控制</strong>，很适合多媒体通信的要求。</li>
+<li><strong>UDP 支持一对一、一对多、多对一和多对多的交互通信</strong></li>
+<li><strong>UDP 的首部开销小</strong>，只有 8 个字节</li>
+</ul>
+</li>
+</ol>
+<h3 id="5-3-传输控制协议-TCP"><a href="#5-3-传输控制协议-TCP" class="headerlink" title="5.3 传输控制协议 TCP"></a>5.3 传输控制协议 TCP</h3><ol>
+<li>TCP的主要特点：<ul>
+<li><strong>TCP 是面向连接的运输层协议</strong></li>
+<li><strong>每一条 TCP 连接只能有两个端点(endpoint)</strong>，每一条 TCP 连接只能是点对点的（一对一）</li>
+<li><strong>TCP 提供可靠交付的服务</strong></li>
+<li><strong>TCP 提供全双工通信</strong></li>
+<li><strong>面向字节流</strong>  </li>
+</ul>
+</li>
+</ol>
+<h3 id="5-4-可靠运输的工作原理"><a href="#5-4-可靠运输的工作原理" class="headerlink" title="5.4 可靠运输的工作原理"></a>5.4 可靠运输的工作原理</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    hushhw
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://hushhw.cn/2018/01/05/05computer network/" title="《计算机网络》复习笔记">https://hushhw.cn/2018/01/05/05computer network/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
+          
+            <a href="/tags/复习笔记/" rel="tag"># 复习笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/24/04WebGL04/" rel="next" title="《WebGL编程指南》学习笔记——4.绘制一个点">
+                <i class="fa fa-chevron-left"></i> 《WebGL编程指南》学习笔记——4.绘制一个点
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/25/06PAT/" rel="prev" title="浙江大学PAT题解目录">
+                浙江大学PAT题解目录 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="hushhw" />
+            
+              <p class="site-author-name" itemprop="name">hushhw</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hushhw" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:hushhw123@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/hushhw123" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/hushhw" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/hu-song-19" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-tags"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/1929679982" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://blog.csdn.net/hushhw" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-tags"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.heyby.cn/" title="HEYBY" target="_blank">HEYBY</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机网络复习笔记"><span class="nav-number">1.</span> <span class="nav-text">计算机网络复习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#绪论"><span class="nav-number">1.1.</span> <span class="nav-text">绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-计算机网络"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 计算机网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-因特网概述"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 因特网概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-互联网的组成-P8"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 互联网的组成 P8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-计算机网络的类别-P17"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 计算机网络的类别 P17</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-计算机网络的体系结构-P25"><span class="nav-number">1.1.5.</span> <span class="nav-text">1.5 计算机网络的体系结构 P25</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#物理层"><span class="nav-number">1.2.</span> <span class="nav-text">物理层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-物理层下的传输媒体"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 物理层下的传输媒体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-关于信道的几个基本概念"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 关于信道的几个基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-信道复用技术"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 信道复用技术</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据链路层"><span class="nav-number">1.3.</span> <span class="nav-text">数据链路层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-使用点对点信道的数据链路层"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 使用点对点信道的数据链路层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2点对点协议-PPP-P70"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2点对点协议 PPP P70</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-使用广播信道的数据链路层-P76"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 使用广播信道的数据链路层 P76</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-以太网的MAC层"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 以太网的MAC层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-扩展的以太网"><span class="nav-number">1.3.5.</span> <span class="nav-text">3.5 扩展的以太网</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络层"><span class="nav-number">1.4.</span> <span class="nav-text">网络层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-网际协议IP"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 网际协议IP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-1-虚拟互连网络"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">4.1.1 虚拟互连网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-2-分类的IP地址-P113"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">4.1.2 分类的IP地址 P113</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-3-IP地址与硬件地址"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">4.1.3 IP地址与硬件地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-4-地址解析协议ARP"><span class="nav-number">1.4.1.4.</span> <span class="nav-text">4.1.4 地址解析协议ARP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-5-IP数据报"><span class="nav-number">1.4.1.5.</span> <span class="nav-text">4.1.5 IP数据报</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-划分子网-P128"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 划分子网 P128</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-构造超网（无分类编址CIDR）"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 构造超网（无分类编址CIDR）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-网际控制报文协议ICMP"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.4 网际控制报文协议ICMP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-路由选择协议"><span class="nav-number">1.4.5.</span> <span class="nav-text">4.5 路由选择协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运输层"><span class="nav-number">1.5.</span> <span class="nav-text">运输层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-运输层协议概述"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1 运输层协议概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-用户数据报协议-UDP"><span class="nav-number">1.5.2.</span> <span class="nav-text">5.2 用户数据报协议 UDP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-传输控制协议-TCP"><span class="nav-number">1.5.3.</span> <span class="nav-text">5.3 传输控制协议 TCP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-可靠运输的工作原理"><span class="nav-number">1.5.4.</span> <span class="nav-text">5.4 可靠运输的工作原理</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hushhw</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">38.1k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '66a8ca9ffb45c03358c1',
+          clientSecret: 'f8c4f55ca86ac99f07d3194a0a35ea7cdbdfbed9',
+          repo: 'hushhw.github.io',
+          owner: 'hushhw',
+          admin: ['hushhw'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')
+       </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

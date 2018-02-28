@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="aEXOxeJU__4i99aRP765TFHVsu1lDxRKExENESoTDHo" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="ndXaD7apwJ" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="PAT,OJ,刷题," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="hushhw's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="PATRecord my code in Programming Ability Test https://github.com/hushhw/PAT PAT甲级    ID Title 备注     1001 A+B Format (20) 字符串处理   1002 A+B for Polynomials (25) 模拟   1003 Emergency (25) Dijkstra算法及dfs解">
+<meta name="keywords" content="PAT,OJ,刷题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浙江大学PAT题解目录">
+<meta property="og:url" content="https://hushhw.cn/2018/01/25/06PAT/index.html">
+<meta property="og:site_name" content="hushhw&#39;s blog">
+<meta property="og:description" content="PATRecord my code in Programming Ability Test https://github.com/hushhw/PAT PAT甲级    ID Title 备注     1001 A+B Format (20) 字符串处理   1002 A+B for Polynomials (25) 模拟   1003 Emergency (25) Dijkstra算法及dfs解">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-21T14:49:38.524Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浙江大学PAT题解目录">
+<meta name="twitter:description" content="PATRecord my code in Programming Ability Test https://github.com/hushhw/PAT PAT甲级    ID Title 备注     1001 A+B Format (20) 字符串处理   1002 A+B for Polynomials (25) 模拟   1003 Emergency (25) Dijkstra算法及dfs解">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hushhw.cn/2018/01/25/06PAT/"/>
+
+
+
+
+
+  <title>浙江大学PAT题解目录 | hushhw's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hushhw's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">身经百战见得多了</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-study">
+          <a href="/categories/学习" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            学习
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hushhw.cn/2018/01/25/06PAT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hushhw">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hushhw's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">浙江大学PAT题解目录</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-25T22:45:39+08:00">
+                2018-01-25
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-21T22:49:38+08:00">
+                2018-02-21
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/OJ刷题/" itemprop="url" rel="index">
+                    <span itemprop="name">OJ刷题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  878 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="PAT"><a href="#PAT" class="headerlink" title="PAT"></a>PAT</h1><p>Record my code in Programming Ability Test</p>
+<p><a href="https://github.com/hushhw/PAT" target="_blank" rel="noopener">https://github.com/hushhw/PAT</a></p>
+<h2 id="PAT甲级"><a href="#PAT甲级" class="headerlink" title="PAT甲级"></a>PAT甲级</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">ID</th>
+<th style="text-align:left">Title</th>
+<th style="text-align:left">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1001</td>
+<td style="text-align:left">A+B Format (20)</td>
+<td style="text-align:left">字符串处理</td>
+</tr>
+<tr>
+<td style="text-align:center">1002</td>
+<td style="text-align:left">A+B for Polynomials (25)</td>
+<td style="text-align:left">模拟</td>
+</tr>
+<tr>
+<td style="text-align:center">1003</td>
+<td style="text-align:left">Emergency (25)</td>
+<td style="text-align:left">Dijkstra算法及dfs解法</td>
+</tr>
+<tr>
+<td style="text-align:center">1004</td>
+<td style="text-align:left">Counting Leaves (30)</td>
+<td style="text-align:left">BFS，DFS，树的层序遍历</td>
+</tr>
+<tr>
+<td style="text-align:center">1005</td>
+<td style="text-align:left">Spell It Right (20)</td>
+<td style="text-align:left">字符串处理</td>
+</tr>
+<tr>
+<td style="text-align:center">1006</td>
+<td style="text-align:left">Sign In and Sign Out (25)</td>
+<td style="text-align:left">查找元素</td>
+</tr>
+<tr>
+<td style="text-align:center">1007</td>
+<td style="text-align:left">Maximum Subsequence Sum(25)</td>
+<td style="text-align:left">动态规划，最大连续子序列和</td>
+</tr>
+<tr>
+<td style="text-align:center">1008</td>
+<td style="text-align:left">Elevator (20)</td>
+<td style="text-align:left">数学问题</td>
+</tr>
+<tr>
+<td style="text-align:center">1009</td>
+<td style="text-align:left">Product of Polynomials (25)</td>
+<td style="text-align:left">模拟</td>
+</tr>
+<tr>
+<td style="text-align:center">1010</td>
+<td style="text-align:left">Radix (25)</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">1011</td>
+<td style="text-align:left">World Cup Betting (20)</td>
+<td style="text-align:left">查找元素</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="PAT乙级"><a href="#PAT乙级" class="headerlink" title="PAT乙级"></a>PAT乙级</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">ID</th>
+<th style="text-align:left">Title</th>
+<th style="text-align:center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1001</td>
+<td style="text-align:left">害死人不偿命的(3n+1)猜想(15)</td>
+<td style="text-align:center">模拟</td>
+</tr>
+<tr>
+<td style="text-align:center">1002</td>
+<td style="text-align:left">写出这个数 (20)</td>
+<td style="text-align:center">字符串处理</td>
+</tr>
+<tr>
+<td style="text-align:center">1003</td>
+<td style="text-align:left">我要通过！(20)</td>
+<td style="text-align:center">数学题</td>
+</tr>
+<tr>
+<td style="text-align:center">1004</td>
+<td style="text-align:left">成绩排名 (20)</td>
+<td style="text-align:center">Hash散列</td>
+</tr>
+<tr>
+<td style="text-align:center">1006</td>
+<td style="text-align:left">换个格式输出整数 (15)</td>
+<td style="text-align:center">素数</td>
+</tr>
+<tr>
+<td style="text-align:center">1008</td>
+<td style="text-align:left">数组元素循环右移问题 (20)</td>
+<td style="text-align:center">模拟</td>
+</tr>
+<tr>
+<td style="text-align:center">1009</td>
+<td style="text-align:left">说反话 (20)</td>
+<td style="text-align:center">字符串处理</td>
+</tr>
+<tr>
+<td style="text-align:center">1010</td>
+<td style="text-align:left">一元多项式求导 (25)</td>
+<td style="text-align:center">模拟</td>
+</tr>
+<tr>
+<td style="text-align:center">1011</td>
+<td style="text-align:left">A+B和C (15)</td>
+<td style="text-align:center">模拟</td>
+</tr>
+<tr>
+<td style="text-align:center">1012</td>
+<td style="text-align:left">数字分类 (20)</td>
+<td style="text-align:center">模拟</td>
+</tr>
+<tr>
+<td style="text-align:center">1013</td>
+<td style="text-align:left">数素数 (20)</td>
+<td style="text-align:center">素数</td>
+</tr>
+<tr>
+<td style="text-align:center">1014</td>
+<td style="text-align:left">福尔摩斯的约会 (20)</td>
+<td style="text-align:center">字符串处理</td>
+</tr>
+<tr>
+<td style="text-align:center">1015</td>
+<td style="text-align:left">德才论 (25)</td>
+<td style="text-align:center">排序</td>
+</tr>
+<tr>
+<td style="text-align:center">1016</td>
+<td style="text-align:left">部分A+B (15)</td>
+<td style="text-align:center">模拟</td>
+</tr>
+<tr>
+<td style="text-align:center">1017</td>
+<td style="text-align:left">A除以B (20)</td>
+<td style="text-align:center">大整数运算</td>
+</tr>
+<tr>
+<td style="text-align:center">1018</td>
+<td style="text-align:left">锤子剪刀布 (20)</td>
+<td style="text-align:center">模拟</td>
+</tr>
+<tr>
+<td style="text-align:center">1019</td>
+<td style="text-align:left">数字黑洞 (20)</td>
+<td style="text-align:center">数学问题</td>
+</tr>
+<tr>
+<td style="text-align:center">1020</td>
+<td style="text-align:left">月饼 (25)</td>
+<td style="text-align:center">贪心算法</td>
+</tr>
+<tr>
+<td style="text-align:center">1021</td>
+<td style="text-align:left">个位数统计 (15)</td>
+<td style="text-align:center">字符串处理</td>
+</tr>
+<tr>
+<td style="text-align:center">1022</td>
+<td style="text-align:left">D进制的A+B (20)</td>
+<td style="text-align:center">进制转换</td>
+</tr>
+<tr>
+<td style="text-align:center">1023</td>
+<td style="text-align:left">组个最小数 (20)</td>
+<td style="text-align:center">贪心算法</td>
+</tr>
+<tr>
+<td style="text-align:center">1024</td>
+<td style="text-align:left">科学计数法 (20)</td>
+<td style="text-align:center">字符串处理</td>
+</tr>
+<tr>
+<td style="text-align:center">1025</td>
+<td style="text-align:left">反转链表 (25)</td>
+<td style="text-align:center">链表</td>
+</tr>
+<tr>
+<td style="text-align:center">1026</td>
+<td style="text-align:left">程序运行时间(15)</td>
+<td style="text-align:center">模拟</td>
+</tr>
+<tr>
+<td style="text-align:center">1027</td>
+<td style="text-align:left">打印沙漏(20)</td>
+<td style="text-align:center">图形打印</td>
+</tr>
+<tr>
+<td style="text-align:center">1028</td>
+<td style="text-align:left">人口普查(20)</td>
+<td style="text-align:center">查找元素</td>
+</tr>
+<tr>
+<td style="text-align:center">1029</td>
+<td style="text-align:left">旧键盘(20)</td>
+<td style="text-align:center">Hash散列</td>
+</tr>
+<tr>
+<td style="text-align:center">1030</td>
+<td style="text-align:left">完美数列(25)</td>
+<td style="text-align:center">two pointers</td>
+</tr>
+<tr>
+<td style="text-align:center">1031</td>
+<td style="text-align:left">查验身份证(15)</td>
+<td style="text-align:center">字符串处理</td>
+</tr>
+<tr>
+<td style="text-align:center">1032</td>
+<td style="text-align:left">挖掘机技术哪家强(20)</td>
+<td style="text-align:center">查找元素</td>
+</tr>
+<tr>
+<td style="text-align:center">1033</td>
+<td style="text-align:left">旧键盘打字(20)</td>
+<td style="text-align:center">Hash散列</td>
+</tr>
+<tr>
+<td style="text-align:center">1034</td>
+<td style="text-align:left">有理数四则运算(20)</td>
+<td style="text-align:center">分数的四则运算</td>
+</tr>
+<tr>
+<td style="text-align:center">1035</td>
+<td style="text-align:left">插入与归并(25)</td>
+<td style="text-align:center">two pointers</td>
+</tr>
+<tr>
+<td style="text-align:center">1036</td>
+<td style="text-align:left">跟奥巴马一起编程(15)</td>
+<td style="text-align:center">图形打印</td>
+</tr>
+<tr>
+<td style="text-align:center">1037</td>
+<td style="text-align:left">在霍格沃茨找零钱（20)</td>
+<td style="text-align:center">进制转换</td>
+</tr>
+<tr>
+<td style="text-align:center">1038</td>
+<td style="text-align:left">统计同成绩学生(20)</td>
+<td style="text-align:center">Hash散列</td>
+</tr>
+<tr>
+<td style="text-align:center">1039</td>
+<td style="text-align:left">到底买不买 (20)</td>
+<td style="text-align:center">Hash散列</td>
+</tr>
+<tr>
+<td style="text-align:center">1040</td>
+<td style="text-align:left">有几个PAT（25)</td>
+<td style="text-align:center">逻辑题</td>
+</tr>
+<tr>
+<td style="text-align:center">1041</td>
+<td style="text-align:left">考试座位号(15)</td>
+<td style="text-align:center">查找元素</td>
+</tr>
+<tr>
+<td style="text-align:center">1042</td>
+<td style="text-align:left">字符统计(20)</td>
+<td style="text-align:center">Hash散列</td>
+</tr>
+<tr>
+<td style="text-align:center">1043</td>
+<td style="text-align:left">输出PATest(20)</td>
+<td style="text-align:center">Hash散列</td>
+</tr>
+<tr>
+<td style="text-align:center">1044</td>
+<td style="text-align:left">火星数字(20)</td>
+<td style="text-align:center">map映射，STL的使用</td>
+</tr>
+<tr>
+<td style="text-align:center">1045</td>
+<td style="text-align:left">快速排序(25)</td>
+<td style="text-align:center">快速排序</td>
+</tr>
+<tr>
+<td style="text-align:center">1046</td>
+<td style="text-align:left">划拳(15)</td>
+<td style="text-align:center">模拟</td>
+</tr>
+<tr>
+<td style="text-align:center">1047</td>
+<td style="text-align:left">编程团体赛(20)</td>
+<td style="text-align:center">Hash散列</td>
+</tr>
+<tr>
+<td style="text-align:center">1048</td>
+<td style="text-align:left">数字加密(20)</td>
+<td style="text-align:center">字符串处理</td>
+</tr>
+<tr>
+<td style="text-align:center">1049</td>
+<td style="text-align:left">数列的片段和(20)</td>
+<td style="text-align:center">数学问题</td>
+</tr>
+<tr>
+<td style="text-align:center">1050</td>
+<td style="text-align:left">螺旋矩阵(25)</td>
+<td style="text-align:center">模拟</td>
+</tr>
+<tr>
+<td style="text-align:center">1051</td>
+<td style="text-align:left">复数乘法 (15)</td>
+<td style="text-align:center">模拟</td>
+</tr>
+<tr>
+<td style="text-align:center">1052</td>
+<td style="text-align:left">卖个萌 (20)</td>
+<td style="text-align:center">字符串处理</td>
+</tr>
+<tr>
+<td style="text-align:center">1053</td>
+<td style="text-align:left">住房空置率 (20)</td>
+<td style="text-align:center">模拟</td>
+</tr>
+<tr>
+<td style="text-align:center">1054</td>
+<td style="text-align:left">求平均值 (20)</td>
+<td style="text-align:center">字符串处理</td>
+</tr>
+<tr>
+<td style="text-align:center">1055</td>
+<td style="text-align:left">集体照 (25)</td>
+<td style="text-align:center">排序</td>
+</tr>
+<tr>
+<td style="text-align:center">1056</td>
+<td style="text-align:left">组合数的和(15)</td>
+<td style="text-align:center">数学问题</td>
+</tr>
+<tr>
+<td style="text-align:center">1057</td>
+<td style="text-align:left">数零壹(20)</td>
+<td style="text-align:center">进制转换</td>
+</tr>
+<tr>
+<td style="text-align:center">1058</td>
+<td style="text-align:left">选择题(20)</td>
+<td style="text-align:center">字符串处理</td>
+</tr>
+<tr>
+<td style="text-align:center">1059</td>
+<td style="text-align:left">C语言竞赛(20)</td>
+<td style="text-align:center">逻辑题</td>
+</tr>
+<tr>
+<td style="text-align:center">1060</td>
+<td style="text-align:left">爱丁顿数(25)</td>
+<td style="text-align:center">逻辑题</td>
+</tr>
+<tr>
+<td style="text-align:center">1061</td>
+<td style="text-align:left">判断题(15)</td>
+<td style="text-align:center">逻辑题</td>
+</tr>
+<tr>
+<td style="text-align:center">1062</td>
+<td style="text-align:left">最简分数(20)</td>
+<td style="text-align:center">分数化简</td>
+</tr>
+<tr>
+<td style="text-align:center">1063</td>
+<td style="text-align:left">计算谱半径(20)</td>
+<td style="text-align:center">逻辑题</td>
+</tr>
+<tr>
+<td style="text-align:center">1064</td>
+<td style="text-align:left">朋友数(20)</td>
+<td style="text-align:center">set的使用</td>
+</tr>
+<tr>
+<td style="text-align:center">1065</td>
+<td style="text-align:left">单身狗(25)</td>
+<td style="text-align:center">逻辑题，set的使用</td>
+</tr>
+<tr>
+<td style="text-align:center">1066</td>
+<td style="text-align:left">图像过滤(15)</td>
+<td style="text-align:center">逻辑题</td>
+</tr>
+<tr>
+<td style="text-align:center">1067</td>
+<td style="text-align:left">试密码(20)</td>
+<td style="text-align:center">字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">1068</td>
+<td style="text-align:left">万绿丛中一点红(20)</td>
+<td style="text-align:center">逻辑题</td>
+</tr>
+<tr>
+<td style="text-align:center">1069</td>
+<td style="text-align:left">微博转发抽奖(20)</td>
+<td style="text-align:center">map映射</td>
+</tr>
+<tr>
+<td style="text-align:center">1070</td>
+<td style="text-align:left">结绳(25)</td>
+<td style="text-align:center">排序，贪心</td>
+</tr>
+<tr>
+<td style="text-align:center">1071</td>
+<td style="text-align:left">小赌怡情(15)</td>
+<td style="text-align:center">简单题</td>
+</tr>
+<tr>
+<td style="text-align:center">1072</td>
+<td style="text-align:left">开学寄语(20)</td>
+<td style="text-align:center">简单题</td>
+</tr>
+<tr>
+<td style="text-align:center">1073</td>
+<td style="text-align:left">多选题常见计分法(20)</td>
+<td style="text-align:center">逻辑题</td>
+</tr>
+<tr>
+<td style="text-align:center">1074</td>
+<td style="text-align:left">宇宙无敌加法器(20)</td>
+<td style="text-align:center">逻辑题</td>
+</tr>
+<tr>
+<td style="text-align:center">1075</td>
+<td style="text-align:left">链表元素分类(25)</td>
+<td style="text-align:center">链表</td>
+</tr>
+<tr>
+<td style="text-align:center">1076</td>
+<td style="text-align:left">Wifi密码</td>
+<td style="text-align:center">简单题</td>
+</tr>
+<tr>
+<td style="text-align:center">1077</td>
+<td style="text-align:left">互评成绩计算</td>
+<td style="text-align:center">简单题</td>
+</tr>
+<tr>
+<td style="text-align:center">1078</td>
+<td style="text-align:left">字符串压缩与解压</td>
+<td style="text-align:center">逻辑题</td>
+</tr>
+<tr>
+<td style="text-align:center">1079</td>
+<td style="text-align:left">延迟的回文数</td>
+<td style="text-align:center">回文数</td>
+</tr>
+<tr>
+<td style="text-align:center">1080</td>
+<td style="text-align:left">MOOC期终成绩</td>
+<td style="text-align:center">map映射，排序</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    hushhw
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://hushhw.cn/2018/01/25/06PAT/" title="浙江大学PAT题解目录">https://hushhw.cn/2018/01/25/06PAT/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PAT/" rel="tag"># PAT</a>
+          
+            <a href="/tags/OJ/" rel="tag"># OJ</a>
+          
+            <a href="/tags/刷题/" rel="tag"># 刷题</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/05/05computer network/" rel="next" title="《计算机网络》复习笔记">
+                <i class="fa fa-chevron-left"></i> 《计算机网络》复习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/03/07埃筛/" rel="prev" title="“埃氏筛法”思想运用">
+                “埃氏筛法”思想运用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="hushhw" />
+            
+              <p class="site-author-name" itemprop="name">hushhw</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hushhw" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:hushhw123@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/hushhw123" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/hushhw" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/hu-song-19" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-tags"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/1929679982" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://blog.csdn.net/hushhw" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-tags"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.heyby.cn/" title="HEYBY" target="_blank">HEYBY</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PAT"><span class="nav-number">1.</span> <span class="nav-text">PAT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PAT甲级"><span class="nav-number">1.1.</span> <span class="nav-text">PAT甲级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PAT乙级"><span class="nav-number">1.2.</span> <span class="nav-text">PAT乙级</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hushhw</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">38.1k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '66a8ca9ffb45c03358c1',
+          clientSecret: 'f8c4f55ca86ac99f07d3194a0a35ea7cdbdfbed9',
+          repo: 'hushhw.github.io',
+          owner: 'hushhw',
+          admin: ['hushhw'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')
+       </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
