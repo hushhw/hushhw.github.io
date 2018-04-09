@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hushhw.cn/"/>
-  <updated>2018-02-28T11:40:02.273Z</updated>
+  <updated>2018-04-09T12:42:30.425Z</updated>
   <id>https://hushhw.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>01分数规划</title>
+    <link href="https://hushhw.cn/2018/04/07/18%E5%88%86%E6%95%B0%E8%A7%84%E5%88%92/"/>
+    <id>https://hushhw.cn/2018/04/07/18分数规划/</id>
+    <published>2018-04-07T08:51:42.000Z</published>
+    <updated>2018-04-09T12:42:30.425Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>链接：<a href="https://www.nowcoder.com/acm/contest/93/I" target="_blank" rel="noopener">https://www.nowcoder.com/acm/contest/93/I</a><br>来源：牛客网</p><p>时间限制：C/C++ 5秒，其他语言10秒<br>空间限制：C/C++ 262144K，其他语言524288K<br>64bit IO Format: %lld</p><p>题目描述<br>wyh学长现在手里有n个物品，这n个物品的重量和价值都告诉你，然后现在让你从中选取k个，问你在所有可能选取的方案中，最大的单位价值为多少（单位价值为选取的k个物品的总价值和总重量的比值）</p><p>输入描述:<br>输入第一行一个整数T(1&lt;=T&lt;=10)<br>接下来有T组测试数据，对于每组测试数据，第一行输入两个数n和k(1&lt;=k&lt;=n&lt;=100000)<br>接下来有n行，每行两个是a和b，代表这个物品的重量和价值</p><p>输出描述:<br>对于每组测试数据，输出对应答案，结果保留两位小数</p><p>示例1<br>输入<br>1<br>3 2<br>2 2<br>5 3<br>2 1</p><p>输出<br>0.75</p><p>说明<br>对于样例来说，我们选择第一个物品和第三个物品，达到最优目的</p></blockquote><p>做法:<br>二分，对于每一个答案C，有 s[i] = w[i]-c*v[i]<br>排序，取最大前k个，如果大于等于0则可行，否则不可行</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1000010</span>;</span><br><span class="line"><span class="keyword">int</span> n,k; <span class="comment">//n件物品取k件</span></span><br><span class="line"><span class="keyword">int</span> wi[maxn],vi[maxn];<span class="comment">//物品的重量和价值</span></span><br><span class="line"><span class="keyword">double</span> y[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">double</span> x)</span></span>&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">y[i]=vi[i]-x*wi[i];</span><br><span class="line">sort(y,y+n);</span><br><span class="line"><span class="keyword">double</span> sum=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;k; i++)&#123;</span><br><span class="line">sum += y[n-i<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> sum&gt;=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> T;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line"><span class="keyword">while</span>(T--)&#123;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;k);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;wi[i],&amp;vi[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">double</span> left=<span class="number">0</span>, right=maxn;</span><br><span class="line"><span class="keyword">while</span>(right-left&gt;<span class="number">1e-6</span>)&#123;</span><br><span class="line"><span class="keyword">double</span> mid = (right+left)/<span class="number">2</span>;</span><br><span class="line"><span class="keyword">if</span>(cmp(mid)) left=mid;</span><br><span class="line"><span class="keyword">else</span> right = mid;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%.2lf\n"</span>, right);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&quot;https://www.nowcoder.com/acm/contest/93/I&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.nowcoder.com/acm/contest/9
+      
+    
+    </summary>
+    
+      <category term="学习" scheme="https://hushhw.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="算法笔记" scheme="https://hushhw.cn/tags/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="01分数规划" scheme="https://hushhw.cn/tags/01%E5%88%86%E6%95%B0%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
   
   <entry>
     <title>树状数组和归并排序求逆序数</title>
