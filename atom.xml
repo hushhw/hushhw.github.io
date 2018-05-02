@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hushhw.cn/"/>
-  <updated>2018-04-27T10:08:42.035Z</updated>
+  <updated>2018-05-02T14:20:08.254Z</updated>
   <id>https://hushhw.cn/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://hushhw.cn/2018/04/27/21math/"/>
     <id>https://hushhw.cn/2018/04/27/21math/</id>
     <published>2018-04-27T06:48:04.000Z</published>
-    <updated>2018-04-27T10:08:42.035Z</updated>
+    <updated>2018-05-02T14:20:08.254Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="高数错题汇总目录"><a href="#高数错题汇总目录" class="headerlink" title="高数错题汇总目录"></a>高数错题汇总目录</h1><h3 id="函数、极限、连续"><a href="#函数、极限、连续" class="headerlink" title="函数、极限、连续"></a>函数、极限、连续</h3><ul><li>概念题 <code>21 660NO.11</code></li><li>数列收敛的性质  <code>1 1000P3A1.1</code>  <code>660NO.9 概念题</code></li><li>极限(不)存在及推广 <code>2 1000P3A1.2</code> <code>3 1000P4A1.11</code></li><li>无界与无穷大 <code>4 1000P4A1.8</code> <code>5 1000P4A1.10</code> <code>660NO.8 概念题</code></li><li>函数有界性的判别 <code>6 18P33例2.7</code> </li><li>夹逼准则 <code>7 18P36例2.10</code> <code>7.1 1000P4A1.18</code> </li><li>求极限 <code>10 18P51习题2.7</code> <code>11 1000P51习题2.8</code> <code>14 1000P5A1.19(16)有积分</code> <code>19 660NO.4</code></li><li>已知函数极限求参数 <code>12 1000P5A1.30</code></li><li>间断点 <code>13</code>  <code>22 660NO.18</code> </li><li>洛必达法则概念 <code>20 660NO.7</code></li></ul><h3 id="一元函数微分学"><a href="#一元函数微分学" class="headerlink" title="一元函数微分学"></a>一元函数微分学</h3><ul><li>导数定义求导数 <code>8 1000P9A2.1</code> <code>15 1000P11A2.21</code></li><li>导数定义判定可导性 <code>9 18P64例3.4(笔记本1有详解)</code> </li><li>反函数求导 <code>16 1000P12A2.33</code> </li><li>常数不等式证明 <code>17 1000P12A2.41</code></li><li>不等式证明 <code>18 1000P12A2.39</code></li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="高数错题汇总目录"><a href="#高数错题汇总目录" class="headerlink" title="高数错题汇总目录"></a>高数错题汇总目录</h1><h3 id="函数、极限、连续"><a href="#函数、极限、连续" class="headerlink" title="函数、极限、连续"></a>函数、极限、连续</h3><ul><li>概念题 <code>21 660NO.11</code></li><li>数列收敛的性质  <code>1 1000P3A1.1</code>  <code>660NO.9 概念题</code></li><li>极限(不)存在及推广 <code>2 1000P3A1.2</code> <code>3 1000P4A1.11</code></li><li>无界与无穷大 <code>4 1000P4A1.8</code> <code>5 1000P4A1.10</code> <code>660NO.8 概念题</code></li><li>函数有界性的判别 <code>6 18P33例2.7</code> </li><li>夹逼准则 <code>7 18P36例2.10</code> <code>7.1 1000P4A1.18</code> </li><li>求极限 <code>10 18P51习题2.7</code> <code>11 1000P51习题2.8</code> <code>14 1000P5A1.19(16)有积分</code> <code>19 660NO.4</code></li><li>已知函数极限求参数 <code>12 1000P5A1.30</code></li><li>间断点 <code>13</code>  <code>22 660NO.18</code> </li><li>洛必达法则概念 <code>20 660NO.7</code></li></ul><h3 id="一元函数微分学"><a href="#一元函数微分学" class="headerlink" title="一元函数微分学"></a>一元函数微分学</h3><ul><li>导数定义求导数 <code>8 1000P9A2.1</code> <code>15 1000P11A2.21</code></li><li>导数定义判定可导性 <code>9 18P64例3.4(笔记本1有详解)</code> </li><li>反函数求导 <code>16 1000P12A2.33</code> </li><li>常数不等式证明 <code>17 1000P12A2.41</code></li><li>不等式证明 <code>18 1000P12A2.39</code></li><li>f(x)和|f(x)|可导性 <code>24 660NO.36</code></li></ul><h3 id="一元函数积分学"><a href="#一元函数积分学" class="headerlink" title="一元函数积分学"></a>一元函数积分学</h3><ul><li>求不定积分 <code>25 1000P20A3.3</code></li><li>被积函数有导数、变限积分 <code>26 1000P213.20</code></li></ul><h3 id="易错题"><a href="#易错题" class="headerlink" title="易错题"></a>易错题</h3><p><code>23 660NO.23</code></p>]]></content>
     
     <summary type="html">
     
