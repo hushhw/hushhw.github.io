@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://hushhw.cn/2018/05/05/22oulahanshu/</loc>
+    <lastmod>2018-05-05T13:01:00.093Z</lastmod>
+    <data>
+        <display>
+        <title>欧拉函数（Euler's totient function）</title>
+        <pubTime>2018-05-05T12:12:35.000Z</pubTime>
+        
+        <tag>算法笔记</tag>
+         
+        <tag>图论</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习" url="https://hushhw.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://hushhw.cn/2018/04/09/19lanqiaobei/</loc>
     <lastmod>2018-05-04T06:00:13.126Z</lastmod>
     <data>
@@ -194,11 +216,11 @@
         <title>浙江大学PAT题解目录</title>
         <pubTime>2018-01-25T14:45:39.000Z</pubTime>
         
+        <tag>PAT</tag>
+         
         <tag>OJ</tag>
          
         <tag>刷题</tag>
-         
-        <tag>PAT</tag>
          
          
            

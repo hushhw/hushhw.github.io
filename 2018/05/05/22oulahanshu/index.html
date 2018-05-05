@@ -123,7 +123,7 @@
 
 
 
-  <meta name="keywords" content="WebGL," />
+  <meta name="keywords" content="算法笔记,图论," />
 
 
 
@@ -136,20 +136,18 @@
 
 
 
-<meta name="description" content="上一节学习了使用&amp;lt; canvas &amp;gt;元素绘制二维图形，这一节里面我们在&amp;lt; canvas &amp;gt;中使用WebGL  这一小节中我们通过个实例来讲解在&amp;lt; canvas &amp;gt;中使用WebGL 此系列我编写的源码都可以在我的github下载到：https://github.com/hushhw/WebGL-Programming-Guide/tree/master/01He">
-<meta name="keywords" content="WebGL">
+<meta name="description" content="欧拉函数的定义： ​    在数论中，对于正整数N,少于或等于N ([1,N]),且与N互质的正整数(包括1)的个数，记作φ(n)。 ​     φ函数的值： ​    φ(x)=x(1-1/p(1))(1-1/p(2))(1-1/p(3))(1-1/p(4))…..(1-1/p(n)) 其中p(1),p(2)…p(n)为x 的所有质因数;x是正整数; φ(1)=1(唯一和1互质的数，且小于等于1">
+<meta name="keywords" content="算法笔记,图论">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《WebGL编程指南》学习笔记——3.在Canvas中使用WebGL">
-<meta property="og:url" content="https://hushhw.cn/2017/12/24/03WebGL03/index.html">
+<meta property="og:title" content="欧拉函数（Euler&#39;s totient function）">
+<meta property="og:url" content="https://hushhw.cn/2018/05/05/22oulahanshu/index.html">
 <meta property="og:site_name" content="hushhw&#39;s blog">
-<meta property="og:description" content="上一节学习了使用&amp;lt; canvas &amp;gt;元素绘制二维图形，这一节里面我们在&amp;lt; canvas &amp;gt;中使用WebGL  这一小节中我们通过个实例来讲解在&amp;lt; canvas &amp;gt;中使用WebGL 此系列我编写的源码都可以在我的github下载到：https://github.com/hushhw/WebGL-Programming-Guide/tree/master/01He">
+<meta property="og:description" content="欧拉函数的定义： ​    在数论中，对于正整数N,少于或等于N ([1,N]),且与N互质的正整数(包括1)的个数，记作φ(n)。 ​     φ函数的值： ​    φ(x)=x(1-1/p(1))(1-1/p(2))(1-1/p(3))(1-1/p(4))…..(1-1/p(n)) 其中p(1),p(2)…p(n)为x 的所有质因数;x是正整数; φ(1)=1(唯一和1互质的数，且小于等于1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://images.cnitblog.com/blog/332382/201412/232358247656436.png">
-<meta property="og:updated_time" content="2018-02-07T10:53:12.874Z">
+<meta property="og:updated_time" content="2018-05-05T13:01:00.093Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《WebGL编程指南》学习笔记——3.在Canvas中使用WebGL">
-<meta name="twitter:description" content="上一节学习了使用&amp;lt; canvas &amp;gt;元素绘制二维图形，这一节里面我们在&amp;lt; canvas &amp;gt;中使用WebGL  这一小节中我们通过个实例来讲解在&amp;lt; canvas &amp;gt;中使用WebGL 此系列我编写的源码都可以在我的github下载到：https://github.com/hushhw/WebGL-Programming-Guide/tree/master/01He">
-<meta name="twitter:image" content="http://images.cnitblog.com/blog/332382/201412/232358247656436.png">
+<meta name="twitter:title" content="欧拉函数（Euler&#39;s totient function）">
+<meta name="twitter:description" content="欧拉函数的定义： ​    在数论中，对于正整数N,少于或等于N ([1,N]),且与N互质的正整数(包括1)的个数，记作φ(n)。 ​     φ函数的值： ​    φ(x)=x(1-1/p(1))(1-1/p(2))(1-1/p(3))(1-1/p(4))…..(1-1/p(n)) 其中p(1),p(2)…p(n)为x 的所有质因数;x是正整数; φ(1)=1(唯一和1互质的数，且小于等于1">
 
 
 
@@ -179,13 +177,13 @@
 
 
 
-  <link rel="canonical" href="https://hushhw.cn/2017/12/24/03WebGL03/"/>
+  <link rel="canonical" href="https://hushhw.cn/2018/05/05/22oulahanshu/"/>
 
 
 
 
 
-  <title>《WebGL编程指南》学习笔记——3.在Canvas中使用WebGL | hushhw's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>欧拉函数（Euler's totient function） | hushhw's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -332,7 +330,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hushhw.cn/2017/12/24/03WebGL03/">
+    <link itemprop="mainEntityOfPage" href="https://hushhw.cn/2018/05/05/22oulahanshu/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hushhw">
@@ -349,7 +347,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">《WebGL编程指南》学习笔记——3.在Canvas中使用WebGL</h2>
+          <h2 class="post-title" itemprop="name headline">欧拉函数（Euler's totient function）</h2>
         
 
         <div class="post-meta">
@@ -361,8 +359,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-24T00:08:21+08:00">
-                2017-12-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-05T20:12:35+08:00">
+                2018-05-05
               </time>
             
 
@@ -377,8 +375,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-07T18:53:12+08:00">
-                2018-02-07
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-05T21:01:00+08:00">
+                2018-05-05
               </time>
             
           </span>
@@ -432,7 +430,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,223 字
+                  877 字
                 </span>
               
 
@@ -448,7 +446,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -469,47 +467,55 @@
       
 
       
-        <ul>
-<li>上一节学习了使用&lt; canvas &gt;元素绘制二维图形，这一节里面我们在&lt; canvas &gt;中使用WebGL</li>
-</ul>
-<p>这一小节中我们通过个实例来讲解在&lt; canvas &gt;中使用WebGL</p>
-<p>此系列我编写的源码都可以在我的github下载到：<a href="https://github.com/hushhw/WebGL-Programming-Guide/tree/master/01HelloCanvas" target="_blank" rel="noopener">https://github.com/hushhw/WebGL-Programming-Guide/tree/master/01HelloCanvas</a></p>
-<h2 id="HelloCanvas-html"><a href="#HelloCanvas-html" class="headerlink" title="HelloCanvas.html"></a>HelloCanvas.html</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line"></span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line"></span><br><span class="line">	&lt;meta charset=&quot;utf-8&quot; /&gt;</span><br><span class="line"></span><br><span class="line">	&lt;title&gt;Clear canvas&lt;/title&gt;</span><br><span class="line"></span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;body onload=&quot;main()&quot;&gt;</span><br><span class="line"></span><br><span class="line">	&lt;canvas id=&quot;webgl&quot; width=&quot;400&quot; height=&quot;400&quot;&gt;</span><br><span class="line"></span><br><span class="line">		Please use the browser supporting &quot;canvas&quot;</span><br><span class="line"></span><br><span class="line">	&lt;/canvas&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;script src=&quot;../lib/webgl-utils.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">	&lt;script src=&quot;../lib/webgl-debug.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">	&lt;script src=&quot;../lib/cuon-utils.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">	&lt;script src=&quot;HelloCanvas.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<p>在HelloCanvas.html文件中比较简单，需要注意的是需要引入一些其他的文件来支持webgl，文件下载可以到<a href="https://github.com/hushhw/WebGL-Programming-Guide/tree/master/lib自行下载。" target="_blank" rel="noopener">https://github.com/hushhw/WebGL-Programming-Guide/tree/master/lib自行下载。</a></p>
-<h2 id="HelloCanvas-js"><a href="#HelloCanvas-js" class="headerlink" title="HelloCanvas.js"></a>HelloCanvas.js</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//HelloCanvas.js</span><br><span class="line"></span><br><span class="line">function main()&#123;</span><br><span class="line"></span><br><span class="line">	//获取&lt;canvas&gt;元素</span><br><span class="line"></span><br><span class="line">	var canvas = document.getElementById(&apos;webgl&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//获取WebGl绘图上下文</span><br><span class="line"></span><br><span class="line">	var gl = getWebGLContext(canvas);</span><br><span class="line"></span><br><span class="line">	if(!gl)</span><br><span class="line"></span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">		console.log(&apos;Failed to get the rendering context for WebGL&apos;);</span><br><span class="line"></span><br><span class="line">		return;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//指定清空&lt;canvas&gt;的颜色</span><br><span class="line"></span><br><span class="line">	gl.clearColor(1.0, 0.0, 0.0, 1.0);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//清空&lt;canvas&gt;</span><br><span class="line"></span><br><span class="line">	gl.clear(gl.COLOR_BUFFER_BIT);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>回顾一下上一篇提到的绘制二维图形的三个步骤：</p>
-<ul>
-<li><p>获取 &lt; canvas &gt; 元素 </p>
-</li>
-<li><p>获取绘图上下文 </p>
-</li>
-<li><p>设置 &lt; canvas &gt;颜色</p>
-</li>
-<li><p>清空&lt; canvas &gt;</p>
-</li>
-</ul>
-<p>在main()函数中，我们通过id找到&lt; canvas &gt;标签，这里跟绘制2d图形的步骤是一模一样的。</p>
-<h3 id="获取绘图上下文"><a href="#获取绘图上下文" class="headerlink" title="获取绘图上下文"></a>获取绘图上下文</h3><p>在绘制2d图形的时候，我们是通过调用canvas的getContext方法，传入“2d”参数来获取2d图形的回绘图上下文的。</p>
-<p>这里需要解释一下，通常来说，我们应该使用canvas.getContext()函数来获取绘图上下文（就像之前那样）。但是在获取WebGL绘图上下文时，canvas.getContext()函数接收的参数，在不同浏览器中会不同（虽然大部分浏览器都接收字符串“expeimental-webgl”或“webgl”，但并非所有浏览器都这样），所以我们使用getWebGLContext(canvas)来隐藏不同浏览器之间的差异。</p>
-<p>getWebGLContext(canvas, opt_debug)函数位于cuon-utils.js文件中。</p>
-<p>getWebGLContext(canvas, opt_debug)函数的功能是：获取WebGL绘图上下文；如果开启了debug属性，遇到错误时将在控制台显示错误消息。以下是该函数的具体说明：</p>
-<p><img src="http://images.cnitblog.com/blog/332382/201412/232358247656436.png" alt="图片来源www.cnblogs.com/mirror-pc/p/4181398.html"></p>
-<h3 id="设置-lt-canvas-gt-颜色"><a href="#设置-lt-canvas-gt-颜色" class="headerlink" title="设置 &lt; canvas &gt;颜色"></a>设置 &lt; canvas &gt;颜色</h3><p>在获取到绘图上下文以后，我们就可以绘制图形了，并且可以绘制3d图形了；这也说明，WebGL已经调用成功，我们现在可以使用WebGL函数了。</p>
-<p>　　</p>
-<p>我们将上下文放到名为gl的变量中。有了这个上下文，我们就可以设置颜色来清除&lt; canvas &gt;标签指定的绘图区了。在之前绘制2d图形时，我们在绘制之前就指定了绘图颜色。在WebGL中，是相似的，清空绘图区之前也需要指定颜色。</p>
-<p>gl.clearColor(RGBA)函数通过传入RGBA格式的颜色参数指定颜色。我们在代码中指定了黑色，也可以随意指定其他颜色。在绘制2d图形时，RGBA每个分量的取值范围是0-255之间；但是在WebGL中，每个分量的取值范围是0-1，这和OpenGL保持了一致。一旦指定了颜色，这个颜色就会驻存在WebGL系统中，直到你重新指定新的颜色。在这之前，你可以无数次的使用该颜色进行清除绘图区而无须重新指定。</p>
-<h3 id="清空-lt-canvas-gt"><a href="#清空-lt-canvas-gt" class="headerlink" title="清空&lt; canvas &gt;"></a>清空&lt; canvas &gt;</h3><p>最后调用这个函数，用之前指定的背景色清空（用背景色填充，擦除已经绘制的内容）绘图区域。</p>
-<p>　　</p>
-<p>清除绘图区我们使用 gl.clear(gl.COLOR_BUFFER_BIT)函数；你可能觉得很奇怪，参数不应该是表示绘图区的&lt; canvas &gt;吗？这是由于gl.Clear()函数继承自OpenGL，它基于多基本缓冲区模型，比二维绘图上下文要复杂得多。清空绘图区，实际上是在清空颜色缓冲区（通过指定的颜色去擦除已经绘制的内容），传递gl.COLOR_BUFFER_BIT参数就是在告诉WebGL清空颜色缓冲区。</p>
-<p>　　</p>
-<p>如果在使用该函数之前我们没有指定任何颜色，那么默认会以RGBA(0,0,0,0)作为清除颜色，这个颜色是全透明的，替换出来的结果就是什么颜色都没有，显示为浏览器本身的颜色。</p>
-<p>下小节我们正式开始学习如何使用WebGL绘制基本图形</p>
+        <p><strong>欧拉函数的定义：</strong></p>
+<p>​    在数论中，对于正整数N,少于或等于N ([1,N]),且与N互质的正整数(包括1)的个数，记作φ(n)。</p>
+<p>​     φ函数的值：</p>
+<p>​    φ(x)=x(1-1/p(1))(1-1/p(2))(1-1/p(3))(1-1/p(4))…..(1-1/p(n)) 其中p(1),p(2)…p(n)为x</p>
+<p>的所有质因数;x是正整数; φ(1)=1(唯一和1互质的数，且小于等于1)。注意：每种质因数只有一个。</p>
+<p>​     例如:</p>
+<p>​         φ(10)=10×(1-1/2)×(1-1/5)=4;</p>
+<p>​         1 3 7 9</p>
+<p>​         φ(30)=30×(1-1/2)×(1-1/3)×(1-1/5)=8;</p>
+<p>​         φ(49)=49×(1-1/7)=42;</p>
+<p><strong>欧拉函数的性质：</strong></p>
+<p>(1)   p^k型欧拉函数:</p>
+<p>若N是质数p(即N=p), φ(n)= φ(p)=p-p^(k-1)=p-1。</p>
+<p>若N是质数p的k次幂(即N=p^k)，φ(n)=p^k-p^(k-1)=(p-1)p^(k-1)。</p>
+<p>(2)mn型欧拉函数</p>
+<p>设n为正整数，以φ(n)表示不超过n且与n互素的正整数的个数，称为n的欧拉函数值。若m,n互质，φ(mn)=(m-1)(n-1)=φ(m)φ(n)。</p>
+<p>(3)特殊性质:</p>
+<p>若n为奇数时，φ(2n)=φ(n)。</p>
+<p>对于任何两个互质 的正整数a,n(n&gt;2)有:a^φ(n)=1 mod n (恒等于)此公式即 <strong>欧拉定理</strong></p>
+<p>当n=p 且 a与素数p互质(即:gcd(a,p)=1)则上式有: a^(p-1)=1 mod n (恒等于)此公式即 <strong>费马小定理</strong></p>
+<p>欧拉函数模板</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//直接求小于或等于n,且与n互质的个数:</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">Euler</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ret=n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=<span class="built_in">sqrt</span>(n);i++)</span><br><span class="line">     <span class="keyword">if</span>(n%i==<span class="number">0</span>)&#123;</span><br><span class="line">        ret=ret/i*(i<span class="number">-1</span>);<span class="comment">//先进行除法防止溢出(ret=ret*(1-1/p(i)))</span></span><br><span class="line">        <span class="keyword">while</span>(n%i==<span class="number">0</span>)</span><br><span class="line">          n/=i;</span><br><span class="line">     &#125;</span><br><span class="line">    <span class="keyword">if</span>(n&gt;<span class="number">1</span>)</span><br><span class="line">          ret=ret/n*(n<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="comment">//筛选模板:求[1,n]之间每个数的质因数的个数</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> size 1000001</span></span><br><span class="line"><span class="keyword">int</span> euler[size];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span>&#123;</span><br><span class="line">     <span class="built_in">memset</span>(euler,<span class="number">0</span>,<span class="keyword">sizeof</span>(euler));</span><br><span class="line">     euler[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;size;i++)</span><br><span class="line">       <span class="keyword">if</span>(!euler[i])</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;size;j+=i)&#123;</span><br><span class="line">              <span class="keyword">if</span>(!euler[j])</span><br><span class="line">               euler[j]=j;</span><br><span class="line">               euler[j]=euler[j]/i*(i<span class="number">-1</span>);<span class="comment">//先进行除法是为了防止中间数据的溢出</span></span><br><span class="line">         &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>文章内容借鉴于：</p>
-<p>《WebGL编程指南》</p>
-<p><a href="http://www.cnblogs.com/mirror-pc/p/4181398.html" target="_blank" rel="noopener">http://www.cnblogs.com/mirror-pc/p/4181398.html</a></p>
-<p><a href="http://blog.csdn.net/weixin_40282619/article/details/78030629" target="_blank" rel="noopener">http://blog.csdn.net/weixin_40282619/article/details/78030629</a></p>
+<p>找新朋友</p>
+<p>Time Limit: 2000/1000 MS (Java/Others) Memory Limit: 65536/32768 K (Java/Others)</p>
+<p>Total Submission(s): 4409 Accepted Submission(s): 1999</p>
+<p>Problem Description</p>
+<p>新年快到了，“猪头帮协会”准备搞一个聚会，已经知道现有会员N人，把会员从1到N编号，</p>
+<p>其中会长的号码是N号，凡是和会长是老朋友的，那么该会员的号码肯定和N有大于1的公约数，否则都是新朋友，</p>
+<p>现在会长想知道究竟有几个新朋友？请你编程序帮会长计算出来。</p>
+<p>Input</p>
+<p>第一行是测试数据的组数CN（Case number，1&lt;CN&lt;10000），接着有CN行正整数N（1&lt;n&lt;32768），表示会员人数。</p>
+<p>Output</p>
+<p>对于每一个N，输出一行新朋友的人数，这样共有CN行输出。</p>
+<p>Sample Input</p>
+<p>2</p>
+<p>25608</p>
+<p>24027</p>
+<p>Sample Output</p>
+<p>7680</p>
+<p>16016</p>
+<p>Author</p>
+<p>SmallBeer(CML)</p>
+<p>Source</p>
+<p>杭电ACM集训队训练赛（VII）</p>
+<p>Recommend</p>
+<p>lcy</p>
 </blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">euler</span><span class="params">( <span class="keyword">int</span> x )</span>  </span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> res = x;  </span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">2</span>; i*i &lt;= x; i ++ )  </span><br><span class="line">        <span class="keyword">if</span>( x%i == <span class="number">0</span> )  &#123;  </span><br><span class="line">            res =res/i*(i<span class="number">-1</span>);  </span><br><span class="line">            <span class="keyword">while</span>(x%i==<span class="number">0</span>) x/=i;  </span><br><span class="line">        &#125;  </span><br><span class="line">    <span class="keyword">if</span>( x &gt; <span class="number">1</span> ) res = res/x*(x<span class="number">-1</span>);  </span><br><span class="line">    <span class="keyword">return</span> res;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> T;  </span><br><span class="line">    <span class="built_in">scanf</span> ( <span class="string">"%d"</span>, &amp;T );  </span><br><span class="line">    <span class="keyword">while</span>( T-- )  &#123;  </span><br><span class="line">        <span class="keyword">int</span> n;  </span><br><span class="line">        <span class="built_in">scanf</span> ( <span class="string">"%d"</span>, &amp;n );  </span><br><span class="line">        <span class="built_in">printf</span>( <span class="string">"%d\n"</span>, euler(n) );  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -530,7 +536,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://hushhw.cn/2017/12/24/03WebGL03/" title="《WebGL编程指南》学习笔记——3.在Canvas中使用WebGL">https://hushhw.cn/2017/12/24/03WebGL03/</a>
+    <a href="https://hushhw.cn/2018/05/05/22oulahanshu/" title="欧拉函数（Euler's totient function）">https://hushhw.cn/2018/05/05/22oulahanshu/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -545,7 +551,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/WebGL/" rel="tag"># WebGL</a>
+            <a href="/tags/算法笔记/" rel="tag"># 算法笔记</a>
+          
+            <a href="/tags/图论/" rel="tag"># 图论</a>
           
         </div>
       
@@ -558,8 +566,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/21/02WebGL02/" rel="next" title="《WebGL编程指南》学习笔记——2.使用canvas元素">
-                <i class="fa fa-chevron-left"></i> 《WebGL编程指南》学习笔记——2.使用canvas元素
+              <a href="/2018/04/27/21math/" rel="next" title="高数错题汇总目录">
+                <i class="fa fa-chevron-left"></i> 高数错题汇总目录
               </a>
             
           </div>
@@ -567,10 +575,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/24/04WebGL04/" rel="prev" title="《WebGL编程指南》学习笔记——4.绘制一个点">
-                《WebGL编程指南》学习笔记——4.绘制一个点 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -628,17 +632,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -769,22 +764,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HelloCanvas-html"><span class="nav-number">1.</span> <span class="nav-text">HelloCanvas.html</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HelloCanvas-js"><span class="nav-number">2.</span> <span class="nav-text">HelloCanvas.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取绘图上下文"><span class="nav-number">2.1.</span> <span class="nav-text">获取绘图上下文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置-lt-canvas-gt-颜色"><span class="nav-number">2.2.</span> <span class="nav-text">设置 &lt; canvas &gt;颜色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#清空-lt-canvas-gt"><span class="nav-number">2.3.</span> <span class="nav-text">清空&lt; canvas &gt;</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
