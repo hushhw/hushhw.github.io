@@ -123,7 +123,7 @@
 
 
 
-  <meta name="keywords" content="OJ,刷题,LQOJ," />
+  <meta name="keywords" content="算法笔记,匈牙利算法," />
 
 
 
@@ -136,18 +136,23 @@
 
 
 
-<meta name="description" content="LQOJ高精度 高精度加法  BASIC-29 高精度加法  阶乘计算 BASIC-30  高精度乘法  搜索 2n皇后问题 BASIC-27 八皇后问题 搜索  贪心 完美的代价 BASIC-19 最大最小公倍数.cpp) ALGO-2   动态规划 K好数 ALGO-3 数位dp 结点选择 ALGO-4 树形dp  数据结构 图论 最短路 ALGO-5 SPFA算法   矩阵 矩阵乘法 BAS">
-<meta name="keywords" content="OJ,刷题,LQOJ">
+<meta name="description" content="匈牙利算法是由匈牙利数学家Edmonds于1965年提出，因而得名。匈牙利算法是基于Hall定理中充分性证明的思想，它是部图匹配最常见的算法，该算法的核心就是寻找增广路径，它是一种用增广路径求二分图最大匹配的算法。（来自百度百科）  二分图 ：是图论中的一种特殊模型。若能将无向图G=(V,E)的顶点V划分为两个交集为空的顶点集，并且任意边的两个端点都分别属于两个集合，则称图G为一个二分图。  匹">
+<meta name="keywords" content="算法笔记,匈牙利算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LQOJ刷题总结">
-<meta property="og:url" content="https://hushhw.cn/2018/02/21/16LQOJ/index.html">
+<meta property="og:title" content="匈牙利算法（二分图）">
+<meta property="og:url" content="https://hushhw.cn/2018/05/16/23Hungarian-method/index.html">
 <meta property="og:site_name" content="hushhw&#39;s blog">
-<meta property="og:description" content="LQOJ高精度 高精度加法  BASIC-29 高精度加法  阶乘计算 BASIC-30  高精度乘法  搜索 2n皇后问题 BASIC-27 八皇后问题 搜索  贪心 完美的代价 BASIC-19 最大最小公倍数.cpp) ALGO-2   动态规划 K好数 ALGO-3 数位dp 结点选择 ALGO-4 树形dp  数据结构 图论 最短路 ALGO-5 SPFA算法   矩阵 矩阵乘法 BAS">
+<meta property="og:description" content="匈牙利算法是由匈牙利数学家Edmonds于1965年提出，因而得名。匈牙利算法是基于Hall定理中充分性证明的思想，它是部图匹配最常见的算法，该算法的核心就是寻找增广路径，它是一种用增广路径求二分图最大匹配的算法。（来自百度百科）  二分图 ：是图论中的一种特殊模型。若能将无向图G=(V,E)的顶点V划分为两个交集为空的顶点集，并且任意边的两个端点都分别属于两个集合，则称图G为一个二分图。  匹">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-21T15:20:50.178Z">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/892758/201606/892758-20160610155729418-59307900.png">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/7cc829d3gw1f89lnvfc6pj20g8057wfd.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/7cc829d3gw1f89lnzbetkj204j04u74f.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/7cc829d3gw1f89lo04o2wj207y01y3yi.jpg">
+<meta property="og:updated_time" content="2018-05-16T09:32:33.283Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LQOJ刷题总结">
-<meta name="twitter:description" content="LQOJ高精度 高精度加法  BASIC-29 高精度加法  阶乘计算 BASIC-30  高精度乘法  搜索 2n皇后问题 BASIC-27 八皇后问题 搜索  贪心 完美的代价 BASIC-19 最大最小公倍数.cpp) ALGO-2   动态规划 K好数 ALGO-3 数位dp 结点选择 ALGO-4 树形dp  数据结构 图论 最短路 ALGO-5 SPFA算法   矩阵 矩阵乘法 BAS">
+<meta name="twitter:title" content="匈牙利算法（二分图）">
+<meta name="twitter:description" content="匈牙利算法是由匈牙利数学家Edmonds于1965年提出，因而得名。匈牙利算法是基于Hall定理中充分性证明的思想，它是部图匹配最常见的算法，该算法的核心就是寻找增广路径，它是一种用增广路径求二分图最大匹配的算法。（来自百度百科）  二分图 ：是图论中的一种特殊模型。若能将无向图G=(V,E)的顶点V划分为两个交集为空的顶点集，并且任意边的两个端点都分别属于两个集合，则称图G为一个二分图。  匹">
+<meta name="twitter:image" content="https://images2015.cnblogs.com/blog/892758/201606/892758-20160610155729418-59307900.png">
 
 
 
@@ -177,13 +182,13 @@
 
 
 
-  <link rel="canonical" href="https://hushhw.cn/2018/02/21/16LQOJ/"/>
+  <link rel="canonical" href="https://hushhw.cn/2018/05/16/23Hungarian-method/"/>
 
 
 
 
 
-  <title>LQOJ刷题总结 | hushhw's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>匈牙利算法（二分图） | hushhw's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -330,7 +335,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hushhw.cn/2018/02/21/16LQOJ/">
+    <link itemprop="mainEntityOfPage" href="https://hushhw.cn/2018/05/16/23Hungarian-method/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hushhw">
@@ -347,7 +352,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">LQOJ刷题总结</h2>
+          <h2 class="post-title" itemprop="name headline">匈牙利算法（二分图）</h2>
         
 
         <div class="post-meta">
@@ -359,8 +364,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-21T23:19:04+08:00">
-                2018-02-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-16T16:25:58+08:00">
+                2018-05-16
               </time>
             
 
@@ -375,8 +380,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-21T23:20:50+08:00">
-                2018-02-21
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-16T17:32:33+08:00">
+                2018-05-16
               </time>
             
           </span>
@@ -396,17 +401,6 @@
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/学习/" itemprop="url" rel="index">
                     <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/OJ刷题/" itemprop="url" rel="index">
-                    <span itemprop="name">OJ刷题</span>
                   </a>
                 </span>
 
@@ -441,7 +435,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  118 字
+                  1,433 字
                 </span>
               
 
@@ -457,7 +451,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  6 分钟
                 </span>
               
             </div>
@@ -478,32 +472,59 @@
       
 
       
-        <h1 id="LQOJ"><a href="#LQOJ" class="headerlink" title="LQOJ"></a>LQOJ</h1><h3 id="高精度"><a href="#高精度" class="headerlink" title="高精度"></a>高精度</h3><ol>
-<li><a href="https://github.com/hushhw/LQOJ/blob/master/BASIC/BASIC-29%20%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%8A%A0%E6%B3%95.cpp" target="_blank" rel="noopener">高精度加法</a>  <code>BASIC-29</code> <code>高精度加法</code> </li>
-<li><a href="https://github.com/hushhw/LQOJ/blob/master/BASIC/BASIC-30%20%E9%98%B6%E4%B9%98%E8%AE%A1%E7%AE%97.cpp" target="_blank" rel="noopener">阶乘计算</a> <code>BASIC-30</code>  <code>高精度乘法</code></li>
-</ol>
-<h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><ol>
-<li><a href="https://github.com/hushhw/LQOJ/blob/master/BASIC/BASIC-27%202n%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98.cpp" target="_blank" rel="noopener">2n皇后问题</a> <code>BASIC-27</code> <code>八皇后问题</code> <code>搜索</code></li>
-</ol>
-<h3 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h3><ol>
-<li><a href="https://github.com/hushhw/LQOJ/blob/master/BASIC/BASIC-19%20%E5%AE%8C%E7%BE%8E%E7%9A%84%E4%BB%A3%E4%BB%B7.cpp" target="_blank" rel="noopener">完美的代价</a> <code>BASIC-19</code></li>
-<li><a href="https://github.com/hushhw/LQOJ/blob/master/ALGO/ALGO-002%20%E6%9C%80%E5%A4%A7%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0(%E8%B4%AA%E5%BF%83" target="_blank" rel="noopener">最大最小公倍数</a>.cpp) <code>ALGO-2</code> </li>
-</ol>
-<h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><ol>
-<li><a href="https://github.com/hushhw/LQOJ/blob/master/ALGO/ALGO-003%20K%E5%A5%BD%E6%95%B0.cpp" target="_blank" rel="noopener">K好数</a> <code>ALGO-3</code> <code>数位dp</code></li>
-<li><a href="https://github.com/hushhw/LQOJ/blob/master/ALGO/ALGO-004%20%E7%BB%93%E7%82%B9%E9%80%89%E6%8B%A9.cpp" target="_blank" rel="noopener">结点选择</a> <code>ALGO-4</code> <code>树形dp</code></li>
-</ol>
-<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><ul>
-<li>图论<ul>
-<li><a href="https://github.com/hushhw/LQOJ/blob/master/ALGO/ALGO-005%20%E6%9C%80%E7%9F%AD%E8%B7%AF.cpp" target="_blank" rel="noopener">最短路</a> <code>ALGO-5</code> <code>SPFA算法</code></li>
-</ul>
-</li>
-<li>矩阵<ul>
-<li><a href="https://github.com/hushhw/LQOJ/blob/master/BASIC/BASIC-17%20%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95.cpp" target="_blank" rel="noopener">矩阵乘法</a> <code>BASIC-17</code> <code>矩阵</code></li>
-</ul>
-</li>
-<li>树&amp;二叉树</li>
-</ul>
+        <blockquote>
+<p>匈牙利算法是由匈牙利数学家Edmonds于1965年提出，因而得名。匈牙利算法是基于Hall定理中充分性证明的思想，它是部图匹配最常见的算法，该算法的核心就是寻找增广路径，它是一种用增广路径求二分图最大匹配的算法。（来自百度百科）</p>
+</blockquote>
+<p><strong>二分图</strong> ：是图论中的一种特殊模型。若能将无向图G=(V,E)的顶点V划分为两个交集为空的顶点集，并且任意边的两个端点都分别属于两个集合，则称图G为一个二分图。</p>
+<p><img src="https://images2015.cnblogs.com/blog/892758/201606/892758-20160610155729418-59307900.png" alt="img"></p>
+<p><strong>匹配</strong>：在图论中，一个「匹配」（matching）是一个边的集合，其中任意两条边都没有公共顶点。例如，图 3、图 4 中红色的边就是图 2 的匹配。</p>
+<p><img src="http://ww2.sinaimg.cn/large/7cc829d3gw1f89lnvfc6pj20g8057wfd.jpg" alt="img"></p>
+<p>我们定义<strong>匹配点</strong>、<strong>匹配边</strong>、<strong>未匹配点</strong>、<strong>非匹配边</strong>，它们的含义非常显然。例如图 3 中 1、4、5、7 为匹配点，其他顶点为未匹配点；1-5、4-7为匹配边，其他边为非匹配边。</p>
+<p><strong>最大匹配</strong>：一个图所有匹配中，所含匹配边数最多的匹配，称为这个图的最大匹配。图 4 是一个最大匹配，它包含 4 条匹配边。</p>
+<p><strong>完美匹配</strong>：如果一个图的某个匹配中，所有的顶点都是匹配点，那么它就是一个完美匹配。图 4 是一个完美匹配。显然，完美匹配一定是最大匹配（完美匹配的任何一个点都已经匹配，添加一条新的匹配边一定会与已有的匹配边冲突）。但并非每个图都存在完美匹配。</p>
+<p>基本概念讲完了。求解最大匹配问题的一个算法是<strong>匈牙利算法</strong>，下面讲的概念都为这个算法服务。</p>
+<p><img src="http://ww2.sinaimg.cn/large/7cc829d3gw1f89lnzbetkj204j04u74f.jpg" alt="img"></p>
+<p><strong>交替路</strong>：从一个未匹配点出发，依次经过非匹配边、匹配边、非匹配边…形成的路径叫交替路。</p>
+<p><strong>增广路</strong>：从一个未匹配点出发，走交替路，如果途径另一个未匹配点（出发的点不算），则这条交替路称为增广路（agumenting path）。例如，图 5 中的一条增广路如图 6 所示（图中的匹配点均用红色标出）：</p>
+<p><img src="http://ww2.sinaimg.cn/mw690/7cc829d3gw1f89lo04o2wj207y01y3yi.jpg" alt="img"></p>
+<p>增广路有一个重要特点：非匹配边比匹配边多一条。因此，研究增广路的意义是<strong>改进匹配</strong>。只要把增广路中的匹配边和非匹配边的身份交换即可。由于中间的匹配节点不存在其他相连的匹配边，所以这样做不会破坏匹配的性质。交换后，图中的匹配边数目比原来多了 1 条。</p>
+<p>我们可以通过不停地找增广路来增加匹配中的匹配边和匹配点。找不到增广路时，达到最大匹配（这是增广路定理）。匈牙利算法正是这么做的。</p>
+<p>一个比较有趣且易懂的过程可以参考这篇博文：<a href="https://blog.csdn.net/dark_scope/article/details/8880547" target="_blank" rel="noopener">https://blog.csdn.net/dark_scope/article/details/8880547</a></p>
+<blockquote>
+<p>过山车</p>
+<p>Time Limit: 1000/1000 MS (Java/Others)    Memory Limit: 32768/32768 K (Java/Others)</p>
+<p>Total Submission(s): 27673    Accepted Submission(s): 11954</p>
+<p>Problem Description</p>
+<p>RPG girls今天和大家一起去游乐场玩，终于可以坐上梦寐以求的过山车了。</p>
+<p>可是，过山车的每一排只有两个座位，而且还有条不成文的规矩，就是每个女生必须找个个男生做partner和她同坐。</p>
+<p>但是，每个女孩都有各自的想法，举个例子把，Rabbit只愿意和XHD或PQK做partner，Grass只愿意和linle或LL做partner，</p>
+<p>PrincessSnow愿意和水域浪子或伪酷儿做partner。</p>
+<p>考虑到经费问题，boss刘决定只让找到partner的人去坐过山车，其他的人，嘿嘿，就站在下面看着吧。</p>
+<p>聪明的Acmer，你可以帮忙算算最多有多少对组合可以坐上过山车吗？</p>
+<p>Input</p>
+<p>输入数据的第一行是三个整数K , M , N，分别表示可能的组合数目，女生的人数，男生的人数。0&lt;K&lt;=1000</p>
+<p>1&lt;=N 和M&lt;=500.接下来的K行，每行有两个数，分别表示女生Ai愿意和男生Bj做partner。最后一个0结束输入。</p>
+<p>Output</p>
+<p>对于每组数据，输出一个整数，表示可以坐上过山车的最多组合数。</p>
+<p>Sample Input</p>
+<p>6 3 3</p>
+<p>1 1</p>
+<p>1 2</p>
+<p>1 3</p>
+<p>2 1</p>
+<p>2 3</p>
+<p>3 1</p>
+<p>0</p>
+<p>Sample Output</p>
+<p>3</p>
+<p>Author</p>
+<p>PrincessSnow</p>
+<p>Source</p>
+<p>RPG专场练习赛</p>
+<p>Recommend</p>
+<p>lcy   |   We have carefully selected several similar problems for you:  1068 1083 2444 1281 1150 </p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> line[<span class="number">510</span>][<span class="number">510</span>]; <span class="comment">//记录i和j有关系</span></span><br><span class="line"><span class="keyword">int</span> boy[<span class="number">510</span>];</span><br><span class="line"><span class="keyword">int</span> used[<span class="number">510</span>];  <span class="comment">//用于记录是否已经被匹配</span></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= m; i++)&#123;   <span class="comment">//遍历所有被选者</span></span><br><span class="line">        <span class="keyword">if</span>(line[x][i]==<span class="number">1</span> &amp;&amp; used[i]==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="comment">//如果x对i有好感且在一个递归选取阶段没有被选取</span></span><br><span class="line">            used[i] = <span class="number">1</span>; <span class="comment">//标记已被选取</span></span><br><span class="line">            <span class="keyword">if</span>(boy[i]==<span class="number">0</span> || Find(boy[i]))&#123;</span><br><span class="line">                <span class="comment">//如果被选者没有归属或他的归属可以调换</span></span><br><span class="line">                boy[i] = x; <span class="comment">//将归属定为x</span></span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, k, x, y, sum;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;k)!=EOF &amp;&amp; k)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">        <span class="built_in">memset</span>(line, <span class="number">0</span>, <span class="keyword">sizeof</span>(line));</span><br><span class="line">        <span class="built_in">memset</span>(boy, <span class="number">0</span>, <span class="keyword">sizeof</span>(boy));</span><br><span class="line">        <span class="built_in">memset</span>(used, <span class="number">0</span>, <span class="keyword">sizeof</span>(used));</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; k; i++)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;x, &amp;y);</span><br><span class="line">            line[x][y] = <span class="number">1</span>; <span class="comment">//表示x希望与y有关系</span></span><br><span class="line">        &#125;</span><br><span class="line">        sum = <span class="number">0</span>; <span class="comment">//记录能组合的对数</span></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">            <span class="built_in">memset</span>(used, <span class="number">0</span>, <span class="keyword">sizeof</span>(used)); <span class="comment">//每次都要清0</span></span><br><span class="line">            <span class="keyword">if</span>(Find(i))</span><br><span class="line">                sum++; <span class="comment">//找到一对就记录</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sum);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -524,7 +545,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://hushhw.cn/2018/02/21/16LQOJ/" title="LQOJ刷题总结">https://hushhw.cn/2018/02/21/16LQOJ/</a>
+    <a href="https://hushhw.cn/2018/05/16/23Hungarian-method/" title="匈牙利算法（二分图）">https://hushhw.cn/2018/05/16/23Hungarian-method/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -539,11 +560,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/OJ/" rel="tag"># OJ</a>
+            <a href="/tags/算法笔记/" rel="tag"># 算法笔记</a>
           
-            <a href="/tags/刷题/" rel="tag"># 刷题</a>
-          
-            <a href="/tags/LQOJ/" rel="tag"># LQOJ</a>
+            <a href="/tags/匈牙利算法/" rel="tag"># 匈牙利算法</a>
           
         </div>
       
@@ -556,8 +575,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/21/15生成树/" rel="next" title="最小生成树算法">
-                <i class="fa fa-chevron-left"></i> 最小生成树算法
+              <a href="/2018/05/05/22oulahanshu/" rel="next" title="欧拉函数（Euler's totient function）">
+                <i class="fa fa-chevron-left"></i> 欧拉函数（Euler's totient function）
               </a>
             
           </div>
@@ -566,8 +585,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/23/16线段树/" rel="prev" title="线段树总结">
-                线段树总结 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/16/24KMP/" rel="prev" title="如何理解 KMP">
+                如何理解 KMP <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -626,17 +645,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -767,22 +777,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LQOJ"><span class="nav-number">1.</span> <span class="nav-text">LQOJ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#高精度"><span class="nav-number">1.0.1.</span> <span class="nav-text">高精度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索"><span class="nav-number">1.0.2.</span> <span class="nav-text">搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贪心"><span class="nav-number">1.0.3.</span> <span class="nav-text">贪心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态规划"><span class="nav-number">1.0.4.</span> <span class="nav-text">动态规划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构"><span class="nav-number">1.0.5.</span> <span class="nav-text">数据结构</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
