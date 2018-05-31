@@ -44,7 +44,7 @@ priority_queue <int,vector<int>,less<int> >q;
 
 我们将在下文来讲讲这几种声明方式的不同。
 
-
+<!--more-->
 
 ## 优先队列的基本操作
 

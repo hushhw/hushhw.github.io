@@ -4,6 +4,9 @@ menu:
   主页: /
   学习: /categories/学习
   随笔: /categories/随笔/
+  #归档: /archives/
+  相册: /instagram
+  #关于: /about/
 
 # SubNav
 subnav:
@@ -34,7 +37,7 @@ root: /
 # Content
 
 # 文章太长，截断按钮文字
-excerpt_link: 'more'
+excerpt_link: more
 # 文章卡片右下角常驻链接，不需要请设置为false
 show_all_link: true
 # 数学公式
@@ -64,12 +67,12 @@ toc_empty_wording: '目录，不存在的…'
 top: true
 
 # Miscellaneous
-baidu_analytics: ''
+baidu_analytics: '19483b6b578a4634e9d5820b9e536971'
 google_analytics: ''
-favicon: /img/favicon.ico
+favicon: /assets/img/favicon-32x32-next.png
 
 #你的头像url
-avatar: /img/icon.png
+avatar: /assets/img/icon.png
 
 #是否开启分享
 share_jia: true
@@ -128,7 +131,7 @@ slider:
 smart_menu:
   innerArchive: '所有文章'
   friends: '友链'
-  aboutme: '关于我'
+  aboutme: false
 
 friends:
   HEYBY: http://www.heyby.cn/

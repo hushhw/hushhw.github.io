@@ -16,7 +16,7 @@ categories: 学习
 
 此系列我编写的源码都可以在我的github下载到：https://github.com/hushhw/WebGL-Programming-Guide/tree/master/01HelloCanvas
 
-
+<!--more-->
 
 ## HelloCanvas.html
 

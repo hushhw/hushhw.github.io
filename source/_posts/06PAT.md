@@ -11,7 +11,7 @@ Record my code in Programming Ability Test
 
 https://github.com/hushhw/PAT
 
-
+<!--more-->
 
 ## PAT甲级
 

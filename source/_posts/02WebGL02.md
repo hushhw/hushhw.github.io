@@ -14,7 +14,7 @@ WebGL采用HTML5中新引入的< canvas >元素，它定义了网页上的绘图
 
 
 
-
+<!--more-->
 
 ## 认识< canvas >标签
 

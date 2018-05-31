@@ -24,6 +24,10 @@ categories: [学习, OJ刷题]
 
 
 
+
+<!--more-->
+
+
 ### 贪心
 
 1. [完美的代价](https://github.com/hushhw/LQOJ/blob/master/BASIC/BASIC-19%20%E5%AE%8C%E7%BE%8E%E7%9A%84%E4%BB%A3%E4%BB%B7.cpp) `BASIC-19`
