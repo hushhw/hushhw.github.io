@@ -14,12 +14,7 @@
     width: 100%;
 }
 .instagram .year {
-    /*font-size: 16px;*/
-    font-size: 14px;
-    font-weight: 200;
-    margin: 10px 0 0 0;
-    padding: 0;
-    color: #999;
+    font-size: 16px;
 }
 .instagram .open-ins{
     padding: 10px 0;
@@ -48,7 +43,6 @@
     display: inline-block;
     text-align: center;
     background: #fff;
-    margin-top: 10px;
 
     /*width: 25%;*/
      /*height: auto;*/
