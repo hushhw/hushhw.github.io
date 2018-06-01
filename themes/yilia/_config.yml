@@ -2,10 +2,10 @@
 
 menu:
   主页: /
-  学习: /categories/学习
-  随笔: /categories/随笔/
-  #归档: /archives/
-  相册: /instagram
+  #学习: /categories/学习
+  #随笔: /categories/随笔/
+  归档: /archives/
+  相册: /instagram/
   #关于: /about/
 
 # SubNav
@@ -39,7 +39,7 @@ root: /
 # 文章太长，截断按钮文字
 excerpt_link: more
 # 文章卡片右下角常驻链接，不需要请设置为false
-show_all_link: true
+show_all_link: 阅读全文
 # 数学公式
 mathjax: true
 # 是否在新窗口打开链接
@@ -47,7 +47,7 @@ open_in_new: false
 
 # 打赏
 # 打赏type设定：0-关闭打赏； 1-文章对应的md文件里有reward:true属性，才有打赏； 2-所有文章均有打赏
-reward_type: 2
+reward_type: 1
 # 打赏wording
 reward_wording: '谢谢你请我吃糖果'
 # 支付宝二维码图片地址，跟你设置头像的方式一样。比如：/assets/img/alipay.jpg
