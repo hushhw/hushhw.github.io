@@ -4,15 +4,13 @@ date: 2017-12-21 15:06:40
 tags: [WebGL]
 categories: 学习
 ---
+
+
 上一节初步认识了WebGL，这一小节我们来开始学习使用< canvas >元素绘制二维图形
 
 
 
-
-
 WebGL采用HTML5中新引入的< canvas >元素，它定义了网页上的绘图区域，如果没有WebGL，JS只能在< canvas >上绘制二维图形，有了WebGL，就可以在上面绘制三维图形了。
-
-
 
 <!--more-->
 

@@ -5,9 +5,9 @@ tags: [算法笔记, STL, 优先队列]
 categories: 学习
 ---
 
-> 本文转载自：https://blog.csdn.net/c20182030/article/details/70757660
 
 
+<!--more-->
 
 ## 优先队列的头文件&&声明
 
@@ -44,7 +44,7 @@ priority_queue <int,vector<int>,less<int> >q;
 
 我们将在下文来讲讲这几种声明方式的不同。
 
-<!--more-->
+
 
 ## 优先队列的基本操作
 
@@ -226,3 +226,7 @@ priority_queue<int,vector<int>,greater<int> >q;12
 ```
 
 平时如果用从大到小不用后面的`vector<int>,less<int>`，可能到时候要改成从小到大，你反而会搞忘怎么写`greater<int>`，反而得不偿失。
+
+
+
+> 本文转载自：https://blog.csdn.net/c20182030/article/details/70757660
