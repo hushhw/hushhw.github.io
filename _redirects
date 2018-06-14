@@ -1,0 +1,2 @@
+# Redirect default Netlify subdomain to primary domain
+https://hushhw.netlify.com/* https://hushhw.cn/:splat 301!
