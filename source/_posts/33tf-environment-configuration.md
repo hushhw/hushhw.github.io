@@ -5,7 +5,7 @@ tags: [计算机视觉, OpenCV, tensorflow]
 categories: [学习, 工具, 计算机视觉]
 ---
 
-![图片来源官网](http://p86wg7kc2.bkt.clouddn.com/TIM%E6%88%AA%E5%9B%BE20180717224539.png)
+![图片来源官网](http://qn.hushhw.cn/TIM%E6%88%AA%E5%9B%BE20180717224539.png)
 
 打算花时间入门一下计算机视觉，
 
@@ -62,7 +62,7 @@ categories: [学习, 工具, 计算机视觉]
 
 - 安装部分没有坑，next即可，切记将Anaconda添加到系统变量路径中，即勾选第一项，否则配置环境变量会很麻烦，能方便就方便吧。
 
-  ![图片来源水印](http://p86wg7kc2.bkt.clouddn.com/20171021092759947.png)
+  ![图片来源水印](http://qn.hushhw.cn/20171021092759947.png)
 
 
 
@@ -118,21 +118,21 @@ categories: [学习, 工具, 计算机视觉]
 ## OpenCV、tensorflow、notebook
 这部分先用图形界面操作会比较直观，打开Anaconda Navigator，按照如图创建虚拟环境：
 
-![](http://p86wg7kc2.bkt.clouddn.com/TIM%E6%88%AA%E5%9B%BE20180717233907.png)
+![](http://qn.hushhw.cn/TIM%E6%88%AA%E5%9B%BE20180717233907.png)
 
 之后打开命令行终端，如图：
 
-![](http://p86wg7kc2.bkt.clouddn.com/TIM%E6%88%AA%E5%9B%BE20180717234645.png)
+![](http://qn.hushhw.cn/TIM%E6%88%AA%E5%9B%BE20180717234645.png)
 
 如果用命令行创建的话，打开Anaconda Prompt（或直接管理员身份运行cmd)输入conda create -n tensorflow即可，然后执行activate tensorflow激活环境。
 
-![图片来源见水印](http://p86wg7kc2.bkt.clouddn.com/20171021095429960.png)
+![图片来源见水印](http://qn.hushhw.cn/20171021095429960.png)
 
 
 
 这里先排一个坑：检查一下pip版本，输入pip -V
 
-![](http://p86wg7kc2.bkt.clouddn.com/pip.png)
+![](http://qn.hushhw.cn/pip.png)
 
 后面在安装的时候如果出现pip版本不够的提示，请升级pip版本，报错信息可能为：
 
@@ -143,7 +143,7 @@ You should consider upgrading via the 'python -m pip install --upgrade pip' comm
 
 升级执行：
 
-![](http://p86wg7kc2.bkt.clouddn.com/upgrade%20pip.png)
+![](http://qn.hushhw.cn/upgrade%20pip.png)
 
 
 
@@ -160,13 +160,13 @@ You should consider upgrading via the 'python -m pip install --upgrade pip' comm
 
 打开cmd或在上面打开的终端输入  **pip install D:\Anaconda\Scripts\opencv_python-3.4.2-cp36-cp36m-win_amd64.whl(文件路径)** 
 
-![](http://p86wg7kc2.bkt.clouddn.com/opencv.png)
+![](http://qn.hushhw.cn/opencv.png)
 
 初次安装显示Successful installed opencv-python-3.4.2即安装成功。
 
 测试一下：
 
-![](http://p86wg7kc2.bkt.clouddn.com/opencv2.png)
+![](http://qn.hushhw.cn/opencv2.png)
 
 
 
@@ -177,7 +177,7 @@ TensorFlow 有两个版本：**CPU** 版本和 **GPU** 版本。GPU 版本需要
 这里安装的tensorflow是CPU版本的，很多教程都有要求说Python 版本必须是3.5，实际上我们现在安装TensorFlow 从 1.2 开始支持 Python 3.6，之前的官方是不支持的。
 安装过程和上面一样，执行代码**pip install –upgrade tensorflow** 
 
-![](http://p86wg7kc2.bkt.clouddn.com/tensorflow.png)
+![](http://qn.hushhw.cn/tensorflow.png)
 
 我这里都安装过了结果如上。
 
@@ -187,15 +187,15 @@ TensorFlow 有两个版本：**CPU** 版本和 **GPU** 版本。GPU 版本需要
 
 在Anaconda Navigator的home页面把虚拟环境切换到tensorflow，点击notebook的按钮安装，安装成功后会变成Lunch如下图：
 
-![](http://p86wg7kc2.bkt.clouddn.com/notebook.png)
+![](http://qn.hushhw.cn/notebook.png)
 
 点击Lunch在浏览器中运行notebook，如下图新建一个文件helloword.ipynb
 
-![](http://p86wg7kc2.bkt.clouddn.com/notebook2.png)
+![](http://qn.hushhw.cn/notebook2.png)
 
 输入如下代码运行，测试环境：
 
-![](http://p86wg7kc2.bkt.clouddn.com/helloopencv.png)
+![](http://qn.hushhw.cn/helloopencv.png)
 
 
 

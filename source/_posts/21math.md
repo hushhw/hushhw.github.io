@@ -5,7 +5,7 @@ tags: [考研数学]
 categories: 学习
 ---
 
-![图片来源网络](http://p86wg7kc2.bkt.clouddn.com/21math_1.jpg)
+![图片来源网络](http://qn.hushhw.cn/21math_1.jpg)
 
 
 

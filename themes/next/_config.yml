@@ -95,7 +95,7 @@ menu:
   home: / || home
   tags: /tags/ || tags
   study: /categories/学习 || th
-  #photo: /photo/ || th
+  photo: /instagram/ || th
   essay: /categories/随笔 || heartbeat
   archives: /archives/ || archive
   about: /about/ || user

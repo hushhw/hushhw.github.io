@@ -5,7 +5,7 @@ tags: [Android]
 categories: [学习]
 ---
 
-![](http://p86wg7kc2.bkt.clouddn.com/sdk01.png)
+![](http://qn.hushhw.cn/sdk01.png)
 
 接着上一篇没有解决的问题继续写，
 
@@ -31,29 +31,29 @@ SDK的安装下载其实不是什么大难题，
 
 先找到SDK Tools,下载最新的版本即可。选择zip的，解压缩至目标路径位置即可
 
- ![img](http://p86wg7kc2.bkt.clouddn.com/sdk01.png)
+ ![img](http://qn.hushhw.cn/sdk01.png)
 
- ![img](http://p86wg7kc2.bkt.clouddn.com/sdk02.png)
+ ![img](http://qn.hushhw.cn/sdk02.png)
 
 2、双击“SDK Manager”，启动SDK Manager
 
 里面具体的内容找到了一张超级厉害的图，可以看看：
 
-![来源网络](http://p86wg7kc2.bkt.clouddn.com/20161115143939558.jpg)
+![来源网络](http://qn.hushhw.cn/20161115143939558.jpg)
 
 ①、Tools的勾选图示选项下载即可。
 
- ![img](http://p86wg7kc2.bkt.clouddn.com/20170814174701471.jpg)
+ ![img](http://qn.hushhw.cn/20170814174701471.jpg)
 
 ②、API的任意选择一个，考虑向下兼容原则，可以下载最新的API。
 
 ③、Extras的全选
 
- ![img](http://p86wg7kc2.bkt.clouddn.com/20170814174706871.jpg)
+ ![img](http://qn.hushhw.cn/20170814174706871.jpg)
 
 注：无法下载的会出现以下提示
 
- ![img](http://p86wg7kc2.bkt.clouddn.com/20170814174715941.jpg)
+ ![img](http://qn.hushhw.cn/20170814174715941.jpg)
 
 **Android SDK在线更新镜像服务器：**
 
@@ -89,19 +89,19 @@ https://…sources to be fetched using http://…」复选框。
 
 设置完成后单击「Close」按钮关闭重新打开即可。如下图：
 
-![img](http://p86wg7kc2.bkt.clouddn.com/20150725152858881.png)
+![img](http://qn.hushhw.cn/20150725152858881.png)
 
 3、设置环境变量
 
 ①、新建一个系统环境变量，变量名为ANDROID_SDK_HOME，变量值为你的SDK安装路径
 
- ![img](http://p86wg7kc2.bkt.clouddn.com/20170814174729762.jpg)
+ ![img](http://qn.hushhw.cn/20170814174729762.jpg)
 
 ②把%ANDROID_SDK_HOME%\platform-tools;%ANDROID_SDK_HOME%\tools添加到Path环境变量中。
 
 ③检测是否配置成功。打开命令行窗口，输入adb。出现如下图所示内容则配置成功：
 
- ![img](http://p86wg7kc2.bkt.clouddn.com/20170814174734937.jpg)
+ ![img](http://qn.hushhw.cn/20170814174734937.jpg)
 
  
 

@@ -4,7 +4,8 @@ title: hushhw's blog
 subtitle: 身经百战见得多了
 description: hushhw's blog
 author: hushhw
-language: zh-Hans
+language: zh-CN
+  # zh-Hans  next主题语言包
 timezone:
 
 # URL
@@ -69,7 +70,8 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: yilia
+theme: next-reloaded
+# yilia
 # hexo-theme-laughing
 
 # Deployment
@@ -146,3 +148,12 @@ qiniu:
     folder: js
   css:
     folder: css
+
+
+
+#表示站内搜索
+search:
+    path: search.xml
+    field: post
+    format: html
+    limit: 10000

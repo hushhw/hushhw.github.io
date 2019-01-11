@@ -9,7 +9,7 @@ categories: 随笔
 
 前天是我开通GitHub一周年，一年里从开始不会使用到后来用来存我的编程代码，到后来学习git把本地的Cocos、Qt工程传上去，之后利用hexo框架搭了这个博客。一年过得很快，我也在这个社区学到了很多，见识到了更大的世界。 
 
-![github](http://p86wg7kc2.bkt.clouddn.com/hushhwblog01)
+![github](http://qn.hushhw.cn/hushhwblog01)
 
 
 
