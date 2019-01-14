@@ -1,17 +1,18 @@
 ---
 title: 《WebGL编程指南》学习笔记——3.在Canvas中使用WebGL
-date: 2017-12-24 00:08:21
-tags: [WebGL]
-categories: 学习
+comments: true
+mathjax: true
+abbrlink: 8116aeda
+date: 2017-12-23 18:33:59
+tags:
+  - WebGL
+categories: learn
+toc: true
 ---
 
+> 上一节学习了使用< canvas >元素绘制二维图形，这一节里面我们在< canvas >中使用WebGL
 
-
-
-* 上一节学习了使用< canvas >元素绘制二维图形，这一节里面我们在< canvas >中使用WebGL
-
-
-
+​       
 
 
 这一小节中我们通过个实例来讲解在< canvas >中使用WebGL
@@ -20,9 +21,11 @@ categories: 学习
 
 <!--more-->
 
+​         
+
 ## HelloCanvas.html
 
-```
+```html
 
 <!DOCTYPE html>
 
@@ -64,11 +67,11 @@ categories: 学习
 
 在HelloCanvas.html文件中比较简单，需要注意的是需要引入一些其他的文件来支持webgl，文件下载可以到https://github.com/hushhw/WebGL-Programming-Guide/tree/master/lib自行下载。
 
-
+​          
 
 ## HelloCanvas.js
 
-```
+```javascript
 
 //HelloCanvas.js
 
@@ -126,13 +129,11 @@ function main(){
 
 在main()函数中，我们通过id找到< canvas >标签，这里跟绘制2d图形的步骤是一模一样的。
 
-
+​          
 
 
 
 ### 获取绘图上下文
-
-
 
 在绘制2d图形的时候，我们是通过调用canvas的getContext方法，传入“2d”参数来获取2d图形的回绘图上下文的。
 
@@ -146,9 +147,9 @@ getWebGLContext(canvas, opt_debug)函数位于cuon-utils.js文件中。
 
 getWebGLContext(canvas, opt_debug)函数的功能是：获取WebGL绘图上下文；如果开启了debug属性，遇到错误时将在控制台显示错误消息。以下是该函数的具体说明：
 
-![图片来源www.cnblogs.com/mirror-pc/p/4181398.html](http://images.cnitblog.com/blog/332382/201412/232358247656436.png)
+{% qnimg 232358247656436.png %}
 
- 
+​          
 
 
 
@@ -158,7 +159,7 @@ getWebGLContext(canvas, opt_debug)函数的功能是：获取WebGL绘图上下�
 
 在获取到绘图上下文以后，我们就可以绘制图形了，并且可以绘制3d图形了；这也说明，WebGL已经调用成功，我们现在可以使用WebGL函数了。
 
-　　
+
 
 我们将上下文放到名为gl的变量中。有了这个上下文，我们就可以设置颜色来清除< canvas >标签指定的绘图区了。在之前绘制2d图形时，我们在绘制之前就指定了绘图颜色。在WebGL中，是相似的，清空绘图区之前也需要指定颜色。
 
@@ -166,7 +167,7 @@ getWebGLContext(canvas, opt_debug)函数的功能是：获取WebGL绘图上下�
 
 gl.clearColor(RGBA)函数通过传入RGBA格式的颜色参数指定颜色。我们在代码中指定了黑色，也可以随意指定其他颜色。在绘制2d图形时，RGBA每个分量的取值范围是0-255之间；但是在WebGL中，每个分量的取值范围是0-1，这和OpenGL保持了一致。一旦指定了颜色，这个颜色就会驻存在WebGL系统中，直到你重新指定新的颜色。在这之前，你可以无数次的使用该颜色进行清除绘图区而无须重新指定。
 
-
+​         
 
 ### 清空< canvas >
 
@@ -174,29 +175,26 @@ gl.clearColor(RGBA)函数通过传入RGBA格式的颜色参数指定颜色。我
 
 最后调用这个函数，用之前指定的背景色清空（用背景色填充，擦除已经绘制的内容）绘图区域。
 
-　　
+
 
 清除绘图区我们使用 gl.clear(gl.COLOR_BUFFER_BIT)函数；你可能觉得很奇怪，参数不应该是表示绘图区的< canvas >吗？这是由于gl.Clear()函数继承自OpenGL，它基于多基本缓冲区模型，比二维绘图上下文要复杂得多。清空绘图区，实际上是在清空颜色缓冲区（通过指定的颜色去擦除已经绘制的内容），传递gl.COLOR_BUFFER_BIT参数就是在告诉WebGL清空颜色缓冲区。
 
-　　
+
 
 如果在使用该函数之前我们没有指定任何颜色，那么默认会以RGBA(0,0,0,0)作为清除颜色，这个颜色是全透明的，替换出来的结果就是什么颜色都没有，显示为浏览器本身的颜色。
 
-  
+​         
 
 下小节我们正式开始学习如何使用WebGL绘制基本图形
 
+​        
 
 
 
-
-> 文章内容借鉴于：
+> 文章内容参考自：
 
 > 《WebGL编程指南》
 
 > http://www.cnblogs.com/mirror-pc/p/4181398.html
 
 > http://blog.csdn.net/weixin_40282619/article/details/78030629
-
-
-

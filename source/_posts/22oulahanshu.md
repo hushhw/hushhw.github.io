@@ -1,20 +1,27 @@
 ---
 title: 欧拉函数（Euler's totient function）
-date: 2018-05-05 20:12:35
-tags: [算法笔记, 图论]
-categories: 学习
+comments: true
 mathjax: true
+abbrlink: 836c5604
+date: 2018-05-05 20:12:35
+tags:
+  - 算法笔记
+  - 图论
+categories: learn
+toc: true
 ---
 
+>  在数论，对正整数n，欧拉函数是小于n的正整数中与n互质的数的数目(φ(1)=1)。此函数以其首名研究者欧拉命名(Euler'so totient function)，它又称为Euler's totient function、φ函数、欧拉商数等。
 
+<!-- more -->
+
+​      
 
 ### 欧拉函数的定义：
 
 ​	**对正整数n，欧拉函数是小于n且和n互质的正整数(包括1)的个数**。
 
 ​	例如Euler(8)=4，因为1,3,5,7均和8互质,下面用E(n)表示欧拉函数的值。
-
- <!--more-->
 
 ​	在数论中，对于正整数N,少于或等于N ([1,N]),且与N互质的正整数(包括1)的个数，记作φ(n)。
 

@@ -1,8 +1,11 @@
 ---
 title: 01分数规划
+tags:
+  - 算法笔记
+  - 01分数规划
+categories: learn
+abbrlink: 16895
 date: 2018-04-07 16:51:42
-tags: [算法笔记, 01分数规划]
-categories: 学习
 ---
 
 

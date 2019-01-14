@@ -1,19 +1,23 @@
 ---
 title: Android-SDK下载安装及配置
+tags:
+  - Android
+categories:
+  - tool
+abbrlink: 43678
 date: 2018-06-29 10:56:18
-tags: [Android]
-categories: [学习]
+toc: true
 ---
 
 ![](http://qn.hushhw.cn/sdk01.png)
 
-接着上一篇没有解决的问题继续写，
-
-SDK的安装下载其实不是什么大难题，
-
-只是之前没有去了解，以为很难，
-
-这篇文章会介绍具体的怎么下载使用。
+> 接着上一篇没有解决的问题继续写，
+>
+> SDK的安装下载其实不是什么大难题，
+>
+> 只是之前没有去了解，以为很难，
+>
+> 这篇文章会介绍具体的怎么下载使用。
 
 <!--more-->
 

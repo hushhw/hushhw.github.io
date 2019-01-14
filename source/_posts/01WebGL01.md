@@ -1,12 +1,13 @@
 ---
 title: 《WebGL编程指南》学习笔记——1.WebGL概述
+tags:
+  - WebGL
+categories: learn
+abbrlink: 18614
 date: 2017-12-21 14:55:24
-tags: [WebGL]
-categories: 学习
+toc: true
 ---
-**此系列用来记录我学习《WebGL编程指南》这本书后的心得，重点内容和总结**
-
-
+>  **此系列用来记录我学习《WebGL编程指南》这本书后的心得，重点内容和总结**
 
 <!--more-->
 

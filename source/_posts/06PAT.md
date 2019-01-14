@@ -1,17 +1,25 @@
 ---
 title: 浙江大学PAT题解目录
+comments: true
+mathjax: true
+abbrlink: 5b9b2dff
 date: 2018-01-25 22:45:39
-tags: [PAT, OJ, 刷题]
-categories: [学习, OJ刷题]
+tags:
+  - OJ
+  - PAT
+  - 刷题
+categories: OJ
 ---
 
-# PAT
-
-Record my code in Programming Ability Test
-
-https://github.com/hushhw/PAT
+> **PAT**
+>
+> Record my code in Programming Ability Test
+>
+> https://github.com/hushhw/PAT
 
 <!--more-->
+
+​      
 
 ## PAT甲级
 

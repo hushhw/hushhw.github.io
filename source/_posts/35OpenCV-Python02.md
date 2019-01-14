@@ -1,21 +1,27 @@
 ---
 title: Python-OpenCV学习笔记——图片写入及图片质量
+tags:
+  - 计算机视觉
+  - OpenCV
+  - Python
+categories:
+  - learn
+abbrlink: 20751
 date: 2018-07-20 22:46:32
-tags: [计算机视觉, OpenCV]
-categories: [学习, 计算机视觉]
+toc: true
 ---
 
-
-
-{% qnimg kite.jpg title:"photo by hushhw" %}
-
-本篇是OpenCV学习系列第二篇，
-
-主要是imwrite()函数写入图片及修改不同的图片质量
+> 本篇是OpenCV学习系列第二篇，
+>
+> 主要是imwrite()函数写入图片及修改不同的图片质量
 
 <!-- more -->
 
 ​        
+
+{% qnimg kite.jpg title:"photo by hushhw" %}
+
+​           
 
 
 

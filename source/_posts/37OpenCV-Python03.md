@@ -1,11 +1,24 @@
 ---
 title: Python-OpenCV学习笔记——像素读取和写入
+comments: true
+mathjax: true
+abbrlink: d566ce3c
 date: 2018-07-31 16:22:57
-tags: [计算机视觉, OpenCV]
-categories: [学习, 计算机视觉]
+tags:
+  - 计算机视觉
+  - OpenCV
+  - Python
+categories: learn
+toc: true
 ---
 
+> 获取三维矩阵[i, j]处的元素
+>
+> 获取三维矩阵的子矩阵
 
+<!-- more -->
+
+​       
 
 ### 获取三维矩阵[i, j]处的元素
 
@@ -86,4 +99,3 @@ cv2.waitKey(0)
 > 《OpenCV文档》
 >
 > 《OpenCV+TensorFlow 入门人工智能图像处理》系列课程视频
-

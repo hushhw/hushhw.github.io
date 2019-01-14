@@ -1,23 +1,31 @@
 ---
 title: HIAR制作第一个简易的 AR 应用
+comments: true
+mathjax: true
+abbrlink: 19ad55f3
 date: 2018-06-20 10:51:12
-tags: [AR]
-categories: [学习]
+tags:
+  - Unity
+  - AR
+categories: learn
+toc: true
 ---
 
-![](http://qn.hushhw.cn/timg.jpg )
-
-虚拟现实实践课程从今天开始开课，
-
-打算用博客记录学习的过程，
-
-因为课程结束后应该会很少制作相关应用，
-
-所以记录系列笔记方便以后捡起来。
+> 虚拟现实实践课程从今天开始开课，
+>
+> 打算用博客记录学习的过程，
+>
+> 因为课程结束后应该会很少制作相关应用，
+>
+> 所以记录系列笔记方便以后捡起来。
 
 <!--more-->
 
+​         
 
+![](http://qn.hushhw.cn/timg.jpg )
+
+​           
 
 HiAR SDK for Unity 开发文档：http://www.hiar.com.cn/doc-v1/sdk-unity/overview/
 
@@ -68,7 +76,5 @@ HiAR SDK for Unity 开发文档：http://www.hiar.com.cn/doc-v1/sdk-unity/overvi
 
 
   - AR 制作与运行：在 Hierarchy 窗口中选中 ImageTarget，右击并在弹出的菜单中选择 3D Object > Cube，识别图片上将显示一个立方体模型。这个模型就是在识别图片上叠加的 AR 内容，您可以适当调整模型的大小以便查看。上述操作完成后，需要在 Unity 环境下运行以查看效果。在运行之前，请确保您的电脑已安装了摄像头。点击运行按钮，摄像头将启动并采集画面；将摄像头对准”苹果“图片，识别成功后将在图片上叠加显示一个立方体模型。
-
-  ​
 
   ​

@@ -1,17 +1,22 @@
 ---
 title: 卡特兰数(catalan number)
-date: 2018-05-18 14:28:22
-tags: [算法笔记, 卡特兰数]
-categories: 学习
+comments: true
 mathjax: true
+abbrlink: 2d0b2197
+date: 2018-05-18 14:28:22
+tags:
+  - 算法笔记
+  - 卡特兰数
+categories: learn
+toc: true
 ---
-
-
 
 > **卡特兰数** 又称卡塔兰数，卡特兰数是组合数学中一个常出现在各种计数问题中的数列。以比利时的数学家欧仁·查理·卡塔兰 (1814–1894)的名字来命名。
 >
 
 <!--more-->
+
+​       
 
 ### 原理
 
@@ -225,4 +230,3 @@ int main(){
     return 0;
 }
 ```
-

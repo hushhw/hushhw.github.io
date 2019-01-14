@@ -1,25 +1,29 @@
 ---
 title: Unity导出导出 Android 工程、应用
+tags:
+  - Unity
+categories:
+  - learn
+abbrlink: 36070
 date: 2018-06-21 08:30:12
-tags: [Unity]
-categories: [学习]
+toc: true
 ---
 
-![](http://qn.hushhw.cn/sdk.jpg)
-
-虚拟现实实践课程第一天下午又开始了麻烦的配置环境，
-
-又回到了被Android环境支配的恐惧，
-
-但是这一次并不是不熟悉JDK、SDK的一些本地环境配置，
-
-而是因为之前Cocos环境配置的JDK（前段时间装eclipse升级了）、SDK版本太低了，
-
-全班找不到几个可以用的高于23的SDK版本，所以都在升级。
+> 虚拟现实实践课程第一天下午又开始了麻烦的配置环境，
+>
+> 又回到了被Android环境支配的恐惧，
+>
+> 但是这一次并不是不熟悉JDK、SDK的一些本地环境配置，
+>
+> 而是因为之前Cocos环境配置的JDK（前段时间装eclipse升级了）、SDK版本太低了，
+>
+> 全班找不到几个可以用的高于23的SDK版本，所以都在升级。
 
 <!--more-->
 
+​         
 
+![](http://qn.hushhw.cn/sdk.jpg)
 
 ## Step 1. 设置 Android SDK 和 JDK 路径
 

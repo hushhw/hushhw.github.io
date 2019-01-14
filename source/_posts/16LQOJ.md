@@ -1,15 +1,23 @@
 ---
 title: LQOJ刷题总结
+comments: true
+mathjax: true
+abbrlink: dd160cb
 date: 2018-02-21 23:19:04
-tags: [LQOJ, OJ, 刷题]
-categories: [学习, OJ刷题]
+tags:
+  - OJ
+  - 蓝桥杯
+  - 刷题
+categories: OJ
 ---
 
+ > LQOJ
+ >
+ > Record my code in LQOJ
 
+<!-- more -->
 
-# LQOJ
-
-
+​         
 
 ### 高精度
 
@@ -24,8 +32,6 @@ categories: [学习, OJ刷题]
 
 
 
-
-<!--more-->
 
 
 ### 贪心

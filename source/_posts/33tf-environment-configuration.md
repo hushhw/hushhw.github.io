@@ -1,19 +1,25 @@
 ---
 title: Anaconda+python3+opencv3+TensorFlow的安装
+tags:
+  - 计算机视觉
+  - OpenCV
+  - tensorflow
+categories:
+  - tool
+abbrlink: 23537
 date: 2018-07-16 08:44:33
-tags: [计算机视觉, OpenCV, tensorflow]
-categories: [学习, 工具, 计算机视觉]
+toc: true
 ---
 
 ![图片来源官网](http://qn.hushhw.cn/TIM%E6%88%AA%E5%9B%BE20180717224539.png)
 
-打算花时间入门一下计算机视觉，
-
-做点东西出来玩一玩，顺便
-
-考虑一下用来做毕设的可能性，
-
-这篇用来记录环境配置。
+> 打算花时间入门一下计算机视觉，
+>
+> 做点东西出来玩一玩，顺便
+>
+> 考虑一下用来做毕设的可能性，
+>
+> 这篇用来记录环境配置。
 
 <!--more-->
 

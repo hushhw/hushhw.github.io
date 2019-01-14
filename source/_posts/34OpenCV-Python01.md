@@ -1,25 +1,32 @@
 ---
 title: Python-OpenCV学习笔记——图片读取、展示和写入
+comments: true
+mathjax: true
+abbrlink: 12a01be2
 date: 2018-07-18 22:49:54
-tags: [计算机视觉, OpenCV]
-categories: [学习, 计算机视觉]
+tags:
+  - 计算机视觉
+  - OpenCV
+  - Python
+categories: learn
+toc: true
 ---
 
-
-
-{% qnimg xiaoanphoto.jpg title:图片来自微博@小安 %}
-
-把环境搭建之后，就开始记录学习笔记了，
-
-这是本系列第一篇，
-
-内容都非常基础，只是整理给自己，
-
-基础的东西很久不用就会忘记的。
+> 把环境搭建之后，就开始记录学习笔记了，
+>
+> 这是本系列第一篇，
+>
+> 内容都非常基础，只是整理给自己，
+>
+> 基础的东西很久不用就会忘记的。
 
 <!--more-->
 
 ​        
+
+{% qnimg xiaoanphoto.jpg title:图片来自微博@小安 %}
+
+​          
 
 
 

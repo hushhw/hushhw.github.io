@@ -12,8 +12,9 @@ timezone:
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://hushhw.cn
 root: /
-permalink: :year/:month/:day/:title/
-permalink_defaults:
+#permalink: :year/:month/:day/:title/
+permalink_defaults: 
+permalink: posts/:category/:abbrlink.html
 
 # Directory
 source_dir: source
@@ -23,7 +24,7 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render:
+skip_render: 
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -45,10 +46,11 @@ highlight:
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
+# 置定 https://github.com/netcan/hexo-generator-index-pin-top
 index_generator:
-  path: ''
-  per_page: 10
-  order_by: -date
+    path: ''
+    per_page: 10
+    order_by: -date
   
 # Category & Tag
 default_category: uncategorized
@@ -70,8 +72,10 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next-reloaded
+theme: maupassant
 # yilia
+# next
+# next-reloaded
 # hexo-theme-laughing
 
 # Deployment
@@ -157,3 +161,12 @@ search:
     field: post
     format: html
     limit: 10000
+
+
+abbrlink:
+  alg: crc32  #support crc16(default) and crc32  
+  rep: hex    #support dec(default) and hex
+  
+  #crc16/crc32:差別在於編號個數的極限，crc16可以生出65535個
+  #dec/hex:    差別在於編號生出來是十進制還是十六進制
+

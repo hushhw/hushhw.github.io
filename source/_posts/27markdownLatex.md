@@ -1,18 +1,20 @@
 ---
 title: Markdown中Latex数学公式基本语法
-date: 2018-05-18 14:56:04
-tags: [markdown]
-categories: 学习
+comments: true
 mathjax: true
+abbrlink: 10c8125f
+date: 2018-05-18 14:56:04
+tags:
+  - markdown
+categories: learn
+toc: true
 ---
 
-## Markdown中Latex 数学公式基本语法
-
-因为不经常要用到Latex数学公式，
-
-每次要用到的时候语法都忘记了，
-
-所以特别自己做了一次整理。
+> 因为不经常要用到Latex数学公式，
+>
+> 每次要用到的时候语法都忘记了，
+>
+> 所以特别自己做了一次整理。
 
 <!--more-->
 
@@ -243,4 +245,3 @@ y=\begin{cases}
 x, \quad x>0
 \end{cases}
 $$
-

@@ -1,27 +1,26 @@
 ---
 title: 数学错题及考点汇总目录
+comments: true
+mathjax: true
+abbrlink: ec524d62
 date: 2018-04-27 14:48:04
-tags: [考研数学]
-categories: 学习
+tags:
+  - 考研数学
+categories: learn
+toc: true
 ---
 
-![图片来源网络](http://qn.hushhw.cn/21math_1.jpg)
-
-
-
-
-
-
-
-整理自己考研备考数学错题，
-
-以及一些常考的考点总结，
-
-方便后面回顾复习的时候按知识点翻阅错题本。
+> 整理自己考研备考数学错题，
+>
+> 以及一些常考的考点总结，
+>
+> 方便后面回顾复习的时候按知识点翻阅错题本。
 
 <!--more-->
 
+​        
 
+![图片来源网络](http://qn.hushhw.cn/21math_1.jpg)
 
 ### 函数、极限、连续
 
@@ -279,4 +278,3 @@ categories: 学习
 - 没啥办法的概念题 `660NO.65` 
 - 积分中值定理 `B3.22` 
 - 极限处理 `660NO.51` 
-
