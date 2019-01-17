@@ -1,14 +1,19 @@
 ---
-layout: page
+layout: single-column
+type: "photos"
 slug: photos
 title: 相册
 noDate: 'true'
 comments: 'true'
-abbrlink: e26d1860
 copyright: false
 ---
 
+
+
 <link rel="stylesheet" href="./ins.css">
+ <link rel="stylesheet" href="./photoswipe.css"> 
+<link rel="stylesheet" href="./default-skin/default-skin.css"> 
+
 <div class="instagram itemscope">
 	<section class="archives album">
 		<ul class="img-box-ul">

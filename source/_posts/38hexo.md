@@ -101,3 +101,9 @@ $ npm install hexo-generator-index-pin-top --save
 最终效果
 
 {% qnimg Snipaste_2019-01-14_21-12-58.png %}
+
+
+
+### 3. Hexo主题maupassant博客搭建相册
+[Hexo主题maupassant博客搭建相册](http://localhost:4000/posts/tool/6ff333ed.html)
+
