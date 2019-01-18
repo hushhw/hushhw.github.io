@@ -107,3 +107,46 @@ $ npm install hexo-generator-index-pin-top --save
 ### 3. Hexo主题maupassant博客搭建相册
 [Hexo主题maupassant博客搭建相册](http://localhost:4000/posts/tool/6ff333ed.html)
 
+​      
+
+### 4. archive页面数量设置
+
+当文章数量达到十几篇左右时，突然发觉archive归档页面仅显示10篇文章，并且出现了分页功能，对于我们这种个人博客，文章数量不会很多，所以更希望是在一页中完全展示出来，便于访问者查找感兴趣的文章。
+
+在网上查找原因，发现此处的10条限制来自_config.yml文件中的配置，这个配置控制所有的分页配置，包括首页、归档页、tag分类页面。
+
+```
+per_page: 10
+```
+
+如果我们想对上面三个页面做独立的配置，需要安装插件进行功能支持。
+
+- [hexo-generator-index](https://github.com/hexojs/hexo-generator-index)
+- [hexo-generator-archive](https://github.com/hexojs/hexo-generator-archive)
+- [hexo-generator-tag](https://github.com/hexojs/hexo-generator-tag)
+
+使用如下命令进行安装需要的插件
+
+```
+$ npm install hexo-generator-archive --save
+```
+
+对应的`_config.yml`文件中添加如下配置
+
+```
+index_generator:
+  per_page: 5
+
+archive_generator:
+  per_page: 20
+
+tag_generator:
+  per_page: 10
+```
+
+​     
+
+### 5. maupassant主题添加推荐阅读功能
+
+[maupassant主题添加推荐阅读功能](http://localhost:4000/posts/tool/f2c9bfb4.html)
+

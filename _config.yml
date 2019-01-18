@@ -48,9 +48,11 @@ highlight:
 # order_by: Posts order. (Order by date descending by default)
 # 置定 https://github.com/netcan/hexo-generator-index-pin-top
 index_generator:
-    path: ''
-    per_page: 10
-    order_by: -date
+  per_page: 10
+
+archive_generator:
+  per_page: 0
+
   
 # Category & Tag
 default_category: uncategorized
@@ -142,7 +144,7 @@ qiniu:
   access_key: vEy0cun8Tu4NdjTR_esGDTAhWIb6cH5BdG3rjCOi
   secret_key: lwpvuxhX7R203wrnpNmdD9xGl-9ZgLahlfs0pDQe
   dirPrefix:
-  urlPrefix: http://qn.hushhw.cn
+  urlPrefix: https://qn.hushhw.cn
   local_dir: cdn
   update_exist: true
   image:
@@ -170,3 +172,5 @@ abbrlink:
   #crc16/crc32:差別在於編號個數的極限，crc16可以生出65535個
   #dec/hex:    差別在於編號生出來是十進制還是十六進制
 
+recommended_posts:
+  autoDisplay: false
