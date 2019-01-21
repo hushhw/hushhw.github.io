@@ -145,7 +145,7 @@ qiniu:
   secret_key: lwpvuxhX7R203wrnpNmdD9xGl-9ZgLahlfs0pDQe
   dirPrefix:
   urlPrefix: https://qn.hushhw.cn
-  local_dir: cdn
+  local_dir: cdn_sync
   update_exist: true
   image:
     folder: images
@@ -174,3 +174,15 @@ abbrlink:
 
 recommended_posts:
   autoDisplay: false
+
+# Douban
+douban:
+  user: 69718613
+  builtin: true
+  book:
+    title: '书房'
+    quote: '“如果你看见一面墙，往上往下往左往右都看不到尽头，永远抵达不了边界。那就是死亡。” '
+  movie:
+    title: '观影'
+    quote: '放松一下~'
+  timeout: 15000 
