@@ -178,7 +178,7 @@ recommended_posts:
 # Douban
 douban:
   user: 69718613
-  builtin: true
+  builtin: false
   book:
     title: '书房'
     quote: '“如果你看见一面墙，往上往下往左往右都看不到尽头，永远抵达不了边界。那就是死亡。” '
@@ -186,3 +186,7 @@ douban:
     title: '观影'
     quote: '放松一下~'
   timeout: 15000 
+
+# aplayer
+aplayer:
+  meting: true

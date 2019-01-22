@@ -31,6 +31,7 @@
     "hexo-renderer-sass": "^0.3.2",
     "hexo-renderer-stylus": "^0.3.1",
     "hexo-server": "^0.2.2",
+    "hexo-tag-aplayer": "^3.0.4",
     "hexo-wordcount": "^3.0.2"
   },
   "devDependencies": {
