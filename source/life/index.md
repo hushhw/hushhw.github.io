@@ -7,6 +7,9 @@ categories:
 ---
 
 ​        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
 
 
 {% meting "003kJxDc3MGohy" "tencent" "song" "theme:#ad7a86" "mode:circulation" "mutex:true" "listmaxheight:340px" "preload:auto" %}
@@ -19,11 +22,12 @@ categories:
 
 ​         
 
-- 『[碎片](https://hushhw.cn/essay)』 
+- 『[旋律](https://hushhw.cn/music)』 
 - 『[诗集](https://hushhw.cn/poems/)』 
 - 『[相册](https://hushhw.cn/photos/)』 
 - 『[光影](https://hushhw.cn/movies/)』 
 - 『[书房](https://hushhw.cn/books/)』
+- 『[碎片](https://hushhw.cn/essay)』 
 
 
 
