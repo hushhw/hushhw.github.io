@@ -1,9 +1,11 @@
 ---
-title: 优先队列 priority_queue
+title: 优先队列(priority_queue)用法及心得
+comments: true
+mathjax: true
+toc: true
 tags:
   - 算法笔记
   - STL
-  - 优先队列
 categories: learn
 abbrlink: 179
 date: 2018-04-15 10:31:54
