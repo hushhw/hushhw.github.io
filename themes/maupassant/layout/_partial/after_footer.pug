@@ -1,7 +1,3 @@
-if theme.fancybox == true && page.type != "photos"
-  script(type='text/javascript', src='//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js', async)
-  script(type='text/javascript', src=url_for(theme.js) + '/fancybox.js' + '?v=' + theme.version, async)
-  link(rel='stylesheet', type='text/css', href='//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css')
 
 if theme.tinysou
   script.
@@ -29,14 +25,25 @@ if theme.swiftype
     _st('install','#{theme.swiftype}','2.0.0');
 
 if theme.self_search == true
-  script(type='text/javascript', src=url_for(theme.js) + '/search.js' + '?v=' + theme.version)
-  script.
-     var search_path = '#{config.search.path}';
-     if (search_path.length == 0) {
-        search_path = 'search.xml';
-     }
-     var path = '#{config.root}' + search_path;
-     searchFunc(path, 'local-search-input', 'local-search-result');
+  if is_post()
+    if page.toc==false
+      script(type='text/javascript', src=url_for(theme.js) + '/search.js' + '?v=' + theme.version)
+      script.
+        var search_path = '#{config.search.path}';
+        if (search_path.length == 0) {
+            search_path = 'search.xml';
+        }
+        var path = '#{config.root}' + search_path;
+        searchFunc(path, 'local-search-input', 'local-search-result');
+  else
+    script(type='text/javascript', src=url_for(theme.js) + '/search.js' + '?v=' + theme.version)
+    script.
+      var search_path = '#{config.search.path}';
+      if (search_path.length == 0) {
+          search_path = 'search.xml';
+      }
+      var path = '#{config.root}' + search_path;
+      searchFunc(path, 'local-search-input', 'local-search-result');
 
 if theme.canvas_nest.enable == true
     - var color=theme.canvas_nest.color || "0,0,0"

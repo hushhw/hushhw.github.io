@@ -14,8 +14,10 @@ blogroll: 友情链接
 history: 历史
 eassy: 随笔
 book: 书房
+music: 音乐
 tech: 技术
 photo: 相册
+movie: 光影
 rss: 订阅
 guestbook: 留言
 home: 首页
@@ -28,6 +30,8 @@ Discuss: 条参与
 Comment: 条评论
 Hits: 阅读
 copyright_author_prefix: 本文作者：
+copyright_date_prefix: 发布时间：
+copyright_updated_prefix: 更新时间：
 copyright_link_prefix: 本文链接：
 copyright_declare_prefix: 版权声明：
 copyright_default_text: 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！
@@ -38,4 +42,6 @@ page_views: 访问量
 stick: 置顶
 totalcount: 全站共
 totalword: 字
-
+stateposts: 文章
+statenum: 字数
+statetag: 标签

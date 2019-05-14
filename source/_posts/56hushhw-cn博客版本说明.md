@@ -2,6 +2,7 @@
 title: hushhw.cn版本更新说明
 comments: true
 toc: true
+tocnumber: true
 top: true
 tags:
   - hexo
@@ -22,7 +23,7 @@ hushhw.cn一直都在优化更新，本文记录各版本更新记录。
 
 ​         
 
-### 2.0 版本
+## 2.0 版本
 
 随着`hexo-next`主题更新到`6.0`版本，之前告一段落的博客折腾之路又重新开始了。
 
@@ -41,21 +42,40 @@ hushhw.cn一直都在优化更新，本文记录各版本更新记录。
 
 ​        
 
-#### 2.0版本更新注释
+### 2.0 版本更新注释
 
 * 更换主题 `hexo-maupassant` 及基本配置
 * 更新不蒜子域名及配置
 * 博客文章链接优化为永久链接
-* 文章置顶及指定标签
+* 文章置顶及置顶标签
 * 侧栏标签样式重置
 * 侧栏添加归档及篇数
-* maupassant博客搭建相册
-* archive页面文章数目设置
+* maupassant 博客搭建相册
+* archive 页面文章数目设置
 * 推荐阅读功能
-* 豆瓣插件引用
-* 菜单栏及页面更新
-* 音乐播放器功能
+* 豆瓣插件引用及拓展
+* 音乐及视频播放器功能
 * 七牛云图床域名更新
+* 底部版权信息添加时间
+* 侧栏 `about` 栏添加 
+* 博客配色更新
+* 全新评论系统 `valine` 
+* 优化目录显示
+* 注脚优化 `hexo-footnotes` 
+* 自定义 `tag` 页面
+
+​              
+
+### 2.0 版本上线流程
+
+```json
+"build": 
+"hexo clean && hexo recommend && hexo g && hexo douban && gulp build&& hexo deploy",
+
+"test": 
+"hexo clean && hexo g && hexo douban && gulp build&& hexo s"
+```
+
 
 
 

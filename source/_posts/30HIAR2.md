@@ -7,6 +7,7 @@ categories:
 abbrlink: 36070
 date: 2018-06-21 08:30:12
 toc: true
+tocnumber: true
 ---
 
 > 虚拟现实实践课程第一天下午又开始了麻烦的配置环境，
@@ -23,7 +24,7 @@ toc: true
 
 ​         
 
-![](http://qn.hushhw.cn/sdk.jpg)
+![](https://qn.hushhw.cn/sdk.jpg)
 
 ## Step 1. 设置 Android SDK 和 JDK 路径
 

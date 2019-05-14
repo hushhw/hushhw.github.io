@@ -10,6 +10,7 @@ tags:
   - Python
 categories: learn
 toc: true
+tocnumber: true
 ---
 
 > 获取三维矩阵[i, j]处的元素

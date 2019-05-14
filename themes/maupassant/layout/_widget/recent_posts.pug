@@ -1,4 +1,6 @@
 .widget
   .widget-title
-    i(class='fa fa-file')= ' ' + __('recent')
-  != list_posts({amount: 10})
+    h5 
+      a( href="/" ) RECENT POSTS
+  .recentposts
+    != list_posts({amount: 10})

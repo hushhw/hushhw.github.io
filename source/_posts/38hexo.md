@@ -8,6 +8,7 @@ tags:
   - hexo
 categories: tool
 toc: true
+tocnumber: true
 ---
 
 > 当我开始打算搭建一个博客写总结时，就注定有一天我会入一个万劫不复的坑。
@@ -39,13 +40,23 @@ toc: true
 3. [有哪些好看的Hexo主题](https://www.zhihu.com/question/24422335)
 
 
-
+ 
 
 ## 提高篇
 
 因为很多配置很早以前就做过了，所以只能再遇到坑的时候再补充。。。
 
-### 1. 博客文章链接优化
+​        
+
+### 打造个性超赞博客超深度优化
+
+大佬这篇超深度的优化必看！！
+
+[打造个性超赞博客Hexo+NexT+GitHubPages的超深度优化](https://reuixiy.github.io/technology/computer/computer-aided-art/2017/06/09/hexo-next-optimization.html)
+
+​             
+
+### 博客文章链接优化
 
 Hexo的永久链接的默认格式是 ` :year/:month/:day/:title/` ，比如访问站点下某一篇文章时，其路径是 `2018/04/12/xxxx/` ，如果我们的文章标题是中文的，那么该路径就会出现中文字符，之前使用 `gitment` 的同胞应该深受其害，在路径中出现了中文字符很容易引发各种问题，而且也不利于seo，因为路径包含了年月日三个层级，层级太深不利于搜索抓取。
 
@@ -82,9 +93,9 @@ abbrink:
   rep: dec
 ```
 
+​             
 
-
-### 2. 文章置顶及置顶标签
+### 文章置顶及置顶标签
 
 ```
 $ npm uninstall hexo-generator-index --save
@@ -101,14 +112,14 @@ $ npm install hexo-generator-index-pin-top --save
 
 {% qnimg Snipaste_2019-01-14_21-12-58.png %}
 
+​         
 
+### Hexo主题maupassant博客搭建相册
+[Hexo主题maupassant博客搭建相册](https://hushhw.cn/posts/tool/6ff333ed.html)
 
-### 3. Hexo主题maupassant博客搭建相册
-[Hexo主题maupassant博客搭建相册](http://localhost:4000/posts/tool/6ff333ed.html)
+​        
 
-​      
-
-### 4. archive页面数量设置
+### archive页面数量设置
 
 当文章数量达到十几篇左右时，突然发觉archive归档页面仅显示10篇文章，并且出现了分页功能，对于我们这种个人博客，文章数量不会很多，所以更希望是在一页中完全展示出来，便于访问者查找感兴趣的文章。
 
@@ -145,7 +156,14 @@ tag_generator:
 
 ​     
 
-### 5. maupassant主题添加推荐阅读功能
+### maupassant主题添加推荐阅读功能
 
-[maupassant主题添加推荐阅读功能](http://localhost:4000/posts/tool/f2c9bfb4.html)
+[maupassant主题添加推荐阅读功能](https://hushhw.cn/posts/tool/f2c9bfb4.html)
 
+​            
+
+### maupassant主题目录优化解决方案
+
+[maupassant主题目录优化解决方案](https://hushhw.cn/posts/tool/5dd904ed.html)
+
+​          

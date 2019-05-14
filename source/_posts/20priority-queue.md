@@ -3,9 +3,10 @@ title: 优先队列(priority_queue)用法及心得
 comments: true
 mathjax: true
 toc: true
+tocnumber: true
 tags:
-  - 算法笔记
   - STL
+  - C/C++
 categories: learn
 abbrlink: 179
 date: 2018-04-15 10:31:54
@@ -66,7 +67,6 @@ q.empty();//返回q是否为空，空则返回1，否则返回0
 q.push(k);//在q的末尾插入k
 q.pop();//删掉q的第一个元素
 q.top();//返回q的第一个元素
-q.back();//返回q的末尾元素
 ```
 
 

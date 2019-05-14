@@ -1,13 +1,15 @@
 ---
-title: aplayer 音乐播放器
+title: Hexo主题插入音乐之aplayer音乐播放器
 comments: true
 mathjax: true
 toc: true
+tocnumber: false
 tags:
   - hexo
 categories: tool
 abbrlink: a84d1ef1
 date: 2019-01-22 21:51:32
+music: true
 ---
 
 
@@ -21,7 +23,7 @@ date: 2019-01-22 21:51:32
 
 ​        
 
-## 使用音乐平台提供插件
+## 1. 使用音乐平台提供插件
 
 以网易云为例，网页端点击`生成外链播放器`即可生成外链代码，如我的某个歌单生成[外链](https://music.163.com/#/outchain/0/2205641361/)。
 
@@ -46,7 +48,7 @@ date: 2019-01-22 21:51:32
 
 ​         
 
-## 使用 hexo-tag-aplayer 插件
+## 2. 使用 hexo-tag-aplayer 插件
 
 [hexo-tag-aplayer](https://github.com/MoePlayer/hexo-tag-aplayer) 就是将 [APlayer](https://github.com/DIYgod/APlayer) 内嵌入博客页面的 Hexo 插件。
 
@@ -58,7 +60,7 @@ $ npm install --save hexo-tag-aplayer
 
 原先 `hexo-tag-aplayer` 不支持 `MetingJS`，使得需要图片url，音乐url等等参数，操作起来都很麻烦，需要去音乐网站扒音乐播放链接或者下载下来存储在七牛云或本地，要了解具体参数和使用可以查看其[中文文档](https://github.com/MoePlayer/hexo-tag-aplayer/blob/master/docs/README-zh_cn.md)了解。
 
-### MeingJS 支持 (3.0 新功能)
+### 3. MeingJS 支持 (3.0 新功能)
 
 [MetingJS](https://github.com/metowolf/MetingJS) 是基于[Meting API](https://github.com/metowolf/Meting) 的 APlayer 衍生播放器，引入 MetingJS 后，播放器将支持对于 QQ音乐、网易云音乐、虾米、酷狗、百度等平台的音乐播放。
 
@@ -113,7 +115,7 @@ aplayer:
 
 ​         
 
-### 遇到的坑
+### 4. 遇到的坑
 
 我原先是用的主题是`yilia`，非常喜欢它的相册功能，于是换到现在的主题后把该功能移植了过来，如果有小伙伴也想要实现可以参看我的这篇文章：『[Hexo主题maupassant博客搭建相册](https://hushhw.cn/posts/tool/6ff333ed.html)』。
 
@@ -135,7 +137,7 @@ aplayer:
 
 关闭后确实解决了问题，相册功能恢复，下面的问题就是自己配置插件，在需要的地方引用代码了。
 
-####1. 恢复post页面插件功能
+#### 4.1. 恢复 post 页面插件功能
 
 我是使用的主题[maupassant-hexo](https://github.com/tufu9441/maupassant-hexo)都是用的是`.pug`格式，其他小伙伴根据自己的渲染文件进行修改。
 
@@ -168,7 +170,7 @@ if theme.aplayer.enable
 
 ​       
 
-#### 2. 在非post页面使用插件功能
+#### 4.2. 在非 post 页面使用插件功能
 
 我在`/source/`文件夹下自定义的页面`life`，我需要该页面使用插件，最简单的方式就是直接在`index.md`中引用：
 
@@ -184,7 +186,23 @@ if theme.aplayer.enable
 
  {% qnimg Snipaste_2019-01-22_23-55-27.png %}
 
+​            
 
+#### 4.3. 与 toc 不兼容（2019.2.17 更新）
+
+toc 中文点击无法跳转，我枯了。。。（比如本页面）
+
+多方查找原因终于找到了根源，居然是因为`aplayer播放器`与`toc`不兼容，要是没有看到别人的文章我感觉一辈子都解决不了这个[问题](https://github.com/MoePlayer/hexo-tag-aplayer/issues/65)了。
+
+于是把播放器配置设置开关在`front-matter`中，在需要使用音乐播放器的页面才设为`music: true`，其它用到目录的页面关闭使用。
+
+​             
+
+#### 4.4. toc 兼容问题解决（2019.4.24 更新）
+
+找到一位大佬的解决方案，具体见大佬的这篇文章：[使用 Aplayer 导致博客目录跳转失效](<https://blog.wangriyu.wang/2018/06-Aplayer.html>) 。
+
+我使用他提供的 `APlayer.min.js` 替换了我原来的 js 文件，目前中文目录点击无法跳转的 bug 已经修复解决。
 
 
 

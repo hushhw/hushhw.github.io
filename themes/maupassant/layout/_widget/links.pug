@@ -1,6 +1,6 @@
 .widget
   .widget-title
-    i(class='fa fa-external-link')= ' ' + __('blogroll')
+    h5 FRIENDS
   - for (var i in theme.links)
     ul
-    a(href=theme.links[i].url title=theme.links[i].title target='_blank') #{theme.links[i].title}
+      a(href=theme.links[i].url title=theme.links[i].title target='_blank') #{theme.links[i].title}

@@ -1,10 +1,11 @@
-extends base
+extends base-post
+
 
 block title
   title= page.title + ' | ' + config.title
 
 block content
-  .post
+  .post 
     h1.post-title= page.title
     .post-meta= page.date.format(config.date_format)
       if page.categories.length > 0
@@ -15,9 +16,9 @@ block content
       if theme.busuanzi.enable == true
         script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
         if theme.busuanzi.page_pv == true
-        span.busuanzi_container_page_pv= ' | '
-          span#busuanzi_value_page_pv
-          span= ' ' + __('Hits')
+          span.busuanzi_container_page_pv= ' | '
+            span#busuanzi_value_page_pv
+            span= ' ' + __('Hits')
       if theme.wordcount == true
         include _partial/wordcount.pug
     if theme.disqus
@@ -31,23 +32,11 @@ block content
       a.disqus-comment-count( href=url_for(page.path) + '#vcomment')
         span.valine-comment-count(data-xid=url_for(page.path))
         span= ' ' + __('Comment')
-    if page.toc
-      div(class='clear')
-        div(id='toc' class='toc-article')
-          div(class='toc-title')= __('contents')
-          != toc(page.content, {list_number: theme.toc_number})
+
     .post-content
       != page.content
     if theme.donate.enable == true
       iframe(src='/donate/?AliPayQR=' + theme.donate.alipay_qr + '&WeChatQR=' + theme.donate.wechat_qr + '&GitHub=' + theme.donate.github + '&BTCQR=' + theme.donate.btc_qr + '&BTCKEY='+ theme.donate.btc_key + '&PayPal=' + theme.donate.paypal_url, style='overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;', frameborder='0', scrolling='no')
-    
-    if theme.recommended_posts.enable == true
-      div.recommended_posts
-        h3() 推荐阅读
-        - var post_list = recommended_posts(page, site)
-        - for (var i in post_list)
-          li
-             a(href=post_list[i].permalink, target='_blank')= post_list[i].title
     
     if theme.post_copyright.enable == true && page.copyright != false
       div
@@ -57,7 +46,13 @@ block content
             = theme.post_copyright.author
           li.post-copyright-link
             strong= __('copyright_link_prefix')
-            a(href='/' + page.path)= page.permalink
+            a(href='/' + page.path)= page.title
+          li.post-copyright-date
+            strong= __('copyright_date_prefix')
+            = date(page.date, "YYYY年MM月DD日 - H:mm:ss")
+          li.post-copyright-updated
+            strong= __('copyright_updated_prefix')
+            = date(page.updated, "YYYY年MM月DD日 - H:mm:ss")
           li.post-copyright-license
             strong= __('copyright_declare_prefix')
             if theme.post_copyright.copyright_text
@@ -69,11 +64,21 @@ block content
     if theme.shareto == true
       script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
       a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
-
+    
     include _partial/tag.pug
     include _partial/post_nav.pug
 
+    if theme.recommended_posts.enable == true
+      div.recommended_posts
+        h2() 相关文章：
+        - var post_list = recommended_posts(page, site)
+        - for (var i in post_list)
+          li
+             a(href=post_list[i].permalink, target='_blank')= post_list[i].title
+
     if page.comments
       include _partial/comments.pug
-    if theme.aplayer.enable
+    if theme.aplayer.enable && page.music
       include _partial/aplayer.pug
+    if theme.fancybox && page.toc
+      include _partial/fancybox.pug

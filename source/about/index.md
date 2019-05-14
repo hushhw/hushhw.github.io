@@ -1,5 +1,5 @@
 ---
-title: About
+title: hushhw
 date: 2018-01-27 12:11:13
 type: "about"
 ---
@@ -9,7 +9,6 @@ type: "about"
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
 <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
-<script src="dist/DPlayer.min.js"></script>
 
 ​           
 
@@ -24,18 +23,20 @@ type: "about"
 
 ### 联系方式
 
-- 邮箱：[hushhw123@gmail.com](mailto:hushhw123@gmail.com)
-- Github: <https://github.com/hushhw>
-- 知乎：<https://www.zhihu.com/people/hu-song-19>
-- 微博: <https://weibo.com/1929679982>
-- CSDN: <http://blog.csdn.net/hushhw>
-- Instagram: <https://instagram.com/hushhw>
-- 网易云音乐: <https://music.163.com/#/user/home?id=96709780>
+- <i class="fa fa-envelope"></i> [hushhw123@gmail.com](mailto:hushhw123@gmail.com)
+- <i class="fa fa-github"></i> [Github](<https://github.com/hushhw>)
+- <i class="fa fa-quora"></i> [知乎](<https://www.zhihu.com/people/hu-song-19>)
+- <i class="fa fa-weibo"></i> [微博](<https://weibo.com/1929679982>)
+- <i class="fa fa-code"></i> [CSDN](<http://blog.csdn.net/hushhw>)
+- <i class="fa fa-instagram"></i> [Instagram](<https://instagram.com/hushhw>)
+- 😆 [网易云音乐](<https://music.163.com/#/user/home?id=96709780>)
 
 
 ​          
 
 ### 听首歌吧
 
+所有悲伤都是积极的。
 
-{% meting "2505951575" "netease" "playlist" "theme:#555" "mutex:true" "listmaxheight:340px" "preload:auto" %}
+
+{% meting "627070825" "netease" "playlist" "theme:#555" "mutex:true" "listmaxheight:340px" "preload:auto" %}

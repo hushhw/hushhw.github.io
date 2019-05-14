@@ -1,0 +1,64 @@
+extends base
+
+block title
+  title= page.title + ' | ' + config.title
+block content
+  link(rel='stylesheet', type='text/css', href=url_for(theme.css) + '/ins.css')
+  link(rel='stylesheet', type='text/css', href=url_for(theme.css) + '/photoswipe.css')
+  link(rel='stylesheet', type='text/css', href=url_for(theme.css) + '/default-skin/default-skin.css')
+  .post
+    h1.post-title= page.title
+    .post-content
+      .instagram.itemscope
+        section.archives.album
+          .img-box-ul
+            a.open-ins(href='https://www.instagram.com/hushhw/', target='_blank') 图片来自instagram，正在加载中…
+      script.
+        function add0(m){return m<10?'0'+m:m };
+        function getDate(timeString) {
+        var time = new Date(parseInt(timeString) * 1000);
+        var y = time.getFullYear();
+        var m = time.getMonth()+1;
+        var d = time.getDate();
+        return y+'-'+add0(m)+'-'+add0(d);
+        };
+        (function() {
+        var loadScript = function(path) {
+        var $script = document.createElement('script')
+        document.getElementsByTagName('body')[0].appendChild($script)
+        $script.setAttribute('src', path)
+        }
+        setTimeout(function() {
+        loadScript('/js/ins.js')
+        }, 0)
+        })()
+  include _partial/openswipe.pug
+  
+  if page.comments
+    include _partial/comments.pug
+  if page.type == "photos"
+     div(class="pswp" tabindex="-1" role="dialog" aria-hidden="true")
+      div(class="pswp__bg")
+      div(class="pswp__scroll-wrap")
+       div(class="pswp__container")
+        div(class="pswp__item")
+        div(class="pswp__item")
+        div(class="pswp__item")
+       div(class="pswp__ui pswp__ui--hidden")
+        div(class="pswp__top-bar")
+         div(class="pswp__counter")
+         button(class="pswp__button pswp__button--close" title="Close (Esc)")
+         button(class="pswp__button pswp__button--share" title="Share")
+         button(class="pswp__button pswp__button--fs" title="Toggle fullscreen")
+         button(class="pswp__button pswp__button--zoom" title="Zoom in/out")
+         div(class="pswp__preloader")
+          div(class="pswp__preloader__icn")
+           div(class="pswp__preloader__cut")
+            div(class="pswp__preloader__donut")
+        div(class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap")
+         div(class="pswp__share-tooltip")
+        button(class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)")
+        button(class="pswp__button pswp__button--arrow--right" title="Next (arrow right)")
+        div(class="pswp__caption")
+         div(class="pswp__caption__center")
+  

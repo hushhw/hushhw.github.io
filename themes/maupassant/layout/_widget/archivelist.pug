@@ -1,4 +1,6 @@
 .widget
   .widget-title
-    i(class='fa fa-archive')= ' ' + __('archive')
-  != list_archives({show_count: theme.show_archive_count, format: "YYYY年MM月"})
+    h5 
+      a( href="/archives" ) ARCHIVES
+  .archivelist
+    != list_archives({show_count: theme.show_archive_count, format: "YYYY年MM月"})

@@ -10,6 +10,7 @@ tags:
   - Python
 categories: learn
 toc: true
+tocnumber: true
 ---
 
 > 把环境搭建之后，就开始记录学习笔记了，

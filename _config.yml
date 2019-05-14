@@ -7,6 +7,7 @@ author: hushhw
 language: zh-CN
   # zh-Hans  next主题语言包
 timezone:
+keywords: hushhw, husong, hushhw's blog, Song Hu
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -24,7 +25,7 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render: 
+skip_render: CHAME
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -51,6 +52,9 @@ index_generator:
   per_page: 10
 
 archive_generator:
+  per_page: 0
+
+tag_generator:
   per_page: 0
 
   
@@ -83,9 +87,10 @@ theme: maupassant
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
+- type: git
   repo: git@github.com:hushhw/hushhw.github.io.git
   branch: master
+- type: baidu_url_submitter ## 这是新加的
 
 
 Plugins:
@@ -93,16 +98,25 @@ Plugins:
 - hexo-generator-sitemap
 - hexo-renderer-mathjax
 - hexo-qiniu-sync
+- hexo-footnotes
 
 baidusitemap:
-    path: baidusitemap.xml
+path: baidusitemap.xml
+
 sitemap:
     path: sitemap.xml
+
+
+baidu_url_submit:
+  count: 1 ## 提交最新的一个链接
+  host: hushhw.cn ## 在百度站长平台中注册的域名
+  token: TYzloN72h8C0S1sM ## 请注意这是您的秘钥， 所以请不要把博客源代码发布在公众仓库里!
+  path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
 
 mathjax:
   enable: true
 
-
+#生成所有文章的 json 描述
 jsonContent:
     meta: false
     pages: false
@@ -181,10 +195,13 @@ douban:
   builtin: false
   book:
     title: '书房'
-    quote: '“如果你看见一面墙，往上往下往左往右都看不到尽头，永远抵达不了边界。那就是死亡。” '
+    quote: ' 这里，是我的书房。 '
   movie:
     title: '光影'
-    quote: '放松一下~'
+    quote: '  '
+  game:
+    title: '游戏'
+    quote: ' '
   timeout: 15000 
 
 # aplayer

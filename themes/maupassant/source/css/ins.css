@@ -48,11 +48,10 @@ figure {
     font-size: 14px;
     margin-left: 10px;
 }
-.instagram .album ul{
+.instagram .album .img-box-ul{
     display: flex;
     flex-wrap: wrap;
     clear: both;
-    width: 100%;
     text-align: left;
 }
 .instagram .album li{

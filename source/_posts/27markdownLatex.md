@@ -8,6 +8,7 @@ tags:
   - markdown
 categories: learn
 toc: true
+tocnumber: true
 ---
 
 > 因为不经常要用到Latex数学公式，
@@ -245,3 +246,36 @@ y=\begin{cases}
 x, \quad x>0
 \end{cases}
 $$
+
+​          
+
+### 更新（2019. 3. 3）
+
+**常用希腊字母**
+
+|   小写命令   | 小写显示 |
+| :------: | :--: |
+|  \alpha  |  α   |
+|  \beta   |  β   |
+|  \gamma  |  γ   |
+|  \theta  |  θ   |
+|  \delta  |  δ   |
+| \epsilon |  ϵ   |
+|  \zeta   |  ζ   |
+|   \eta   |  η   |
+|  \iota   |  ι   |
+|  \kappa  |  κ   |
+| \lambda  |  λ   |
+|   \mu    |  μ   |
+|   \nu    |  ν   |
+|   \pi    |  π   |
+|   \rho   |  ρ   |
+|  \sigma  |  σ   |
+|   \tau   |  τ   |
+|   \phi   |  ϕ   |
+|  \omega  |  ω   |
+
+**Tips **
+如果使用大写的希腊字母，把命令的首字母变成大写即可，例如 \Gamma 输出的是 $\Gamma$ 。 
+
+如果使用斜体大写希腊字母，再在大写希腊字母的 LaTeX 命令前加上 var ，例如 `\varGamma` 生成 $\varGamma$ 。 

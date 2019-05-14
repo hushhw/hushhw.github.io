@@ -8,25 +8,14 @@ tags:
   - WebGL
 categories: learn
 toc: true
+description: '之前，我们学习了如何建立一个WebGL程序，如何使用一些简单的WebGL相关函数。这一节，我们进一步在一个示例程序中绘制一个最简单的图形：一个点以及弄懂一个重要的概念：着色器。'
 ---
 
-> 之前，我们学习了如何建立一个WebGL程序，如何使用一些简单的WebGL相关函数。
->
-> 这一节，我们进一步在一个示例程序中绘制一个最简单的图形：一个点。
->
-> 这一小节中我们要弄懂一个重要的概念：着色器。
+之前，我们学习了如何建立一个WebGL程序，如何使用一些简单的WebGL相关函数。这一节，我们进一步在一个示例程序中绘制一个最简单的图形：一个点以及弄懂一个重要的概念：着色器。
 
-<!--more-->
+此系列我编写的源码都可以在我的github下载到：[02HelloPoint1](https://github.com/hushhw/WebGL-Programming-Guide/tree/master/02HelloPoint1)
 
-​           
-
-​          
-
-我们进一步在一个示例程序中绘制一个最简单的图形：一个点。
-
-此系列我编写的源码都可以在我的github下载到：https://github.com/hushhw/WebGL-Programming-Guide/tree/master/02HelloPoint1
-
-​          
+​                       
 
 ## HelloPoint1.html
 
@@ -353,7 +342,7 @@ gl.drawArrays(）是一个强大的函数，它可以用来绘制各种图形：
 
 ​        
 
-##总结：
+## 总结
 
 一旦顶点着色器执行完后，片元着色器就会开始执行，调用main()函数，将颜色值（红色）赋给gl_FragColor。最后，一个红色的10像素大小的点就被绘制在了（0.0，0.0，0.0，1.0）处，也就是绘制区域的中心位置。
 

@@ -1,5 +1,5 @@
 ---
-title: 旋律
+title: 音乐
 date: 2019-01-23 23:25:20
 type: "music"
 tags:

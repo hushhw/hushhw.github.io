@@ -19,6 +19,13 @@ doctype html
 html(lang=config.language)
 
   include _partial/head.pug
+  script(async src="https://www.googletagmanager.com/gtag/js?id="+theme.google_analytics)
+  script.
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '#{theme.google_analytics}');
 
   body: .body_container
     #header
@@ -38,5 +45,4 @@ html(lang=config.language)
 
     include _partial/totop.pug
     include _partial/after_footer.pug
-    include _partial/openswipe.pug
     

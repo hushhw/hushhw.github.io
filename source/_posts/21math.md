@@ -5,9 +5,10 @@ mathjax: true
 abbrlink: ec524d62
 date: 2018-04-27 14:48:04
 tags:
-  - 考研数学
+  - 考研
 categories: learn
 toc: true
+tocnumber: true
 ---
 
 > 整理自己考研备考数学错题，
@@ -20,7 +21,7 @@ toc: true
 
 ​        
 
-![图片来源网络](http://qn.hushhw.cn/21math_1.jpg)
+![图片来源网络](https://qn.hushhw.cn/21math_1.jpg)
 
 ### 函数、极限、连续
 

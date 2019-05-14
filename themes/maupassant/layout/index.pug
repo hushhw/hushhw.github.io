@@ -14,8 +14,19 @@ block content
         a(href=url_for(post.path))
           +title(post)
       .post-meta= post.date.format(config.date_format)
+        if post.categories.length > 0
+          span= ' •  '
+          span.tag
+            for tag in post.tags.toArray()
+              a(href=url_for(tag.path))= tag.name
+        if theme.wordcount == true
+          span.post-time
+            span.post-meta-item-text= ' •  '
+            span.post-meta-item-icon
+              i(class="fa fa-keyboard-o")
+              span.post-count= ' '+wordcount(post.content)
         if post.top
-          span.post-top= ' | '
+          span.post-top= ' • '
           span.post-top-icon
             i(class="fa fa-thumb-tack")
             span.post-meta-item-text= " "+__('stick')   
@@ -25,6 +36,9 @@ block content
         a.ds-thread-count(href=url_for(post.path) + '#SOHUCS')
           span.cy_cmt_count(id='sourceId::' + post.date.valueOf() style='margin: 0 3px 0 1px;') 0
           span= ' ' + __('Comment')
+      if post.image
+        .out-img-topic
+          img(src='https://qn.hushhw.cn/images/' + post.image class="img-topic")
       if post.description
         .post-content
           != post.description
@@ -49,16 +63,12 @@ block content
       p(class='readmore')
         a(href=url_for(post.path))= __('Readmore')
 
-  
 
+  
   include _partial/paginator.pug
   if theme.disqus
     script(id='dsq-count-scr', src='//'+ theme.disqus + '.disqus.com/count.js', async)
   if theme.changyan
     script#cy_cmt_num(src='https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=' + theme.changyan, async)
-  if config.mathjax
-    include _partial/mathjax.pug
-  if config.mathjax2
-    include _partial/mathjax2.pug
   if theme.aplayer.enable
       include _partial/aplayer.pug

@@ -9,6 +9,7 @@ tags:
   - 图论
 categories: learn
 toc: true
+tocnumber: true
 ---
 
 >  在数论，对正整数n，欧拉函数是小于n的正整数中与n互质的数的数目(φ(1)=1)。此函数以其首名研究者欧拉命名(Euler'so totient function)，它又称为Euler's totient function、φ函数、欧拉商数等。

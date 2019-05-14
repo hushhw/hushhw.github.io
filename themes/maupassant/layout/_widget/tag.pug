@@ -1,5 +1,8 @@
 .widget
   .widget-title
-    i(class='fa fa-star')= ' ' + __('tags')
-  .tagcloud
-    != tagcloud({min_font: 15, max_font: 25, amount: 100, orderby: 'count'})
+    h5 
+      a( href="/tags" ) FEATURED TAGS
+  .tags
+    for tag in site.tags.toArray()
+      if tag.length > theme.featuredsize
+        a( href=config.root + tag.path title=tag.name rel= tag.length ) #{tag.name}

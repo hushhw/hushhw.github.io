@@ -1,6 +1,6 @@
 .widget
   if page.toc
     .widget-title
-      i(class='fa fa-bars')= ' ' + __('contents')
+      i(class='fa fa-bars')= '  ' + __('contents')
       div(id='toc' class='toc-article')
         != toc(page.content, {list_number: theme.toc_number})

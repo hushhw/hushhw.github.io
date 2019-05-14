@@ -1,0 +1,29 @@
+.widget
+    a(href="/about")
+        img(class="site-author-image" src= theme.avatar )
+        p(class="site-description") hushhw
+    .site-state
+        if config.archive_dir != '/' && site.posts.length > 0
+            div(class="site-state-item site-state-posts")
+                a(href="/archives")
+                    span(class="site-state-item-count") #{site.posts.length}
+                    span(class="site-state-item-name")= __('stateposts')
+        if theme.wordcount == true
+            div(class="site-state-item site-state-number")
+                a(href="/")
+                    span(class="site-state-item-count")= totalcount(site)
+                    span(class="site-state-item-name")= __('statenum')
+        if site.tags.length > 0
+            div(class="site-state-item site-state-tags")
+                a(href="/tags"      )
+                    span(class="site-state-item-count") #{site.tags.length}
+                    span(class="site-state-item-name")= __('statetag')
+
+    .site-icon
+        ul(class="links-of-blogroll-list")
+            for blogroll in theme.social
+                li(class="links-of-author-item")
+                    if blogroll.enable == true
+                        a(href=blogroll.url)
+                            i(class="fa fa-" + blogroll.icon)
+

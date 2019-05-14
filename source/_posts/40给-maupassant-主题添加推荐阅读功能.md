@@ -1,5 +1,5 @@
 ---
-title: maupassant主题添加推荐阅读功能
+title: Hexo主题maupassant添加推荐阅读功能
 comments: true
 mathjax: true
 toc: false

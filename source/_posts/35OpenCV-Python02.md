@@ -9,6 +9,7 @@ categories:
 abbrlink: 20751
 date: 2018-07-20 22:46:32
 toc: true
+tocnumber: true
 ---
 
 > 本篇是OpenCV学习系列第二篇，

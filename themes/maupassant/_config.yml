@@ -1,3 +1,50 @@
+avatar: /img/avatar.gif
+
+footer:
+  since: 2018
+  icon: meh-o
+
+beian:
+  icp: 鄂ICP备17007175号-1
+
+recommended_posts:
+  enable: true
+
+# 播放器
+aplayer:
+ enable: true
+
+social:
+  E-Mail: 
+    enable: true
+    url: mailto:hushhw123@gmail.com
+    icon: envelope
+  GitHub: 
+    enable: true
+    url: https://github.com/hushhw
+    icon: github
+  微博: 
+    enable: true
+    url: https://weibo.com/1929679982
+    icon: weibo
+  Instagram: 
+    enable: true
+    url: https://instagram.com/hushhw
+    icon: instagram
+  #知乎: 
+    #enable: true
+    #url: http://www.zhihu.com/people/hu-song-19
+    #icon: quora
+  
+  CSDN: 
+    enable: true
+    url: http://blog.csdn.net/hushhw
+    icon: code
+  #网易云音乐: 
+    #enable: true
+    #url: https://music.163.com/#/user/home?id=96709780
+    #icon: music
+
 disqus:  ## Your disqus_shortname, e.g. username
 uyan: ## Your uyan_id. e.g. 1234567
 livere: ## Your livere data-uid, e.g. MTAyMC8zMDAxOC78NTgz
@@ -22,13 +69,13 @@ valine: ## https://valine.js.org
   appkey: 5eaXH2FJm2nxSBIQL4INFBbW ## Your LeanCloud application App Key, e.g. tjczHpDfhjYDSYddzymYK1JJ
   notify: false ## Mail notifier, see https://github.com/xCss/Valine/wiki/Valine-评论系统中的邮件提醒设置
   verify: false ## Validation code.
-  placeholder: Just so so ## Comment box placeholders.
-  avatar: 'monsterid' ## Gravatar type, see https://github.com/xCss/Valine/wiki/avatar-setting-for-valine
+  placeholder: 居然什么也不说，哼 ## Comment box placeholders.
+  avatar: 'robohash' ## Gravatar type, see https://github.com/xCss/Valine/wiki/avatar-setting-for-valine
   pageSize: 10 ## Number of comments per page.
   guest_info: nick,mail,link ## Attributes of reviewers.
 
 google_site_verification: aEXOxeJU__4i99aRP765TFHVsu1lDxRKExENESoTDHo
-baidu_site_verification: ndXaD7apwJ
+baidu_site_verification: 8o2uMXCdkF
 google_search: false ## Use Google search, true/false.
 baidu_search: false ## Use Baidu search, true/false.
 swiftype: ## Your swiftype_key, e.g. m7b11ZrsT8Me7gzApciT
@@ -48,12 +95,13 @@ busuanzi: ## If you want to use Busuanzi page views please set the value to true
   site_uv: true ## 网站总访客数
 wordcount: true ## If you want to display the word counter and the reading time expected to spend of each post please set the value to true, and you must have hexo-wordcount installed.
 widgets_on_small_screens: true ## Set to true to enable widgets on small screens.
+toc_on_small_screens: false
 canvas_nest:
   enable: false ## If you want to use dynamic background please set the value to true, you can also fill the following parameters to customize the dynamic effect, or just leave them blank to keep the default effect.
-  color: ## RGB value of the color, e.g. "100,99,98"
-  opacity: ## Transparency of lines, e.g. "0.7"
-  zIndex: ## The z-index property of the background, e.g. "-1"
-  count: ## Quantity of lines, e.g. "150"
+  color: '100,99,98' ## RGB value of the color, e.g. "100,99,98"
+  opacity: 0.7 ## Transparency of lines, e.g. "0.7"
+  zIndex: -1 ## The z-index property of the background, e.g. "-1"
+  count: 150  ## Quantity of lines, e.g. "150"
 donate:
   enable: false ## If you want to display the donate button after each post, please set the value to true and fill the following items on your need. You can also enable donate button in a page by adding a "donate: true" item to the front-matter.
   github:  ## GitHub URL, e.g. https://github.com/Kaiyuan/donate-page
@@ -68,9 +116,6 @@ post_copyright:
   copyright_text:  ## Your copyright text, e.g. The author owns the copyright, please indicate the source reproduced.
 
 menu:
-  - page: home
-    directory: .
-    icon: fa-home
   - page: tech
     directory: tech/
     icon: fa-battery-full
@@ -86,6 +131,12 @@ menu:
   - page: archive
     directory: archives/
     icon: fa-archive
+  #- page: music
+  #  directory: music/
+  #  icon: fa-music
+  #- page: movie
+  #  directory: movies/
+  #  icon: fa-film
   - page: about
     directory: about/
     icon: fa-user
@@ -93,17 +144,19 @@ menu:
   # directory: atom.xml
   #  icon: fa-rss
 
-widgets: ## Six widgets in sidebar provided: search, category, tag, recent_posts, rencent_comments and links.
+widgets: ## Six widgets in sidebar provided: about, search, category, tag, recent_posts, rencent_comments and links.
+  - about
   - search
-  - category
   - tag
-  - archivelist
   - recent_posts
+  - archivelist
   - links
 
 links:
   - title: HEYBY
     url: http://www.heyby.cn/
+  - title: Not determined yet
+    url: https://counter2015.com/
 
 timeline:
   - num: 1
@@ -115,19 +168,7 @@ timeline:
   - num: 4
     word: More
 
-footer:
-  since: 2018
-  icon: meh-o
-
-beian:
-  icp: 鄂ICP备17007175号-1
-
-recommended_posts:
-  enable: true
-
-# 播放器
-aplayer:
- enable: true
+featuredsize: 1
 
 # Static files
 js: js
@@ -135,3 +176,4 @@ css: css
 
 # Theme version
 version: 0.0.0
+

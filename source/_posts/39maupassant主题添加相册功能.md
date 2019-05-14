@@ -3,6 +3,7 @@ title: Hexo主题maupassant博客搭建相册
 comments: true
 mathjax: true
 toc: true
+tocnumber: true
 tags:
   - hexo
 categories: tool
@@ -132,7 +133,7 @@ Uncaught TypeError: Cannot read property 'firstChild' of undefined
 找到文件`single-column.pug`，加入判断语句：
 
 ```
- if page.type == "phtos"
+ if page.type == "photos"
      div(class="pswp" tabindex="-1" role="dialog" aria-hidden="true")
       div(class="pswp__bg")
       div(class="pswp__scroll-wrap")
@@ -159,7 +160,7 @@ Uncaught TypeError: Cannot read property 'firstChild' of undefined
          div(class="pswp__caption__center")
 ```
 
-由于该主题文件都是`.pug`，而本人对jade并不熟悉，所以查了一下基本语法莫改了一下javascript代码。
+由于该主题文件都是`.pug`，而本人对jade并不熟悉，所以查了一下基本语法魔改了一下javascript代码。
 
 添加完成之后，相册页面也就完结撒花啦！
 

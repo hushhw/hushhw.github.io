@@ -3,12 +3,14 @@ title: Map(STL)用法与心得
 comments: true
 mathjax: true
 toc: true
+tocnumber: true
 tags:
   - STL
-  - 算法笔记
+  - C/C++
 categories: learn
 abbrlink: 38f87fc0
 date: 2019-01-29 14:03:22
+image: 'hqdefault.jpg'
 description: "Map是STL的一个关联容器，它提供一对一（其中第一个可以称为关键字，每个关键字只能在map中出现一次，第二个可能称为该关键字的值）的数据处理能力，由于这个特性，它完成有可能在我们处理一对一数据的时候，在编程上提供快速通道。<br>这里说下map内部数据的组织，map内部自建一颗红黑树(一 种非严格意义上的平衡二叉树)，这颗树具有对数据自动排序的功能，所以在map内部所有的数据都是有序的，后边我们会见识到有序的好处。"
 ---
 

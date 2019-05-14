@@ -1,7 +1,7 @@
 #footer= '© ' + theme.footer.since + ' - ' + date(Date.now(), 'YYYY') + ' | ' 
   span.footicon
     i(class="fa fa-" + theme.footer.icon)
-  a(rel='nofollow', target='_blank', href='https://github.com/'+config.author)= config.title
+  a(rel='nofollow', target='_blank', href=config.url)= config.title
   |  | 
   a(rel='nofollow', target='_blank', href='http://www.miibeian.gov.cn/')= theme.beian.icp
   | <br> 
@@ -12,18 +12,19 @@
       i(class="fa fa-user-md")
       span= ' ' + __('visitors') 
         span#busuanzi_value_site_uv
-    
       |  | 
     if theme.busuanzi.site_pv == true
       span#busuanzi_container_site_pv 
-      i(class="fa fa-eye")
+      span.footicon
+        i(class="fa fa-eye")
       span= ' ' + __('page_views') 
         span#busuanzi_value_site_pv
       |  | 
   if theme.wordcount == true
     span.post-meta-divider
       span.post-meta-item-icon
-          i(class="fa fa-area-chart")
+          span.footicon
+            i(class="fa fa-area-chart")
           span.post-meta-item-text= ' '+__('totalcount')
           span.post-totalcount= ' '+totalcount(site) + __('totalword')
   |  <br>Powered by

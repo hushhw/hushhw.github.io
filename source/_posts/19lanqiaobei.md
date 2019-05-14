@@ -2,7 +2,6 @@
 title: 写在蓝桥杯省赛后
 comments: true
 mathjax: true
-toc: true
 abbrlink: 27986ff8
 date: 2018-04-09 21:19:53
 tags:
@@ -17,7 +16,7 @@ categories: essay
 
 ​          
 
-![github](http://qn.hushhw.cn/hushhwblog01)
+![github](https://qn.hushhw.cn/hushhwblog01)
 
 
 
