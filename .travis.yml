@@ -8,22 +8,27 @@ cache:
 
 # S: Build Lifecycle
 install:
-  - npm install # 下载依赖
+  - cnpm install # 下载依赖
 
-script:
-  - hexo algolia # 我装了algolia的搜索工具。这一步正常可以是 hexo g
-
-
-after_script: # 推送到github的部分
+before_script:
+  - echo 正在清空缓存静态文件...
+  - hexo clean                      # 清除缓存静态文件
+  - echo 正在生成静态文件...
   - hexo clean && hexo recommend && hexo g && hexo douban
   - cd ./public
+  - ls -l
+
+script:
+  - echo 开始部署...
   - git init
-  - git config user.name "hushhw"
-  - git config user.email "hushhw123@gmail.com"
-  - git add .
-  - git commit -m "Update docs"
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master # 通过之前存在Travis-CI里的token以及github仓库的地址推送到相应的master分支
-# E: Build LifeCycle
+  - git config --global user.name "hushhw"                          # 修改name
+  - git config --global user.email "hushhw123@gmail.com"                        # 修改email
+  - git add ./
+  - git commit -m "update"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master  # GH_TOKEN是在Travis中配置token的名稱
+
+after_script:
+  - echo 部署完成！
 
 branches:
   only:
