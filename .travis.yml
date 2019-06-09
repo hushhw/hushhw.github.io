@@ -8,7 +8,7 @@ cache:
 
 # S: Build Lifecycle
 install:
-  - cnpm install # 下载依赖
+  - npm install # 下载依赖
 
 before_script:
   - echo 正在清空缓存静态文件...
