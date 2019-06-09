@@ -91,14 +91,30 @@ deploy:
   repo: git@github.com:hushhw/hushhw.github.io.git
   branch: master
 - type: baidu_url_submitter ## 这是新加的
+#- type: upyun
+#  bucket: hushhw-upyun-blog
+#  operator: hushhwadmin
+#  password: vdYNtKRQ88pBlqbqGctbNYXDDSiuKdpH
+#  endpoint: v0.api.upyun.com
+#  secret: secret
+#  try_times: 5
+#  ignore_path_re:
+#    dir: null
+#    file: ".DS_Store$"
 
 
 Plugins:
 - hexo-generator-baidu-sitemap
 - hexo-generator-sitemap
 - hexo-renderer-mathjax
-- hexo-qiniu-sync
 - hexo-footnotes
+- hexo-generator-feed
+
+#Feed Atom
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
 
 baidusitemap:
 path: baidusitemap.xml
@@ -135,40 +151,6 @@ jsonContent:
       excerpt: false
       categories: false
       tags: true
-
-#七牛云存储设置
-##offline       是否离线. 离线状态将使用本地地址渲染
-##sync          是否同步
-##bucket        空间名称.
-##access_key    上传密钥AccessKey
-##secret_key    上传密钥SecretKey
-##secret_file   秘钥文件路径，可以将上述两个属性配置到文件内，防止泄露，json格式。绝对路径相对路径均可
-##dirPrefix     上传的资源子目录前缀.如设置，需与urlPrefix同步 
-##urlPrefix     外链前缀.
-##up_host      上传服务器路径,如选择华北区域的话配置为http://up-z1.qiniu.com
-##local_dir     本地目录.
-##update_exist  是否更新已经上传过的文件(仅文件大小不同或在上次上传后进行更新的才会重新上传)
-##image/js/css  子参数folder为不同静态资源种类的目录名称，一般不需要改动
-##image.extend  这是个特殊参数，用于生成缩略图或加水印等操作。具体请参考http://developer.qiniu.com/docs/v6/api/reference/fop/image/ 
-##              可使用基本图片处理、高级图片处理、图片水印处理这3个接口。例如 ?imageView2/2/w/500 即生成宽度最多500px的缩略图
-qiniu:
-  offline: false
-  sync: true
-  bucket: hushhw-photo
-  access_key: vEy0cun8Tu4NdjTR_esGDTAhWIb6cH5BdG3rjCOi
-  secret_key: lwpvuxhX7R203wrnpNmdD9xGl-9ZgLahlfs0pDQe
-  dirPrefix:
-  urlPrefix: https://qn.hushhw.cn
-  local_dir: cdn_sync
-  update_exist: true
-  image:
-    folder: images
-    extend:
-  js:
-    folder: js
-  css:
-    folder: css
-
 
 
 #表示站内搜索

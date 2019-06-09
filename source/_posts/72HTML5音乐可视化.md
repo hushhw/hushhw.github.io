@@ -37,7 +37,7 @@ description: '在 AudioContext 音频上下文中，把音频文件转成 buffer
 
 **AnalyzerNode** 只有一个输入和输出，即使未连接输出它也会工作。
 
-{% qnimg WebAudioFFT.png %}
+![](https://qn.hushhw.cn/images/WebAudioFFT.png)
 
 首先创建方法见上一篇中 **AudioContext** 中的方法来创建：
 

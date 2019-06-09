@@ -1,0 +1,34 @@
+language: node_js # 声明环境为node
+node_js: stable
+
+# Travis-CI Caching
+cache:
+  directories:
+    - node_modules # 缓存node_modules文件夹
+
+# S: Build Lifecycle
+install:
+  - npm install # 下载依赖
+
+script:
+  - hexo algolia # 我装了algolia的搜索工具。这一步正常可以是 hexo g
+
+
+after_script: # 推送到github的部分
+  - hexo clean && hexo recommend && hexo g && hexo douban
+  - cd ./public
+  - git init
+  - git config user.name "hushhw"
+  - git config user.email "hushhw123@gmail.com"
+  - git add .
+  - git commit -m "Update docs"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master # 通过之前存在Travis-CI里的token以及github仓库的地址推送到相应的master分支
+# E: Build LifeCycle
+
+branches:
+  only:
+    - hexo # 只对hexo分支构建
+
+env: # 环境变量
+ global:
+   - GH_REF: github.com/hushhw/hushhw.github.io # 我的仓库地址

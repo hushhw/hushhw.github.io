@@ -44,7 +44,7 @@ music: true
 
 缺点非常明显，而最不能忍得是网易音乐有些音乐因为版权保护，没办法生成外链：
 
-{% qnimg Snipaste_2019-01-22_22-55-46.png %}
+![](https://qn.hushhw.cn/images/Snipaste_2019-01-22_22-55-46.png)
 
 ​         
 
@@ -180,11 +180,11 @@ if theme.aplayer.enable
 <script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
 ```
 
-{% qnimg Snipaste_2019-01-22_23-54-20.png %}
+![](https://qn.hushhw.cn/images/Snipaste_2019-01-22_23-54-20.png)
 
 最终效果：
 
- {% qnimg Snipaste_2019-01-22_23-55-27.png %}
+ ![](https://qn.hushhw.cn/images/Snipaste_2019-01-22_23-55-27.png)
 
 ​            
 

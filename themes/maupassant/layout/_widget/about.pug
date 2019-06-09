@@ -1,11 +1,11 @@
 .widget
-    a(href="/about")
+    a(href="/about/")
         img(class="site-author-image" src= theme.avatar )
         p(class="site-description") hushhw
     .site-state
         if config.archive_dir != '/' && site.posts.length > 0
             div(class="site-state-item site-state-posts")
-                a(href="/archives")
+                a(href="/archives/")
                     span(class="site-state-item-count") #{site.posts.length}
                     span(class="site-state-item-name")= __('stateposts')
         if theme.wordcount == true
@@ -15,7 +15,7 @@
                     span(class="site-state-item-name")= __('statenum')
         if site.tags.length > 0
             div(class="site-state-item site-state-tags")
-                a(href="/tags"      )
+                a(href="/tags/"      )
                     span(class="site-state-item-count") #{site.tags.length}
                     span(class="site-state-item-name")= __('statetag')
 

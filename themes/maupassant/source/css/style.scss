@@ -47,6 +47,8 @@ body {
 a, button.submit {
     color: #555;
     text-decoration: none;
+    word-break: break-word;
+    overflow-wrap: break-word;
     -webkit-transition: all .1s ease-in;
     -moz-transition: all .1s ease-in;
     -o-transition: all .1s ease-in;
@@ -1999,6 +2001,10 @@ em.search-keyword {
     color: unquote(hexo-config('footer.icon.color'));
   }
 
+.upyunimg {
+    vertical-align: middle;
+    width: 50px;
+}
 
 
 

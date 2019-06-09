@@ -5,6 +5,16 @@
   |  | 
   a(rel='nofollow', target='_blank', href='http://www.miibeian.gov.cn/')= theme.beian.icp
   | <br> 
+  | Powered by
+  a(rel='nofollow', target='_blank', href='https://hexo.io')  Hexo | 
+  a(rel='nofollow', target='_blank', href='https://github.com/tufu9441/maupassant-hexo')  Theme
+  |  by
+  a(rel='nofollow', target='_blank', href='https://github.com/pagecho')  Cho | 
+  if theme.upyun.enable == true
+    | Accelerated by 
+    a(rel='nofollow', target='_blank', href=theme.upyun.url)
+      img.upyunimg(src=theme.upyun.icon)
+  | <br> 
   if theme.busuanzi.enable == true
     script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
     if theme.busuanzi.site_uv == true
@@ -19,19 +29,6 @@
         i(class="fa fa-eye")
       span= ' ' + __('page_views') 
         span#busuanzi_value_site_pv
-      |  | 
-  if theme.wordcount == true
-    span.post-meta-divider
-      span.post-meta-item-icon
-          span.footicon
-            i(class="fa fa-area-chart")
-          span.post-meta-item-text= ' '+__('totalcount')
-          span.post-totalcount= ' '+totalcount(site) + __('totalword')
-  |  <br>Powered by
-  a(rel='nofollow', target='_blank', href='https://hexo.io')  Hexo | 
-  a(rel='nofollow', target='_blank', href='https://github.com/tufu9441/maupassant-hexo')  Theme
-  |  by
-  a(rel='nofollow', target='_blank', href='https://github.com/pagecho')  Cho
   
   
           

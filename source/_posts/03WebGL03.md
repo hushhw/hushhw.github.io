@@ -92,7 +92,7 @@ function main(){
 
 `getWebGLContext(canvas, opt_debug)` 函数的功能是：获取WebGL绘图上下文，如果开启了debug属性，遇到错误时将在控制台显示错误消息。以下是该函数的具体说明：
 
-{% qnimg 232358247656436.png %}
+![](https://qn.hushhw.cn/images/232358247656436.png)
 
 ​          
 
