@@ -7,7 +7,7 @@ author: hushhw
 language: zh-CN
   # zh-Hans  next主题语言包
 timezone:
-keywords: hushhw, husong, hushhw's blog, Song Hu
+keywords: hushhw, husong, hushhw's Wiki, Song Hu
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -91,6 +91,7 @@ deploy:
   repo: git@github.com:hushhw/hushhw.github.io.git
   branch: master
 - type: baidu_url_submitter ## 这是新加的
+
 #- type: upyun
 #  bucket: hushhw-upyun-blog
 #  operator: hushhwadmin
