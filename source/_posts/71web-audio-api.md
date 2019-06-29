@@ -25,7 +25,7 @@ description: '因为毕业设计要做音乐可视化的相关项目，所以必
 
 下图是老师画的『Web Audio API 关系图』：
 
-![imooc](https://qn.hushhw.cn/images/Snipaste_2019-03-06_20-33-24.png)
+![imooc](https://photo.hushhw.cn/images/Snipaste_2019-03-06_20-33-24.png)
 
 本篇文章就基于这张图来了解 Web Audio API。
 

@@ -19,7 +19,7 @@ description: '大三下学期在上的「操作系统」课程的时候就想装
 >
 > 折腾在虚拟机中安装 Ubuntu 操作系统花了我一天时间，写下这篇文章来记录这个过程，留作以后再学习排坑。
 
-![](https://qn.hushhw.cn/images/Snipaste_2019-04-25_15-04-07.png)
+![](https://photo.hushhw.cn/images/Snipaste_2019-04-25_15-04-07.png)
 
 
 
@@ -33,7 +33,7 @@ description: '大三下学期在上的「操作系统」课程的时候就想装
 
 可到 [中科大镜像源](<http://mirrors.ustc.edu.cn/>) 下载你需要的版本，如下图所示：
 
-![](https://qn.hushhw.cn/images/Snipaste_2019-04-25_15-26-58.png)
+![](https://photo.hushhw.cn/images/Snipaste_2019-04-25_15-26-58.png)
 
 我选择了最新的发行版本 `19.04` 的映像文件来安装，配合 VMware 15 没有出现兼容问题，之前电脑上装的 VMware 8 版本太低，安装过程中报错。
 

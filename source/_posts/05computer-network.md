@@ -63,8 +63,8 @@ Internet 和 Internet 的区别：
     在通话时，两用户之间占用端到端的资源，而由于绝大部分时间线路都是空闲的，所以线路的传输速率往往很低。
   - **分组交换** 的组成：报文、首部、分组。采用存储转发技术，即收到分组——存储分组——查询路由（路由选择协议）——转发分组。优点：高效、灵活、迅速、可靠。缺点：时延、开销。关键构件：路由器。
   - **报文交换** 整个报文传送到相邻结点，全部存储下来之后查询转发表，转发到下一个结点。
-    ![](https://qn.hushhw.cn/images/Snipaste_2019-01-12_19-21-39.png)
-    ![](https://qn.hushhw.cn/images/20180105203650888.png)
+    ![](https://photo.hushhw.cn/images/Snipaste_2019-01-12_19-21-39.png)
+    ![](https://photo.hushhw.cn/images/20180105203650888.png)
 
 ### 计算机网络的类别 P17
 
@@ -121,7 +121,7 @@ Internet 和 Internet 的区别：
 * 物理层、数据链路层、网络层：提供**点到点**的服务
 * 传输层、会话层、表示层、应用层：提供**端到端**的服务
 
-![](https://qn.hushhw.cn/images/Snipaste_2019-03-14_17-33-35.png)
+![](https://photo.hushhw.cn/images/Snipaste_2019-03-14_17-33-35.png)
 
 
 
@@ -130,7 +130,7 @@ Internet 和 Internet 的区别：
 * TCP/IP 设计之初就考虑到异构网互联问题，将 IP 作为重要层次；而 OSI 参考模型先于协议发明，不偏向特定协议。
 * 两者常考的异同点：OSI 参考模型网络层是「无连接+面向连接」，而 TCP/IP 模型是「无连接」的；OSI 参考模型传输层是「面向连接」，而 TCP/IP 模型是「无连接+面向连接」。
 
-![](https://qn.hushhw.cn/images/Snipaste_2019-03-14_17-37-40.png)
+![](https://photo.hushhw.cn/images/Snipaste_2019-03-14_17-37-40.png)
 
 五层协议的体系结构（综合了 OSI 和 TCP/IP 的优点）
 
@@ -139,7 +139,7 @@ Internet 和 Internet 的区别：
  * **网络层**：选择合适的路由，使发送站的运输层所传下来的分组能够正确无误地按照地址找到目的站，并交付给目的站的运输层。网络层将运输层产生的报文或用户数据报封装成分组（IP数据报）或包进行传送。
  * **运输层**：向上一层的进行通信的两个进程之间提供一个可靠的端对端服务，使它们看不见运输层以下的数据通信的细节。（TCP、UDP）
  * **应用层**：直接为用户的应用进程提供服务（HTTP、FTP等）
-  ![](https://qn.hushhw.cn/images/20180105203859787.jpg)
+  ![](https://photo.hushhw.cn/images/20180105203859787.jpg)
 
   ​
 
@@ -186,7 +186,7 @@ Internet 和 Internet 的区别：
 
 ### 物理层下的传输媒体
 
-![](https://qn.hushhw.cn/images/20180105222431656.png)
+![](https://photo.hushhw.cn/images/20180105222431656.png)
 
 双绞线：双绞线已成为局域网中的主流传输媒体
 
@@ -218,7 +218,7 @@ Internet 和 Internet 的区别：
  - 码分复用 CDM (Code Division Multiplexing)常用的名词是**码分多址 CDMA**：有很强的抗干扰能力。
 
  码分多址的计算靠一个例题就基本会了：
-![](https://qn.hushhw.cn/images/20180105230449989.png)
+![](https://photo.hushhw.cn/images/20180105230449989.png)
 
   
 
@@ -256,7 +256,7 @@ Internet 和 Internet 的区别：
 
 
 2. PPP协议的帧格式
-     ![](https://qn.hushhw.cn/images/Snipaste_2019-01-12_19-34-19.png)
+     ![](https://photo.hushhw.cn/images/Snipaste_2019-01-12_19-34-19.png)
 
 首部：
  - 首部中的标志字段F(Flag)，规定为0x7E(符号0x表示它后面的字符是用十六进制表示的。十六进制的7E的二进制表示是01111110)，标志字段表示一个帧的开始。
@@ -280,7 +280,7 @@ Internet 和 Internet 的区别：
 
  - **零比特填充**——PPP使用同步传输
      只要发现有5个连续的1，则立即填入一个0
-        ![](https://qn.hushhw.cn/images/Snipaste_2019-01-12_19-35-15.png)
+        ![](https://photo.hushhw.cn/images/Snipaste_2019-01-12_19-35-15.png)
 
 
 
@@ -314,7 +314,7 @@ CSMA/CD是**载波监听多点接入/碰撞检测**（Carrier Sense Multiple Acc
 
 2. MAC帧的格式
      常用的以太网MAC帧格式有两种标准 ： DIX Ethernet V2 标准IEEE 的 802.3 标准。V2使用较多，如图：
-       ![](https://qn.hushhw.cn/images/20131017004657921.png)
+       ![](https://photo.hushhw.cn/images/20131017004657921.png)
        以太网V2的MAC帧较为简单，有五个字段组成。
        前两个字段分别为6字长的目标地址和源地址字段。第三个字段是2字节的类型字段，用来标志上一层使用的是什么协议，以便把收到的MAC帧的数据上交给上一层的这个协议。后面数据字段46~1500字节，FCS字段4个字节。
 
@@ -372,8 +372,8 @@ IP地址编制方法的三个阶段：
 
 每一类地址都由 **网络号** net-id和 **主机号** host-id组成
 **主机号中全0表示网络地址，全1表示广播地址**
-![](https://qn.hushhw.cn/images/20180107023041372.jpg)
-![](https://qn.hushhw.cn/images/20180107023943820.jpg)
+![](https://photo.hushhw.cn/images/20180107023041372.jpg)
+![](https://photo.hushhw.cn/images/20180107023943820.jpg)
 
  - A类
     1. 由1字节的网络地址和3字节主机地址组成
@@ -412,8 +412,8 @@ ARP是解决**同一个局域网上**的主机或路由器的 IP 地址和硬件
 #### 4.1.5 IP数据报
 1. IP数据报格式
    一个IP数据报由首部（20 字节+可选字段）和数据两部分组成
-   ![](https://qn.hushhw.cn/images/20180107045436621.png)
-   ![](https://qn.hushhw.cn/images/20180107045539001.png)
+   ![](https://photo.hushhw.cn/images/20180107045436621.png)
+   ![](https://photo.hushhw.cn/images/20180107045539001.png)
 
 2. 分组转发
     (1) 从数据报的首部提取目的主机的 IP 地址 D, 得出目的网络地址为 N。
@@ -513,7 +513,7 @@ ARP是解决**同一个局域网上**的主机或路由器的 IP 地址和硬件
 
  TCP 则提供面向连接的服务。TCP 不提供广播或多播服务。由于 TCP 要提供可靠的、面向连接的运输服务，因此不可避免地增加了许多的开销。这不仅使协议数据单元的首部增大很多，还要占用许多的处理机资源。  
 
-![](https://qn.hushhw.cn/images/20180108005811225.jpg)
+![](https://photo.hushhw.cn/images/20180108005811225.jpg)
 
 3. 运输层的端口
      TCP/IP的运输层的端口用一个 16 位端口号进行标志

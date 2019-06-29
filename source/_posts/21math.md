@@ -21,7 +21,7 @@ tocnumber: true
 
 ​        
 
-![图片来源网络](https://qn.hushhw.cn/21math_1.jpg)
+![图片来源网络](https://photo.hushhw.cn/21math_1.jpg)
 
 ### 函数、极限、连续
 

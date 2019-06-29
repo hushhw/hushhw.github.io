@@ -159,7 +159,7 @@ var ctx = canvas.getContext("2d");
 
 fillRect 方法中设置的 x，y 指的是从 < canvas > 坐标的开始算，右移 x 像素，下移 y 像素的位置，就是矩形左上角的位置。如图所示：
 
-![](https://qn.hushhw.cn/images/20171216202917965.png)
+![](https://photo.hushhw.cn/images/20171216202917965.png)
 
 　　
 

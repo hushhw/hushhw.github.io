@@ -20,7 +20,7 @@ tocnumber: true
 
 ​        
 
-![](https://qn.hushhw.cn/images/kite.jpg title:"photo by hushhw")
+![](https://photo.hushhw.cn/images/kite.jpg title:"photo by hushhw")
 
 ​           
 
@@ -40,11 +40,11 @@ python: cv2.imwrite(filename, img, [params])
 
   ​	在默认情况下图片显示为`cv2.imwrite(images.jpg, img, [cv2.IMWRITE_JPEG_QUALITY])`：
 
-  ![](https://qn.hushhw.cn/images/image_jpeg_quality_95.jpg)
+  ![](https://photo.hushhw.cn/images/image_jpeg_quality_95.jpg)
 
   ​	但是把参数设置为5的时候，图片被严重压缩`cv2.imwrite(images.jpg, img, [cv2.IMWRITE_JPEG_QUALITY])`：
 
-  ![](https://qn.hushhw.cn/images/image_jpeg_quality_5.jpg)
+  ![](https://photo.hushhw.cn/images/image_jpeg_quality_5.jpg)
 
 - 对于PNG格式压缩的图片，可以设置图片质量参数`[cv2.IMWRITE_PNG_COMPRESSION]`，该参数的范围是`0`到`9`，其值越大，压缩尺寸越小，压缩时间越长，默认值为3，该压缩是无损的。
 

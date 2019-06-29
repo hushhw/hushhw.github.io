@@ -95,7 +95,7 @@ WebGL需要两种着色器：
 
 
 
-![](https://qn.hushhw.cn/images/20171224155525787.png)
+![](https://photo.hushhw.cn/images/20171224155525787.png)
 
 
 
@@ -113,7 +113,7 @@ WebGL需要两种着色器：
 
 
 
-![](https://qn.hushhw.cn/images/20171224155749311.png)
+![](https://photo.hushhw.cn/images/20171224155749311.png)
 
 ​             
 
@@ -121,9 +121,9 @@ WebGL需要两种着色器：
 
 “初始化着色器”我们调用辅助函数initShaders()对字符串形式的着色器进行了初始化。该函数被定义在lib文件夹下，前文提到下载方式了。
 
-![](https://qn.hushhw.cn/images/20171224161606349.png)
+![](https://photo.hushhw.cn/images/20171224161606349.png)
 
-![](https://qn.hushhw.cn/images/20171224161654909.png)
+![](https://photo.hushhw.cn/images/20171224161654909.png)
 
 
 
@@ -252,7 +252,7 @@ function main() {
 
 
 
-![](https://qn.hushhw.cn/images/20171224160348903.png)
+![](https://photo.hushhw.cn/images/20171224160348903.png)
 
 
 
@@ -270,7 +270,7 @@ function main() {
 
 下面是这一节出现在GLSL ES代码中的几种类型：
 
-![](https://qn.hushhw.cn/images/20171224162729559.png)
+![](https://photo.hushhw.cn/images/20171224162729559.png)
 
 *注意：如果向某类型的变量赋一个不同类型的值。就会出错，例如，gl_PointSize 是浮点型的变量，你就必须向其赋浮点型的值。* 
 
@@ -286,13 +286,13 @@ function main() {
 
 ### 主程序
 
-![](https://qn.hushhw.cn/images/20171224161103636.png)
+![](https://photo.hushhw.cn/images/20171224161103636.png)
 
 
 
 main()函数的执行流程：
 
-![](https://qn.hushhw.cn/images/20171224161210334.png)
+![](https://photo.hushhw.cn/images/20171224161210334.png)
 
 
 
@@ -336,7 +336,7 @@ gl.drawArrays(gl.POINTS, 0, 1);
 
 gl.drawArrays(）是一个强大的函数，它可以用来绘制各种图形：
 
-![](https://qn.hushhw.cn/images/20171224163102828.png)
+![](https://photo.hushhw.cn/images/20171224163102828.png)
 
 *示例函数调用该函数时，因为我么绘制的是单独的点，所以设置第1个参数为 gl.POINTS， 设置第2个参数为0，表示从第1个顶点（虽然只有1个顶点）开始画，第3个参数 count 为1，表示在这个简单的程序中仅绘制了1个点。*
 
@@ -346,7 +346,7 @@ gl.drawArrays(）是一个强大的函数，它可以用来绘制各种图形：
 
 一旦顶点着色器执行完后，片元着色器就会开始执行，调用main()函数，将颜色值（红色）赋给gl_FragColor。最后，一个红色的10像素大小的点就被绘制在了（0.0，0.0，0.0，1.0）处，也就是绘制区域的中心位置。
 
-![](https://qn.hushhw.cn/images/20171224163358200.png)
+![](https://photo.hushhw.cn/images/20171224163358200.png)
 
 ​         
 

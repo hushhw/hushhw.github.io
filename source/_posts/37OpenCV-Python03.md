@@ -57,7 +57,7 @@ cv2.imshow("Corner",corner)#显示读取的像素块
 
 显示结果为：
 
-![](https://qn.hushhw.cn/images/images_zijuchen.png)
+![](https://photo.hushhw.cn/images/images_zijuchen.png)
 
 
 
@@ -91,7 +91,7 @@ cv2.waitKey(0)
 
 显示结果一样：
 
-![](https://qn.hushhw.cn/images/images_xiangsu.png)
+![](https://photo.hushhw.cn/images/images_xiangsu.png)
 
 ​       
 

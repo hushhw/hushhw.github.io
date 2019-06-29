@@ -92,7 +92,7 @@ copyright: false
 
 此时，页面的基本样式已经完成，完成图如下：
 
-![](https://qn.hushhw.cn/images/Snipaste_2019-01-18_02-17-44.png)
+![](https://photo.hushhw.cn/images/Snipaste_2019-01-18_02-17-44.png)
 
 此时若点击图片试图查看大图，浏览器将会报错
 

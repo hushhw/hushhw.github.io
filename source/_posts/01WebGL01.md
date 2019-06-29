@@ -52,7 +52,7 @@ OpenGL 最初由 SGI 开发，并在 1992 年发布为开源标准。多年以�
 
 下图显示了OpenGL、OpenGL ES 1.1/2.0/3.0和WebGL的关系。 
 
-![](https://qn.hushhw.cn/images/Snipaste_2019-03-05_09-37-29.png)
+![](https://photo.hushhw.cn/images/Snipaste_2019-03-05_09-37-29.png)
 
 
 
@@ -64,7 +64,7 @@ OpenGL 最初由 SGI 开发，并在 1992 年发布为开源标准。多年以�
 
 下图显示了WebGL程序的结构：
 
-![](https://qn.hushhw.cn/images/Snipaste_2019-03-05_09-37-53.png)
+![](https://photo.hushhw.cn/images/Snipaste_2019-03-05_09-37-53.png)
 
 由于 GLSL ES 通常是以字符串的形式在 JavaScript 中编写的，所以虽然 WebGL 网页更加复杂，但它仍然保持着与传统的动态网页相同的结构：只用到HTML文件和JavaScript文件。
 

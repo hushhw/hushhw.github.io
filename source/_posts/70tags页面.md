@@ -114,7 +114,7 @@ block content
 
 验收成果：
 
-![](https://qn.hushhw.cn/images/Snipaste_2019-03-05_15-10-51.png)
+![](https://photo.hushhw.cn/images/Snipaste_2019-03-05_15-10-51.png)
 
 ​       
 

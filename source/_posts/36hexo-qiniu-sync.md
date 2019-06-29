@@ -23,7 +23,7 @@ tocnumber: true
 
 ​       
 
-![](https://qn.hushhw.cn/images/qiniu.png alt:图片来源网络)
+![](https://photo.hushhw.cn/images/qiniu.png alt:图片来源网络)
 
 ​        
 
@@ -82,7 +82,7 @@ tocnumber: true
 
    - `access_key`、`secret_key`：上传密钥AK和SK，可以在七牛个人空间找到。
 
-     ![](https://qn.hushhw.cn/images/qiniu_ak_sk.png)
+     ![](https://photo.hushhw.cn/images/qiniu_ak_sk.png)
 
    - `urlPrefix` : 七牛空间地址的前缀。上面的示例是复制的github文档写的，还是使用的二级域名表示的，但现在七牛已经取消了二级域名，而需要自己建的空间中找分配的七牛测试域名然后填写在这里，也可以查看一个已上传的文件外链地址，确认前缀无误。例如我的是`http://p86wg7kc2.bkt.clouddn.com`。
 
@@ -122,18 +122,18 @@ tocnumber: true
 在文中需要放图片的地方插入：
 
 ```
-![](https://qn.hushhw.cn/images/ImgFile)
+![](https://photo.hushhw.cn/images/ImgFile)
 ```
 
 其中`ImgFile`为放在本地images文件下的图片名称，例如我这里插入：
 
 ```
-![](https://qn.hushhw.cn/images/xiaoanphoto.jpg)
+![](https://photo.hushhw.cn/images/xiaoanphoto.jpg)
 ```
 
 就会显示图片：
 
-![](https://qn.hushhw.cn/images/xiaoanphoto.jpg)
+![](https://photo.hushhw.cn/images/xiaoanphoto.jpg)
 
 这里生成的图片外链被自动转为 `urlPrefix` + `/` + `image.folder` + `/` + `ImgFile` ，这里我插入的这张图片的链接为：`http://p86wg7kc2.bkt.clouddn.com/images/xiaoanphoto.jpg`。
 
@@ -142,7 +142,7 @@ tocnumber: true
 高级用法的通用模板：
 
 ```
-![](https://qn.hushhw.cn/images/imageFile attr1:value1 attr2:value2 'attr3:value31 value32 value3n' [extend:... | normal:yes])
+![](https://photo.hushhw.cn/images/imageFile attr1:value1 attr2:value2 'attr3:value31 value32 value3n' [extend:... | normal:yes])
 ```
 
 - `[]` 表示可选项，按需添加，也可以不写
@@ -153,7 +153,7 @@ tocnumber: true
 比如下面这个例子：
 
 ```
-![](https://qn.hushhw.cn/images/xiaoanphoto.jpg title:图片来源@小安 alt:@小安 'class:class1 class2' extend:?imageView2/2/w/600)
+![](https://photo.hushhw.cn/images/xiaoanphoto.jpg title:图片来源@小安 alt:@小安 'class:class1 class2' extend:?imageView2/2/w/600)
 ```
 
 将被渲染成：

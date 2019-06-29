@@ -25,7 +25,7 @@ tocnumber: true
 
 ​        
 
-![](https://qn.hushhw.cn/images/xiaoanphoto.jpg title:图片来自微博@小安)
+![](https://photo.hushhw.cn/images/xiaoanphoto.jpg title:图片来自微博@小安)
 
 ​          
 

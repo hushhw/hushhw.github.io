@@ -23,7 +23,7 @@ tocnumber: true
 
 ​            
 
-![](https://qn.hushhw.cn/images/Snipaste_2019-01-14_13-08-00.png)
+![](https://photo.hushhw.cn/images/Snipaste_2019-01-14_13-08-00.png)
 
 
 
@@ -106,11 +106,11 @@ $ npm install hexo-generator-index-pin-top --save
 
 搜索定位到`post-meta`类位置添加置顶标签，例如我使用的主题配置：
 
-![](https://qn.hushhw.cn/images/Snipaste_2019-01-14_21-11-50.png)
+![](https://photo.hushhw.cn/images/Snipaste_2019-01-14_21-11-50.png)
 
 最终效果
 
-![](https://qn.hushhw.cn/images/Snipaste_2019-01-14_21-12-58.png)
+![](https://photo.hushhw.cn/images/Snipaste_2019-01-14_21-12-58.png)
 
 ​         
 

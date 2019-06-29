@@ -9,7 +9,7 @@ beian:
 
 upyun:
     enable: true
-    icon: https://qn.hushhw.cn/images/又拍云120180930001119303.png
+    icon: https://photo.hushhw.cn/images/又拍云120180930001119303.png
     url: https://www.upyun.com/index.html
 
 recommended_posts:

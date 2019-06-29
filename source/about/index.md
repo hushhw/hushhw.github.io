@@ -17,7 +17,7 @@ type: "about"
 *Now in the morning I sleep alone*
 *Sweep the streets I used to own*
 
-{% dplayer "url=https://qn.hushhw.cn/3853206-1-32_201913020182.mp4 " "pic=https://qn.hushhw.cn/images/Snipaste_2019-01-30_19-59-17.png" "loop=yes" "theme=#FADFA3" "autoplay=false" "token=tokendemo" %}
+{% dplayer "url=https://photo.hushhw.cn/3853206-1-32_201913020182.mp4 " "pic=https://photo.hushhw.cn/images/Snipaste_2019-01-30_19-59-17.png" "loop=yes" "theme=#FADFA3" "autoplay=false" "token=tokendemo" %}
 
 ​         
 
