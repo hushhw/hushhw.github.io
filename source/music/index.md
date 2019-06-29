@@ -14,5 +14,5 @@ categories:
 
 ​         
 
-* 『[多少无船的渡口，多少寂寞的河流](https://hushhw.cn/posts/essay/49a78271.html)』 ——《渡口》姚东林
+* 『[多少无船的渡口，多少寂寞的河流](https://wiki.hushhw.cn/posts/essay/49a78271.html)』 ——《渡口》姚东林
 

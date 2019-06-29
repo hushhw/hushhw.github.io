@@ -9,5 +9,5 @@ Allow: /photos/
 Allow: /poems/
 Allow: /movies/
 
-Sitemap: https://hushhw.cn/sitemap.xml
-Sitemap: https://hushhw.cn/baidusitemap.xml
+Sitemap: https://wiki.hushhw.cn/sitemap.xml
+Sitemap: https://wiki.hushhw.cn/baidusitemap.xml
