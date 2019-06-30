@@ -128,18 +128,21 @@ menu:
   - page: tech
     directory: tech/
     icon: fa-battery-full
-  - page: eassy
-    directory: life/
-    icon: fa-file-text
-  - page: photo
-    directory: photos/
-    icon: fa-photo
-  - page: book
-    directory: books/
-    icon: fa-book
+  #- page: eassy
+  #  directory: life/
+  #  icon: fa-file-text
+  #- page: photo
+  #  directory: photos/
+  #  icon: fa-photo
+  #- page: book
+  #  directory: books/
+  #  icon: fa-book
   - page: archive
     directory: archives/
     icon: fa-archive
+  - page: tag
+    directory: tags/
+    icon: fa-tag
   #- page: music
   #  directory: music/
   #  icon: fa-music
@@ -149,9 +152,9 @@ menu:
   - page: about
     directory: about/
     icon: fa-user
-  #- page: rss
-  # directory: atom.xml
-  #  icon: fa-rss
+  - page: rss
+    directory: atom.xml
+    icon: fa-rss
 
 widgets: ## Six widgets in sidebar provided: about, search, category, tag, recent_posts, rencent_comments and links.
   - about
