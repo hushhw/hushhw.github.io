@@ -140,7 +140,7 @@ menu:
   - page: archive
     directory: archives/
     icon: fa-archive
-  - page: tag
+  - page: tags
     directory: tags/
     icon: fa-tag
   #- page: music

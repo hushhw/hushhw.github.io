@@ -1,13 +1,13 @@
 
 # Site
-title: Hushhw × Wiki
+title: hushhw × Wiki
 subtitle:
-description: Hushhw × Wiki
+description: hushhw × Wiki
 author: hushhw
 language: zh-CN
   # zh-Hans  next主题语言包
 timezone:
-keywords: hushhw.cn, hushhw, HUSHHW.CN, Hushhw × Wiki
+keywords: hushhw.cn, hushhw, HUSHHW.CN, hushhw × Wiki
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
