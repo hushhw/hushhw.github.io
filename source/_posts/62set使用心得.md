@@ -8,7 +8,7 @@ image: false
 tags:
   - STL
   - C/C++
-categories: learn
+categories: C++
 description: "std::set 是一种包含已排序对象的关联容器，含有 Key 类型对象的已排序集。用比较函数 Compare进行排序。搜索、移除和插入拥有对数复杂度，set通常以红黑树实现。"
 abbrlink: f5dd410d
 date: 2019-02-25 15:08:05
@@ -19,9 +19,9 @@ tocnumber: true
 
 STL总结系列：
 
-- 『[优先队列（priority_queue）用法与心得](https://hushhw.cn/posts/learn/179.html)』
-- 『[Map(STL)用法与心得](https://hushhw.cn/posts/learn/38f87fc0.html)』
-- 『[Vector(STL)用法与心得](https://hushhw.cn/posts/learn/d20d34ce.html)』
+- 『[优先队列（priority_queue）用法与心得](https://wiki.hushhw.cn/posts/179.html)』
+- 『[Map(STL)用法与心得](https://wiki.hushhw.cn/posts/38f87fc0.html)』
+- 『[Vector(STL)用法与心得](https://wiki.hushhw.cn/posts/d20d34ce.html)』
 
 ​         
 

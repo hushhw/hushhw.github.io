@@ -7,7 +7,8 @@ date: 2018-05-16 16:25:58
 tags:
   - 算法笔记
   - 匈牙利算法
-categories: learn
+categories:
+  - Algorithm
 toc: true
 ---
 

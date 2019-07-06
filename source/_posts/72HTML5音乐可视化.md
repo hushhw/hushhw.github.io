@@ -11,13 +11,15 @@ date: 2019-03-08 09:43:59
 tags:
   - HTML5
   - 音乐可视化
-categories: learn
+categories:
+  - Web
+  - HTML5
 description: '在 AudioContext 音频上下文中，把音频文件转成 buffer 格式存为 AudioBufferSourceNode ，前面是直接链接给 GainNode 控制音量，现在我们要分析音乐的一些特性，所以要改成先链接给 AnalyserNode ，最后到达 destination 输出音乐。这里形成了一个音频通道，每个模块通过 connect 方法链接并传送音频。<br>本文就从 AnalyserNode 开始介绍。'
 ---
 
 
 
-前面有认真介绍 [Web Audio Api](https://hushhw.cn/posts/learn/908137cb.html) 的相关知识，本文得先回顾前面的脉络结构后再往后走。
+前面有认真介绍 [Web Audio Api](https://wiki.hushhw.cn/posts/908137cb.html) 的相关知识，本文得先回顾前面的脉络结构后再往后走。
 
 开局一张图，再次祭出老师的 PPT：
 

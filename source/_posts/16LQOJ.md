@@ -8,7 +8,8 @@ tags:
   - OJ
   - 蓝桥杯
   - 刷题
-categories: OJ
+categories: 
+  - OJ
 ---
 
  > LQOJ

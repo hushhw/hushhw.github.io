@@ -4,7 +4,8 @@ abbrlink: 3abb9ed2
 date: 2017-12-21 15:06:40
 tags:
   - WebGL
-categories: learn
+categories:
+  - WebGL
 comments: true
 mathjax: true
 toc: true

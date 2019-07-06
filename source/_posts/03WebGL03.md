@@ -4,7 +4,8 @@ abbrlink: 8116aeda
 date: 2017-12-23 18:33:59
 tags:
   - WebGL
-categories: learn
+categories:
+  - WebGL
 comments: true
 mathjax: true
 toc: true

@@ -8,7 +8,8 @@ tags:
   - 计算机视觉
   - OpenCV
   - Python
-categories: learn
+categories: 
+  - OpenCV
 toc: true
 tocnumber: true
 ---

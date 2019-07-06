@@ -7,7 +7,7 @@ tocnumber: true
 tags:
   - STL
   - C/C++
-categories: learn
+categories: C++
 abbrlink: 38f87fc0
 date: 2019-01-29 14:03:22
 image: 'hqdefault.jpg'
@@ -18,7 +18,7 @@ description: "Map是STL的一个关联容器，它提供一对一（其中第一
 
 STL总结系列：
 
-* 『[优先队列（priority_queue）用法与心得](https://hushhw.cn/posts/learn/179.html)』
+* 『[优先队列（priority_queue）用法与心得](https://wiki.hushhw.cn/posts/179.html)』
 
 
 ​         

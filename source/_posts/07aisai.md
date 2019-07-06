@@ -7,7 +7,8 @@ date: 2018-02-03 16:19:44
 tags:
   - 算法笔记
   - 埃筛
-categories: learn
+categories:
+  - Algorithm
 toc: true
 tocnumber: true
 ---

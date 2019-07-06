@@ -3,7 +3,8 @@ title: 如何理解 KMP
 tags:
   - 算法笔记
   - KMP
-categories: learn
+categories:
+  - Algorithm
 abbrlink: 40823
 date: 2018-05-16 21:53:44
 toc: true

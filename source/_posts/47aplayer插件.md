@@ -6,7 +6,8 @@ toc: true
 tocnumber: false
 tags:
   - hexo
-categories: tool
+categories: 
+  - 建站
 abbrlink: a84d1ef1
 date: 2019-01-22 21:51:32
 music: true
@@ -117,7 +118,7 @@ aplayer:
 
 ### 4. 遇到的坑
 
-我原先是用的主题是`yilia`，非常喜欢它的相册功能，于是换到现在的主题后把该功能移植了过来，如果有小伙伴也想要实现可以参看我的这篇文章：『[Hexo主题maupassant博客搭建相册](https://hushhw.cn/posts/tool/6ff333ed.html)』。
+我原先是用的主题是`yilia`，非常喜欢它的相册功能，于是换到现在的主题后把该功能移植了过来，如果有小伙伴也想要实现可以参看我的这篇文章：『[Hexo主题maupassant博客搭建相册](https://wiki.hushhw.cn/posts/6ff333ed.html)』。
 
 当把[hexo-tag-aplayer](https://github.com/MoePlayer/hexo-tag-aplayer) 配置好并且用几个页面测试后，发现相册功能失效了，查找问题后发现在`ins.js`中自动加了下面这些代码导致的失效。
 

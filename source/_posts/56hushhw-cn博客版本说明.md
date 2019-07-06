@@ -6,7 +6,7 @@ tocnumber: true
 top: true
 tags:
   - hexo
-categories: tool
+categories: 建站
 abbrlink: de9b6457
 date: 2019-01-28 22:48:45
 description: 我一直对学习保持着一种仪式感，只有做好了规划，建设好一砖一瓦，才能够保持更积极的态度去面对困难，希望我能够永远保持着这一份仪式感去对待未知的事物，充满好奇，充满感激。

@@ -7,7 +7,8 @@ abbrlink: f2c9bfb4
 date: 2019-01-18 20:17:17
 tags:
   - hexo
-categories: tool
+categories: 
+  - 建站
 ---
 
 推荐阅读是通过插件 [hexo-recommended-posts](https://github.com/huiwang/hexo-recommended-posts) 来实现的, 它不仅可以推荐你自己的博客, 还可以推荐别人的相关博客. 如果有比较多人使用这个插件的话, 不仅能帮读者快速找到感兴趣的内容, 同时也能增加自己博客的流量。

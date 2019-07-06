@@ -9,7 +9,9 @@ image: false
 tags:
   - express
   - node.js
-categories: learn
+categories: 
+  - Web
+  - 框架
 abbrlink: 1f901b6d
 date: 2019-03-12 16:13:07
 description: '本着所学必有所记的原则，学习一样新东西之后必须要做好笔记，即使现在时间似乎有点赶，但还是记录下来我的学习笔记，不然过不了多久就忘了。<br>Express 是基于 Node.js 平台，快速、开放、极简的 web 开发框架，它提供一系列强大的特性，帮助你创建各种 Web 和移动设备应用。'

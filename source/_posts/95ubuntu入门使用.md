@@ -9,7 +9,9 @@ image: 'Snipaste_2019-04-25_15-04-07.png'
 tags:
   - Ubuntu
   - Linux
-categories: tool
+categories: 
+  - 环境配置
+  - Linux
 abbrlink: 6fbc30d9
 date: 2019-04-25 14:54:43
 description: '大三下学期在上的「操作系统」课程的时候就想装个虚拟机来学习一下 Linux，时到现在有空折腾了才开始做这件事情，但总算是开始做了。折腾在虚拟机中安装 Ubuntu 操作系统花了我一天时间，写下这篇文章来记录这个过程，留作以后再学习排坑。'

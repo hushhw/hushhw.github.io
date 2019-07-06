@@ -7,7 +7,8 @@ date: 2018-05-05 20:12:35
 tags:
   - 算法笔记
   - 图论
-categories: learn
+categories: 
+  - Algorithm
 toc: true
 tocnumber: true
 ---

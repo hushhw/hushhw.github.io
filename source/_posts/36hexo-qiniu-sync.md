@@ -4,7 +4,8 @@ tags:
   - 工具
   - hexo
   - 七牛云
-categories: tool
+categories: 
+  - 建站
 abbrlink: 42084
 date: 2018-07-21 19:20:38
 toc: true

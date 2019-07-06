@@ -3,7 +3,7 @@ title: Unity导出导出 Android 工程、应用
 tags:
   - Unity
 categories:
-  - learn
+  - Unity
 abbrlink: 36070
 date: 2018-06-21 08:30:12
 toc: true

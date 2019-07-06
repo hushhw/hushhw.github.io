@@ -8,7 +8,7 @@ music: false
 image: false
 tags:
   - C/C++
-categories: learn
+categories: C++
 description: String是以char作为模板参数的模板类实例，把字符串的内存管理责任由string负责而不是由编程者负责，大大减轻了C语言风格的字符串的麻烦
 abbrlink: f58b376e
 date: 2019-02-26 09:14:43

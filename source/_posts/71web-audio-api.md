@@ -11,7 +11,9 @@ date: 2019-03-07 15:01:34
 tags:
   - HTML5
   - 音乐可视化
-categories: learn
+categories: 
+  - Web
+  - HTML5
 description: '因为毕业设计要做音乐可视化的相关项目，所以必须要弄清楚 HTML 5 的音频 API —— Web Audio。
 
 初看官方文档时发现音频处理模块太多了，只能一边用一边学，所以先去跟着慕课网上的课程『HTML5音乐可视化 』走，慢慢研究这里面的架构。'

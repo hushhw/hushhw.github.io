@@ -6,7 +6,8 @@ abbrlink: 28187ef7
 date: 2019-01-13 21:42:00
 tags:
   - hexo
-categories: tool
+categories: 
+  - 建站
 toc: true
 tocnumber: true
 ---
@@ -115,7 +116,7 @@ $ npm install hexo-generator-index-pin-top --save
 ​         
 
 ### Hexo主题maupassant博客搭建相册
-[Hexo主题maupassant博客搭建相册](https://hushhw.cn/posts/tool/6ff333ed.html)
+[Hexo主题maupassant博客搭建相册](https://wiki.hushhw.cn/posts/6ff333ed.html)
 
 ​        
 
@@ -158,12 +159,12 @@ tag_generator:
 
 ### maupassant主题添加推荐阅读功能
 
-[maupassant主题添加推荐阅读功能](https://hushhw.cn/posts/tool/f2c9bfb4.html)
+[maupassant主题添加推荐阅读功能](https://wiki.hushhw.cn/posts/f2c9bfb4.html)
 
 ​            
 
 ### maupassant主题目录优化解决方案
 
-[maupassant主题目录优化解决方案](https://hushhw.cn/posts/tool/5dd904ed.html)
+[maupassant主题目录优化解决方案](https://wiki.hushhw.cn/posts/5dd904ed.html)
 
 ​          

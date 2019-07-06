@@ -7,7 +7,8 @@ date: 2018-05-18 14:28:22
 tags:
   - 算法笔记
   - 卡特兰数
-categories: learn
+categories: 
+  - Algorithm
 toc: true
 tocnumber: true
 ---

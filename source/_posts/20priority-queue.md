@@ -7,7 +7,8 @@ tocnumber: true
 tags:
   - STL
   - C/C++
-categories: learn
+categories: 
+  - C++
 abbrlink: 179
 date: 2018-04-15 10:31:54
 ---

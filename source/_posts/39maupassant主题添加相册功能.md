@@ -6,7 +6,8 @@ toc: true
 tocnumber: true
 tags:
   - hexo
-categories: tool
+categories: 
+  - 建站
 abbrlink: 6ff333ed
 date: 2019-01-18 01:20:14
 ---

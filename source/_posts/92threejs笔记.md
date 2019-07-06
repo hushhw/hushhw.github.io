@@ -8,7 +8,9 @@ music: false
 image: false
 tags:
   - ThreeJS
-categories: learn
+categories: 
+  - 笔记
+  - WebGL
 abbrlink: ae8c05d6
 date: 2019-04-03 15:09:57
 description: '关于一些函数的参数用一次忘一次，参考系这些东西每次都到用的时候想半天，所以还是写一篇笔记来记录，方便查阅，不至于每次都去 Google 浪费时间。'

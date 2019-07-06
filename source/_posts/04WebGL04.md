@@ -6,7 +6,8 @@ abbrlink: 15b73260
 date: 2017-12-24 18:33:59
 tags:
   - WebGL
-categories: learn
+categories:
+  - WebGL
 toc: true
 description: '之前，我们学习了如何建立一个WebGL程序，如何使用一些简单的WebGL相关函数。这一节，我们进一步在一个示例程序中绘制一个最简单的图形：一个点以及弄懂一个重要的概念：着色器。'
 ---

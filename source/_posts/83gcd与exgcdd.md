@@ -9,7 +9,7 @@ image: false
 tags:
   - gcd
   - 算法笔记
-categories: learn
+categories: Algorithm
 abbrlink: cd2c8225
 date: 2019-03-17 10:45:36
 description: '正整数 a 与 b 的最大公约数指的是 a 与 b 的所有公约数中最大的那个公约数，如 4 和 6 的最大公约数是 2。一般用 gcd(a,b) 来表示 a 和 b 的最大公约数，而求解最大公约数常用的欧几里得算法（即辗转相除法）。'

@@ -6,7 +6,8 @@ abbrlink: 10c8125f
 date: 2018-05-18 14:56:04
 tags:
   - markdown
-categories: learn
+categories: 
+  - 建站
 toc: true
 tocnumber: true
 ---

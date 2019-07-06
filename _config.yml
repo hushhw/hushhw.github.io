@@ -15,7 +15,7 @@ url: https://wiki.hushhw.cn
 root: /
 #permalink: :year/:month/:day/:title/
 permalink_defaults: 
-permalink: posts/:category/:abbrlink.html
+permalink: posts/:abbrlink.html
 
 # Directory
 source_dir: source

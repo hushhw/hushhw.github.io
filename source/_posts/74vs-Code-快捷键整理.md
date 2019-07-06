@@ -9,7 +9,8 @@ image: false
 tags:
   - 工具
   - vs code
-categories: tool
+categories: 
+  - 日常技巧
 abbrlink: 5181edb9
 date: 2019-03-12 10:16:51
 description: '使用 vs code 将近一年时间了，开始搭本地 C++ 环境真的是折磨，不过弄好之后就真香了，写这篇文章主要是记录以下几点：<br> 1. vs code 常用快捷键<br>2. 常用的插件<br>3. 使用心得'

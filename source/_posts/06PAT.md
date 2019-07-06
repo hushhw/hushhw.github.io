@@ -8,7 +8,8 @@ tags:
   - OJ
   - PAT
   - 刷题
-categories: OJ
+categories: 
+  - OJ
 ---
 
 > **PAT**

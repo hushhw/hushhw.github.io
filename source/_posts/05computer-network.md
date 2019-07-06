@@ -7,7 +7,9 @@ date: 2018-01-05 01:35:29
 tags:
   - 计算机网络
   - 复习笔记
-categories: learn
+categories:
+  - 笔记
+  - 计算机网络
 toc: true
 tocnumber: true
 ---
