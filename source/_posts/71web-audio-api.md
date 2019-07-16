@@ -12,6 +12,7 @@ tags:
   - HTML5
   - 音乐可视化
 categories: 
+  - 编程开发
   - Web
   - HTML5
 description: '因为毕业设计要做音乐可视化的相关项目，所以必须要弄清楚 HTML 5 的音频 API —— Web Audio。

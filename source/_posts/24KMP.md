@@ -4,7 +4,8 @@ tags:
   - 算法笔记
   - KMP
 categories:
-  - Algorithm
+  - 编程开发
+  - 算法学习
 abbrlink: 40823
 date: 2018-05-16 21:53:44
 toc: true

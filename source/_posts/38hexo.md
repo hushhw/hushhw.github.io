@@ -7,7 +7,8 @@ date: 2019-01-13 21:42:00
 tags:
   - hexo
 categories: 
-  - 建站
+  - 建站笔记
+  - hexo
 toc: true
 tocnumber: true
 ---
@@ -41,7 +42,7 @@ tocnumber: true
 3. [有哪些好看的Hexo主题](https://www.zhihu.com/question/24422335)
 
 
- 
+
 
 ## 提高篇
 

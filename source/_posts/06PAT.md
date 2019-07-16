@@ -9,7 +9,8 @@ tags:
   - PAT
   - 刷题
 categories: 
-  - OJ
+  - 编程开发
+  - OJ刷题
 ---
 
 > **PAT**

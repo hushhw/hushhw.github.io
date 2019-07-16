@@ -5,6 +5,7 @@ tags:
   - OpenCV
   - tensorflow
 categories:
+  - 编程开发
   - 环境配置
 abbrlink: 23537
 date: 2018-07-16 08:44:33

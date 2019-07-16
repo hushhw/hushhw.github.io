@@ -5,7 +5,8 @@ tags:
   - hexo
   - 七牛云
 categories: 
-  - 建站
+  - 建站笔记
+  - hexo
 abbrlink: 42084
 date: 2018-07-21 19:20:38
 toc: true

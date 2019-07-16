@@ -7,7 +7,7 @@ date: 2018-05-18 14:56:04
 tags:
   - markdown
 categories: 
-  - 建站
+  - 建站笔记
 toc: true
 tocnumber: true
 ---

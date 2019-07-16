@@ -11,7 +11,9 @@ tags:
   - 面试总结
 abbrlink: 39a780a
 date: 2019-03-13 10:22:04
-categories: C++
+categories: 
+  - 编程开发
+  - C++
 ---
 
 

@@ -7,7 +7,9 @@ tocnumber: true
 tags:
   - STL
   - C/C++
-categories: C++
+categories: 
+  - 编程开发
+  - C++
 abbrlink: 38f87fc0
 date: 2019-01-29 14:03:22
 image: 'hqdefault.jpg'

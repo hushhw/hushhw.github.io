@@ -160,6 +160,7 @@ widgets: ## Six widgets in sidebar provided: about, search, category, tag, recen
   - about
   - search
   - tag
+  - category
   - recent_posts
   - archivelist
   - links

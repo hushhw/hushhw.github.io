@@ -4,7 +4,8 @@ tags:
   - 算法笔记
   - 01分数规划
 categories: 
-  - Algorithm
+  - 编程开发
+  - OJ刷题
 abbrlink: 16895
 date: 2018-04-07 16:51:42
 ---

@@ -9,7 +9,9 @@ date: 2019-01-29 14:03:34
 tags:
   - STL
   - C/C++
-categories: C++
+categories: 
+  - 编程开发
+  - C++
 description: "Vector 是C++标准程序库中的一个类，可视为会自动扩展容量的数组，以循序(Sequential)的方式维护变量集合。vector的特色有支持随机存取，在集合尾端增删元素很快，但是在集合中间增删元素比较费时。vector是C++标准程序库中的众多容器（container）之一。 vector以模板(泛型)方式实现，可以保存任意类型的变量，包括用户自定义的数据类型，例如：它可以是放置整数（int）类型的 vector、也可以是放置字符串（string）类型的 vector、或者放置用户自定类别（user-defined class）的 vector。"
 ---
 

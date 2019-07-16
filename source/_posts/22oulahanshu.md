@@ -8,7 +8,8 @@ tags:
   - 算法笔记
   - 图论
 categories: 
-  - Algorithm
+  - 编程开发
+  - 算法学习
 toc: true
 tocnumber: true
 ---

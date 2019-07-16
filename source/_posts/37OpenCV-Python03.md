@@ -9,6 +9,7 @@ tags:
   - OpenCV
   - Python
 categories: 
+  - 编程开发
   - OpenCV
 toc: true
 tocnumber: true

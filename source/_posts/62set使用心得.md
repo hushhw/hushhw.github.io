@@ -8,7 +8,9 @@ image: false
 tags:
   - STL
   - C/C++
-categories: C++
+categories:
+  - 编程开发
+  - C++
 description: "std::set 是一种包含已排序对象的关联容器，含有 Key 类型对象的已排序集。用比较函数 Compare进行排序。搜索、移除和插入拥有对数复杂度，set通常以红黑树实现。"
 abbrlink: f5dd410d
 date: 2019-02-25 15:08:05

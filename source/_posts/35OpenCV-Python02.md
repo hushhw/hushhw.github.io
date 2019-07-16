@@ -5,6 +5,7 @@ tags:
   - OpenCV
   - Python
 categories:
+  - 编程开发
   - OpenCV
 abbrlink: 20751
 date: 2018-07-20 22:46:32

@@ -5,6 +5,7 @@ date: 2017-12-23 18:33:59
 tags:
   - WebGL
 categories:
+  - 笔记整理
   - WebGL
 comments: true
 mathjax: true

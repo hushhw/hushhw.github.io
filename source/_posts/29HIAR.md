@@ -8,6 +8,7 @@ tags:
   - Unity
   - AR
 categories: 
+  - 编程开发
   - Unity
 toc: true
 tocnumber: true
@@ -74,7 +75,7 @@ HiAR SDK for Unity 开发文档：http://www.hiar.com.cn/doc-v1/sdk-unity/overvi
     - 创建 HiARCamera：新建的 Unity 工程中，默认会创建一个 Main Camera（如下图），请先将其删除。然后将 `Assets/HiAR-Unity/Prefabs` 目录下的 HiARCamera 拖至 Hierarchy 窗口中。在 Hierarchy 窗口中选中 HiARCamera，在其对应的 Inspector 窗口中找到 AppKey 和 Secret 选项，并填写信息。
     - 创建 ImageTarget并设置识别图片：将 `Assets/HiAR-Unity/Prefabs` 目录下的 ImageTarget 拖至 Hierarchy 窗口中。在 Hierarchy 窗口中选中 ImageTarget，在其对应的 Inspector 窗口中找到 HiAR Target Mono Behaviour (Script)，在 Data Set 选项中选择 sample。此时，编辑窗口中将显示一张”苹果“的图片，这是刚刚设置的识别图片。![img](https://photo.hushhw.cn/TIM%E6%88%AA%E5%9B%BE20180620143856.png)sample 是 SDK 中内置的本地识别包，包含两张识别图片，您可以在 Image Target 选项中进行选择。如果您希望添加自己想识别的图片，可以参考前面的导入本地识别包。
 
-  ​
+  
 
 
   - AR 制作与运行：在 Hierarchy 窗口中选中 ImageTarget，右击并在弹出的菜单中选择 3D Object > Cube，识别图片上将显示一个立方体模型。这个模型就是在识别图片上叠加的 AR 内容，您可以适当调整模型的大小以便查看。上述操作完成后，需要在 Unity 环境下运行以查看效果。在运行之前，请确保您的电脑已安装了摄像头。点击运行按钮，摄像头将启动并采集画面；将摄像头对准”苹果“图片，识别成功后将在图片上叠加显示一个立方体模型。

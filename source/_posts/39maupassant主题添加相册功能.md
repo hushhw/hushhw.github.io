@@ -7,7 +7,8 @@ tocnumber: true
 tags:
   - hexo
 categories: 
-  - 建站
+  - 建站笔记
+  - hexo
 abbrlink: 6ff333ed
 date: 2019-01-18 01:20:14
 ---

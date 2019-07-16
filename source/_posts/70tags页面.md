@@ -8,7 +8,9 @@ music: false
 image: false
 tags:
   - hexo
-categories: 建站
+categories: 
+  - 建站笔记
+  - hexo
 description: >-
   日常折腾博客的我又上线了，这次改造的是『Tags页面』，之前使用next主题时默认是有tags页面的，但是现在用的主题没有，前段时间做右侧about模块时要点击标签跳转到/tags页面就做了个很简陋的tagcloud，今天花时间优化一下。
 abbrlink: 5e14d0e

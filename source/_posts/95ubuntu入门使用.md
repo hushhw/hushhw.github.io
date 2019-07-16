@@ -10,6 +10,7 @@ tags:
   - Ubuntu
   - Linux
 categories: 
+  - 编程开发
   - 环境配置
   - Linux
 abbrlink: 6fbc30d9

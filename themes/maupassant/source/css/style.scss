@@ -172,7 +172,23 @@ div {
             }
         }
         .recentposts, .archivelist {
-            padding: 0 0 0 1.3em;
+            padding: 0 0 0 1.0em;
+        }
+
+        .categorieslist {
+            .category-list-item:before{
+                font-family: "FontAwesome";
+                content: "\f196";
+                padding-right: 0.3em;
+            }
+            .category-list-child{
+                padding: 0 0 0 1.0em;
+                .category-list-item:before {
+                    font-family: "FontAwesome";
+                    content: "\f105";
+                    padding-right: 0.3em;
+              }
+            }
         }
         ul {
             list-style: none;

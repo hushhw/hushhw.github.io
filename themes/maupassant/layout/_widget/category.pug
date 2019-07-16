@@ -1,4 +1,5 @@
 .widget
   .widget-title
-    i(class='fa fa-folder')= '  ' + __('categories')
-  != list_categories({show_count: theme.show_category_count})
+    h5 CATEGORY
+  .categorieslist
+    != list_categories({show_count: theme.show_category_count, depth:0})

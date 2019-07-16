@@ -3,6 +3,7 @@ title: Android-SDK下载安装及配置
 tags:
   - Android
 categories:
+  - 编程开发
   - 环境配置
 abbrlink: 43678
 date: 2018-06-29 10:56:18

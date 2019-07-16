@@ -7,7 +7,8 @@ tocnumber: false
 tags:
   - hexo
 categories: 
-  - 建站
+  - 建站笔记
+  - hexo
 abbrlink: a84d1ef1
 date: 2019-01-22 21:51:32
 music: true

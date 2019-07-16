@@ -9,7 +9,7 @@ image: false
 tags:
   - ThreeJS
 categories: 
-  - 笔记
+  - 笔记整理
   - WebGL
 abbrlink: ae8c05d6
 date: 2019-04-03 15:09:57
