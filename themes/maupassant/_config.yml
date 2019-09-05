@@ -181,7 +181,7 @@ timeline:
   - num: 4
     word: More
 
-featuredsize: 1
+featuredsize: 3
 
 # Static files
 js: js

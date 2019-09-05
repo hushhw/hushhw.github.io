@@ -1,5 +1,6 @@
 .widget
   .widget-title
-    h5 CATEGORY
+    h5 CATEGORIES
   .categorieslist
-    != list_categories({show_count: theme.show_category_count, depth:0})
+    if(site.categories.length)
+      != list_categories({show_count: theme.show_category_count, depth:0})
