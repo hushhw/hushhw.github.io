@@ -6,14 +6,18 @@ toc: true
 tocnumber: true
 music: false
 image: false
-date: 2019-10-11 19:22:47
-tags: 
+tags:
   - TLS
   - Encrypted Traffic Analytics
 categories:
   - 笔记整理
   - 流量分析
-description: '为了解决 HTTP 存在的这些漏洞使数据传输更加安全，引入了另一种协议 HTTPS，HTTPS 协议是在 HTTP 协议的基础上加入了加密处理和认证机制和完整性保护，只是 HTTP 通信接口部分用 SSL/TLS 协议代替而已，简单讲就是 HTTP 的安全版，通常 HTTP 直接和 TCP 通信，当使用 SSL 时，就演变成先与 SSL 通信，再由 SSL 和 TCP 通信。'
+description: >-
+  为了解决 HTTP 存在的这些漏洞使数据传输更加安全，引入了另一种协议 HTTPS，HTTPS 协议是在 HTTP
+  协议的基础上加入了加密处理和认证机制和完整性保护，只是 HTTP 通信接口部分用 SSL/TLS 协议代替而已，简单讲就是 HTTP 的安全版，通常
+  HTTP 直接和 TCP 通信，当使用 SSL 时，就演变成先与 SSL 通信，再由 SSL 和 TCP 通信。
+abbrlink: d30e9e5e
+date: 2019-10-11 19:22:47
 ---
 
 

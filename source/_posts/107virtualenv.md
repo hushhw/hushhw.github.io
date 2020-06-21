@@ -6,15 +6,16 @@ toc: true
 tocnumber: false
 music: false
 image: false
-date: 2019-10-20 15:05:18
 tags:
   - Python
   - virtualenv
-categories: 
+categories:
   - 编程开发
   - 环境配置
   - Python
-description: '如果你希望在一个隔离的环境里工作（强烈推荐，这样你可以在库版本不冲突的情况下处理不同的项目），可以通过运行以下 pip 命令来安装 `virtualenv`'
+description: 如果你希望在一个隔离的环境里工作（强烈推荐，这样你可以在库版本不冲突的情况下处理不同的项目），可以通过运行以下 pip 命令来安装 `virtualenv`
+abbrlink: 6adc5586
+date: 2019-10-20 15:05:18
 ---
 
 

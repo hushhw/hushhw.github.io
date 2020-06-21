@@ -15,7 +15,7 @@ before_script:
   - echo 正在清空缓存静态文件...
   - hexo clean                      # 清除缓存静态文件
   - echo 正在生成静态文件...
-  - hexo clean && hexo recommend && hexo g && hexo douban
+  - hexo clean && hexo recommend && hexo g
   - cd ./public
   - ls -l
 
