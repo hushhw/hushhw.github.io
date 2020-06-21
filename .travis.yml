@@ -1,5 +1,5 @@
 language: node_js # 声明环境为node
-node_js: 10.16.3
+node_js: 10.16.3 # stable高版本hexo不支持，导致文件都为空
 
 # Travis-CI Caching
 cache:
