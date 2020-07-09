@@ -9,7 +9,10 @@ image: false
 tags:
   - iOS逆向
   - 移动安全
-categories: uncategorized
+  - iOS安全
+categories: 
+  - 移动安全
+  - iOS安全
 description: 本文总结iOS中应用逆向砸壳的一些方法，包括dumpdecrypted砸壳方法和支持版本更高的frida-ios-dump 砸壳方法。
 abbrlink: 125bcd75
 date: 2020-01-16 10:15:09
