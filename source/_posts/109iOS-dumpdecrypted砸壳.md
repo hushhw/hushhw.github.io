@@ -6,14 +6,13 @@ toc: true
 tocnumber: false
 music: false
 image: false
-date: 2020-01-16 10:15:09
 tags:
   - iOS逆向
   - 移动安全
-categories:
-  - 移动安全
-  - iOS
-description:'本文总结iOS中应用逆向砸壳的一些方法，包括dumpdecrypted砸壳方法和支持版本更高的frida-ios-dump 砸壳方法。'
+categories: uncategorized
+description: 本文总结iOS中应用逆向砸壳的一些方法，包括dumpdecrypted砸壳方法和支持版本更高的frida-ios-dump 砸壳方法。
+abbrlink: 125bcd75
+date: 2020-01-16 10:15:09
 ---
 
 
@@ -89,7 +88,7 @@ description:'本文总结iOS中应用逆向砸壳的一些方法，包括dumpdec
      ```
 
      
-   
+
 ## frida-ios-dump 砸壳使用总结
 
    该工具基于 frida 提供的强大功能通过注入 js 实现内存 dump 然后通过 python 自动拷贝到电脑生成 ipa 文件。
