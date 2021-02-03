@@ -1,0 +1,275 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>《编译程序设计原理与技术》笔记之自动机与正规表达式 | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">《编译程序设计原理与技术》笔记之自动机与正规表达式</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">《编译程序设计原理与技术》笔记之自动机与正规表达式</h1><div class="post-meta">2019-03-04<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 3,331</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 13</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/d6cbf625.html#vcomment"><span class="valine-comment-count" data-xid="/posts/d6cbf625.html"></span><span> 条评论</span></a><div class="post-content"><blockquote>
+<p>本笔记基于北京邮电大学出版的李文生编著的《编译程序设计原理与技术》整理</p>
+</blockquote>
+<p>​           </p>
+<p>有限自动机是具有离散输入与输出的系统的一种数学模型，系统可以处于有限个内部状态的任何一个之中，系统的当前状态概括了有关过去输入的信息，这些信息对于确定系统在以后的输入上的行为是必需的。</p>
+<p>有限自动机有『确定的』和『非确定的』两种，所谓『确定的有限自动机』是指在当前状态下，输入一个符合，有限自动机转换到唯一的下一个状态，称为后继状态；而『非确定的有限自动机』是指在当前状态下输入一个符号，可能有两种以上可选择的后继状态，并且非确定的有限自动机所对应的状态转换图可以有标记为 $\epsilon$ 的边。</p>
+<p>​         </p>
+<p>正则文法可以用状态转换图非形式的进行表示，这就表明正则文法所对应的语言（正则语言）可以用状态转换图来接受（识别）。有限自动机正是对状态转换图进一步形式化的结果。</p>
+<h3 id="1-状态转换图"><a href="#1-状态转换图" class="headerlink" title="1. 状态转换图"></a>1. 状态转换图</h3><p>状态转换图是一张有限的方向图，其中：</p>
+<ul>
+<li>结点代表状态用圆圈表示；</li>
+<li>状态之间用有向边连接；</li>
+<li>边上的标记表示在射出结点状态下可能出现的输入符号。</li>
+</ul>
+<p>一张状态转换图只含有有限个状态（即有限个结点），其中有一个称为初始状态，而可以有若干个（可以为0个）终结状态，终态用双圆圈表示。</p>
+<p>​          </p>
+<h3 id="2-确定的有限自动机（DFA）"><a href="#2-确定的有限自动机（DFA）" class="headerlink" title="2. 确定的有限自动机（DFA）"></a>2. 确定的有限自动机（DFA）</h3><p><strong>定义1.1</strong> 一个确定的有限自动机 <strong>M</strong> （记作：<strong>DFA M</strong>）是一个五元组：</p>
+<script type="math/tex; mode=display">
+M = ( \sum , Q , q_0 , F, \delta )</script><ul>
+<li>$\sum$ ：是一个字母表，他的每个元素称为一个输入符号</li>
+<li>$Q$ ：是一个有限的状态集合，每个元素称为一个状态</li>
+<li>$q_0 \in Q$ ：$q_0$ 称为初始状态</li>
+<li>$F \subseteq Q$ ： $F$ 称为终结状态集合</li>
+<li>$\delta$ ：是转换函数，是一个从 $Q \times \sum$ 到 $Q$ 的单值映射</li>
+</ul>
+<p>转换函数 $\delta(q, a) = q^, （其中 q, q^, \in Q ， a \in \sum）$ 表示当前状态为 $q$，输入符号为 $a$ 时，自动机将转换到下一个状态 $q^,$ ，$q^,$ 称为 $q$ 的一个后继。</p>
+<p>若 $Q = { q<em>1, q_2, \cdots , q_n }， \sum = { a_1, a_2, \cdots, a_n }$ ，则 $Q \times \sum = (\delta(q_i, q_j)</em>{n \times m})$ 是一个 n 行 m 列的矩阵，它被称为 DFA M 的状态转换矩阵，也称为转换表。</p>
+<p>对 $\sum$ 上的任何符号串 $\omega \in \sum^*$ ，若存在一条从初态结点到终态结点的路径，该路径上每条边的标记连接成的符号串恰好是 $\omega$ ，则称 $\omega$ 为 DFA M 所识别。DFA M 所能识别的符号串的全体记为 $L(M)$ ，称为 DFA M 所识别的语言。</p>
+<p>​           </p>
+<h3 id="3-非确定的有限自动机（NFA）"><a href="#3-非确定的有限自动机（NFA）" class="headerlink" title="3. 非确定的有限自动机（NFA）"></a>3. 非确定的有限自动机（NFA）</h3><p><strong>定义1.2</strong> 一个非确定的有限自动机 <strong>M</strong> （记作：<strong>NFA M</strong>）是一个五元组：</p>
+<script type="math/tex; mode=display">
+M = ( \sum , Q , q_0 , F, \delta )</script><ul>
+<li>$\sum$ ：是一个字母表，他的每个元素称为一个输入符号</li>
+<li>$Q$ ：是一个有限的状态集合，每个元素称为一个状态</li>
+<li>$q_0 \in Q$ ：$q_0$ 称为初始状态</li>
+<li>$F \subseteq Q$ ： $F$ 称为终结状态集合</li>
+<li>$\delta$ ：是一个从 $Q \times \sum$ 到 $Q$ 的子集的映射，即 $\delta \times Q \rightarrow 2^Q$ ，其中 $2^Q$ 是 Q 的幂集，也就是 Q 的所有子集组成的集合。</li>
+</ul>
+<p>对 $\sum$ 上的任何符号串 $\omega \in \sum^*$ ，若存在一条从初态结点到终态结点的路径，该路径上每条边的标记连接成的符号串恰好是 $\omega$ ，则称 $\omega$ 为 NFA M 所识别。NFA M 所能识别的符号串的全体记为 $L(M)$ ，称为 NFA M 所识别的语言。</p>
+<p><img src="https://photo.hushhw.cn/images/IMG_20190306_105132.jpg" alt></p>
+<p>​         </p>
+<h3 id="4-具有-epsilon-转移的非确定的有限自动机"><a href="#4-具有-epsilon-转移的非确定的有限自动机" class="headerlink" title="4. 具有 $\epsilon$ - 转移的非确定的有限自动机"></a>4. 具有 $\epsilon$ - 转移的非确定的有限自动机</h3><p>如果状态转换图中有标记为 $\epsilon$ 的边，则无法用前面的定义描述因而需要扩充 NFA 的概念。</p>
+<p><strong>定义1.3</strong> 一个具有 $\epsilon$ - 转移的非确定的有限自动机 <strong>M</strong> （记作：<strong>NFA M</strong>）是一个五元组：</p>
+<script type="math/tex; mode=display">
+M = ( \sum , Q , q_0 , F, \delta )</script><ul>
+<li>$\sum$ ：是一个字母表，他的每个元素称为一个输入符号</li>
+<li>$Q$ ：是一个有限的状态集合，每个元素称为一个状态</li>
+<li>$q_0 \in Q$ ：$q_0$ 称为初始状态</li>
+<li>$F \subseteq Q$ ： $F$ 称为终结状态集合</li>
+<li>$\delta$ ：是一个从 $Q \times (\sum \cup { \epsilon } )$ 到 $Q$ 的子集的映射，即 $\delta : Q( \sum\cup { \epsilon } ) \rightarrow 2^Q$ ，其中 $2^Q$ 是 Q 的幂集，也就是 Q 的所有子集组成的集合。</li>
+</ul>
+<p>对 $\sum$ 上的任何符号串 $\omega \in \sum^*$ ，若存在一条从初态结点到终态结点的路径，该路径上每条边的标记连接成的符号串恰好是 $\omega$ ，则称 $\omega$ 为 NFA M 所识别。NFA M 所能识别的符号串的全体记为 $L(M)$ ，称为 NFA M 所识别的语言。</p>
+<p><img src="https://photo.hushhw.cn/images/IMG_20190306_131438.jpg" alt></p>
+<p>​        </p>
+<h3 id="5-非确定的有限自动机的确定化"><a href="#5-非确定的有限自动机的确定化" class="headerlink" title="5. 非确定的有限自动机的确定化"></a>5. 非确定的有限自动机的确定化</h3><p><strong>定理 1.1</strong> 对任意一个 NFA M，都存在一个与之等价的 DFA D，即 L(M) = L(D)。</p>
+<p><strong>定理 1.2</strong> 对任何一个具有 $\epsilon$ - 转移的 NFA M，都存在一个等价的不具有 $\epsilon - $ 转移的 NFA N。</p>
+<p><strong>推论 1</strong> 对任何一个具有 $\epsilon$ - 转移的 NFA M，都存在一个与之等价的 DFA D。</p>
+<p>下面研究『非确定的有限自动机的确定化』，由 NFA 构造等价的 DFA 。</p>
+<p>因为 DFA D 的每一个状态对应于 NFA M 的一个状态子集，所以构造状态转换表 DTT 时，对给定的输入符号串，使 D 『并行地』模拟 M 所能产生的所有可能的转换，令 q 为 NFA M 的状态，T 为 NFA M 的状态子集，引入以下操作：</p>
+<ul>
+<li>ε-闭包：<ul>
+<li>ϵ_closure(q) 表示从 q 出发，经过 $\epsilon$ - 道路可以到达状态 $q^,$  。</li>
+<li>ϵ_closure(T) = $\stackrel{n}{\underset{i = i}\cup}$ ϵ_closure$(q_i)$ 其中 $q_i \in T$ ，表示 T 中任一状态出发，经过 $\epsilon$ - 道路后可以到达的状态集合。 </li>
+</ul>
+</li>
+<li>求 T 的 a 弧转换：<ul>
+<li>$move(T, a)$ 表示从某个状态 $q_i \in T$ 出发，经过输入符号 a 之后可到达的状态的集合。</li>
+</ul>
+</li>
+</ul>
+<p>​          </p>
+<p>例如下图这个 NFA N：</p>
+<p><img src="https://photo.hushhw.cn/images/nfa.jpg" alt></p>
+<p>它是一个具有 $\epsilon$ - 转移的非确定的有限自动机 N ，是一个五元组：$ N= ( \sum , Q , q_0 , F, \delta )$ ，即为<code>(弧集合，状态集合，初始状态，终结状态集合，转换函数)</code>，所以由图可知：<code>NFA N = ({a,b}, {0,1,2,3,4,5,6,7,8,9,10}, {0}, {10}, δ)</code>。</p>
+<p>假定 DFA D 的初态为 A，则 A = ϵ_closure(0) = { 0, 1, 2, 4, 7}。</p>
+<p>从初态 A 出发，构造 DFA D 的其余状态如下：</p>
+<p>DTT[A, a] = ϵ_closure(move(A, a)) = ϵ_closure({3, 8}) = {1, 2, 3, 4, 6, 7, 8} = B</p>
+<p>DTT[A, b] = ϵ_closure(move(A, b)) = ϵ_closure(5) = {1, 2, 4, 5, 6, 7} = C</p>
+<p>DTT[B, a] = ϵ_closure(move(B, a)) = ϵ_closure({3, 8}) = B</p>
+<p>DTT[B, b] = ϵ_closure(move(B, b)) = ϵ_closure({5, 9}) = {1, 2, 4, 5, 6, 7, 9} = D</p>
+<p>DTT[C, a] = ϵ_closure(move(C, a)) = ϵ_closure({3, 8}) = B</p>
+<p>DTT[C, b] = ϵ_closure(move(C, b)) = ϵ_closure(5) = C</p>
+<p>DTT[D, a] = ϵ_closure(move(D, a)) = ϵ_closure({3, 8}) = B</p>
+<p>DTT[D, b] = ϵ_closure(move(D, b)) = ϵ_closure({5, 10} = {1, 2, 4, 5, 6, 7, 10} = E</p>
+<p>DTT[E, a] = ϵ_closure(move(D, a)) = ϵ_closure({3, 8}) = B</p>
+<p>DTT[E, b] = ϵ_closure(move(E, b)) = ϵ_closure(5) = C</p>
+<p>至此，不再有新的状态出现，构造过程结束。</p>
+<p>共构造了 5 个状态，即 A、B、C、D、E，其中 A 为初态，E 为终态，因为 E 的状态集合中包括原 NFA N 的终态 10。</p>
+<p>可以借助表格来观察整个求解过程，每次求解后如果产生新集合，就会记录下来继续算，直到没有新集合为止。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">ε_closure(move(T,a))</th>
+<th style="text-align:center">ε_closure(move(T,b))</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">C</td>
+</tr>
+<tr>
+<td style="text-align:center">B</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">D</td>
+</tr>
+<tr>
+<td style="text-align:center">C</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">C</td>
+</tr>
+<tr>
+<td style="text-align:center">D</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">E</td>
+</tr>
+<tr>
+<td style="text-align:center">E</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">C</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>最终状态转换图如下：</p>
+<p><img src="https://photo.hushhw.cn/images/nfa_dfa_4.png" alt></p>
+<p>此 DFA D 识别的语言同样为 $L(D) = { (a|b)^*abb}$ ，由此可知构造出来的 DFA D 与 NFA N 是等价的。</p>
+<p>​            </p>
+<h3 id="6-DFA-的化简"><a href="#6-DFA-的化简" class="headerlink" title="6. DFA 的化简"></a>6. DFA 的化简</h3><p><strong>无关状态</strong>：</p>
+<ul>
+<li><strong>多余状态</strong>：从初态出发到达不了的状态。</li>
+<li><strong>死状态</strong>：从该状态无法到达终态</li>
+</ul>
+<p>去掉这些无关状态之后得到的等价的状态转换图，它们的 $L(S_i) = L(S_j)$，称它们为<strong>等价状态</strong>，否则称它们为<strong>可区分状态</strong>。</p>
+<p>DFA的化简步骤举一个『栗子』来学习一下：</p>
+<p>我们把前面确定化的 DFA N 在进行一次化简：</p>
+<p><img src="https://photo.hushhw.cn/images/nfa_dfa_4.png" alt></p>
+<p>第一步：把 DFA N 的状态集合划分为子集，使每个子集中的状态相互等价，不同子集中的状态相互等价，不同子集中的状态可区分。</p>
+<ul>
+<li><p>首先，把 DFA N 的状态集合划分为两个子集：终态子集 {4} 和非终态子集 {0, 1, 2, 3}。由于终态子集只含有一个状态 4，固不可再分。</p>
+</li>
+<li><p>然后考察非终态子集 {0, 1, 2, 3}。</p>
+<ul>
+<li>对于输入符号 a，状态 0 ~ 3 都转换到状态 1，所以对于输入符号 a 而言，该子集不能再划分。</li>
+<li>对于输入符号 b，状态 0，1，2都转换到子集 {0, 1, 2, 3} 中的一个状态，而状态 3 则转换到状态子集 {4} 中的状态。所以应该把子集 {0, 1, 2, 3} 划分为两个新的子集 {0, 1, 2} 和 {3}。</li>
+</ul>
+<p>这时，DFA N 的状态集合被划分为三个子集，即 {0, 1, 2} 、{3}、{4}。</p>
+</li>
+<li><p>其次，考察子集 {0, 1, 2}。</p>
+<ul>
+<li>对于输入符号 a，状态 0 ~ 2 都转换到状态 1，所以对于输入符号 a 而言，该子集不能再划分。</li>
+<li>对于输入符号 b，状态 0，2 都转换状态 2，而状态 1 则转换到状态 3。由于 1 和 3 分属于不同的状态子集，所以应该把子集 {0, 1, 2} 划分为两个新的子集 {0, 2} 和 {1}。</li>
+</ul>
+<p>这时，DFA N 的状态集合被划分为四个子集，即 {0, 2} 、{1}、{3}、{4}。</p>
+</li>
+<li><p>最后，考察子集 {0, 2}。</p>
+<ul>
+<li>对于输入符号 a，状态 0 和 2 都转换到状态 1，所以对于输入符号 a 而言，该子集不能再划分。</li>
+<li>对于输入符号 b，状态 0 和 2 都转换到状态 2，所以对于输入符号 b 而言，该子集不能再划分。</li>
+</ul>
+<p>于是，DFA N 的状态集合最终被划分为四个子集，即 {0, 2} 、{1}、{3}、{4}。</p>
+</li>
+</ul>
+<p>第二步：为每个子集选择一个代表状态。选择 0 为子集 {0, 2} 的代表状态，由于其余子集都只有一个状态，故状态 1，2，3 为它们的代表状态。</p>
+<p>至此，画出 DFA N’ 状态转换表和状态转换图。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">状态</th>
+<th style="text-align:center">a</th>
+<th style="text-align:center">b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0(初态)</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">3（终态）</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://photo.hushhw.cn/images/dfa.png" alt></p>
+<p>​           </p>
+<h3 id="7-正规表达式"><a href="#7-正规表达式" class="headerlink" title="7. 正规表达式"></a>7. 正规表达式</h3><p>用正规表达式可以精确的定义集合，定义 Pascal 语言标识符的正规表达式：$letter(letter|digit)^*$</p>
+<p>对于字符表 $\sum$ 上对正规表达式有如下定义：</p>
+<ul>
+<li>$\epsilon$ 是正规表达式，它表示的语言是 ${\epsilon}$</li>
+<li>如果 $a\in\sum$ ，则 a 是正规表达式，它表示的语言是 {a}</li>
+<li>如果 r 和 s 都是正规表达式，它标识的语言是 L(r) 和 L(s)，则：<ul>
+<li>$(r)|(s)$ 是正规表达式，表示的语言是 $L(r)\cup L(s)$</li>
+<li>$(r)(s)$ 是正规表达式，表示的语言是 $L(r)L(s)$</li>
+<li>$(r)^+$ 是正规表达式，表示的语言是 $(L(r))^+$</li>
+<li>$(r)$ 是正规表达式，表示的语言是 $L(r)$</li>
+</ul>
+</li>
+</ul>
+<p>正规表达式表示的语言叫做<strong>正规集</strong>。</p>
+<p>正规表达式的书写约定：</p>
+<ul>
+<li>一元闭包 * 具有最高优先级，并且遵从左结合</li>
+<li>连接运算的优先级次之，遵从左结合</li>
+<li>并运算 | 的优先级最低，遵从左结合</li>
+</ul>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-03-12_19-45-08.png" alt></p>
+<p>正规表达式遵从的代数定律：</p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-03-12_19-47-07.png" alt></p>
+<p>​        </p>
+<h3 id="8-正规表达式与有限自动机的等价性"><a href="#8-正规表达式与有限自动机的等价性" class="headerlink" title="8. 正规表达式与有限自动机的等价性"></a>8. 正规表达式与有限自动机的等价性</h3><p>对任何一个正规表达式 r，都存在一个 FA M，使 L(r) = L(M)，反之亦然。</p>
+<h4 id="8-1-正则表达式转-NFA"><a href="#8-1-正则表达式转-NFA" class="headerlink" title="8.1. 正则表达式转 NFA"></a>8.1. 正则表达式转 NFA</h4><p>转换规则如图，对正规表达式 r 进行分裂、加入新的结点，知道每条边的标记都为基本符号为止。</p>
+<p><img src="https://photo.hushhw.cn/images/IMG_20190310_105743.jpg" alt></p>
+<p>举个『栗子』：有正规表达式 $(a|b)^*abb$ ，为之构造等价的 NFA。</p>
+<p>首先为该正则表达式构造拓广转换图，然后根据该正则表达式的构成依据上图的转换规则，对表达式进行分裂，知道每条边的标记都是 $\sum$ 上的符号或 $\epsilon$ 为止，即得到与该正规表达式等价的 NFA。</p>
+<p><img src="https://photo.hushhw.cn/images/IMG_20190310_105750.jpg" alt></p>
+<h4 id="8-2-NFA-转正则表达式"><a href="#8-2-NFA-转正则表达式" class="headerlink" title="8.2. NFA 转正则表达式"></a>8.2. NFA 转正则表达式</h4><p>转换规则如图，逐步消去 N 中的中间结点，直到只剩下结点 i 和 f 为止。在消去结点的过程中，逐步用较复杂的正规表达式来标记有向边。</p>
+<p><img src="https://photo.hushhw.cn/images/IMG_20190310_105808.jpg" alt></p>
+<p>举个『栗子』：有如下的 NFA M，试构造与之等价的正规表达式 r。</p>
+<p><img src="https://photo.hushhw.cn/images/IMG_20190310_105825.jpg" alt></p>
+<p>由于该 NFA M 仅有一个初态和一个终态，故不用增加新的结点，可直接从 NFA M 出发，反复利用替换规则，逐步消去中间结点，直到只剩下初态 0 和终态 7 为止，则从 0 到 7 的有向边的标记即所求正则表达式，过程如图：</p>
+<p><img src="https://photo.hushhw.cn/images/IMG_20190310_105832.jpg" alt></p>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/d6cbf625.html">《编译程序设计原理与技术》笔记之自动机与正规表达式</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2019年03月04日 - 11:06:06</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/d6cbf625.html" data-id="ckkp2xuqj00guf8tlg1mc7fb4" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwElEQVR42u3ay27DIBAFUP//T7vbSlXhzmCIFR1WVeqYQxajeXBd8brj9ff58duuHQsXF3eZW90++fz3f8e75AZcXNzz3P8iRrJxFTd+/8SGi4v7Su44WcnfhouL+33cagj7cCDDxcVtcZPiZNypqIa57bUaLi7uAjfvUu77e0t/FxcXt8W9i2s8CMmD4N1auLi4Z7h5QMmTlWoUqu6Li4u7m5s0MXuFULV0iQa3uLi4R7jVNsfKwfJAVg55uLi4j3J7jYyniqVyCoWLi3ucm7y6GhGfGsTi4uKe5OYNzWqpk5RVzfIJFxd3M7d6bSJ/PrnOlRRdk7iLi4u7gdv7wkppVL1TMTkkLi7uQe76BYveqKYZyHBxcbdxeyPVKitJd5ZCGC4u7kPcKqj6S1RTn8lRcXFxD3LzJKN32WJ9TIuLi/spbt7o7BU/V7AmT+Li4m7mroeVpNTJg1p0Dlxc3M3cfOVDkd5ItTq+xcXF3c3tjTnzoUhvMNNMdHBxcR/lVgNNL1lZac7i4uK+mbtC713ewsXFfT83SWvyBkq5hYqLi3uQmxcwvWtb+ZEmPxYuLu4Rbm/wub599ai4uLhHuD/gvrloG97jmAAAAABJRU5ErkJggg==">分享</a><div class="tags"><a href="/tags/编译原理/">编译原理</a><a href="/tags/复习笔记/">复习笔记</a></div><div class="post-nav"><a class="pre" href="/posts/5e14d0e.html">maupassant主题创建Tags页面</a><a class="next" href="/posts/8d77b2e4.html">《编译程序设计原理与技术》笔记之形式语言和文法</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/908137cb.html" target="_blank">HTML5音频API Web Audio</a></li><li><a href="https://wiki.hushhw.cn/posts/5e14d0e.html" target="_blank">maupassant主题创建Tags页面</a></li><li><a href="https://wiki.hushhw.cn/posts/8d77b2e4.html" target="_blank">《编译程序设计原理与技术》笔记之形式语言和文法</a></li><li><a href="https://wiki.hushhw.cn/posts/59737bf3.html" target="_blank">《编译程序设计原理与技术》笔记之编译概述</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-状态转换图"><span class="toc-text">1. 状态转换图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-确定的有限自动机（DFA）"><span class="toc-text">2. 确定的有限自动机（DFA）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-非确定的有限自动机（NFA）"><span class="toc-text">3. 非确定的有限自动机（NFA）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-具有-epsilon-转移的非确定的有限自动机"><span class="toc-text">4. 具有 $\epsilon$ - 转移的非确定的有限自动机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-非确定的有限自动机的确定化"><span class="toc-text">5. 非确定的有限自动机的确定化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-DFA-的化简"><span class="toc-text">6. DFA 的化简</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-正规表达式"><span class="toc-text">7. 正规表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-正规表达式与有限自动机的等价性"><span class="toc-text">8. 正规表达式与有限自动机的等价性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-正则表达式转-NFA"><span class="toc-text">8.1. 正则表达式转 NFA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-NFA-转正则表达式"><span class="toc-text">8.2. NFA 转正则表达式</span></a></li></ol></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

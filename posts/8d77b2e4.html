@@ -1,0 +1,174 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>《编译程序设计原理与技术》笔记之形式语言和文法 | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">《编译程序设计原理与技术》笔记之形式语言和文法</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">《编译程序设计原理与技术》笔记之形式语言和文法</h1><div class="post-meta">2019-03-03<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 2,081</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 8</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/8d77b2e4.html#vcomment"><span class="valine-comment-count" data-xid="/posts/8d77b2e4.html"></span><span> 条评论</span></a><div class="post-content"><blockquote>
+<p>本笔记基于北京邮电大学出版的李文生编著的《编译程序设计原理与技术》整理</p>
+</blockquote>
+<p>​         </p>
+<h3 id="1-字母表和符号串"><a href="#1-字母表和符号串" class="headerlink" title="1. 字母表和符号串"></a>1. 字母表和符号串</h3><p><strong>字母表</strong>：符号的非空有限集合。如集合 <code>{0, 1}</code> 是二进制数的字母表、ASCII 字符集和 EBCDIC 字符集等。</p>
+<p><strong>符号串</strong>：字母表中的符号组成的有限符号序列。在语言理论中，“句子”和“字”常常作为“符号串”的同义词。</p>
+<ul>
+<li>空符号串：不含任何符号的符号串，用 $\epsilon$ 表示。</li>
+<li>符号串的一些相关概念：长度、前缀、后缀、子串、真前缀、真后缀、真子串</li>
+<li>符号串的一些运算：<ul>
+<li>符号串的连接：符号串 x 和 y 的连接，是将符号串 y 连接在符号串 x 后面而组成的新符号串，用 xy 表示。</li>
+<li>符号串的幂运算：$x^0 = ε$ , $x^1 = x$ , $x^2 = xx$ , $\dots$ , $x^n = x \dots x(n个)$ </li>
+</ul>
+</li>
+</ul>
+<p><strong>术语语言</strong>：在某一确定字母表上的符号串的集合。</p>
+<ul>
+<li>语言的乘积运算：符号串集合 $A =  { aa, bb } ，B = {cc, dd }$ ，则 $AB =  { aacc, aadd, bbcc, bbdd }$。</li>
+<li>语言的幂运算：$A^0 =  {ε}，A^1 = A, \dots , A^n = AA \dots\ A(n个) = AA^{n-1}$ </li>
+<li>语言的闭包：<ul>
+<li>A 的正闭包（ 1 次或若干次连接）： $A^+ = A^1 \cup\ A^2 \cup\ \dots $ </li>
+<li>A 的 Kleene 闭包（ 0 次或若干次连接）：$A^* = A^0 \cup\ A^1 \cup\ A^2 \cup\ \dots $ </li>
+</ul>
+</li>
+</ul>
+<p>​         </p>
+<p>​            </p>
+<h3 id="2-文法"><a href="#2-文法" class="headerlink" title="2. 文法"></a>2. 文法</h3><p><strong>文法（Grammar）</strong>：描述语言结构的形式规则。</p>
+<h4 id="2-1-文法的形式定义"><a href="#2-1-文法的形式定义" class="headerlink" title="2.1. 文法的形式定义"></a>2.1. 文法的形式定义</h4><p>任何一个文法都可以表示为一个四元组 $G=(V_T, V_N, S, φ)$ ，其中：</p>
+<ul>
+<li>$V_T$ 是一个非空的有限集合，它的每个元素称为<code>终结符号</code>。</li>
+<li>$ V_N$ 是一个非空的有限集合，它的每个元素称为<code>非终结符号</code>。<ul>
+<li>$V_T∩V_N = \phi$ ，即 $Y_T$ 与 $V_T$ 的交集为空。</li>
+</ul>
+</li>
+<li>$S$ 是一个特殊的非终结符号，称为文法的<code>开始符号</code>。</li>
+<li>$φ$ 是一个非空的有限集合，它的每个元素称为<code>产生式</code>。</li>
+<li>产生式（或规则）的形式为：$\alpha \rightarrow \beta$ <ul>
+<li>$\alpha$ 称为产生式的左部符号</li>
+<li>$\beta$ 称为产生式的右部符号</li>
+<li>其中 $\rightarrow$ 表示『定义为』或『由……组成』，$\alpha 、\beta \in ( V_T \cup V_N)^*，\alpha \neq \epsilon$ ，即 $\alpha 、\beta$ 是由终结符号和非终结符号组成的字符串。</li>
+</ul>
+</li>
+<li>开始符号 $S$ 至少必须在某个产生式的左部出现一次。</li>
+<li>文法也可只用产生式集合表示。</li>
+</ul>
+<p>​           </p>
+<h4 id="2-2-文法的分类"><a href="#2-2-文法的分类" class="headerlink" title="2.2. 文法的分类"></a>2.2. 文法的分类</h4><p>根据对产生式施加的限制不同，定义了四类文法和相应的四种形式语言类：<br><img src="https://photo.hushhw.cn/images/Snipaste_2019-03-03_17-04-18.png" alt><br>​           </p>
+<h4 id="2-3-上下文无关文法及相应的语言"><a href="#2-3-上下文无关文法及相应的语言" class="headerlink" title="2.3. 上下文无关文法及相应的语言"></a>2.3. 上下文无关文法及相应的语言</h4><p>所谓<code>上下文无关文法</code>是指它所定义的语法单位（或称语法实体）完全独立于这种语法单位可能出现的上下文环境。对于现有的程序设计语言来说，许多语法单位的构造中具有固定的递归结构，这样的结构可以用上下文无关文法来描述。</p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-03-03_19-15-23.png" alt></p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-03-03_19-20-28.png" alt></p>
+<p>这里语言L(G)是所有包括加、减、乘、除四则运算的算术表达式的集合。</p>
+<p>​         </p>
+<h4 id="2-4-文法书写规定"><a href="#2-4-文法书写规定" class="headerlink" title="2.4. 文法书写规定"></a>2.4. 文法书写规定</h4><p>终结符号</p>
+<ul>
+<li>次序靠前的小写字母，如：a、b、c ；</li>
+<li>运算符号，如：+、-、*、/ ；</li>
+<li>各种标点符号，如：括号、逗号、冒号、等于号；</li>
+<li>数字1、2、…、9；</li>
+<li>黑体字符串，如：id、begin、if、then 等。</li>
+</ul>
+<p>非终结符号</p>
+<ul>
+<li>次序靠前的大写字母，如：A、B、C；</li>
+<li>大写字母 S 常用作文法的开始符号；</li>
+<li>小写的斜体符号串，如：<em>expr、term、factor、stmt</em> 等。</li>
+</ul>
+<p>​            </p>
+<h3 id="3-推导和短语"><a href="#3-推导和短语" class="headerlink" title="3. 推导和短语"></a>3. 推导和短语</h3><h4 id="3-1-推导与归约"><a href="#3-1-推导与归约" class="headerlink" title="3.1. 推导与归约"></a>3.1. 推导与归约</h4><p>假定 $A \rightarrow \gamma$ 是一个产生式，$\alpha$ 和 $\beta$ 是任意的文法符号串，则有：$\alpha A \beta \Rightarrow \alpha \gamma \beta$ </p>
+<ul>
+<li>$\Rightarrow$ 表示『一步推导』，即利用产生式对左边符号串中的一个非终结符号进行替换，得到右边的符号串。</li>
+<li>称 $\alpha A \beta$ 直接<code>推导</code>出 $\alpha \gamma \beta$ ，也可以说 $\alpha \gamma \beta$ 是 $\alpha A \beta$ 的直接<code>推导</code></li>
+<li>或说 $\alpha \gamma \beta$ 直接<code>归约</code>到 $\alpha A \beta$ </li>
+</ul>
+<p>如果有直接推导序列：$\alpha_1 \Rightarrow \alpha_2 \Rightarrow \dots \Rightarrow \alpha_n$ ，则说 $\alpha_1$ 推导出 $\alpha_n$，记作：</p>
+<script type="math/tex; mode=display">
+\alpha_1 \stackrel{*}{\Longrightarrow} \alpha_n （允许 \alpha_1 = \alpha_n）\\
+\alpha_1 \stackrel{+}{\Longrightarrow} \alpha_n （不允许 \alpha_1 = \alpha_n，即至少推导了一步）</script><p>称这个序列是从 $\alpha_1$ 到 $\alpha_n$ 的长度为 n 的『推导』。</p>
+<p><strong>最左推导</strong> ：如果 $\alpha \stackrel{*}{\Longrightarrow} \beta$ 并且在每『一步推导』中，都替换 α 中最左边的非终结符号，则称这样的推导为『最左推导』。记作</p>
+<script type="math/tex; mode=display">
+\alpha \stackrel{*}{\underset{lm}\Longrightarrow} \beta</script><p><strong>最右推导</strong>：如果 $\alpha \stackrel{*}{\Longrightarrow} \beta$ 并且在每『一步推导』中，都替换 α 中最右边的非终结符号，则称这样的推导为『最右推导』，最右推导又被称为『规范推导』，与之对应的归约称为『规范归约』，记作 </p>
+<script type="math/tex; mode=display">
+\alpha \stackrel{*}{\underset{rm}\Longrightarrow} \beta</script><p>​       </p>
+<h4 id="3-2-句型"><a href="#3-2-句型" class="headerlink" title="3.2. 句型"></a>3.2. 句型</h4><p><strong>句型</strong>：对于文法 $G=(V_T, V_N, S, φ)$ ，如果$S \stackrel{*}{\Longrightarrow} \alpha$ ，则称 $\alpha$ 是当前文法的一个<code>『句型』</code>。</p>
+<ul>
+<li>若 $S \stackrel{*}{\underset{lm}\Longrightarrow} \alpha$ ，则 $\alpha$ 是当前文法的一个左句型；</li>
+<li>若 $S \stackrel{*}{\underset{rm}\Longrightarrow} \alpha$ ，则 $\alpha$ 是当前文法的一个右句型。</li>
+</ul>
+<p><strong>句子</strong>：仅含有终结符号的句型是文法的一个<code>『句子』</code>。</p>
+<p><strong>语言</strong>：文法 $G$ 产生的所有句子组成的集合是文法 $G$ 所定义的<code>『语言』</code>，记作 $L(G)$ 。</p>
+<script type="math/tex; mode=display">
+L(G) = \{ \alpha | S  \stackrel{+}{\Longrightarrow} \alpha_n ，并且 \alpha \in {V_T}^* \}</script><p>​         </p>
+<h4 id="3-3-短语"><a href="#3-3-短语" class="headerlink" title="3.3. 短语"></a>3.3. 短语</h4><p>对于文法 $G=(V_T, V_N, S, φ)$ ，假定 $\alpha\beta\delta$ 是文法 $G$ 的一个句型，如果存在：</p>
+<script type="math/tex; mode=display">
+S \stackrel{*}{\Rightarrow} \alpha A \delta，并且 A \stackrel{+}{\Rightarrow} \beta</script><p>则称 $\beta$ 为句型 $\alpha \beta \delta$ 关于非终结符号 $A$ 的<code>『短语』</code>，如果存在：</p>
+<script type="math/tex; mode=display">
+S \stackrel{*}{\Rightarrow} \alpha A \delta，并且 A \Rightarrow \beta</script><p>则称 $\beta$ 为句型 $\alpha \beta \delta$ 关于非终结符号 $A$ 的<code>『直接短语』</code>。</p>
+<p><strong>句柄</strong>：一个句型的最左直接短语称为该句型的<code>『句柄』</code>。</p>
+<p>​          </p>
+<h3 id="4-分析树及文法的二义性"><a href="#4-分析树及文法的二义性" class="headerlink" title="4. 分析树及文法的二义性"></a>4. 分析树及文法的二义性</h3><h4 id="4-1-分析树（推导树）"><a href="#4-1-分析树（推导树）" class="headerlink" title="4.1. 分析树（推导树）"></a>4.1. 分析树（推导树）</h4><p><strong>分析树</strong>：是推导的图形表示，又称推导树。</p>
+<ul>
+<li>是一棵有序有向树，因此具有树的性质；</li>
+<li>有自己的特点：每一个结点都有标记。<ul>
+<li>根结点由文法的开始符号标记；</li>
+<li>每个内部结点由非终结符号标记，它的子结点由这个非终结符号的这次推导所用产生式的右部各符号从左到右依次标记；</li>
+<li>叶结点由非终结符号或终结符号标记，它们从左到右排列起来，构成句型。</li>
+</ul>
+</li>
+</ul>
+<p>举例：</p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-03-04_10-46-21.png" alt></p>
+<p><strong>子树</strong>：指分析树中一个特有的结点、连同它的全部后裔结点、连接这些结点的边、以及这些结点的标记。</p>
+<ul>
+<li>子树的根结点的标记可能不是文法的开始符号。</li>
+<li>如果子树的根结点标记为非终结符号A，则可称该子树为『A-子树』。</li>
+</ul>
+<p>子树与短语的关系：</p>
+<ul>
+<li>一棵子树的所有叶结点自左至右排列起来，形成此句型相对于该子树根的短语；</li>
+<li>分析树中只有父子两代的子树的所有叶结点自左至右排列起来，形成此句型相对于该子树根的直接短语；</li>
+<li>分析树中最左边的那棵只有父子两代的子树的所有叶结点自左至右排列起来，就是该句型的句柄。</li>
+</ul>
+<p>​          </p>
+<h4 id="4-2-二义性"><a href="#4-2-二义性" class="headerlink" title="4.2. 二义性"></a>4.2. 二义性</h4><p>如果一个文法的某个句子有不止一棵分析树，则这个句子是二义性的，含有二义性句子的文法是『二义性的文法』。</p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-03-04_10-54-18.png" alt></p>
+<p>形式语言理论可以证明两点结论：</p>
+<ul>
+<li>给定一个文法 $G$ ，就能从结构上唯一地确定其语言。</li>
+<li>给定语言 $L$ ，可以确定其文法，但是文法不是唯一的。</li>
+</ul>
+<p>由此，从而有<code>『等价文法』</code>的概念，即 $G_1$ 和 $G_2$ 是两个不同的文法，如果 $L(G_1) = L(G_2)$ ，则称 $G_1$ 和 $G_2$ 为等价文法。</p>
+<p>有时，一个二义性的文法可以变换为一个等价的、无二义性的文法。</p>
+<p>有些语言，根本就不存在无二义性的文法，这样的语言称为『二义性的语言』。</p>
+<p>二义性问题是不可判定的</p>
+<ul>
+<li>不存在一种算法，它能够在有限的步骤内确切地判定出一个文法是否是二义性的。</li>
+<li>可以找出一些充分条件（未必是必要条件），当文法满足这些条件时，就可以确信该文法是无二义性的。</li>
+</ul>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/8d77b2e4.html">《编译程序设计原理与技术》笔记之形式语言和文法</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2019年03月03日 - 20:01:13</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/8d77b2e4.html" data-id="ckkp2xuqg00grf8tl7aygrej6" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwElEQVR42u3aQW7DMAwEwPz/0+mlhwCB1SVpKW0xOgWOI498IKRlHo94PF/G+5X1t8lsNw9cXNwx97kcV/e8Xn//nD8lN+Di4p7nXj3g6p68eK2v5wZcXNy/yF3/ar0wXFzc/8HNy9mvKGS4uLgtbnI4WRe1fDHr0nbbWQ0XF3fAzVPKfZ+35Lu4uLgt7rM4JvNMnvs9Ay4u7hFuXlDm247e9gUXF/dT3F5D9N6FJQ1dXFzcM9wqq7odyf/IFb0sXFzcj3LnTZTJ8ekyQMHFxT3CzbcmOTqPWasBCi4u7qe45UiiiLvt+ISLi7uZ2ytbkwA0/zbKd3Fxcbdxd4x8G1Q4gOHi4m7m5keXHe3S8uEHFxf3CLfXMplsg/LX8UNUiouLe5BbDS7nC0jmvCxkuLi4m7m9tkfSFq3OVjir4eLibub2/sTZa7SM7sTFxd3MPR+ArovaY/LOcHFxb+Lmo7qkaks1WTwuLu5J7iQezaOTJJaN3iguLu5Bbl5o8kZptbSNzmq4uLgf5fbKVq+tgouL+1e4ebSx3rg0I1RcXNyD3F5ImoCqS/qhjOLi4h7hVktJr6j1UttRvouLi9vhfgHu1thX8y5KbwAAAABJRU5ErkJggg==">分享</a><div class="tags"><a href="/tags/编译原理/">编译原理</a><a href="/tags/复习笔记/">复习笔记</a></div><div class="post-nav"><a class="pre" href="/posts/d6cbf625.html">《编译程序设计原理与技术》笔记之自动机与正规表达式</a><a class="next" href="/posts/59737bf3.html">《编译程序设计原理与技术》笔记之编译概述</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/5e14d0e.html" target="_blank">maupassant主题创建Tags页面</a></li><li><a href="https://wiki.hushhw.cn/posts/d6cbf625.html" target="_blank">《编译程序设计原理与技术》笔记之自动机与正规表达式</a></li><li><a href="https://wiki.hushhw.cn/posts/59737bf3.html" target="_blank">《编译程序设计原理与技术》笔记之编译概述</a></li><li><a href="https://wiki.hushhw.cn/posts/1561b045.html" target="_blank">微软中文输入法中输入中文直角引号</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-字母表和符号串"><span class="toc-text">1. 字母表和符号串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-文法"><span class="toc-text">2. 文法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-文法的形式定义"><span class="toc-text">2.1. 文法的形式定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-文法的分类"><span class="toc-text">2.2. 文法的分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-上下文无关文法及相应的语言"><span class="toc-text">2.3. 上下文无关文法及相应的语言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-文法书写规定"><span class="toc-text">2.4. 文法书写规定</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-推导和短语"><span class="toc-text">3. 推导和短语</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-推导与归约"><span class="toc-text">3.1. 推导与归约</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-句型"><span class="toc-text">3.2. 句型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-短语"><span class="toc-text">3.3. 短语</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-分析树及文法的二义性"><span class="toc-text">4. 分析树及文法的二义性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-分析树（推导树）"><span class="toc-text">4.1. 分析树（推导树）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-二义性"><span class="toc-text">4.2. 二义性</span></a></li></ol></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

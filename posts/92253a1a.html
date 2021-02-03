@@ -1,0 +1,160 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>吴恩达《机器学习》笔记（三）——多变量线性回归 | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">吴恩达《机器学习》笔记（三）——多变量线性回归</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">吴恩达《机器学习》笔记（三）——多变量线性回归</h1><div class="post-meta">2019-07-16<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 2,001</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 7</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/92253a1a.html#vcomment"><span class="valine-comment-count" data-xid="/posts/92253a1a.html"></span><span> 条评论</span></a><div class="post-content"><blockquote>
+<p>本文内容介绍「多变量线性回归」问题。</p>
+<p>首先引入一个多维特征模型，利用「多变量梯度下降」来迭代求出代价函数最小值。</p>
+<p>之后介绍了「多项式回归」问题，以及「正规方程」，并把正规方程和梯度下降问题做了比较。</p>
+</blockquote>
+<h2 id="Linear-Algebra-Review"><a href="#Linear-Algebra-Review" class="headerlink" title="Linear Algebra Review"></a>Linear Algebra Review</h2><p>这部分线性代数的只是非常基础，仅仅整理了一些专业名词的英文去熟悉学习。</p>
+<p>​        </p>
+<h2 id="Linear-Regression-with-Multiple-Variables"><a href="#Linear-Regression-with-Multiple-Variables" class="headerlink" title="Linear Regression with Multiple Variables"></a>Linear Regression with Multiple Variables</h2><h3 id="4-1-Multiple-Features"><a href="#4-1-Multiple-Features" class="headerlink" title="4.1. Multiple Features"></a>4.1. Multiple Features</h3><p>前面我们讨论了单变量特征（single variable）的回归模型（影响房屋价格的因素仅有面积大小），现在我们对房价模型增加更多的特征 $(x_1,x_2,…,x_n)$，构成一个多变量的模型。</p>
+<p>下面这个例子为四个特征的模型，其中一些参数的说明如图：</p>
+<p><img src="https://photo.hushhw.cn/20190716173040.png" alt></p>
+<p>支持多变量的假设 ℎ 表示为：</p>
+<script type="math/tex; mode=display">
+ℎ_{\theta}(𝑥) = \theta_0 + \theta_1x_1 + \theta_2x_2+...+\theta_𝑛x_𝑛</script><p>这个公式中有 𝑛 + 1 个参数和 𝑛 个变量，为了使得公式能够简化一些，引入 $x_0 = 1$，则公式转化为：</p>
+<script type="math/tex; mode=display">
+ℎ_{\theta}(𝑥) = \theta_0x_0 + \theta_1x_1 + \theta_2x_2+...+\theta_𝑛x_𝑛</script><p>改写成矩阵的形式：</p>
+<script type="math/tex; mode=display">
+h_{\theta}(x) = \left[
+\begin{matrix}
+\theta_0 & \theta_1 & \theta_2 \cdots & \theta_n 
+\end{matrix}
+\right]
+\left[
+\begin{matrix}
+x_0 \\ x_1 \\x_2 \\ \vdots\\ x_n
+\end{matrix}
+\right]
+ = \theta^TX</script><p>此时模型中的参数是一个 𝑛 + 1 维的向量，任何一个训练实例也都是 𝑛 + 1 维的向量，相乘就相当于参数向量的转置乘以实例向量，因此公式可以简化为：</p>
+<script type="math/tex; mode=display">
+h_{\theta}(x) = \theta^TX</script><p>​        </p>
+<h3 id="4-2-Gradient-Descent-for-Multiple-Variables"><a href="#4-2-Gradient-Descent-for-Multiple-Variables" class="headerlink" title="4.2. Gradient Descent for Multiple Variables"></a>4.2. Gradient Descent for Multiple Variables</h3><p>与单变量线性回归类似，在多变量线性回归中，我们也构建一个代价函数（cost function），则这个代价函数是所有建模误差的平方和，即：</p>
+<script type="math/tex; mode=display">
+J(\theta_0,\theta_1,\cdots,\theta_n)=\frac{1}{2m}\sum^m_{i=1}(h_{\theta}(x^{(i)})-y^{(i)})^2</script><p>我们可以简写成 $J(\theta)$ ，其中：$h_{\theta}(x) = \theta^TX = \theta_0 + \theta_1x_1 + \theta_2x_2 + \cdots + \theta_nx_n$</p>
+<p>我们的目标和单变量线性回归问题一样，要找到使得代价函数最小的系列参数，使用梯度下降的方法来求，就是要不断的更新每一个 $\theta_j$ 参数，通过 $\theta_j$ 减去 $\alpha$ 乘以导数项，具体过程如下图，分别是单特征和有多个特征的模型的情况。</p>
+<p><img src="https://photo.hushhw.cn/20190716183159.png" alt></p>
+<p>​          </p>
+<h3 id="4-3-Feature-Scaling"><a href="#4-3-Feature-Scaling" class="headerlink" title="4.3. Feature Scaling"></a>4.3. Feature Scaling</h3><p>机器学习中我们使用参数的目标是为了通过数据集改善每一个特征量 x 对应的权重 θ，最终得到拟合度高的假设方程。这时就出现了一种情况，如果某个特征量的数量级远大于其它特征量，就会导致该特征在学习算法中占主导位置。所以，我们需要通过预处理的方式让初始的特征量具有同等的地位，才能让机器学习算法更快地学习得到他们的权重。</p>
+<p>使用这里「房价预估」的例子，假设有两个特征影响房价，分别是「面积」和「房间数」，很显然这两个数据差别是非常大的，在没有进行单位统一之前，由于变量的单位相差很大，导致了椭圆型的梯度轮廓；缩放之后将变量变成同一单位，产生了圆形轮廓。</p>
+<p><img src="https://photo.hushhw.cn/20190721103703.png" alt></p>
+<p><img src="https://photo.hushhw.cn/20190721103741.png" alt="图片来源：TingMind.cn"></p>
+<p>由于梯度下降是按切线方向下降，所以导致了系统在椭圆轮廓不停迂回地寻找最优解，而圆形轮廓就能轻松找到。</p>
+<p>特征缩放的方法有很多，比如使用 $x_n = \frac{x_n-\mu}{max-min}$ 的方式，将数据缩放为 [-1, 1] 的范围，例如房屋面积范围在 [100, 2000]，平均值为 1000，就可以将均值 1000 以及最大最小值差带入。</p>
+<p>更一般的方法，可以使用<strong>均值归一化（mean normalization）</strong>使得数据集的平均值为零：$x_n = \frac{x_n-\mu_n}{s_n}​$，其中 𝜇 是平均值，𝑠 是标准差。 </p>
+<blockquote>
+<p>埋坑：这里需要去理解特征标准化和归一化的区别，有待深入学习。</p>
+</blockquote>
+<p>​        </p>
+<h3 id="4-4-Learning-Rate"><a href="#4-4-Learning-Rate" class="headerlink" title="4.4. Learning Rate"></a>4.4. Learning Rate</h3><p>梯度下降算法收敛所需要的迭代次数根据模型的不同而不同，我们不能提前预知，我们可以绘制迭代次数和代价函数的图表来观测算法在何时趋于收敛。 也有一些自动测试是否收敛的方法，例如将代价函数的变化值与某个阀值（例如 0.001）进行比较。</p>
+<p>梯度下降算法的每次迭代受到学习率的影响，如果学习率 𝑎 过小，则达到收敛所需的迭代次数会非常高；如果学习率 𝑎 过大，每次迭代可能不会减小代价函数，可能会越过局部最小值导致无法收敛。</p>
+<p>​         </p>
+<h3 id="4-5-Polynomial-Regression"><a href="#4-5-Polynomial-Regression" class="headerlink" title="4.5. Polynomial Regression"></a>4.5. Polynomial Regression</h3><p>前面学习了线性回归，但是线性回归并不适用于所有数据，有时我们需要曲线来适应我们的数据，这一节继续学习<strong>多项式回归（Polynomial Regression）</strong>，比如一个三次方模型：$h_{\theta}(x) = \theta_0+\theta_1x_1+\theta_2x^2_2+\theta_3x_3^3$，下图是一个一元多项式回归的例子。</p>
+<p><img src="https://photo.hushhw.cn/20190721123805.png" alt></p>
+<p>如果我们采用多项式回归模型，在运行梯度下降算法前，特征缩放非常有必要。 </p>
+<p>​            </p>
+<h3 id="4-6-Normal-Equation"><a href="#4-6-Normal-Equation" class="headerlink" title="4.6. Normal Equation"></a>4.6. Normal Equation</h3><p>在前面我们学习了使用梯度下降法来计算参数最优解，其过程是对代价函数相对于每个参数求偏导数，通过迭代算法一步一步进行同步更新，直到收敛到全局最小值，从而得到最优参数值。但是对于某些线性回归问题，<strong>正规方程（Normal Equation）</strong>方法是更好的解决方案，正规方程则是通过数学方法一次性求得最优解。</p>
+<p>下面这个例子中，我们有 4 个训练样本，我们构建一个矩阵 X 包含训练样本的所有特征变量，构成一个 m*(n+1) 维矩阵，所有的预测值放入向量 y，构成一个 m 维向量。代价函数最小化的 $\theta = (X^TX)^{-1}X^Ty​$。</p>
+<p><img src="https://photo.hushhw.cn/20190721130118.png" alt></p>
+<p>对于更一般的情况，假设有 m 组训练样本分别为 $(x^{(1)},y^{(1)},\cdots,x^{(m)},y^{(m)})$，每组训练样本有 n 个特征值。其中，</p>
+<script type="math/tex; mode=display">
+x^{(i)} = 
+\left[
+    \begin{matrix}
+    x_0^{(i)}\\x_1^{(i)}\\x_2^{(i)}\\\vdots\\x_n^{(i)}
+    \end{matrix}
+\right]
+\in R^{n+1}
+,对应的 X = \left[
+    \begin{matrix}
+    \cdots {x^{(1)}}^T \cdots \\
+    \cdots {x^{(2)}}^T \cdots \\
+    \vdots  \\
+    \cdots {x^{(m)}}^T \cdots \\
+    \end{matrix}
+\right]</script><p>对于那些不可逆的矩阵（通常是因为特征之间不独立，如同时包含英尺为单位的尺寸和米为单位的尺寸两个特征，也有可能是特征数量大于训练集的数量），正规方程方法是不能用的。 </p>
+<p>梯度下降与正规方程比较：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">梯度下降</th>
+<th style="text-align:center">正规方程</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">需要选择学习率𝛼</td>
+<td style="text-align:center">不需要</td>
+</tr>
+<tr>
+<td style="text-align:center">需要多次迭代</td>
+<td style="text-align:center">一次运算得出</td>
+</tr>
+<tr>
+<td style="text-align:center">当特征数量 𝑛 大时也能较好适用</td>
+<td style="text-align:center">需要计算 ${(X^TX)}^{-1}$ 如果特征数量 𝑛 较大则运算代价大，因为矩阵逆的计算时间复杂度 为 $𝑂(𝑛^3)$，通常来说当 𝑛 小于 10000 时还是可以接受的</td>
+</tr>
+<tr>
+<td style="text-align:center">适用于各种类型的模型</td>
+<td style="text-align:center">只适用于线性模型，不适合逻辑回归模型等其他模型</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>只要特征变量的数目并不大，标准方程是一个很好的计算参数𝜃的替代方法。具体地说，只要特征变量数量小于一万，我通常使用标准方程法，而不使用梯度下降法。<br>随着我们要讲的学习算法越来越复杂，例如，当我们讲到分类算法，像逻辑回归算法，我们会看到，实际上对于那些算法，并不能使用标准方程法。对于那些更复杂的学习算法，我们将不得不仍然使用梯度下降法。因此，梯度下降法是一个非常有用的算法，可以用在有大量特征变量的线性回归问题。</p>
+<p>​         </p>
+<h2 id="专业名词整理"><a href="#专业名词整理" class="headerlink" title="专业名词整理"></a>专业名词整理</h2><ul>
+<li><code>linear algebra</code>：线性代数</li>
+<li><code>matrix(matrices)</code>：矩阵</li>
+<li><code>vector</code>：向量</li>
+<li><code>two dimensional array</code>：二维数组</li>
+<li><code>multiplication</code>：乘法</li>
+<li><code>inverse</code>：逆、<code>transpose</code>：转置</li>
+<li><code>superscript</code>：上标、<code>subscript</code>：下标</li>
+<li><code>feature scaling</code>：特征放缩</li>
+<li><code>standard deviation</code>：标准差</li>
+<li><code>average value</code>：平均值</li>
+<li><code>polynomial</code>：多项式</li>
+<li><code>normal equation</code>：正规方程</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="https://www.tinymind.cn/articles/1217" target="_blank" rel="noopener">数据特征 标准化和归一化你了解多少？</a></p>
+<p><a href="https://www.zhouyongyi.com/andrew-ng-machine-learning-notes-3/" target="_blank" rel="noopener">驿舟小站</a></p>
+<p><a href="https://github.com/fengdu78/Coursera-ML-AndrewNg-Notes" target="_blank" rel="noopener">Coursera-ML-AndrewNg-Notes</a></p>
+<p><a href="https://www.coursera.org/course/ml" target="_blank" rel="noopener">斯坦福大学 2014 机器学习</a></p>
+</blockquote>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/92253a1a.html">吴恩达《机器学习》笔记（三）——多变量线性回归</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2019年07月16日 - 16:49:45</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/92253a1a.html" data-id="ckkp2xur000haf8tle8pin7bn" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxUlEQVR42u3aQZLCIBAFUO9/aWczC6s08X8I6Ew9VlaC8MKiC7q53eJ2f2iPT57fPvdMRru44eLiTnPvpy0BJdCx8V+MhouLu5F7NMFRn/PQlnzG+X8Pn+Pi4n4x93wHkoyGi4v7/7jtQegr4i4uLm7JTQ4nbRhKPmzhWQ0XF3eC225cVvxekt/FxcUd4t7Ldp7sSJ6Mzfs7Ai4u7hZuHlCSMkmeCsm3L7i4uJ/itgXRhNhuX9qSLS4u7mpuQslTGGPXL4qeuLi4G7ljlyfmPyNJwuLi4u7n5sR1m5h8UXBxcVdzx1KlyUYkH6dYMlxc3I3cmVRFWzTNZzwMZLi4uFu4YwEr3z2NJUFeeHBxcbdwk2nWlUsHlwAXF3cjN09/tEeXsTLtYR9cXNwPcfPiyvnQbdrlPGji4uLu5+ZhpZ2mLcQOHn5wcXEXcNuDSp4kvbgnLi7uYu5MWBlLsOZhERcX91Pc9lrVzDGmTn9MXALDxcWd59bHj4kkSHIB682K4uLibuS2gaa9ZnHV5S1cXNxv5s4UVvP+uLi4f5HbpkEvSLbi4uJu5LZJ0rYkk5dm3ywWLi7uFu61JdJ2S9SGP1xc3MXcH8Z9KfgxW6d+AAAAAElFTkSuQmCC">分享</a><div class="tags"><a href="/tags/Machine-Learning/">Machine Learning</a></div><div class="post-nav"><a class="pre" href="/posts/f72c23ef.html">吴恩达《机器学习》笔记（四）——Logistic回归</a><a class="next" href="/posts/df3b9948.html">吴恩达《机器学习》笔记（二）——单变量线性回归</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/4884afb4.html" target="_blank">Google Hacking 语法使用总结</a></li><li><a href="https://wiki.hushhw.cn/posts/f72c23ef.html" target="_blank">吴恩达《机器学习》笔记（四）——Logistic回归</a></li><li><a href="https://wiki.hushhw.cn/posts/df3b9948.html" target="_blank">吴恩达《机器学习》笔记（二）——单变量线性回归</a></li><li><a href="https://wiki.hushhw.cn/posts/ef2d7590.html" target="_blank">吴恩达《机器学习》笔记（一）——介绍</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linear-Algebra-Review"><span class="toc-text">Linear Algebra Review</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linear-Regression-with-Multiple-Variables"><span class="toc-text">Linear Regression with Multiple Variables</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Multiple-Features"><span class="toc-text">4.1. Multiple Features</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-Gradient-Descent-for-Multiple-Variables"><span class="toc-text">4.2. Gradient Descent for Multiple Variables</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-Feature-Scaling"><span class="toc-text">4.3. Feature Scaling</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-Learning-Rate"><span class="toc-text">4.4. Learning Rate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-Polynomial-Regression"><span class="toc-text">4.5. Polynomial Regression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-Normal-Equation"><span class="toc-text">4.6. Normal Equation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#专业名词整理"><span class="toc-text">专业名词整理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

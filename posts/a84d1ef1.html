@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>Hexo主题插入音乐之aplayer音乐播放器 | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Hexo主题插入音乐之aplayer音乐播放器</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">Hexo主题插入音乐之aplayer音乐播放器</h1><div class="post-meta">2019-01-22<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1,511</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 6</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/a84d1ef1.html#vcomment"><span class="valine-comment-count" data-xid="/posts/a84d1ef1.html"></span><span> 条评论</span></a><div class="post-content"><p>今天折腾的点是给博客中插入音乐，找到的具体可行的方案有：</p>
+<ul>
+<li>使用音乐平台提供的插件 <code>体验很差</code></li>
+<li>使用<a href="https://github.com/MoePlayer/hexo-tag-aplayer" target="_blank" rel="noopener">hexo-tag-aplayer</a>插件 <code>排了坑后体验极佳</code></li>
+</ul>
+<a id="more"></a>
+<p>​        </p>
+<h2 id="1-使用音乐平台提供插件"><a href="#1-使用音乐平台提供插件" class="headerlink" title="1. 使用音乐平台提供插件"></a>1. 使用音乐平台提供插件</h2><p>以网易云为例，网页端点击<code>生成外链播放器</code>即可生成外链代码，如我的某个歌单生成<a href="https://music.163.com/#/outchain/0/2205641361/" target="_blank" rel="noopener">外链</a>。</p>
+<p>可以在自己博客页面中嵌入插件:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe </span><br><span class="line"> frameborder=<span class="string">"no"</span> border=<span class="string">"0"</span> </span><br><span class="line"> marginwidth=<span class="string">"0"</span> marginheight=<span class="string">"0"</span> </span><br><span class="line"> width=<span class="number">530</span> height=<span class="number">310</span> </span><br><span class="line"> src=<span class="string">"//music.163.com/outchain/player?type=0&amp;id=2205641361&amp;auto=0&amp;height=430"</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/iframe&gt;</span></span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="530" height="330" src="//music.163.com/outchain/player?type=0&id=2205641361&auto=0&height=430"></iframe>
+
+<p>缺点非常明显，而最不能忍得是网易音乐有些音乐因为版权保护，没办法生成外链：</p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-01-22_22-55-46.png" alt></p>
+<p>​         </p>
+<h2 id="2-使用-hexo-tag-aplayer-插件"><a href="#2-使用-hexo-tag-aplayer-插件" class="headerlink" title="2. 使用 hexo-tag-aplayer 插件"></a>2. 使用 hexo-tag-aplayer 插件</h2><p><a href="https://github.com/MoePlayer/hexo-tag-aplayer" target="_blank" rel="noopener">hexo-tag-aplayer</a> 就是将 <a href="https://github.com/DIYgod/APlayer" target="_blank" rel="noopener">APlayer</a> 内嵌入博客页面的 Hexo 插件。</p>
+<p>安装执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save hexo-tag-aplayer</span><br></pre></td></tr></table></figure>
+<p>原先 <code>hexo-tag-aplayer</code> 不支持 <code>MetingJS</code>，使得需要图片url，音乐url等等参数，操作起来都很麻烦，需要去音乐网站扒音乐播放链接或者下载下来存储在七牛云或本地，要了解具体参数和使用可以查看其<a href="https://github.com/MoePlayer/hexo-tag-aplayer/blob/master/docs/README-zh_cn.md" target="_blank" rel="noopener">中文文档</a>了解。</p>
+<h3 id="3-MeingJS-支持-3-0-新功能"><a href="#3-MeingJS-支持-3-0-新功能" class="headerlink" title="3. MeingJS 支持 (3.0 新功能)"></a>3. MeingJS 支持 (3.0 新功能)</h3><p><a href="https://github.com/metowolf/MetingJS" target="_blank" rel="noopener">MetingJS</a> 是基于<a href="https://github.com/metowolf/Meting" target="_blank" rel="noopener">Meting API</a> 的 APlayer 衍生播放器，引入 MetingJS 后，播放器将支持对于 QQ音乐、网易云音乐、虾米、酷狗、百度等平台的音乐播放。</p>
+<p>如果想在本插件中使用 MetingJS，请在 Hexo 配置文件 <code>_config.yml</code> 中设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">aplayer:</span><br><span class="line">  meting: true</span><br></pre></td></tr></table></figure>
+<p>接着就可以 在文章中使用 MetingJS 播放器了，例如打开网易云音乐网站找到这首<code>coldplay</code>的《<em>Viva la Vida</em>》，从url中可以得到其<code>id</code>为<code>3986040</code>，按下面格式即可使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% meting &quot;3986040&quot; &quot;netease&quot; &quot;song&quot; &quot;theme:#555&quot; &quot;mutex:true&quot; &quot;listmaxheight:340px&quot; &quot;preload:auto&quot; %&#125;</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+
+    <div id="aplayer-BrfrwBwf" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="3986040" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
+<p>​       </p>
+<p>再来一个歌单模板：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% meting &quot;627070825&quot; &quot;netease&quot; &quot;playlist&quot; &quot;theme:#555&quot; &quot;mutex:true&quot; &quot;listmaxheight:340px&quot; &quot;preload:auto&quot; %&#125;</span><br></pre></td></tr></table></figure>
+
+    <div id="aplayer-tbaVolPZ" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="627070825" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
+<p>​         </p>
+<p>有关选项列表如下:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><strong>必须值</strong></td>
+<td>歌曲 id / 播放列表 id / 相册 id / 搜索关键字</td>
+</tr>
+<tr>
+<td>server</td>
+<td><strong>必须值</strong></td>
+<td>音乐平台: <code>netease</code>, <code>tencent</code>, <code>kugou</code>, <code>xiami</code>, <code>baidu</code></td>
+</tr>
+<tr>
+<td>type</td>
+<td><strong>必须值</strong></td>
+<td><code>song</code>, <code>playlist</code>, <code>album</code>, <code>search</code>, <code>artist</code></td>
+</tr>
+<tr>
+<td>fixed</td>
+<td><code>false</code></td>
+<td>开启固定模式</td>
+</tr>
+<tr>
+<td>mini</td>
+<td><code>false</code></td>
+<td>开启迷你模式</td>
+</tr>
+<tr>
+<td>loop</td>
+<td><code>all</code></td>
+<td>列表循环模式：<code>all</code>, <code>one</code>,<code>none</code></td>
+</tr>
+<tr>
+<td>order</td>
+<td><code>list</code></td>
+<td>列表播放模式： <code>list</code>, <code>random</code></td>
+</tr>
+<tr>
+<td>volume</td>
+<td>0.7</td>
+<td>播放器音量</td>
+</tr>
+<tr>
+<td>lrctype</td>
+<td>0</td>
+<td>歌词格式类型</td>
+</tr>
+<tr>
+<td>listfolded</td>
+<td><code>false</code></td>
+<td>指定音乐播放列表是否折叠</td>
+</tr>
+<tr>
+<td>storagename</td>
+<td><code>metingjs</code></td>
+<td>LocalStorage 中存储播放器设定的键名</td>
+</tr>
+<tr>
+<td>autoplay</td>
+<td><code>true</code></td>
+<td>自动播放，移动端浏览器暂时不支持此功能</td>
+</tr>
+<tr>
+<td>mutex</td>
+<td><code>true</code></td>
+<td>该选项开启时，如果同页面有其他 aplayer 播放，该播放器会暂停</td>
+</tr>
+<tr>
+<td>listmaxheight</td>
+<td><code>340px</code></td>
+<td>播放列表的最大长度</td>
+</tr>
+<tr>
+<td>preload</td>
+<td><code>auto</code></td>
+<td>音乐文件预载入模式，可选项： <code>none</code>, <code>metadata</code>, <code>auto</code></td>
+</tr>
+<tr>
+<td>theme</td>
+<td><code>#ad7a86</code></td>
+<td>播放器风格色彩设置</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>​         </p>
+<h3 id="4-遇到的坑"><a href="#4-遇到的坑" class="headerlink" title="4. 遇到的坑"></a>4. 遇到的坑</h3><p>我原先是用的主题是<code>yilia</code>，非常喜欢它的相册功能，于是换到现在的主题后把该功能移植了过来，如果有小伙伴也想要实现可以参看我的这篇文章：『<a href="https://wiki.hushhw.cn/posts/6ff333ed.html">Hexo主题maupassant博客搭建相册</a>』。</p>
+<p>当把<a href="https://github.com/MoePlayer/hexo-tag-aplayer" target="_blank" rel="noopener">hexo-tag-aplayer</a> 配置好并且用几个页面测试后，发现相册功能失效了，查找问题后发现在<code>ins.js</code>中自动加了下面这些代码导致的失效。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css"</span>&gt;</span><br><span class="line">&lt;script src=<span class="string">"https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;script src="https:/</span><span class="regexp">/cdn.jsdelivr.net/</span>npm/meting@<span class="number">1.2</span>/dist/Meting.min.js<span class="string">"&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>经过一番在网上寻找后无果后，于是决定仔细研读官方文档，查看官方的<a href="https://github.com/MoePlayer/hexo-tag-aplayer/blob/master/docs/README-zh_cn.md" target="_blank" rel="noopener">中文文档</a>后发现，可能是插件的自动脚本插入功能导致的，使得<code>ins.js</code>中自动插入了代码，于是关闭该功能试试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">aplayer:</span><br><span class="line">  asset_inject: false</span><br></pre></td></tr></table></figure>
+<p>关闭后确实解决了问题，相册功能恢复，下面的问题就是自己配置插件，在需要的地方引用代码了。</p>
+<h4 id="4-1-恢复-post-页面插件功能"><a href="#4-1-恢复-post-页面插件功能" class="headerlink" title="4.1. 恢复 post 页面插件功能"></a>4.1. 恢复 post 页面插件功能</h4><p>我是使用的主题<a href="https://github.com/tufu9441/maupassant-hexo" target="_blank" rel="noopener">maupassant-hexo</a>都是用的是<code>.pug</code>格式，其他小伙伴根据自己的渲染文件进行修改。</p>
+<p>主题配置页面写入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 播放器</span><br><span class="line">aplayer:</span><br><span class="line"> enable: true</span><br></pre></td></tr></table></figure>
+<p>新建文件<code>aplayer.pug</code>放在<code>/layout/_partial</code>文件夹下，写入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">link(rel=&quot;stylesheet&quot; type=&apos;text/css&apos;, href=&quot;https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css&quot;)</span><br><span class="line">script(type=&apos;text/javascript&apos;, src=&quot;https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js&quot;)</span><br><span class="line">script(type=&apos;text/javascript&apos;, src=&quot;https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js&quot;)</span><br></pre></td></tr></table></figure>
+<p>最后在<code>post.pug</code>中引用即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if theme.aplayer.enable</span><br><span class="line">  include _partial/aplayer.pug</span><br></pre></td></tr></table></figure>
+<p>这样在文章页面可以使用该插件了。</p>
+<p>可以通过本地<code>hexo server</code>来检查一下文章页面<code>head</code>中有没有成功引入。</p>
+<p>​       </p>
+<h4 id="4-2-在非-post-页面使用插件功能"><a href="#4-2-在非-post-页面使用插件功能" class="headerlink" title="4.2. 在非 post 页面使用插件功能"></a>4.2. 在非 post 页面使用插件功能</h4><p>我在<code>/source/</code>文件夹下自定义的页面<code>life</code>，我需要该页面使用插件，最简单的方式就是直接在<code>index.md</code>中引用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css"</span>&gt;</span><br><span class="line">&lt;script src=<span class="string">"https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;script src="https:/</span><span class="regexp">/cdn.jsdelivr.net/</span>npm/meting@<span class="number">1.2</span>/dist/Meting.min.js<span class="string">"&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-01-22_23-54-20.png" alt></p>
+<p>最终效果：</p>
+<p> <img src="https://photo.hushhw.cn/images/Snipaste_2019-01-22_23-55-27.png" alt></p>
+<p>​            </p>
+<h4 id="4-3-与-toc-不兼容（2019-2-17-更新）"><a href="#4-3-与-toc-不兼容（2019-2-17-更新）" class="headerlink" title="4.3. 与 toc 不兼容（2019.2.17 更新）"></a>4.3. 与 toc 不兼容（2019.2.17 更新）</h4><p>toc 中文点击无法跳转，我枯了。。。（比如本页面）</p>
+<p>多方查找原因终于找到了根源，居然是因为<code>aplayer播放器</code>与<code>toc</code>不兼容，要是没有看到别人的文章我感觉一辈子都解决不了这个<a href="https://github.com/MoePlayer/hexo-tag-aplayer/issues/65" target="_blank" rel="noopener">问题</a>了。</p>
+<p>于是把播放器配置设置开关在<code>front-matter</code>中，在需要使用音乐播放器的页面才设为<code>music: true</code>，其它用到目录的页面关闭使用。</p>
+<p>​             </p>
+<h4 id="4-4-toc-兼容问题解决（2019-4-24-更新）"><a href="#4-4-toc-兼容问题解决（2019-4-24-更新）" class="headerlink" title="4.4. toc 兼容问题解决（2019.4.24 更新）"></a>4.4. toc 兼容问题解决（2019.4.24 更新）</h4><p>找到一位大佬的解决方案，具体见大佬的这篇文章：<a href="https://blog.wangriyu.wang/2018/06-Aplayer.html" target="_blank" rel="noopener">使用 Aplayer 导致博客目录跳转失效</a> 。</p>
+<p>我使用他提供的 <code>APlayer.min.js</code> 替换了我原来的 js 文件，目前中文目录点击无法跳转的 bug 已经修复解决。</p>
+<blockquote>
+<p>本文参考自：</p>
+<p><a href="https://github.com/MoePlayer/hexo-tag-aplayer" target="_blank" rel="noopener">https://github.com/MoePlayer/hexo-tag-aplayer</a></p>
+<p><a href="https://tianma.space/post/3998746934/index.html" target="_blank" rel="noopener">https://tianma.space/post/3998746934/index.html</a></p>
+</blockquote>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/a84d1ef1.html">Hexo主题插入音乐之aplayer音乐播放器</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2019年01月22日 - 21:51:32</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/a84d1ef1.html" data-id="ckkp2xuq300gaf8tl56e8z0wi" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABzElEQVR42u3ay27DIBAF0Pz/T6ebLiq12HcYwFF1WEWJBcdZjObB6xWv9491/c3o1+vdFi9cXNw29325Rs/kr3R9Sm7AxcU9zx0dv+rz71NGz9/YcHFxP5JbDV7JC+Di4v4PbpXycCDDxcWd4ibFSbRdI1VaXKvh4uI2uHmXct/nLf1dXFzcKe67uK6bp0kqM3fu9w64uLhHuNU0JR+jVkcp+bm4uLi7uUmRkwxW+1crooEuLi7uQe5cs+M6Zckrl8KTuLi4D3GrJU0+REmSoZsGCi4u7nFuZ9O5gUoS2oaBDBcX9zi3k44kCU3+pwyLH1xc3CPc/DJWnsQk3xSaLLi4uMe5+Ri1XyblA9eb4gcXF3cDNw9hnSZpHgQLr4qLi3uE22ledFquiWFxrwUXFzfgVtuX0W2vuNWSFGDDOyO4uLgPcVe9zNxZf+yMi4t7kNu/npUPWVtP4uLibuauCltzw9q8oMLFxT3JrYahfSPValmFi4u7m1stP/Kt8zFJ0mDFxcU9z80DTd4YnSuBFtRquLi4H8OdC16TFRsuLu5Hcm8GHnECVG6h4uLiHuR2mpvVsFUNl7i4uOe51VAy1wYtND5W9XdxcXFnuF9JWOIxk8RUbQAAAABJRU5ErkJggg==">分享</a><div class="tags"><a href="/tags/hexo/">hexo</a></div><div class="post-nav"><a class="pre" href="/posts/b883e502.html">【动态规划-0-1背包】HDU 2955 Robberies</a><a class="next" href="/posts/d0e7bee4.html">【动态规划-递推】POJ 1664 放苹果</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/44777a5c.html" target="_blank">【动态规划-0-1背包】HDU 1864 最大报销额</a></li><li><a href="https://wiki.hushhw.cn/posts/b883e502.html" target="_blank">【动态规划-0-1背包】HDU 2955 Robberies</a></li><li><a href="https://wiki.hushhw.cn/posts/d0e7bee4.html" target="_blank">【动态规划-递推】POJ 1664 放苹果</a></li><li><a href="https://wiki.hushhw.cn/posts/482e4bcc.html" target="_blank">【动态规划-递推】HDU 2046 骨牌铺方格</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css"><script type="text/javascript" src="/js/APlayer.min.js?v=0.0.0"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-使用音乐平台提供插件"><span class="toc-text">1. 使用音乐平台提供插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-使用-hexo-tag-aplayer-插件"><span class="toc-text">2. 使用 hexo-tag-aplayer 插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-MeingJS-支持-3-0-新功能"><span class="toc-text">3. MeingJS 支持 (3.0 新功能)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-遇到的坑"><span class="toc-text">4. 遇到的坑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-恢复-post-页面插件功能"><span class="toc-text">4.1. 恢复 post 页面插件功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-在非-post-页面使用插件功能"><span class="toc-text">4.2. 在非 post 页面使用插件功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-与-toc-不兼容（2019-2-17-更新）"><span class="toc-text">4.3. 与 toc 不兼容（2019.2.17 更新）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-toc-兼容问题解决（2019-4-24-更新）"><span class="toc-text">4.4. toc 兼容问题解决（2019.4.24 更新）</span></a></li></ol></li></ol></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

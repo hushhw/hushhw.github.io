@@ -1,0 +1,174 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>《图解密码技术》学习笔记之密码(一) | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">《图解密码技术》学习笔记之密码(一)</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">《图解密码技术》学习笔记之密码(一)</h1><div class="post-meta">2019-04-21<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 4,975</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 17</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/418f8d38.html#vcomment"><span class="valine-comment-count" data-xid="/posts/418f8d38.html"></span><span> 条评论</span></a><div class="post-content"><blockquote>
+<p>本文整理「密码」这一部分的基础知识点。</p>
+<p>内容概述：</p>
+<ul>
+<li>经典密码</li>
+<li>对称密码</li>
+<li>分组密码</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<h2 id="1-环游密码世界-概述"><a href="#1-环游密码世界-概述" class="headerlink" title="1. 环游密码世界(概述)"></a>1. 环游密码世界(概述)</h2><h3 id="1-1-基础概念"><a href="#1-1-基础概念" class="headerlink" title="1.1 基础概念"></a>1.1 基础概念</h3><ul>
+<li>发送者、接收者和窃听者</li>
+<li>加密与解密</li>
+<li>破译</li>
+<li>密码算法、密钥</li>
+</ul>
+<h3 id="1-2-密码学家的工具箱"><a href="#1-2-密码学家的工具箱" class="headerlink" title="1.2 密码学家的工具箱"></a>1.2 密码学家的工具箱</h3><ul>
+<li>对称密码： 在加密和解密，使用同一个密钥的方式。</li>
+<li>公钥密码/非对称密码: 是指在加密和解密时使用不同密钥的方式。</li>
+<li>单向散列函数/哈希值/密码校验/消息摘要：所保证的并不是机密性，而是完整性。即可以检测出数据是否被篡改过。</li>
+<li>消息认证码：不仅能够保证完整性，而且能够提供认证机制。即不但能确认消息是否被篡改过，而且能够确认消息是否来自所期待的通信对象。</li>
+<li>数字签名：是一种能够保证完整性，提供认证，并防止否认的密码技术。</li>
+<li>伪随机生成器：是一种能够模拟生产随机数列的算法，承担着密钥生成的重要职责。如果生成随机数的算法不好，窃听者就能推测出密钥，从而带来通信机密性下降的风险。</li>
+</ul>
+<p><img src="https://photo.hushhw.cn/images/cryptopraphy1.png" alt></p>
+<h3 id="1-3-密码与信息安全常识"><a href="#1-3-密码与信息安全常识" class="headerlink" title="1.3 密码与信息安全常识"></a>1.3 密码与信息安全常识</h3><ul>
+<li>不要使用保密的密码算法</li>
+<li>使用低强度的密码比不进行任何加密更危险</li>
+<li>任何密码总有一天都会被破解</li>
+<li>密码只是信息安全的一部分</li>
+</ul>
+<p>​              </p>
+<h2 id="2-经典密码"><a href="#2-经典密码" class="headerlink" title="2. 经典密码"></a>2. 经典密码</h2><h3 id="2-1-凯撒密码（Caesar-cipher）"><a href="#2-1-凯撒密码（Caesar-cipher）" class="headerlink" title="2.1 凯撒密码（Caesar cipher）"></a>2.1 凯撒密码（Caesar cipher）</h3><p><strong>凯撒密码</strong>是通过将明文中所使用的字母表按照一定的字数「平移」来进行加密。例如要保密的信息为 <code>yoshiko</code> ，按照平移 3 格加密后的数据为 <code>BRVKLNR</code> 。</p>
+<p>解密的过程只需要反向平移相应位数就可以解密了。</p>
+<p>破解凯撒密码的方法是<strong>暴力破解</strong>（穷举搜索），把所有可能的密钥全部尝试一遍。</p>
+<h3 id="2-2-简单替换密码"><a href="#2-2-简单替换密码" class="headerlink" title="2.2 简单替换密码"></a>2.2 简单替换密码</h3><p><strong>简单替换密码</strong>是将明文中所使用的字母表替换为另一套字母表的密码。</p>
+<p>解密的过程就是使用加密时所使用的替换表进行反向替换，所以发送者和接收者必须事先同时拥有该替换表，而这份替换表也就相当于简单替换密码的密钥。</p>
+<p>破解简单替换密码很难通过暴力破解来破译，因为简单替换密码的<strong>密钥空间</strong>足够大，以 26 位字母为例，计算出来的密钥总数为 26 的阶乘，数据相当庞大，所以要采用<strong>频率分析</strong>的密码破译方法来破解简单替换密码。所谓了频率分析就是统计替换表中每个字母出现的频率，然后与英文中使用最高频的一些字母对应分析。</p>
+<h3 id="2-3-Enigma密码机"><a href="#2-3-Enigma密码机" class="headerlink" title="2.3 Enigma密码机"></a>2.3 Enigma密码机</h3><p>Enigma 是一种有键盘、齿轮、电池和灯泡所组成的机器，通过这台机器可以完成加密和解密两种操作。</p>
+<p>​              </p>
+<h2 id="3-对称密码"><a href="#3-对称密码" class="headerlink" title="3. 对称密码"></a>3. 对称密码</h2><p>对称密码又称共享密钥密码，用相同的密钥进行加密和解密。</p>
+<h3 id="3-1-一次性密码本"><a href="#3-1-一次性密码本" class="headerlink" title="3.1 一次性密码本"></a>3.1 一次性密码本</h3><p><strong>一次性密码本（One-time pad），又称维纳密码（Vernam cipher）</strong>：将明文与一串随机的比特序列进行异或（XOR）运算，解密就是加密的反向运算，即用密文和密钥进行异或运算得到明文。</p>
+<p>一次性密码本是无条件安全的，在理论上是无法破译的，因为就算我们用暴力方式侥幸得到了密钥，我们也无法确定异或出来的结果是否就是正确的明文。</p>
+<p>一次性密码本之所以没有被使用是因为发送方必须给接收方发送密文和密钥，既然有一种方法可以将密钥安全的发送出去，那岂不是也可以用同样的方法来安全的发送明文？</p>
+<h3 id="3-2-DES"><a href="#3-2-DES" class="headerlink" title="3.2 DES"></a>3.2 DES</h3><p>DES (Data Encryption Standard) 即数据加密标准，是 1977 年美国联邦信息处理标准中所采用的一种对称密码。一直以来被美国以及其他国家的政府和银行等广泛使用，但是随着计算机的进步，现在的DES已经能够被暴力破解，强度大不如前了，现在我们<strong>不应该再使用 DES 了</strong>。</p>
+<p>DES 是一种将 64 比特的明文加密成 64 比特的密文的对称密码算法，他的密钥长度是 56 比特（每隔 7 比特会设置一个用于错误检查的比特）。DES 以 64 比特的明文（比特序列）为一个单位进行加密，这个 64 比特的单位称为分组，<strong>DES 是分组密码的一种</strong>。DES 每次只能加密 64 比特的数据，如果要加密的明文比较长，就需要对 DES 加密进行迭代（反复），而迭代的具体方式称为<a href="#4-分组密码的模式">模式</a>（mode）。</p>
+<p>DES 的基本结构是由 Horst Feistel 设计的，因此也成为 Feistel 网络、Feistel 结构或者 Feistel 密码。在Feistel 网络中，加密的各个步骤称为轮（round），整个加密过程就是进行若干次轮的循环。<strong>DES 是一种 16 轮循环的 Feistel 网络</strong>。</p>
+<p>Feistel 网络一轮的具体计算步骤：</p>
+<ul>
+<li>将输入的数据等分为左右两部分。</li>
+<li>将输入的右侧直接发送到输出的右侧。</li>
+<li>将输入的右侧发送到轮函数。</li>
+<li>轮函数根据右侧数据和子密钥，计算出一串看上去是随机的比特序列。</li>
+<li>将上一步得到的比特序列与左侧数据进行 XOR 运算，并将结果作为加密后的左侧。</li>
+</ul>
+<p>这样一来「右侧」根本没有被加密，因此我们需要用不同的子密钥的一轮的处理重复若干次，并在每两轮处理之间将左侧和右侧的数据对调。</p>
+<p><img src="https://photo.hushhw.cn/images/32421175-4b12736e-c25b-11e7-8c60-85242d72b9b3.png" alt></p>
+<p>Feistel 网络的性质：</p>
+<ul>
+<li>Feistel 网络的论述可以任意增加。</li>
+<li>加密时无论使用任何函数作为轮函数都可以正确解密。</li>
+<li>加密和解密可以用完全相同的结构来实现。</li>
+</ul>
+<p>综上所述，无论是任何轮数、任何轮函数，Feistel 网络都可以用相同的结构实现加密和解密，且加密的结果必定能够正确解密。</p>
+<h3 id="3-3-三重-DES"><a href="#3-3-三重-DES" class="headerlink" title="3.3 三重 DES"></a>3.3 三重 DES</h3><p>现在 DES 已经可以在现实的时间内被暴力破解，<strong>三重 DES</strong>（triple-DES）出于这个目的被开发出来的，但是处理速度不高，而且在安全性方面也逐渐显现出一些问题，也不推荐使用。</p>
+<p>三重 DES 的加密机制如图：</p>
+<p><img src="https://photo.hushhw.cn/images/wKiom1hStybR6nRgAABzM1_8bWA892.png" alt></p>
+<p>明文经过三次 DES 处理才能变成最后的密文，由于 DES 密钥的长度实质上是 56 比特，因此三重 DES 的密钥长度就是 56*3=168 比特。</p>
+<p>三重 DES 并不是进行三次加密，而是「加密—<strong>解密</strong>—加密」的过程，当三重 DES 中所有的密钥都是相同时，三重 DES 也就等同于普通的 DES 了。这是因为在前两步加密—解密之后，得到的就是最初的明文。因此，以前用 DES 加密的密文，就可以通过这种方式用三重 DES 来进行解密。也就是说，<strong>三重 DES 对 DES 具备向下兼容性</strong>。</p>
+<p>三重 DES 的解密过程和加密正好相反，是以密钥 3、密钥 2、密钥 1 的顺序执行解密—加密—解密的操作：</p>
+<p><img src="https://photo.hushhw.cn/images/wKioL1hSupqweE1JAACDK9OtHAc865.png" alt></p>
+<h3 id="3-4-AES（Rijndael）"><a href="#3-4-AES（Rijndael）" class="headerlink" title="3.4 AES（Rijndael）"></a>3.4 AES（Rijndael）</h3><p>AES（Advanced Encryption Standard）是取代其前任标准（DES）而称为新标准的一种对称密码算法。在 2000 年从众多候选算法中选出了一种名为 <strong>Rijndael</strong> 的对称密码算法，并将其确定为 AES。Rijndael 是由比利时密码学家 Joan Daemen 和 Vincent Rijmen 设计的分组密码算法。</p>
+<p>Rijndael 和 AES 并不是一点区别都没有，Rijndael 的分组长度和密钥长度可以分别以 32 比特为单位在 128 比特到 256 比特的范围内进行选择。不过在 AES 的规格中，分组长度固定为 128 比特，密钥长度只有 128、192 和 256 比特三种。</p>
+<p>Rijndael 并不像 DES 使用 Feistel 网络作为基本结构，而是使用了 <strong>SPN结构</strong>。和 DES 一样的是 Rijndael 算法也是由多个轮构成的，其中每一轮分为 SubBytes、ShiftRows、MixColumns 和 AddRoundKey 共 4 个步骤。</p>
+<p>Rijndael 的输入分组为 128 比特，也就是 16 字节，一次进行四个步骤的操作：</p>
+<ul>
+<li><strong>SubBytes</strong>：逐个字节地对 16 字节的输入数据进行处理，通过一个非线性的替换函数，用查找表的方式把每个字节替换成对应的字节。</li>
+<li><strong>ShiftRows</strong>：将以 4 字节为单位的行按照一定的规则向左平移，且每一行平移的字节数是不同的。</li>
+<li><strong>MixColumns</strong>：对一个 4 字节的值进行比特运算，将其变为另外一个 4 字节值。</li>
+<li><strong>AddRoundKey</strong>：将 MixColumns 的输出与轮密钥进行 XOR。</li>
+</ul>
+<p>实际上，在 Rijndael 中需要重复进行 10-14 轮计算。</p>
+<p><img src="https://photo.hushhw.cn/images/wKiom1hUEnfhQmtBAAGbstlZhT8469.png" alt></p>
+<p>通过上面的结构我们可以发现输入的所有比特在议论中都会被加密。和每一轮都只加密一半输入的比特的 Feistel 网络相比，这种方式的优势在于加密所需要的轮数更少。此外，这种方式还有一个优势，即每轮步骤中可以分别以字节、行和列为单位进行并行计算。</p>
+<p>下图为解密的过程，除了 AddRoundKey 是一样的，其余三个步骤都是逆运算。</p>
+<p><img src="https://photo.hushhw.cn/images/wKioL1hUEqjAOdloAAGfTs-rFkY687.png" alt></p>
+<h3 id="3-5-该选择哪种对称密码"><a href="#3-5-该选择哪种对称密码" class="headerlink" title="3.5 该选择哪种对称密码"></a>3.5 该选择哪种对称密码</h3><p>今后最好不要将 DES 用于新的较高的安全用途，因为随着计算机技术的进步，现在用暴力破解法已经能够在现实的时间内完成对 DES的 破译。但是，在某些情况下也需要保持与旧版本软件的兼容性，出于兼容性的因素三重 DES 在今后还会使用一段时间，但会逐步被 AES 所取代。今后大家应该使用的算法是 AES（Rijndael），因为它安全、快速，而且能够在各种平台上工作。</p>
+<p>​           </p>
+<h2 id="4-分组密码的模式"><a href="#4-分组密码的模式" class="headerlink" title="4. 分组密码的模式"></a>4. 分组密码的模式</h2><p>前面介绍的 DES 和 AES 都属于分组密码，分组密码算法只能加密固定长度的分组，但是我们需要加密的明文长度可能会超过分组密码的分组长度，这时就需要对分组密码算法进行迭代，以便将一段很长的明文全部加密。而迭代的方法就称为分组密码的<strong>模式</strong>。</p>
+<ul>
+<li><p>分组密码的主要模式有：</p>
+</li>
+<li><p>ECB 模式：Electronic CodeBook mode（电子密码本模式）</p>
+</li>
+<li>CBC 模式：Cipher Block Chaining mode（密码分组链接模式）</li>
+<li>CFB 模式：Cipher FeedBack mode（密码反馈模式）</li>
+<li>OFB 模式：Output FeedBack mode（输出反馈模式）</li>
+<li>CTR 模式：CounTeR mode（计数器模式）</li>
+</ul>
+<h3 id="4-1-分组密码与流密码"><a href="#4-1-分组密码与流密码" class="headerlink" title="4.1 分组密码与流密码"></a>4.1 分组密码与流密码</h3><p>密码算法可以分为分组密码和流密码两种。</p>
+<p><strong>分组密码</strong>（block cipher）是每次只能处理特定长度的一块数据的一类密码算法，这里的「一块」就称为<strong>分组</strong>（block）。此外，一个分组的比特数就称为<strong>分组长度</strong>（block length）。例如 DES 和 3DES 分组长度都是 64 比特，AES 的分组长度为 128 比特。</p>
+<p><strong>流密码</strong>（stream cipher）是对数据流进行连续处理的一类密码算法。流密码中一般以 1 比特、8 比特或 32 比特等为单位进行加密和解密。</p>
+<p>分组密码处理完一个分组就结束了，因此不需要通过内部状态来记录加密的进度；相对地，流密码是对一串数据流进行连续处理，因此需要保持内部状态。前面提到的一次性密码本属于流密码，而 DES、3DES、AES（Rijndael）等大多数对称密码算法都属于分组密码。</p>
+<h3 id="4-2-明文分组与密文分组"><a href="#4-2-明文分组与密文分组" class="headerlink" title="4.2 明文分组与密文分组"></a>4.2 明文分组与密文分组</h3><p><strong>明文分组</strong>是指分组密码算法中作为加密对象的明文。明文分组的长度与分组密码算法的分组长度是相等的。</p>
+<p><strong>密文分组</strong>是指使用分组密码算法将明文分组加密之后所生成的密文。</p>
+<h3 id="4-3-ECB-模式"><a href="#4-3-ECB-模式" class="headerlink" title="4.3 ECB 模式"></a>4.3 ECB 模式</h3><p><strong>ECB 模式</strong>的全称是 Electronic CodeBook 模式。在 ECB 模式中，将明文分组加密之后的结果将直接成为密文分组。</p>
+<p><img src="https://photo.hushhw.cn/images/wKiom1hWoxLzFmWBAAE0Ephoto09FU260.png" alt></p>
+<p><img src="https://photo.hushhw.cn/images/wKiom1hWoxKAoMorAAGBgBrThDY944.png" alt></p>
+<p>使用 ECB 模式加密时，相同的分组会被转换为相同的密文分组，也就是说，我们可以将其理解为是一个巨大的「明文分组-密文分组」的对应表，因此ECB模式也称为<strong>电子密码本模式</strong>。</p>
+<p>ECB 模式是所有模式中最简单的一种，其明文分组和密文分组是一一对应的关系，因此，如果明文中存在多个相同的明文分组，则这些明文分组最终都会被转换为相同的密文分组。这样一来，只要观察一下密文，就可以知道明文中存在怎样的重复组合，并可以以此为线索来破译密码，因此 ECB 模式存在一定的风险。</p>
+<p>由于 ECB 模式中每个明文分组都各自独立地进行加密和解密，攻击者只需要改变密文分组的顺序，就能操控明文。由于密文分组的顺序被改变了，因此响应的明文分组的顺序也会被改变。也就是说，<strong>攻击者无需破译密码就能够操作明文</strong>。</p>
+<h3 id="4-4-CBC-模式"><a href="#4-4-CBC-模式" class="headerlink" title="4.4 CBC 模式"></a>4.4 CBC 模式</h3><p><strong>CBC 模式</strong>的全称是 Cipher Block Chaining 模式（密文分组链接模式）。在 CBC 模式中，首先将明文分组与前一个密文分组进行 XOR 运算，然后再进行加密。</p>
+<p><img src="https://photo.hushhw.cn/images/wKioL1hWtIrS8N80AAFwPPExW0E664.png" alt></p>
+<p><strong>初始化向量 IV</strong> 为事先准备的一个长度为一个分组的比特序列，用来代替不存在的「前一个密文分组」。每次加密都会随机产生一个不同的比特序列来作为初始化向量。</p>
+<p>对比 CBC 和ECB 模式发现，ECB 模式只进行了加密，而 CBC 模式则在加密之前进行了一次 XOR。因此，即便明文分组 1 和明文分组 2 的值相等，密文分组 1 和 2 也不一定相等，这样 CBC 模式就解决了 ECB 模式存在的缺陷了。</p>
+<p>在 CBC 模式加密过程中，我们无法单独对一个中间的明文分组进行加密。例如，如果要生成密文分组 3 ，就至少需要凑齐明文分组 1、2、3 才行。</p>
+<p>在 CBC 模式解密过程中，如果某一个密文分组因硬盘故障等原因损坏了，在这种情况下，只要密文分组的长度没有发生变化，则解密时最多只会有 2 个分组收到数据损坏影响；如果是密文分组中有一些比特因通信错误导致没有收到某些比特等原因缺失，哪怕只是缺失 1 比特，导致了密文分组的长度发生变化，缺失比特的位置之后的密文分组也就全部无法解密了。</p>
+<p>通过修改密文来操纵解密后的明文，攻击者可以对初始化向量中的任意比特进行反转，则明文分组中的相应比特也会反转；攻击者如果对密文分组进行同样的攻击就非常困难，如修改了密文分组 1 中的某个比特，则明文分组 2 相应比特会反转，而这 1 比特的变化会对解密后的明文分组 1 中的多个比特造成影响，也就是说，只让明文分组 1 中特定比特发生变化是很困难的。</p>
+<h3 id="4-5-CFB-模式"><a href="#4-5-CFB-模式" class="headerlink" title="4.5 CFB 模式"></a>4.5 CFB 模式</h3><p><strong>CFB 模式</strong>的全称是 Cipher FeedBack 模式（密文反馈模式）。在 CFB 模式中，前一个密文分组会被送回到密码算法的输入端。所谓反馈，这里指的是返回输入端的意思。</p>
+<p><img src="https://photo.hushhw.cn/images/wKiom1hX40zh5Y4OAADND_4IQ9c584.png" alt></p>
+<p><img src="https://photo.hushhw.cn/images/wKioL1hX403CntLOAAD4l1Gk2iw770.png" alt></p>
+<p>在 ECB 和 CBC 模式中，明文分组都是通过密码算法进行加密的，然而，在 CFB 模式中，明文分组并没有通过密码来进行直接加密。</p>
+<p><img src="https://photo.hushhw.cn/images/wKioL1hX5YmAzmH1AACUL8pDza0478.png" alt></p>
+<p>CFB 模式与一次性密码本（流密码）非常相似，一次性密码本是通过将明文与随机比特序列进行 XOR 运算来生成密文，而 CFB 模式则通过将明文分组与密码算法的输出进行 XOR 运算来生成密文分组。在 CFB 模式中，密码算法的输出相当于一次性密码本中的随机比特序列。由于密码算法的输出是通过计算得到的，并不是真正的随机数，因此 CFB 模式并不具备理论上不可破译的性质。</p>
+<p>在 CFB模式中，明文数据可以被逐比特加密，因此我们可以将 CFB 模式看作是一种使用分组密码来实现流密码的方式。</p>
+<p>对 CFB 模式可以实施<strong>重放攻击</strong>。</p>
+<h3 id="4-6-OFB-模式"><a href="#4-6-OFB-模式" class="headerlink" title="4.6 OFB 模式"></a>4.6 OFB 模式</h3><p><strong>OFB 模式</strong>的全称是 Output-Feedback 模式（输出反馈模式）。在 OFB 模式中，密码算法的输出会反馈到密码算法的输入中。</p>
+<p><img src="https://photo.hushhw.cn/images/wKioL1hX5pjBv-FQAAEV8EaziXw327.png" alt></p>
+<p>OFB 模式和 CFB 模式的区别仅仅在于密码算法的输入。CFB 模式中密码算法的输入是前一个密文分组，也就是将密文分组反馈到密码算法中，相反地，在 OFB 模式中密码算法的输入则是密码算法的前一个输出，也就是将输出反馈到密码算法中。</p>
+<p>由于 CFB 模式中要对密文分组进行反馈，因此必须从第一个明文分组开始按顺序进行加密，相反地，在 OFB 模式中，XOR 所需要的比特序列（密钥流）可以事先通过密码算法生成，和明文分组无关，只要提前准备好所需的密钥流，则在实际从明文生成密文的过程中，就完全不需要动用密码算法了，只要将明文与密钥流进行 XOR 即可。生成密钥流的操作和进行 XOR 运算的操作是可以并行的，可以快速完成加密。</p>
+<h3 id="4-7-CTR-模式"><a href="#4-7-CTR-模式" class="headerlink" title="4.7 CTR 模式"></a>4.7 CTR 模式</h3><p><strong>CTR 模式</strong>全称是 CounTeR 模式（计数器模式）。CTR 模式是一种通将逐次累加的计数器进行加密来生成密钥流的流密码。</p>
+<p>CTR 模式中，每个分组对应一个逐次累加的计数器，并通过对计数器进行加密来生成密钥流。也就是说，最终的密文是通过将计数器加密得到的比特序列，与明文分组进行 XOR 而得到的。</p>
+<p><img src="https://photo.hushhw.cn/images/wKiom1hX53Hwe-G8AADtc_bAjrE686.png" alt></p>
+<p><img src="https://photo.hushhw.cn/images/wKioL1hX53GzfsX1AAEeB2NJuuk558.png" alt></p>
+<p>CTR 模式和 OFB 模式一样，都属于流密码。加密和解密使用了完全相同的结构，因此在程序实现上比较容易。CTR 模式中可以任意顺序对分组进行加密和解密，因此在加密和解密时需要用到的「计数器」的值可以直接计算出来，这一性质是 OFB 模式所不具备的。能够以任意顺序处理分组，就意味着能够实现并行计算，在支持并行计算的系统中，CTR 模式的速度是非常快的。</p>
+<h3 id="4-8-该选者哪种模式"><a href="#4-8-该选者哪种模式" class="headerlink" title="4.8 该选者哪种模式"></a>4.8 该选者哪种模式</h3><p><img src="https://photo.hushhw.cn/images/wKioL1hX58zS9WOIAAHYrp0dqCI726.png" alt></p>
+<p><img src="https://photo.hushhw.cn/images/wKiom1hX582S9fKIAAIT3re_2vo030.png" alt></p>
+<p>​                </p>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/418f8d38.html">《图解密码技术》学习笔记之密码(一)</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2019年04月21日 - 11:20:55</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/418f8d38.html" data-id="ckkp2xura00iif8tlz3zzvvhf" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABzklEQVR42u3a0W7CMAwFUP7/pztpT5O2huuYGCadPFVQmlMeLNvx4xGv63vl314/1t3962e2Fi4ubpt7Lddv0N1m6/uT67UBFxd3nrsOT3cvsH6xPfoTGy4u7odxk2Sl8/K4uLj/kZtvc+IlcXFx57lJ8dNJX5LfvrhWw8XFbXCrDdMT1wf7u7i4uEXuVVwdyvq4JdodFxd3hJs/Ot8gL4r2GiW4uLiT3L1DjrxMqqZQUa2Gi4t7gFsNRkkjY6/Buv5Hn2RkuLi4h7nViLEuaarDWOVAhouLe4wb5UFbZVL/4OSPLg4uLu44t1NFdYYzooNVXFzcEW51VKL6eX6UkgRHXFzcGe7eMFY1GCVpU1Ru4eLijnCrA1J5gZTT89QKFxd3hpskGUm7szNUUaDj4uKOcPcemsxK5YNceWsVFxd3htv5cY7rNFBwcXHfxe2nI522aV5u4eLiTnL7iUg1rSkfrFYzJlxc3Aa3GlCqg1Z5mNtrl+Di4p7jVo85k22qLdeklMLFxZ3nVkcr9pKVJII+uQcXF/fDuK86SqkWUbi4uJ/PzRsi1bIqGtvCxcUd5FZbG9Gj4yKn8Afh4uKOcPfCzeYIRZwk4eLivon7BZTqlYxe1Zm2AAAAAElFTkSuQmCC">分享</a><div class="tags"><a href="/tags/密码学/">密码学</a><a href="/tags/学习笔记/">学习笔记</a></div><div class="post-nav"><a class="pre" href="/posts/6fbc30d9.html">虚拟机 VMware 中安装 Ubuntu 操作系统</a><a class="next" href="/posts/83650eb4.html">《图解密码技术》学习笔记目录</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/feaace02.html" target="_blank">《图解密码技术》学习笔记之密码(二)</a></li><li><a href="https://wiki.hushhw.cn/posts/6fbc30d9.html" target="_blank">虚拟机 VMware 中安装 Ubuntu 操作系统</a></li><li><a href="https://wiki.hushhw.cn/posts/83650eb4.html" target="_blank">《图解密码技术》学习笔记目录</a></li><li><a href="https://wiki.hushhw.cn/posts/ae8c05d6.html" target="_blank">Three.js 入坑笔记</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-环游密码世界-概述"><span class="toc-text">1. 环游密码世界(概述)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-基础概念"><span class="toc-text">1.1 基础概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-密码学家的工具箱"><span class="toc-text">1.2 密码学家的工具箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-密码与信息安全常识"><span class="toc-text">1.3 密码与信息安全常识</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-经典密码"><span class="toc-text">2. 经典密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-凯撒密码（Caesar-cipher）"><span class="toc-text">2.1 凯撒密码（Caesar cipher）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-简单替换密码"><span class="toc-text">2.2 简单替换密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-Enigma密码机"><span class="toc-text">2.3 Enigma密码机</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-对称密码"><span class="toc-text">3. 对称密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-一次性密码本"><span class="toc-text">3.1 一次性密码本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-DES"><span class="toc-text">3.2 DES</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-三重-DES"><span class="toc-text">3.3 三重 DES</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-AES（Rijndael）"><span class="toc-text">3.4 AES（Rijndael）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-该选择哪种对称密码"><span class="toc-text">3.5 该选择哪种对称密码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-分组密码的模式"><span class="toc-text">4. 分组密码的模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-分组密码与流密码"><span class="toc-text">4.1 分组密码与流密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-明文分组与密文分组"><span class="toc-text">4.2 明文分组与密文分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-ECB-模式"><span class="toc-text">4.3 ECB 模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-CBC-模式"><span class="toc-text">4.4 CBC 模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-CFB-模式"><span class="toc-text">4.5 CFB 模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-OFB-模式"><span class="toc-text">4.6 OFB 模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-7-CTR-模式"><span class="toc-text">4.7 CTR 模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-8-该选者哪种模式"><span class="toc-text">4.8 该选者哪种模式</span></a></li></ol></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

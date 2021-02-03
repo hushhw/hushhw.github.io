@@ -1,0 +1,115 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>从头开始学算法——动态规划 | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">从头开始学算法——动态规划</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">从头开始学算法——动态规划</h1><div class="post-meta">2019-01-20<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 2,676</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 10</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/61022a09.html#vcomment"><span class="valine-comment-count" data-xid="/posts/61022a09.html"></span><span> 条评论</span></a><div class="post-content"><h2 id="什么是动态规划"><a href="#什么是动态规划" class="headerlink" title="什么是动态规划"></a>什么是动态规划</h2><blockquote>
+<p><strong>dynamic programming </strong>is a method for solving a complex problem by breaking it down into a collection of simpler subproblems, solving each of those subproblems just once, and storing their solutions.</p>
+</blockquote>
+<p>动态规划背后的基本思想非常简单。大致上，若要解一个给定问题，我们需要解其不同部分（即子问题），再合并子问题的解以得出原问题的解。 通常许多子问题非常相似，为此动态规划法试图仅仅解决每个子问题一次，从而减少计算量： 一旦某个给定子问题的解已经算出，则将其记忆化存储，以便下次需要同一个子问题解之时直接查表。 这种做法在重复子问题的数目关于输入的规模呈指数增长时特别有用。</p>
+<p><strong>动态规划问题满足三大重要性质：</strong></p>
+<ol>
+<li><strong>最优子结构性质：</strong>如果问题的最优解所包含的子问题的解也是最优的，我们就称该问题具有最优子结构性质（即满足最优化原理）。最优子结构性质为动态规划算法解决问题提供了重要线索。</li>
+<li><strong>无后效性：</strong>即子问题的解一旦确定，就不再改变，不受在这之后、包含它的更大的问题的求解决策影响。</li>
+<li><strong>子问题重叠性质：</strong>子问题重叠性质是指在用递归算法自顶向下对问题进行求解时，每次产生的子问题并不总是新问题，有些子问题会被重复计算多次。动态规划算法正是利用了这种子问题的重叠性质，对每一个子问题只计算一次，然后将其计算结果保存在一个表格中，当再次需要计算已经计算过的子问题时，只是在表格中简单地查看一下结果，从而获得较高的效率。</li>
+</ol>
+<p>对于动态规划的概念其实不好把握，最好的方式是在做题中去体会动态规划的思想。</p>
+<h2 id="简单基础DP"><a href="#简单基础DP" class="headerlink" title="简单基础DP"></a>简单基础DP</h2><p>这类<code>dp</code>主要是问题比较常见，遇到这类题目可以直接在基础模板上变化即可，包括<strong>递推、背包、LIS（最长递增序列），LCS（最长公共子序列）</strong></p>
+<h3 id="递推"><a href="#递推" class="headerlink" title="递推"></a>递推</h3><p>经典的递推dp是<code>斐波那契数列</code>(Fibonacci sequence)，在求F(n)F(n)时，总会先求F(n−1)F(n−1)和F(n−2)F(n−2)，然后根据公式F(n)=F(n−1)+F(n−2)F(n)=F(n−1)+F(n−2)求出，例如我们在求出F(3)F(3)后，再求F(5)F(5)时就不必从头再推一遍而是直接调用。</p>
+<ul>
+<li><a href="https://wiki.hushhw.cn/posts/ace523f9.html">【动态规划-递推】HDU 2044 一只小蜜蜂…</a></li>
+<li><a href="https://wiki.hushhw.cn/posts/f94672dd.html">【动态规划-递推】HDU 2047 阿牛的EOF牛肉串</a></li>
+<li><a href="https://wiki.hushhw.cn/posts/1d8d1ae8.html">【动态规划-递推】HDU 2045 RPG难题</a></li>
+<li><a href="https://wiki.hushhw.cn/posts/482e4bcc.html">【动态规划-递推】HDU 2046 骨牌铺方格</a></li>
+<li><a href="https://wiki.hushhw.cn/posts/d0e7bee4.html">【动态规划-递推】POJ 1664 放苹果</a></li>
+</ul>
+<p>​       </p>
+<h3 id="背包"><a href="#背包" class="headerlink" title="背包"></a>背包</h3><h4 id="0-1背包-每个物品最多只能放一次"><a href="#0-1背包-每个物品最多只能放一次" class="headerlink" title="0-1背包(每个物品最多只能放一次)"></a>0-1背包(每个物品最多只能放一次)</h4><h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h5><p>有N件物品和一个容量为V的背包。第i件物品的费用是c[i],价值是w[i]。求解将哪些物品装入背包可使价值总和最大</p>
+<h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>这是最基础的背包问题，特点是：每种物品只有一件，可以选择放或者不放</p>
+<p>用子问题定义状态：即<code>dp[i][j]</code>表示前i件物品放入一个容量为j的背包可以获得的最大价值。则其状态转移方程为：</p>
+<p><code>dp[i][j] = max{dp[i - 1][j], dp[i - 1][j - c[i]] + w[i]}</code></p>
+<p>这个方程非常重要，基本上所有跟背包相关的问题的方程都是由它衍生出来。这里详细解释一下：</p>
+<p><strong>将前i件物品放入容量为j的背包中</strong>这个子问题，若只考虑第i件物品的策略（放或者不放），那么就可以转换为一个只牵扯前i-1件物品的问题。</p>
+<ul>
+<li>如果不放第i件物品，那么问题就转换为前i-1件物品放入容量为j的背包中的最大价值，价值为<code>dp[i - 1][j]</code></li>
+<li>如果放入第i件物品，那么问题就转换为前i-1件物品放入容量为j-c[i]的背包中，此时能获得的最大价值是<code>dp[i-1][j-c[i]]</code>,再加上放入第i件物品获得的价值w[i]</li>
+</ul>
+<h5 id="优化空间复杂度"><a href="#优化空间复杂度" class="headerlink" title="优化空间复杂度"></a>优化空间复杂度</h5><p>先考虑一下上面的状态转移方程如何实现，肯定有一个主循环i = 1…N,每次算出来二维数组dp[i][0..V]的所有值。那么如果只用一个数组<code>f[0...V]</code>,能不能保证第i次循环结束后<code>f[v]</code>就是我们定义的状态<code>f[i][v]</code>呢？<code>f[i][v]</code>是由<code>f[i-1][v]</code>和<code>f[i-1][v-c[i]]</code>两个子问题递推而来，能否保证在推<code>f[i][v]</code>时（也即在第i次主循环中推f[v]时）能够得到<code>f[i-1][v]</code>和<code>f[i-1][v-c[i]]</code>的值呢？事实上，这要求在每次主循环中我们以v=V…0的顺序推f[v]，这样才能保证推f[v]时f[v-c[i]]保存的是状态<code>f[i-1][v-c[i]]</code>的值。伪代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for i  in 0 ... N</span><br><span class="line">    for  v = V ... 0</span><br><span class="line">        f[v] = max&#123;f[v], f[v-c[i]] + w[i]&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="练习题目"><a href="#练习题目" class="headerlink" title="练习题目"></a>练习题目</h5><ul>
+<li><a href="https://wiki.hushhw.cn/posts/b883e502.html">【动态规划-0-1背包】HDU 2955 Robberies</a> </li>
+<li><p><a href="https://wiki.hushhw.cn/posts/44777a5c.html">【动态规划-0-1背包】HDU 1864 最大报销额</a></p>
+</li>
+<li><p><a href="https://wiki.hushhw.cn/posts/b0fea3aa.html">【动态规划-0-1背包】HDU 2602 Bone Collector</a></p>
+</li>
+<li><a href="https://wiki.hushhw.cn/posts/e729ac5b.html">【动态规划-0-1背包】HDU 2639 Bone Collector II</a></li>
+</ul>
+<p>​           </p>
+<h4 id="完全背包-每种物品可以放无限多次"><a href="#完全背包-每种物品可以放无限多次" class="headerlink" title="完全背包(每种物品可以放无限多次)"></a>完全背包(每种物品可以放无限多次)</h4><h5 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h5><p>有N种物品和一个容量为V的背包，每种物品都有无限件可用。第i种物品的费用是c[i]，价值是w[i].</p>
+<p>求解将哪些物品装入背包可使这些物品的费用总和不超过背包容量，且价值总和最大</p>
+<h5 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h5><p>这个问题类似于0-1背包问题，所不同的是每种物品有无限件。也就是从每种物品的角度考虑，与它相关的策略已非取或不取两种，而且有取0件、取1件、取2件…等很多种。如果仍然按照0-1背包的思路，令<code>dp[i][v]</code>表示前i种物品恰好放入一个容量为v的背包的最大权值。仍然可以按照每种物品不同的策略写出状态转移方程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][v] = max&#123;dp[i-1][v - k * c[i]] + k * w[i] | 0 &lt;= k * c[i]&lt;= v&#125;</span><br></pre></td></tr></table></figure>
+<p>转化为01背包求解<br>最简单的想法是：考虑到第i种物品最多选V/c[i]件，于是可以把第i种物品转换为V/c[i]件费用及价值均不变的物品，然后求解这个01背包问题。但是这样完全没有改进时间复杂度，但这毕竟给了我们将完全背包转换为01背包问题的思路：将一种物品拆成多件物品</p>
+<h5 id="O-VN-的算法"><a href="#O-VN-的算法" class="headerlink" title="O(VN)的算法"></a>O(VN)的算法</h5><p>这个算法使用一维数组，先看伪代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for i = 1 ... N</span><br><span class="line">    for v = 0 ... V</span><br><span class="line">        f[v] = max&#123;f[v], f[v-cost] + weight&#125;</span><br></pre></td></tr></table></figure></p>
+<p>你会发现，这个伪代码与01背包的伪代码只有v的循环次序不同而已。为什么这样一改就行呢？首先，想想为什么01背包问题中要按照v=V…0的逆序来循环。这是因为要保证第i次循环中的状态f[i][v]是由状态<code>f[i-1][v-c[i]]</code>递推而来。换句话说，这正是为了保证每件物品只选一次，保证在考虑“选入第i件物品”这件策略时，依据的是一个绝无已经选入第i件物品的子结果<code>f[i-1][v-c[i]]</code>。而现在完全背包的特点恰好是每种物品可选无限件，所以在考虑“加选一件dii种物品”这种策略时，却正需要一个可能已选入第i种物品的子结果<code>f[i][c-v[i]]</code>,所以就可以并且必须采用v=0…V的顺序循环。这就是这个简单的程序为何成立的道理。</p>
+<p>值得一提的是，上面的伪代码中两层for循环的次序可以颠倒。这个结论有可能会带来算法时间常数上的优化。</p>
+<p>这个算法也可以以另外的思路得出。例如，将基本思路中求解f[i][v-c[i]]的状态转移方程显式地写出来，代入原方程中，会发现该方程可以等价地变形成这种形式：</p>
+<p><code>f[i][v]=max{f[i-1][v],f[i][v-c[i]]+w[i]}</code></p>
+<p>将这个方程用一维数组实现，便得到了上面的伪代码。</p>
+<h5 id="练习题目-1"><a href="#练习题目-1" class="headerlink" title="练习题目"></a>练习题目</h5><ul>
+<li><a href="https://wiki.hushhw.cn/posts/2e53604.html">【动态规划-完全背包】HDU 2159 FATE</a></li>
+</ul>
+<p>​         </p>
+<h4 id="多重背包-每种物品有一个固定的次数上限"><a href="#多重背包-每种物品有一个固定的次数上限" class="headerlink" title="多重背包(每种物品有一个固定的次数上限)"></a>多重背包(每种物品有一个固定的次数上限)</h4><h5 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h5><p>有N种物品和一个容量为V的背包。第i种物品最多有n[i]件，每件费用是c[i]，价值是w[i]。求解将哪些物品装入背包可使这些物品的费用总和不超过背包容量，且价值总和最大</p>
+<h5 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h5><p>多重背包问题的思路跟完全背包的思路非常类似，只是k的取值是有限制的，因为每件物品的数量是有限制的，状态转移方程为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][v] = max&#123;dp[i - 1][v - k * c[i]] + w[i] | 0 &lt;=k &lt;= n[i]&#125;</span><br></pre></td></tr></table></figure>
+<p>复杂度是<code>O(V*Σn[i])</code>。</p>
+<h5 id="练习题目-2"><a href="#练习题目-2" class="headerlink" title="练习题目"></a>练习题目</h5><ul>
+<li><a href="https://wiki.hushhw.cn/posts/dab6998b.html">【动态规划-多重背包】HDU 2844 Coins</a></li>
+</ul>
+<p>​        </p>
+<h3 id="LIS-最长递增子序列"><a href="#LIS-最长递增子序列" class="headerlink" title="LIS(最长递增子序列)"></a>LIS(最长递增子序列)</h3><p><strong>最长递增子序列，朴素的是o(n^2)算法，二分下可以写成o(nlgn)：维护一个当前最优的递增序列——找到恰好大于它更新</strong></p>
+<ul>
+<li><a href="https://wiki.hushhw.cn/posts/a996c21e.html">【动态规划-最大连续子序列】HDU 1003 Max Sum</a></li>
+</ul>
+<p>​         </p>
+<h3 id="LCS-最长公共子序列"><a href="#LCS-最长公共子序列" class="headerlink" title="LCS(最长公共子序列)"></a>LCS(最长公共子序列)</h3><p>​          </p>
+<p>​           </p>
+<h2 id="区间dp"><a href="#区间dp" class="headerlink" title="区间dp"></a>区间dp</h2><p> 区间DP是一类在区间上进行动态规划的最优问题，一般是根据问题设出一个表示状态的dp，可以是二维的也可以是三维的，一般情况下为二维。然后将问题划分成两个子问题，也就是一段区间分成左右两个区间，然后将左右两个区间合并到整个区间，或者说局部最优解合并为全局最优解，然后得解。</p>
+<blockquote>
+<p>本文参考自：</p>
+<p><a href="https://en.wikipedia.org/wiki/Dynamic_programming" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Dynamic_programming</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92</a></p>
+<p><a href="https://blog.csdn.net/cc_again/article/details/25866971" target="_blank" rel="noopener">https://blog.csdn.net/cc_again/article/details/25866971</a></p>
+<p><a href="https://blog.csdn.net/woshi250hua/article/details/7969225" target="_blank" rel="noopener">https://blog.csdn.net/woshi250hua/article/details/7969225</a></p>
+</blockquote>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/61022a09.html">从头开始学算法——动态规划</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2019年01月20日 - 18:53:09</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/61022a09.html" data-id="ckkp2xuq100g6f8tlnvyyo4j4" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABz0lEQVR42u3aQY6DMAwF0N7/0h2pu9EU+m2TlJFeVqik5LGJnG8ej3g8X+Pv9fn8o5nndy8YuLi4Y+7zdBwRz39JnnM+//CVcHFxN3KTzeto+YSeX3+w4eLi3oybly/5y+Pi4v53blLo5E/GxcW9Pzc5/ORbW3KMWX5Ww8XFHXAngelV15vyXVxc3HFXItlQqlvbaHVcXNwt3LxNkrdP8kNRLyjBxcXdya22WqvNlWoJ1Tyr4eLijrl5QZP8Xv38InnOr3/h4uJu4fbiy+qjJ1thVJfh4uJeys0LkXno2WucvElxcHFxF3Or5cVVBU35fNarhnBxcVvcPBitzslLnzyuxcXF3cOtNkrn7dJqZ+TNiri4uIu5vcbJ5MOLaoSKi4v7LW4eW1RnJjFKgY6Li7uFm4cavRBk3owpBKa4uLgXcZM8tfcC56FqtSmLi4u7n5uEmJOmSzWKLfSEcXFxl3EnhUjScC1/gJV3g3FxcRdwqxtK9ZCTb2q9uAQXF3cdt9yVjT+x6sUrH+7i4uJu5M4R1ZClOQcXF/dm3Ooy1cZJFNDg4uLektuLUeblES4u7n5uL9qoIvL444JYBBcXd8CdB6bV7SkpaHBxcb/E/QGb+pWM3t72tQAAAABJRU5ErkJggg==">分享</a><div class="tags"><a href="/tags/算法笔记/">算法笔记</a><a href="/tags/动态规划/">动态规划</a></div><div class="post-nav"><a class="pre" href="/posts/ace523f9.html">【动态规划-递推】HDU 2044 一只小蜜蜂...</a><a class="next" href="/posts/f2c9bfb4.html">Hexo主题maupassant添加推荐阅读功能</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/f94672dd.html" target="_blank">【动态规划-递推】HDU 2047 阿牛的EOF牛肉串</a></li><li><a href="https://wiki.hushhw.cn/posts/ace523f9.html" target="_blank">【动态规划-递推】HDU 2044 一只小蜜蜂...</a></li><li><a href="https://wiki.hushhw.cn/posts/f2c9bfb4.html" target="_blank">Hexo主题maupassant添加推荐阅读功能</a></li><li><a href="https://wiki.hushhw.cn/posts/6ff333ed.html" target="_blank">Hexo主题maupassant博客搭建相册</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是动态规划"><span class="toc-number">1.</span> <span class="toc-text">什么是动态规划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单基础DP"><span class="toc-number">2.</span> <span class="toc-text">简单基础DP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#递推"><span class="toc-number">2.1.</span> <span class="toc-text">递推</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#背包"><span class="toc-number">2.2.</span> <span class="toc-text">背包</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#0-1背包-每个物品最多只能放一次"><span class="toc-number">2.2.1.</span> <span class="toc-text">0-1背包(每个物品最多只能放一次)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#题目"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#思路"><span class="toc-number">2.2.1.2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#优化空间复杂度"><span class="toc-number">2.2.1.3.</span> <span class="toc-text">优化空间复杂度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#练习题目"><span class="toc-number">2.2.1.4.</span> <span class="toc-text">练习题目</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#完全背包-每种物品可以放无限多次"><span class="toc-number">2.2.2.</span> <span class="toc-text">完全背包(每种物品可以放无限多次)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#题目-1"><span class="toc-number">2.2.2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#思路-1"><span class="toc-number">2.2.2.2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#O-VN-的算法"><span class="toc-number">2.2.2.3.</span> <span class="toc-text">O(VN)的算法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#练习题目-1"><span class="toc-number">2.2.2.4.</span> <span class="toc-text">练习题目</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多重背包-每种物品有一个固定的次数上限"><span class="toc-number">2.2.3.</span> <span class="toc-text">多重背包(每种物品有一个固定的次数上限)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#题目-2"><span class="toc-number">2.2.3.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#思路-2"><span class="toc-number">2.2.3.2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#练习题目-2"><span class="toc-number">2.2.3.3.</span> <span class="toc-text">练习题目</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LIS-最长递增子序列"><span class="toc-number">2.3.</span> <span class="toc-text">LIS(最长递增子序列)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LCS-最长公共子序列"><span class="toc-number">2.4.</span> <span class="toc-text">LCS(最长公共子序列)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#区间dp"><span class="toc-number">3.</span> <span class="toc-text">区间dp</span></a></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

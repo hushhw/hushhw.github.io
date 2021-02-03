@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>HIAR制作第一个简易的 AR 应用 | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">HIAR制作第一个简易的 AR 应用</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">HIAR制作第一个简易的 AR 应用</h1><div class="post-meta">2018-06-20<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1,141</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 4</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/19ad55f3.html#vcomment"><span class="valine-comment-count" data-xid="/posts/19ad55f3.html"></span><span> 条评论</span></a><div class="post-content"><blockquote>
+<p>虚拟现实实践课程从今天开始开课，</p>
+<p>打算用博客记录学习的过程，</p>
+<p>因为课程结束后应该会很少制作相关应用，</p>
+<p>所以记录系列笔记方便以后捡起来。</p>
+</blockquote>
+<a id="more"></a>
+<p>​         </p>
+<p><img src="https://photo.hushhw.cn/timg.jpg" alt></p>
+<p>​           </p>
+<p>HiAR SDK for Unity 开发文档：<a href="http://www.hiar.com.cn/doc-v1/sdk-unity/overview/" target="_blank" rel="noopener">http://www.hiar.com.cn/doc-v1/sdk-unity/overview/</a></p>
+<blockquote>
+<p>HiAR SDK for Unity 是 HiAR 开发平台中的一套 AR SDK，可以让开发者轻松地使用 Unity 3D 开发跨平台的 AR 应用和 AR 游戏。</p>
+</blockquote>
+<h3 id="HIAR制作第一个简易的-AR-应用"><a href="#HIAR制作第一个简易的-AR-应用" class="headerlink" title="HIAR制作第一个简易的 AR 应用"></a>HIAR制作第一个简易的 AR 应用</h3><p>因为HIAR有一套比较完整的AR SDK，所以整个制作过程并没有难度，以下为步骤（HiAR SDK for Unity 开发文档中有更加完整的过程说明）：</p>
+<ul>
+<li><p>搭建开发环境</p>
+<ul>
+<li>Unity安装下载</li>
+<li>Android SDK 和 JDK安装下载</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>导入SDK</p>
+<ul>
+<li>下载HiAR SDK ：下载地址：<a href="http://www.hiar.com.cn/download.html" target="_blank" rel="noopener">http://www.hiar.com.cn/download.html</a></li>
+<li>导入HiAR SDK：双击 hiar_sdk_unity-x.x.x.unitypackage 文件，Unity 将加载并显示插件内容，点击 Import 开始导入。您也可以在 Unity 中，点击 Assets &gt; Import Package &gt; Custom Package… 来导入插件。导入完成后，您可以在 Project 窗口中看到以下内容：<br><img src="https://photo.hushhw.cn/2.jpg" alt="img"><br>提示：Unity 插件与一般意义上的插件存在区别，每次在新工程中使用时，都需要重新进行导入。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>使用本地识别包</p>
+<ul>
+<li>创建图集、上传图片、发布图集、下载识别包：在管理后台中，选择或新建一个图集并上传您想要识别的图片。上传新的识别图片之后，系统会自动对图集进行发布操作。在下图中可以看到，mydata 图集中显示“图集发布中…”。发布完成后您可以开始下载识别图片。您也可以在图集管理界面中查看各图集的发布状态。如果您只需要下载图集中的部分图片，请先勾选需要识别的图片，然后点击“下载选中项”按钮。如果您需要下载图集的所有图片，则不勾选任何项目，直接点击“下载所有项”按钮。</li>
+<li>导入识别包：双击 mydata.unitypackage 文件，Unity 加载并显示包内容，点击 Import 开始导入。导入完成后，您可以在 <code>Assets/StreamingAssets/HiAR</code> 目录下看到刚才导入的 mydata。导入完成后，您可以在 <code>Assets/StreamingAssets/HiAR</code> 目录下看到刚才导入的 mydata。<img src="https://photo.hushhw.cn/TIM%E6%88%AA%E5%9B%BE20180620145352.png" alt>ImageTarget 在场景中的尺寸时常需要调整，所以我们给 ImageTarget 添加了 Width 和 Height 两个属性，以方便这一操作。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>创建 Hello World</p>
+<ul>
+<li>注册HiAR 平台账户并获取 AppKey 和 Secret：前往<a href="http://portal.hiar.io/" target="_blank" rel="noopener">HiAR 管理后台</a>的应用管理，点击“新建应用”按钮并按照提示要求创建一个新应用。系统会为每个应用分配唯一的 AppKey 和 Secret。进入应用管理界面，您可以在列表中查看到应用对应的 AppKey 和 Secret。<ul>
+<li>新建 Unity 工程并导入 SDK：具体步骤见前一个步骤“导入SDK”</li>
+<li>创建 HiARCamera：新建的 Unity 工程中，默认会创建一个 Main Camera（如下图），请先将其删除。然后将 <code>Assets/HiAR-Unity/Prefabs</code> 目录下的 HiARCamera 拖至 Hierarchy 窗口中。在 Hierarchy 窗口中选中 HiARCamera，在其对应的 Inspector 窗口中找到 AppKey 和 Secret 选项，并填写信息。</li>
+<li>创建 ImageTarget并设置识别图片：将 <code>Assets/HiAR-Unity/Prefabs</code> 目录下的 ImageTarget 拖至 Hierarchy 窗口中。在 Hierarchy 窗口中选中 ImageTarget，在其对应的 Inspector 窗口中找到 HiAR Target Mono Behaviour (Script)，在 Data Set 选项中选择 sample。此时，编辑窗口中将显示一张”苹果“的图片，这是刚刚设置的识别图片。<img src="https://photo.hushhw.cn/TIM%E6%88%AA%E5%9B%BE20180620143856.png" alt="img">sample 是 SDK 中内置的本地识别包，包含两张识别图片，您可以在 Image Target 选项中进行选择。如果您希望添加自己想识别的图片，可以参考前面的导入本地识别包。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>AR 制作与运行：在 Hierarchy 窗口中选中 ImageTarget，右击并在弹出的菜单中选择 3D Object &gt; Cube，识别图片上将显示一个立方体模型。这个模型就是在识别图片上叠加的 AR 内容，您可以适当调整模型的大小以便查看。上述操作完成后，需要在 Unity 环境下运行以查看效果。在运行之前，请确保您的电脑已安装了摄像头。点击运行按钮，摄像头将启动并采集画面；将摄像头对准”苹果“图片，识别成功后将在图片上叠加显示一个立方体模型。</p>
+<p>​</p>
+</li>
+</ul>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/19ad55f3.html">HIAR制作第一个简易的 AR 应用</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2018年06月20日 - 10:51:12</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/19ad55f3.html" data-id="ckkp2xti70021f8tl4eobtka3" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxklEQVR42u3aS3LDIBAFQN//0s7WG5H3QGC5qlm5FBtaWUzNh9crXu+P9flk/NfPJ+Pdbl64uLjL3PdwjQ8YP7naYbz/1XdwcXHPc68ixtx32ldN9sfFxX0+N4fmKREuLu6vc9sy6RFxFxcXt+QmxUlSxqynQbfVari4uAvcPDzt+7ylv4uLizvFfZdrXAi1TdX6dFxc3CPcPKCsJx9zO+Di4n6Lm5Qic1cx2mZKsQMuLu427twxbYrTBrJ/MjJcXNzN3DYwzTVP839B1EDBxcXdzG23zgeobRITvSouLu4Rbjs4GSc0eYDLg1pUPuHi4m7j5sS2KEougdXn4uLiHue2A9SVNGVurIuLi3uGu2M+k7RXbih+cHFxt3GTI5OUKG+dtDvj4uKe5N7b9GyTmPFrRENWXFzcbdz1bmt+hStflzNhXFzcg9wclPxqrrWxNFLFxcVd5s6FlZXip22s4OLinue2rdK8PTrXfh2fi4uLe5K7MuacC2F5gKujLy4u7q3clWHJvcGuqNVwcXEfw82bpPlFrrpiw8XFfRi3DXDjBKhuoeLi4h7kJsVPewN0vfGKi4v7Le5Kc3NuBNJeBcPFxT3I/QO6+hTjW81eXgAAAABJRU5ErkJggg==">分享</a><div class="tags"><a href="/tags/Unity/">Unity</a><a href="/tags/AR/">AR</a></div><div class="post-nav"><a class="pre" href="/posts/36070.html">Unity导出导出 Android 工程、应用</a><a class="next" href="/posts/52367.html">【动态规划-递推】HDU 1143 Tri Tiling</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/43678.html" target="_blank">Android-SDK下载安装及配置</a></li><li><a href="https://wiki.hushhw.cn/posts/36070.html" target="_blank">Unity导出导出 Android 工程、应用</a></li><li><a href="https://wiki.hushhw.cn/posts/52367.html" target="_blank">【动态规划-递推】HDU 1143 Tri Tiling</a></li><li><a href="https://wiki.hushhw.cn/posts/10c8125f.html" target="_blank">Markdown中Latex数学公式基本语法</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HIAR制作第一个简易的-AR-应用"><span class="toc-number">1.</span> <span class="toc-text">HIAR制作第一个简易的 AR 应用</span></a></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

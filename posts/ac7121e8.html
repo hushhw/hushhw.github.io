@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>《数据库系统概论》学习笔记之关系数据库 | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">《数据库系统概论》学习笔记之关系数据库</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">《数据库系统概论》学习笔记之关系数据库</h1><div class="post-meta">2019-03-21<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1,147</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 4</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/ac7121e8.html#vcomment"><span class="valine-comment-count" data-xid="/posts/ac7121e8.html"></span><span> 条评论</span></a><div class="post-content"><blockquote>
+<p>整理《数据库系统概论》学习笔记，方便日后回顾整理。</p>
+</blockquote>
+<h2 id="2-1-关系数据结构及形式化定义"><a href="#2-1-关系数据结构及形式化定义" class="headerlink" title="2.1 关系数据结构及形式化定义"></a>2.1 关系数据结构及形式化定义</h2><h3 id="2-1-1-关系"><a href="#2-1-1-关系" class="headerlink" title="2.1.1 关系"></a>2.1.1 关系</h3><p>域 (Domain)：域是一组具有相同数据类型的值的集合。</p>
+<p>笛卡尔积 (Cartiesian Product)：给定一组域 $D_1$，$D_2$，……，$D_n$，这些域中可以有相同的。这组域的笛卡儿积为：</p>
+<script type="math/tex; mode=display">
+D_1\times D_2 \times ... \times D_n = \{ (d_1, d_2, ..., d_n) | d_i \in D_i, i=1, 2, ..., n\}</script><p>假设集合 A={a, b}，集合 B={0, 1, 2}，则两个集合的笛卡尔积为 {(a, 0), (a, 1), (a, 2), (b, 0), (b, 1), (b, 2)}。</p>
+<p>关系：是笛卡儿积的有限子集，表示为 $R(D_1, D_2, …, D_n)$，其中 R 为关系名，n 为关系的目或度。</p>
+<ul>
+<li><p>元组：关系的每个元素是关系中的元组，通常用 t 表示。</p>
+</li>
+<li><p>属性：关系中不同列可以对应相同的域，为了加以区分，必须对每列取一个名字称为属性，n 目关系必有 n 个属性。</p>
+</li>
+<li><p>码</p>
+<ul>
+<li>候选码：若关系中的某一属性组的值能唯一地标识一个元组，则称该属性组为候选码。</li>
+<li>全码：在最极端的情况下，关系模式的所有属性是这个关系模式的候选码，称为全码。</li>
+<li>主码：若一个关系有多个候选码，则选定其中一个为主码。</li>
+<li>主属性：候选码的诸属性称为主属性。</li>
+<li>非主属性：不包含在任何候选码中的属性称为非主属性或非码属性。</li>
+</ul>
+</li>
+<li><p>关系可以有三种类型：基本关系（基本表或基表）、查询表和视图表。</p>
+<ul>
+<li>基本表是实际存在的表，它是实际存储数据的逻辑表示；</li>
+<li>查询表示查询结果对应的表；</li>
+<li>视图表是由基本表或其他视图表导出的表，是虚表，不对应实际存储的数据。</li>
+</ul>
+</li>
+<li><p>在对关系进行限定和扩充下（为了适应数据库要求），关系需要具有以下几个性质：</p>
+<ul>
+<li><p>列是同质的</p>
+</li>
+<li><p>不同的列可出自同一个域</p>
+</li>
+<li><p>列的顺序无所谓，列的次序可以任意交换</p>
+</li>
+<li><p>任意两个元组的候选码不能取相同的值</p>
+</li>
+<li><p>行的顺序无所谓，行的次序可以任意交换</p>
+</li>
+<li><p>分量必须取原子值，这是规范条件中最基本的一条</p>
+<p>必须保证表中不能再有表</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-1-2-关系模式"><a href="#2-1-2-关系模式" class="headerlink" title="2.1.2 关系模式"></a>2.1.2 关系模式</h3><p>关系的描述称为关系模式（型），关系是关系模式在某一时刻的状态或内容（值）。关系模式是静态的、稳定的，而关系是动态的、随时间不断变化的。</p>
+<h3 id="2-1-3-关系数据库"><a href="#2-1-3-关系数据库" class="headerlink" title="2.1.3 关系数据库"></a>2.1.3 关系数据库</h3><p>关系数据库的型也称为关系数据库模式，是对关系数据库的描述。关系数据库的值是这些关系模式在某一时刻对应的关系的集合，通常就称为关系数据库。</p>
+<h2 id="2-2-关系操作"><a href="#2-2-关系操作" class="headerlink" title="2.2 关系操作"></a>2.2 关系操作</h2><p>关系操作的对象和结果都是集合。基本操作：选择、投影、并、差、笛卡尔积。分类：关系代数、关系演算、介于两者之间（SQL）。</p>
+<h2 id="2-3-关系代数"><a href="#2-3-关系代数" class="headerlink" title="2.3 关系代数"></a>2.3 关系代数</h2><blockquote>
+<p>这部分内容请参考书本</p>
+</blockquote>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-03-21_13-53-06.png" alt></p>
+<h3 id="2-3-1-传统的集合运算"><a href="#2-3-1-传统的集合运算" class="headerlink" title="2.3.1 传统的集合运算"></a>2.3.1 传统的集合运算</h3><p>并（Union）：</p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-03-21_14-02-31.png" alt></p>
+<p>差：</p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-03-21_14-03-25.png" alt></p>
+<p>交：</p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-03-21_14-04-13.png" alt></p>
+<p>笛卡尔积：</p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-03-21_14-04-50.png" alt></p>
+<h3 id="2-3-2-专门的关系运算"><a href="#2-3-2-专门的关系运算" class="headerlink" title="2.3.2 专门的关系运算"></a>2.3.2 专门的关系运算</h3><p>选择运算：</p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-03-21_14-11-38.png" alt></p>
+<p>投影运算：要去掉相同的行</p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-03-21_14-12-42.png" alt></p>
+<p>连接运算：</p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-03-21_14-13-25.png" alt></p>
+<ul>
+<li>等值连接</li>
+<li>自然连接</li>
+</ul>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-03-21_14-16-11.png" alt></p>
+<ul>
+<li>外连接</li>
+<li>左外连接</li>
+<li>右外连接</li>
+</ul>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-03-21_14-18-22.png" alt></p>
+<p>除运算：</p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-03-21_14-23-36.png" alt></p>
+<h2 id="2-4-关系的完整性"><a href="#2-4-关系的完整性" class="headerlink" title="2.4 关系的完整性"></a>2.4 关系的完整性</h2><ol>
+<li>实体完整性：若属性（指一个或一组属性）A 是基本关系 R 的主属性，则 A 不能取空值。</li>
+<li>参照完整性：设F是基本关系R的一个或一组属性，但不是关系R的码，Ks是基本关系S的主码。如果F与Ks相对应，则称F是R的外码，并称基本关系R为参照关系，基本关系S为被参照关系或目标关系。参照完整性规则：若属性（或属性组）F是基本关系R的外码，它与基本关系S的主码Ks相对应，则对于R中每个元组在F上的值必须：或者取空值，或者等于S中某个元组的主码值。</li>
+<li>用户定义的完整性：就是针对某一具体关系数据库的约束条件，它反映某一具体应用所涉及的数据必须满足的语义要求。</li>
+</ol>
+<p>其中，1，2是关系模型必须满足的完整性约束，被称作关系的两个不变性，应用由关系系统自动支持。</p>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/ac7121e8.html">《数据库系统概论》学习笔记之关系数据库</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2019年03月21日 - 12:57:42</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/ac7121e8.html" data-id="ckkp2xtjs005gf8tloarrdp3w" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByUlEQVR42u3aSW7DMBAEwPz/0841gGOpe2gyC4onQZCoog8NcsYfH/F4fBnP95+feb5/ff3mgYuLu8x9XI7kM9fvJs8kBlxc3PPcV4mRhE4ObefHxcX9K9yXEXM5Jy4u7n/l5tBkebi4uL+f2x5OZiGVhOPbzmq4uLgL3LxKue96S30XFxd3xH2Uo90GtcXTmxlwcXGPcGetlKQY+q6i6jdfx8XFPcJtg6mYrtyr5MVWXFzc3dw8htqQWln8zRYHFxd3G3elNZI0X/Mya/QuLi7uQW7bcG2DrN3KFImLi4u7jduWRJOAy5dRlFpwcXF/lJv/naItjiSB+JKOi4v7Q9yVauvsUFRkFC4u7hHurL2RN1aT8sqw+YqLi7uZu8LKy6D58m6exMXFPcLN6bPImx2ookXi4uJu4yaUWajNmqlF/wcXF3cztw2d2eHnbTsyXFzcbdxHOerDSfnnjJu3cHFxj3DXPzksZ5SNW1xc3PPcPLzaFsssqm5+Glxc3IPcWTkjibA6Na/nx8XF/ZXcFdws7JaCDBcX9wg3L7O2ZdnoJ8DFxT3IzQ8/16nStlGT2ZbOari4uCPurPHZNl1mbdql+i4uLu6E+wkVU8NCusCp/wAAAABJRU5ErkJggg==">分享</a><div class="tags"><a href="/tags/复习笔记/">复习笔记</a><a href="/tags/数据库/">数据库</a></div><div class="post-nav"><a class="pre" href="/posts/5fe5cd41.html">北邮网研院复试笔试整理——人工智能</a><a class="next" href="/posts/b8222433.html">《数据库系统概论》学习笔记之绪论</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/4884afb4.html" target="_blank">二叉树遍历题型汇总</a></li><li><a href="https://wiki.hushhw.cn/posts/5fe5cd41.html" target="_blank">北邮网研院复试笔试整理——人工智能</a></li><li><a href="https://wiki.hushhw.cn/posts/b8222433.html" target="_blank">《数据库系统概论》学习笔记之绪论</a></li><li><a href="https://wiki.hushhw.cn/posts/83505976.html" target="_blank">全排列算法总结</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-关系数据结构及形式化定义"><span class="toc-text">2.1 关系数据结构及形式化定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-关系"><span class="toc-text">2.1.1 关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-关系模式"><span class="toc-text">2.1.2 关系模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-3-关系数据库"><span class="toc-text">2.1.3 关系数据库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-关系操作"><span class="toc-text">2.2 关系操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-关系代数"><span class="toc-text">2.3 关系代数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-传统的集合运算"><span class="toc-text">2.3.1 传统的集合运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-专门的关系运算"><span class="toc-text">2.3.2 专门的关系运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-关系的完整性"><span class="toc-text">2.4 关系的完整性</span></a></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

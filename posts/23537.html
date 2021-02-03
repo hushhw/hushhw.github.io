@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>Anaconda+python3+opencv3+TensorFlow的安装 | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Anaconda+python3+opencv3+TensorFlow的安装</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">Anaconda+python3+opencv3+TensorFlow的安装</h1><div class="post-meta">2018-07-16<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1,390</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 6</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/23537.html#vcomment"><span class="valine-comment-count" data-xid="/posts/23537.html"></span><span> 条评论</span></a><div class="post-content"><p><img src="https://photo.hushhw.cn/TIM%E6%88%AA%E5%9B%BE20180717224539.png" alt="图片来源官网"></p>
+<blockquote>
+<p>打算花时间入门一下计算机视觉，</p>
+<p>做点东西出来玩一玩，顺便</p>
+<p>考虑一下用来做毕设的可能性，</p>
+<p>这篇用来记录环境配置。</p>
+</blockquote>
+<a id="more"></a>
+<p><strong>安装环境：</strong>Windows（64 bit）CPU</p>
+<p><strong>安装版本：</strong>Anaconda3-4.5.4-Windows-x86_64（Python3.6）</p>
+<p>​                   Opencv 3.4.2</p>
+<p>后面安装介绍基于此环境和版本</p>
+<h2 id="Anaconda"><a href="#Anaconda" class="headerlink" title="Anaconda"></a>Anaconda</h2><h3 id="为什么要装Anaconda"><a href="#为什么要装Anaconda" class="headerlink" title="为什么要装Anaconda"></a>为什么要装Anaconda</h3><p><strong>你可能已经安装了 Python，那么为什么还需要 Anaconda？有以下3个原因：</strong></p>
+<p>1）Anaconda 附带了一大批常用数据科学包，它附带了 conda、Python 和 150 多个科学包及其依赖项。因此你可以立即开始处理数据。</p>
+<p>2）管理包</p>
+<p>​    Anaconda 是在 conda（一个包管理器和环境管理器）上发展出来的。</p>
+<p>​    在数据分析中，你会用到很多第三方的包，而conda（包管理器）可以很好的帮助你在计算机上安装和管理这    些包，包括安装、卸载和更新包。</p>
+<p>3）管理环境</p>
+<p>​    为什么需要管理环境呢？</p>
+<p>​    比如你在A项目中用了 Python 2，而新的项目B老大要求使用Python 3，而同时安装两个Python版本可能会造成许多混乱和错误。这时候 conda就可以帮助你为不同的项目建立不同的运行环境。</p>
+<p>​    还有很多项目使用的包版本不同，比如不同的pandas版本，不可能同时安装两个 Numpy 版本，你要做的应该是，为每个 Numpy 版本创建一个环境，然后项目的对应环境中工作。这时候conda就可以帮你做到。</p>
+<blockquote>
+<p>上面这段摘自知乎回答：初学python者自学anaconda的正确姿势是什么？？ - 猴子的回答 - 知乎<br><a href="https://www.zhihu.com/question/58033789/answer/254673663" target="_blank" rel="noopener">https://www.zhihu.com/question/58033789/answer/254673663</a></p>
+</blockquote>
+<h3 id="安装Anaconda"><a href="#安装Anaconda" class="headerlink" title="安装Anaconda"></a>安装Anaconda</h3><ul>
+<li><p>从官网 <a href="https://www.anaconda.com/download/" target="_blank" rel="noopener">https://www.anaconda.com/download/</a> 下载对应版本，如我选择的版本为Anaconda3-4.5.4-Windows-x86_64（Python3.6），目前（2018.07.17）更新到Anaconda3-5.2.0</p>
+</li>
+<li><p>安装部分没有坑，next即可，切记将Anaconda添加到系统变量路径中，即勾选第一项，否则配置环境变量会很麻烦，能方便就方便吧。</p>
+<p><img src="https://photo.hushhw.cn/20171021092759947.png" alt="图片来源水印"></p>
+</li>
+</ul>
+<h3 id="修改镜像"><a href="#修改镜像" class="headerlink" title="修改镜像"></a>修改镜像</h3><ul>
+<li><p>通过 conda config 命令生成配置文件</p>
+<p>这里，我们使用清华的镜像：<a href="https://link.jianshu.com/?t=https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</a></p>
+<p>首先，在CMD命令行输入以下两条命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --set show_channel_urls yes</span><br></pre></td></tr></table></figure>
+<p>此时，目录 C:\Users&lt;你的用户名&gt; 下就会生成配置文件.condarc，内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">channels:</span><br><span class="line">https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">defaults</span><br><span class="line">   show_channel_urls: true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改配置文件</p>
+<p>删除上述配置文件 .condarc 中的第三行，然后保存，最终版本文件如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">channels:</span><br><span class="line">https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">   show_channel_urls: true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看是否生效</p>
+<p>通过命令 conda info 查看当前配置信息，内容如下，即修改成功，关注 channel URLs 字段内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;conda info</span><br><span class="line">Current conda install:</span><br><span class="line"></span><br><span class="line">               platform : win-32</span><br><span class="line">          conda version : 4.3.22</span><br><span class="line">       conda is private : False</span><br><span class="line">      conda-env version : 4.3.22</span><br><span class="line">       requests version : 2.12.4</span><br><span class="line">           channel URLs : https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/win-32</span><br><span class="line">                          https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/noarch</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="OpenCV、tensorflow、notebook"><a href="#OpenCV、tensorflow、notebook" class="headerlink" title="OpenCV、tensorflow、notebook"></a>OpenCV、tensorflow、notebook</h2><p>这部分先用图形界面操作会比较直观，打开Anaconda Navigator，按照如图创建虚拟环境：</p>
+<p><img src="https://photo.hushhw.cn/TIM%E6%88%AA%E5%9B%BE20180717233907.png" alt></p>
+<p>之后打开命令行终端，如图：</p>
+<p><img src="https://photo.hushhw.cn/TIM%E6%88%AA%E5%9B%BE20180717234645.png" alt></p>
+<p>如果用命令行创建的话，打开Anaconda Prompt（或直接管理员身份运行cmd)输入conda create -n tensorflow即可，然后执行activate tensorflow激活环境。</p>
+<p><img src="https://photo.hushhw.cn/20171021095429960.png" alt="图片来源见水印"></p>
+<p>这里先排一个坑：检查一下pip版本，输入pip -V</p>
+<p><img src="https://photo.hushhw.cn/pip.png" alt></p>
+<p>后面在安装的时候如果出现pip版本不够的提示，请升级pip版本，报错信息可能为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">You are using pip version 9.0.3, however version 10.0.1 is available.</span><br><span class="line">You should consider upgrading via the &apos;python -m pip install --upgrade pip&apos; command.</span><br></pre></td></tr></table></figure>
+<p>升级执行：</p>
+<p><img src="https://photo.hushhw.cn/upgrade%20pip.png" alt></p>
+<p>另外还有numpy的版本，可执行pip install numpy 安装</p>
+<h3 id="OpenCV安装"><a href="#OpenCV安装" class="headerlink" title="OpenCV安装"></a>OpenCV安装</h3><p>到此镜像站下载opencv <a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="noopener">http://www.lfd.uci.edu/~gohlke/pythonlibs/</a> </p>
+<p>选择最新windows64位的版本opencv，我下载的是<strong>opencv_python-3.4.2-cp36-cp36m-win_amd64.whl</strong>（win32或i386或x86指的是32位操作系统，amd64指的是64位，而不是指amd处理器）<br><strong>将下载所得的whl文件放至anacoda3安装目录下的Scripts文件夹</strong>（anaconda正确安装的话，此文件夹中应有pip.exe）</p>
+<p>打开cmd或在上面打开的终端输入  <strong>pip install D:\Anaconda\Scripts\opencv_python-3.4.2-cp36-cp36m-win_amd64.whl(文件路径)</strong> </p>
+<p><img src="https://photo.hushhw.cn/opencv.png" alt></p>
+<p>初次安装显示Successful installed opencv-python-3.4.2即安装成功。</p>
+<p>测试一下：</p>
+<p><img src="https://photo.hushhw.cn/opencv2.png" alt></p>
+<h3 id="tensorflow安装"><a href="#tensorflow安装" class="headerlink" title="tensorflow安装"></a>tensorflow安装</h3><p>TensorFlow 有两个版本：<strong>CPU</strong> 版本和 <strong>GPU</strong> 版本。GPU 版本需要 <strong>CUDA</strong> 和 <strong>cuDNN</strong> 的支持，CPU 版本不需要。如果你要安装 GPU 版本，<strong>请先确认你的显卡支持 CUDA</strong>。</p>
+<p>这里安装的tensorflow是CPU版本的，很多教程都有要求说Python 版本必须是3.5，实际上我们现在安装TensorFlow 从 1.2 开始支持 Python 3.6，之前的官方是不支持的。<br>安装过程和上面一样，执行代码<strong>pip install –upgrade tensorflow</strong> </p>
+<p><img src="https://photo.hushhw.cn/tensorflow.png" alt></p>
+<p>我这里都安装过了结果如上。</p>
+<h3 id="notebook安装及helloworld测试"><a href="#notebook安装及helloworld测试" class="headerlink" title="notebook安装及helloworld测试"></a>notebook安装及helloworld测试</h3><p>在Anaconda Navigator的home页面把虚拟环境切换到tensorflow，点击notebook的按钮安装，安装成功后会变成Lunch如下图：</p>
+<p><img src="https://photo.hushhw.cn/notebook.png" alt></p>
+<p>点击Lunch在浏览器中运行notebook，如下图新建一个文件helloword.ipynb</p>
+<p><img src="https://photo.hushhw.cn/notebook2.png" alt></p>
+<p>输入如下代码运行，测试环境：</p>
+<p><img src="https://photo.hushhw.cn/helloopencv.png" alt></p>
+<blockquote>
+<p>本篇博客整理参考自：（感谢大佬们带入坑）</p>
+<p><a href="https://blog.csdn.net/qq_28818465/article/details/78441006" target="_blank" rel="noopener">https://blog.csdn.net/qq_28818465/article/details/78441006</a></p>
+<p><a href="https://blog.csdn.net/qq_41185868/article/details/80469489" target="_blank" rel="noopener">https://blog.csdn.net/qq_41185868/article/details/80469489</a></p>
+<p><a href="https://www.jianshu.com/p/042fd657e2d4" target="_blank" rel="noopener">https://www.jianshu.com/p/042fd657e2d4</a></p>
+</blockquote>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/23537.html">Anaconda+python3+opencv3+TensorFlow的安装</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2018年07月16日 - 8:44:33</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/23537.html" data-id="ckkp2xtib002ef8tlix6en7rp" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwklEQVR42u3aMQ7DIAwF0N7/0qnUqUvotyEklR5TFCF4ZLBim9crHsdnfD9/j7M549XGc6YGLi7uNPcYjmT73jrjT3B6JFxc3I3cmeCVvMmff9hwcXEfxh0HnfFPTH4kXFzc/+KuyrFwcXH/hZskLeM3yVHzz7EgV8PFxZ3g9gqma58vr+/i4uIu6kokQS0PPeMEKVoTFxd3C3e8UDVpyQNTtcwanRsXF3cpt7p0NTytut6Bi4u7n9trjay6sJXsjouLu4dbXSjZvnoVIz82Li7uTm7eJslLG9WfmCiA4uLibuRWGx55YjOe00x4cHFxb+KuarL2jo2Li3svN/lNyTeu/r7k83+kQLi4uBdwe6FnpmCal2NwcXH3c8sly/iKRv6dCnRcXNwt3JmiZ35R4whG3ozBxcW9mpuUPtci8vYMLi7uvdz5ixRTN8KCZgwuLu5+bj6Sg1XLoHnLFhcXdw+3GlCSoNa75tUrl+Di4l7HbbY545JKcjBcXNxncvPgNd4+D4i9oImLi/s0bq/02SuUnCZFuLi4j+Suza7KZVlcXNyN3Ly4uarwmoTLqVwNFxd3glsNN70EqXrJAxcX9ybuG51gTdTWNhBVAAAAAElFTkSuQmCC">分享</a><div class="tags"><a href="/tags/计算机视觉/">计算机视觉</a><a href="/tags/OpenCV/">OpenCV</a><a href="/tags/tensorflow/">tensorflow</a></div><div class="post-nav"><a class="pre" href="/posts/12a01be2.html">Python-OpenCV学习笔记——图片读取、展示和写入</a><a class="next" href="/posts/61ebe669.html">Google 搜索引擎设置搜索结果，在新的标签页打开</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/20751.html" target="_blank">Python-OpenCV学习笔记——图片写入及图片质量</a></li><li><a href="https://wiki.hushhw.cn/posts/12a01be2.html" target="_blank">Python-OpenCV学习笔记——图片读取、展示和写入</a></li><li><a href="https://wiki.hushhw.cn/posts/61ebe669.html" target="_blank">Google 搜索引擎设置搜索结果，在新的标签页打开</a></li><li><a href="https://wiki.hushhw.cn/posts/43678.html" target="_blank">Android-SDK下载安装及配置</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Anaconda"><span class="toc-number">1.</span> <span class="toc-text">Anaconda</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么要装Anaconda"><span class="toc-number">1.1.</span> <span class="toc-text">为什么要装Anaconda</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Anaconda"><span class="toc-number">1.2.</span> <span class="toc-text">安装Anaconda</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改镜像"><span class="toc-number">1.3.</span> <span class="toc-text">修改镜像</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenCV、tensorflow、notebook"><span class="toc-number">2.</span> <span class="toc-text">OpenCV、tensorflow、notebook</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OpenCV安装"><span class="toc-number">2.1.</span> <span class="toc-text">OpenCV安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tensorflow安装"><span class="toc-number">2.2.</span> <span class="toc-text">tensorflow安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#notebook安装及helloworld测试"><span class="toc-number">2.3.</span> <span class="toc-text">notebook安装及helloworld测试</span></a></li></ol></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

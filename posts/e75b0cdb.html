@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>吴恩达《机器学习》笔记（六）——神经网络的表述 | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">吴恩达《机器学习》笔记（六）——神经网络的表述</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">吴恩达《机器学习》笔记（六）——神经网络的表述</h1><div class="post-meta">2019-08-11<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1,261</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 5</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/e75b0cdb.html#vcomment"><span class="valine-comment-count" data-xid="/posts/e75b0cdb.html"></span><span> 条评论</span></a><div class="post-content"><blockquote>
+<p>本节表述了神经网络在机器学习中的应用及表达形式，并做了简单的举例说明。</p>
+</blockquote>
+<h2 id="Neural-Networks-Representation"><a href="#Neural-Networks-Representation" class="headerlink" title="Neural Networks: Representation"></a>Neural Networks: Representation</h2><h3 id="8-1-Non-linear-Hypotheses"><a href="#8-1-Non-linear-Hypotheses" class="headerlink" title="8.1. Non-linear Hypotheses"></a>8.1. Non-linear Hypotheses</h3><p>我们前面学到的线性回归和逻辑回归在面临有很多特征时，计算的负荷都会非常大。</p>
+<p>使用非线性的多项式项能够帮助我们建立更好的分类模型。假设我们有非常多的特征，例如大于 100 个变量，我们希望用这 100 个特征来构建一个非线性的多项式模型，结果将是数据非常惊人的特征组合，即便我们只采用两两特征的组合（$x<em>1x_2 + x_1x_3 + x_1x_4 + \cdots + x_2x_3 + x_2x_4 + \cdots + x</em>{99}x_{100}$），这样也有接近 5000 个组合而成的特征，这对于一般的逻辑回归来说需要计算的特征太多了。</p>
+<p>所以，我们需要引入神经网络。</p>
+<p>​             </p>
+<h3 id="8-2-Neurons-and-the-Brain"><a href="#8-2-Neurons-and-the-Brain" class="headerlink" title="8.2. Neurons and the Brain"></a>8.2. Neurons and the Brain</h3><p>神经网络是计算量有些偏大的算法，大概由于近些年计算机的运行速度变快，才足以真正运行起大<br>规模的神经网络。正是由于这个原因和其他一些我们后面会讨论到的技术因素，如今的神经网络对于许多应用来说是最先进的技术。</p>
+<p>​                </p>
+<h3 id="8-3-Model-Representation"><a href="#8-3-Model-Representation" class="headerlink" title="8.3. Model Representation"></a>8.3. Model Representation</h3><h4 id="8-3-1-简单表达"><a href="#8-3-1-简单表达" class="headerlink" title="8.3.1. 简单表达"></a>8.3.1. 简单表达</h4><p>为了构建神经网络模型，我们需要首先思考大脑中的神经网络是怎样的？</p>
+<p>每一个神经元都可以被认为是一个<strong>处理单元/神经核（processing unit/Nucleus）</strong>，它含有许多<strong>输入/树突（input/Dendrite）</strong>，并且有一个<strong>输出/轴突（output/Axon）</strong>。神经网络是大量神经元相互链接并通过电脉冲来交流的一个网络。 </p>
+<p><img src="https://photo.hushhw.cn/20190811162118.png" alt></p>
+<p>神经网络模型建立在很多神经元之上，每一个神经元又是一个个学习模型。这些神经元采纳一些特征作为输出，并且根据本身的模型提供一个输出。下面是一个以 logistic 回归模型作为自身学习模型的神经元示例：</p>
+<p><img src="https://photo.hushhw.cn/20190904173829.png" alt></p>
+<p>其中，在神经网络中，参数（parameter）又可被称为<strong>权重（weight）</strong>；$x_0=1​$ 称为<strong>偏置单元（bias unit）</strong>，是否写出根据情况来定；红色的圈代表神经元，又称<strong>激活单元（activation unit）</strong>；g(z) 称为<strong>激活函数（activation function）</strong>，一般指「由……驱动的神经元计算函数 g(z)」，上面就是逻辑激活函数。</p>
+<p>我们推演到多个神经元的情况：</p>
+<p><img src="https://photo.hushhw.cn/20190904175859.png" alt></p>
+<p>其中，第一层是输入层（Input layer），第三层是输出层（Output Layer），而中间数据处理的一层为隐藏层（Hidden Layers），有输入层加权组合后重新映射而成，每一层都可以加上偏置单元。</p>
+<p>其中一些符号标记：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+a_i^{(j)} &= 第j层的第i个激活单元 \\
+\Theta^{(j)} &= 控制从第j层到j+1层的映射函数的权重矩阵
+\end{align}</script><p>其中，每一个激活结点都可以用 sigmoid 激活函数表示：</p>
+<p><img src="https://photo.hushhw.cn/20190904191827.png" alt></p>
+<p>由矩阵乘法可知：因此如果要从含有 $s<em>j$ 个单元的第 j 层映射到含有 $s_j+1$ 个单元的第 j+1 层，那么权重矩阵 Θ(j) 的尺寸为 $s</em>{j+1}×(s_j+1)​$，其中的 +1是因为要考虑偏置单元。</p>
+<p>这种从左到右的算法称为<strong>前向传播算法（Forward propagation）</strong>。</p>
+<h4 id="8-3-2-向量形式表达"><a href="#8-3-2-向量形式表达" class="headerlink" title="8.3.2. 向量形式表达"></a>8.3.2. 向量形式表达</h4><p>下面利用向量形式来表达该算法，以上面神经网络为例，试着计算第二层的值：</p>
+<script type="math/tex; mode=display">
+x=\left[ \begin{matrix} x_0 \\x_1 \\ x_2 \\x_3 \end{matrix} \right]、 
+z^{(2)} = \left[ \begin{matrix} z_1^{(2)} \\ z_2^{(2)} \\ z_3^{(2)}\end{matrix} \right]</script><p>其中，$z^{(2)} = \Theta^{(1)}x，a^{(2)} = g(z^{(2)})$。</p>
+<p>进而，我们得到了参数 z 计算的表达式，计算第 j-1 层到第 j 层映射 g(z) 的参数 z：</p>
+<script type="math/tex; mode=display">
+z^{(j)} = \Theta^{(j-1)}a^{(j-1)}</script><p>接着，用同样的方法计算下一层的信息：</p>
+<script type="math/tex; mode=display">
+z^{(j+1)} = \Theta^{(j)}a^{(j)}</script><p>这样上例中 $h_{\theta}(x)=a^{(3)}=g(z^{(3)})$。</p>
+<h4 id="8-3-3-例子"><a href="#8-3-3-例子" class="headerlink" title="8.3.3. 例子"></a>8.3.3. 例子</h4><p>从本质上讲，神经网络能够通过学习得出其自身的一系列特征。在神经网络中，原始特征只是输入层，在我们上面三层的神经网络例子中，第三层也就是输出层做出的预测利用的是第二层的特征，而非输入层中的原始特征，我们可以认为第二层中的特征是神经网络通过学习后自己得出的一系列用于预测输出变量的新特征。 </p>
+<p>神经网络中，单层神经元（无中间层）的计算可用来表示逻辑运算，比如逻辑与(AND)、逻辑或(OR)。 </p>
+<p><img src="https://photo.hushhw.cn/20190905075722.png" alt></p>
+<p><img src="https://photo.hushhw.cn/20190905075911.png" alt></p>
+<p>当输入特征为布尔值时，我们可以用一个单一的激活层作为二元逻辑运算符（binary logical operators），为了表示不同的运算符，只需要修改不同的权重即可。</p>
+<p>​          </p>
+<h3 id="8-7-Multicalss-Classification"><a href="#8-7-Multicalss-Classification" class="headerlink" title="8.7. Multicalss Classification"></a>8.7. Multicalss Classification</h3><p>当我们有不止两种分类时，可通过神经网络算法来输出不同的结果进行判断，如第一个值是 1 或 0 来预测是否是行人，第二个值是否是 1 或 0 来预测是否是汽车等。</p>
+<p><img src="https://photo.hushhw.cn/20190905171102.png" alt></p>
+<p>​            </p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="https://www.zhouyongyi.com/andrew-ng-machine-learning-notes-6/" target="_blank" rel="noopener">驿舟小站</a></p>
+<p><a href="https://github.com/fengdu78/Coursera-ML-AndrewNg-Notes" target="_blank" rel="noopener">Coursera-ML-AndrewNg-Notes</a></p>
+<p><a href="https://www.coursera.org/course/ml" target="_blank" rel="noopener">斯坦福大学 2014 机器学习</a></p>
+</blockquote>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/e75b0cdb.html">吴恩达《机器学习》笔记（六）——神经网络的表述</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2019年08月11日 - 14:53:52</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/e75b0cdb.html" data-id="ckkp2xthd000nf8tl94iwdcz0" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAB0UlEQVR42u3ayw6CQAxGYd//pXFrogzn79CqyZmVkQhfXTS98Hjgc7yc929ev19fPft885ErV+4291ies1uvESQ8cvVDSHLlyh3knmUMnoBIUiP3v7DJlSv3h7k8zaWpUK5cuf/FJSXIunyRK1fuf3FrzUmtNdr5O+TKlTvD5VPKvs8t8125cuWWuEd40lKGL1rQ0+XKlTvCra1SSInDVyzrwD7cX65cuc1c0mDstChk6RK0UnLlyh3hEmKtNOGhpsHIlSu3m8uTCF+apu0TaZzkypU7ya3lObJu2SllipsfuXLlNnA5ixdGPDA+IpErV243N/0BaW/SFzd5wHLlyp3kpmOO2iKk1uoEOx+5cuU2cHlZw9PTTmt0kcjkypXbxq0NPoLUwx/JV6py5cod5K4fmaantDWKg5QrV24zlz9+J+Wlhc7FklWuXLmD3LSl4UXJbSWOXLlym7lHeGotDRm/ogWtXLlyR7j7g5Kd6QsppOTKlfstbrpeTZNO+iv0yqZcuXJHuHwwSl7I2Mqa6zQnV67cn+SuQemChCTBrUQmV67cQS4foNSWNKdCuXLlDnJ588Nfp6gNYVEikytXbjN3pxUhQfKC6eb5rly5civcJzjr2FdIE5tOAAAAAElFTkSuQmCC">分享</a><div class="tags"><a href="/tags/Machine-Learning/">Machine Learning</a></div><div class="post-nav"><a class="pre" href="/posts/18a3eba2.html">吴恩达《机器学习》笔记（七）——神经网络的学习</a><a class="next" href="/posts/76f89b87.html">吴恩达《机器学习》笔记（五）——正则化</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/f95480d6.html" target="_blank">吴恩达《机器学习》笔记（九）——支持向量机SVM</a></li><li><a href="https://wiki.hushhw.cn/posts/18a3eba2.html" target="_blank">吴恩达《机器学习》笔记（七）——神经网络的学习</a></li><li><a href="https://wiki.hushhw.cn/posts/76f89b87.html" target="_blank">吴恩达《机器学习》笔记（五）——正则化</a></li><li><a href="https://wiki.hushhw.cn/posts/4884afb4.html" target="_blank">Google Hacking 语法使用总结</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Neural-Networks-Representation"><span class="toc-text">Neural Networks: Representation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-Non-linear-Hypotheses"><span class="toc-text">8.1. Non-linear Hypotheses</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-Neurons-and-the-Brain"><span class="toc-text">8.2. Neurons and the Brain</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-Model-Representation"><span class="toc-text">8.3. Model Representation</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-3-1-简单表达"><span class="toc-text">8.3.1. 简单表达</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-3-2-向量形式表达"><span class="toc-text">8.3.2. 向量形式表达</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-3-3-例子"><span class="toc-text">8.3.3. 例子</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-7-Multicalss-Classification"><span class="toc-text">8.7. Multicalss Classification</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

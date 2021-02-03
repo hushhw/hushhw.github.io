@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>吴恩达《机器学习》笔记（二）——单变量线性回归 | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">吴恩达《机器学习》笔记（二）——单变量线性回归</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">吴恩达《机器学习》笔记（二）——单变量线性回归</h1><div class="post-meta">2019-07-16<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1,205</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 4</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/df3b9948.html#vcomment"><span class="valine-comment-count" data-xid="/posts/df3b9948.html"></span><span> 条评论</span></a><div class="post-content"><blockquote>
+<p>本文内容主要介绍「单变量线性回归」的问题。</p>
+<p>借助一个单变量线性回归模型，求得它的「代价函数」，并利用「梯度下降」的方法来最小化代价函数，从而达到训练模型的目的。</p>
+</blockquote>
+<h2 id="Linear-Regression-with-One-Variable"><a href="#Linear-Regression-with-One-Variable" class="headerlink" title="Linear Regression with One Variable"></a>Linear Regression with One Variable</h2><h3 id="2-1-Univariate-linear-regression"><a href="#2-1-Univariate-linear-regression" class="headerlink" title="2.1 Univariate linear regression"></a>2.1 Univariate linear regression</h3><ul>
+<li>$𝑚$ 代表训练集中实例的数量 </li>
+<li>$𝑥$ 代表特征/输入变量 </li>
+<li>$𝑦​$ 代表目标变量/输出变量 </li>
+<li>$(𝑥,𝑦)​$ 代表训练集中的实例 </li>
+<li>$(𝑥^{(𝑖)},𝑦^{(𝑖)})$ 代表第𝑖 个观察实例 </li>
+<li>$ℎ$ 代表学习算法的解决方案或函数也称为假设（<strong>hypothesis</strong>） </li>
+</ul>
+<p>这里以房屋价格预测为例，我们的学习算法中，我么需要通过学习得到一个假设 h，h 表示一个函数，输入房屋尺寸大小 x，从而得到输出房屋的价格 y，因此 h 是一个从 x 到 y 的函数映射。<br><img src="https://photo.hushhw.cn/20190716121509.png" alt></p>
+<p>这里我们采用 $h_{\theta}(x) = \theta_0 + \theta_1x$ 来表达 h，因为只含有一个特征/输入变量，因此被称为<strong>单变量线性回归问题（Univariate linear regression）</strong>。</p>
+<p>​           </p>
+<h3 id="2-2-Cost-function"><a href="#2-2-Cost-function" class="headerlink" title="2.2 Cost function"></a>2.2 Cost function</h3><p>我们前面得到了预测的函数是一个线性函数：$h_{\theta}(x) = \theta_0 + \theta_1x$，下面我们需要选择合适的参数（parameters）$\theta_0$ 和 $\theta_1$ 来使得我们的预测更加准确，模型所预测的值和训练集中实际值之间的差距就是<strong>建模误差（modeling error）</strong>。</p>
+<p>一般而言，我们通过调整 θ，使得所有训练集数据与其拟合数据的差的平方和更小，即认为得到了拟合度更好的函数。从而我们得到<strong>代价函数（cost function）</strong>：</p>
+<script type="math/tex; mode=display">
+J（\theta_0,\theta_1) = \frac{1}{2m}\sum^m_{i=1}(h_{\theta}(x^{(i)})-y^{(i)})^2</script><p>这里的$\frac{1}{2}$ 是为了方便后面的运算而加上的。</p>
+<p>代价函数又被称为<strong>平方误差函数</strong>，有时也被称为<strong>平方误差代价函数</strong>。求误差的平方在大多数问题，特别是回归问题都是一个合理的选择。</p>
+<p>回顾一下目前为止我们的思路：</p>
+<p><img src="https://photo.hushhw.cn/20190716133921.png" alt></p>
+<p>​          </p>
+<h3 id="2-3-Gradient-Descent"><a href="#2-3-Gradient-Descent" class="headerlink" title="2.3 Gradient Descent"></a>2.3 Gradient Descent</h3><p>本节来解决如何求 $minimize J(\theta_0, \theta_1)$ 的问题。</p>
+<p><strong>梯度下降（Gradient Descent)</strong> 是一个用来求函数最小值的算法，我们将使用梯度下降算法求出代价函数最小值。</p>
+<p>梯度下降背后的思想是：开始时我们随机选择一个参数的组合 $(𝜃<em>0,𝜃_1,…,𝜃</em>𝑛)$，计算代价函数，然后我们寻找下一个能让代价函数值下降最多的参数组合。我们持续这么做直到到到一个局部最小值（local minimum），因为我们并没有尝试完所有的参数组合，所以不能确定我们得到的局部最小值是否便是全局最小值（global minimum），选择不同的初始参数组合，可能会找到不同的局部最小值。 </p>
+<p><img src="https://photo.hushhw.cn/20190716135043.png" alt></p>
+<p><img src="https://photo.hushhw.cn/20190716135116.png" alt></p>
+<p>上面是一个非线性函数的代价函数，我们可以看到，选取不同的初始值 θ，可能会使得迭代的代价函数最后进入不同的极小值点。</p>
+<p>梯度下降算法公式：</p>
+<p><img src="https://photo.hushhw.cn/20190716135452.png" alt></p>
+<p>其中，</p>
+<ul>
+<li>$\alpha$ 是<strong>学习率（learning rate）</strong>，它决定了我们沿着能让代价函数下降程度最大的方向向下迈出的步子有多大。$\alpha​$ 不能太大也不能太小，太小了会使得移动的速率很慢，需要很多步才能到达全局最低点。太大了可能会直接越过了最低点，甚至可能无法收敛，甚至发散。</li>
+<li>:= 表示赋值（assignment）</li>
+</ul>
+<p>对于单变量线性回归的梯度函数而言，其代价函数 J 关于参数 θ的图像如下，只有一个极值以及最值：</p>
+<p><img src="https://photo.hushhw.cn/20190716141637.png" alt></p>
+<p>我们让模型再简化一下，取J(θ)=θx,其代价函数关于θ的图像如下。我们通过观察他的迭代过程，有助于理解梯度下降算法：</p>
+<p><img src="https://photo.hushhw.cn/20190716141721.png" alt></p>
+<p>可以看到：</p>
+<ul>
+<li>当 θ 大于最小值时，导数为正，那么迭代公式 $\theta := \theta - \alpha\frac{∂}{∂{\theta}}J(\theta)​$ 里，θ 减去一个正数，向左往最小值逼近；</li>
+<li>当θ小于最小值时，导数为负，那么迭代公式 $\theta := \theta - \alpha\frac{∂}{∂{\theta}}J(\theta)$ 里，θ 减去一个负数，向右往最小值逼近。</li>
+</ul>
+<p>​          </p>
+<h3 id="2-4-Gradient-Descent-For-Linear-Regression"><a href="#2-4-Gradient-Descent-For-Linear-Regression" class="headerlink" title="2.4 Gradient Descent For Linear Regression"></a>2.4 Gradient Descent For Linear Regression</h3><p>梯度下降（Gradient Descent）是很常用的算法，这一节我们将用到此算法，并将其应用于具体的拟合直线的线性回归算法里。 </p>
+<p><img src="https://photo.hushhw.cn/20190716165528.png" alt></p>
+<p>​          </p>
+<h2 id="专业名词整理"><a href="#专业名词整理" class="headerlink" title="专业名词整理"></a>专业名词整理</h2><ul>
+<li><code>hypothesis</code>：假设</li>
+<li><code>parameters</code>：参数</li>
+<li><code>Gradient Descent</code>：梯度下降</li>
+<li><code>Univariate linear regression</code>：单变量线性回归</li>
+<li><code>cost function</code>：代价函数</li>
+<li><code>local minimun</code>：局部最小值</li>
+<li><code>learning rate</code>：学习率</li>
+<li><code>iterative algorithm</code>：迭代算法</li>
+<li><code>derivative term</code>：导数项、<code>partial derivative</code>：偏导数</li>
+<li><code>equation</code>：方程式</li>
+<li><code>positive slope</code>：正斜率、<code>negative slope</code>：负斜率</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="https://www.zhouyongyi.com/andrew-ng-machine-learning-notes-2/" target="_blank" rel="noopener">驿舟小站</a></p>
+<p><a href="https://github.com/fengdu78/Coursera-ML-AndrewNg-Notes" target="_blank" rel="noopener">Coursera-ML-AndrewNg-Notes</a></p>
+<p><a href="https://www.coursera.org/course/ml" target="_blank" rel="noopener">斯坦福大学 2014 机器学习</a> </p>
+<p><a href="https://wei2624.github.io/MachineLearning/sv_discriminative_model/" target="_blank" rel="noopener">Discriminative Algorithm</a> </p>
+</blockquote>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/df3b9948.html">吴恩达《机器学习》笔记（二）——单变量线性回归</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2019年07月16日 - 11:49:49</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/df3b9948.html" data-id="ckkp2xtk3006df8tlnopy41ia" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxklEQVR42u3aS46DMBAFwNz/0hlpthHmdfsDi/IKBQeKTcvu588nHt//Mb7+nd+7u2Dg4uJOc7/DUSVePTP57LEBFxf3PDd/fV7CqtyxARcX953c8fx9H4+Li/tm7u/MGTouLu77ucnSpLp8GW9jtu/VcHFxJ7irGqYz1w/0d3FxcVupRF5QxoXvCld+Oy4u7hHu+EG9SjKz+YnKHC4u7mZuXp6SADW5my+hohKGi4u7jTsffqwKU28KIi4u7kFu3ouolqGEXiiUuLi4B7m9AKMar/aCk0IXBxcXdyk3b1VUw9Re+Yv6N7i4uNu4yVKjGrVWf8nbrLi4uGe41SKVvKa6bCoc+cLFxT3CrS5uqgujmewXFxf3Ke5U+3Lp8ayIjouLe4SbFKbenFXHuW7yH1xc3A3cfFuSB7H5EY1qrwMXF/cktwrtbYryAx9RyIqLi7uZm4/86FX1OdFn4OLiHuFWC0oemvY2OdV2CS4u7j5uOeac2PDkhezyLi4u7kFuL0xNopTq5udmDi4u7su4hSg0KUnxv3Bxcd/P7W2Nkv9Gx7ZwcXEPcqtN0jyI7TVHFrRFcHFxJ7i9hmlekqoHOHBxcR/l/gGxjnadCdaWxwAAAABJRU5ErkJggg==">分享</a><div class="tags"><a href="/tags/Machine-Learning/">Machine Learning</a></div><div class="post-nav"><a class="pre" href="/posts/92253a1a.html">吴恩达《机器学习》笔记（三）——多变量线性回归</a><a class="next" href="/posts/ef2d7590.html">吴恩达《机器学习》笔记（一）——介绍</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/f72c23ef.html" target="_blank">吴恩达《机器学习》笔记（四）——Logistic回归</a></li><li><a href="https://wiki.hushhw.cn/posts/92253a1a.html" target="_blank">吴恩达《机器学习》笔记（三）——多变量线性回归</a></li><li><a href="https://wiki.hushhw.cn/posts/ef2d7590.html" target="_blank">吴恩达《机器学习》笔记（一）——介绍</a></li><li><a href="https://wiki.hushhw.cn/posts/feaace02.html" target="_blank">《图解密码技术》学习笔记之密码(二)</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linear-Regression-with-One-Variable"><span class="toc-text">Linear Regression with One Variable</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Univariate-linear-regression"><span class="toc-text">2.1 Univariate linear regression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Cost-function"><span class="toc-text">2.2 Cost function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-Gradient-Descent"><span class="toc-text">2.3 Gradient Descent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-Gradient-Descent-For-Linear-Regression"><span class="toc-text">2.4 Gradient Descent For Linear Regression</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#专业名词整理"><span class="toc-text">专业名词整理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

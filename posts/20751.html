@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>Python-OpenCV学习笔记——图片写入及图片质量 | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Python-OpenCV学习笔记——图片写入及图片质量</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">Python-OpenCV学习笔记——图片写入及图片质量</h1><div class="post-meta">2018-07-20<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 357</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 1</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/20751.html#vcomment"><span class="valine-comment-count" data-xid="/posts/20751.html"></span><span> 条评论</span></a><div class="post-content"><blockquote>
+<p>本篇是OpenCV学习系列第二篇，</p>
+<p>主要是imwrite()函数写入图片及修改不同的图片质量</p>
+</blockquote>
+<a id="more"></a>
+<p>​        </p>
+<p><img src="https://photo.hushhw.cn/images/kite.jpg title:&quot;photo by hushhw&quot;" alt></p>
+<p>​           </p>
+<p>图片写入在第一篇已经涉及到了，具体代码实现是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">C++: bool imwrite(const string&amp; filename, InputArray img, const vector&lt;int&gt;&amp; params=vector&lt;int&gt;() )</span><br><span class="line"></span><br><span class="line">python: cv2.imwrite(filename, img, [params])</span><br></pre></td></tr></table></figure>
+<p>前面只涉及到第一个参数是保存的路径及文件名，第二个是图片数据（图像矩阵）。其中，<code>imwrite()</code>有个可选的第三个参数<code>[params]</code>，默认为空：</p>
+<ul>
+<li><p>对于JPEG格式压缩的图片，可以设置图片质量参数<code>[cv2.IMWRITE_JPEG_QUALITY, num]</code>，该参数的范围是<code>0</code>到<code>100</code>，数字越大质量越好，默认的大小为95，该压缩是有损压缩，以牺牲图片质量为代价。</p>
+<p>​    在默认情况下图片显示为<code>cv2.imwrite(images.jpg, img, [cv2.IMWRITE_JPEG_QUALITY])</code>：</p>
+<p><img src="https://photo.hushhw.cn/images/image_jpeg_quality_95.jpg" alt></p>
+<p>​    但是把参数设置为5的时候，图片被严重压缩<code>cv2.imwrite(images.jpg, img, [cv2.IMWRITE_JPEG_QUALITY])</code>：</p>
+<p><img src="https://photo.hushhw.cn/images/image_jpeg_quality_5.jpg" alt></p>
+</li>
+<li><p>对于PNG格式压缩的图片，可以设置图片质量参数<code>[cv2.IMWRITE_PNG_COMPRESSION]</code>，该参数的范围是<code>0</code>到<code>9</code>，其值越大，压缩尺寸越小，压缩时间越长，默认值为3，该压缩是无损的。</p>
+</li>
+<li><p>对于PPM，PGM或PBM格式的图片，这个参数表示一个二进制格式标志<code>[CV_IMWRITE_PXM_BINARY]</code>，取值为0或1，而默认值为1。</p>
+</li>
+</ul>
+<p>​       </p>
+<blockquote>
+<p>本文整理自：</p>
+<p>《OpenCV文档》</p>
+<p>《OpenCV+TensorFlow 入门人工智能图像处理》系列课程视频</p>
+</blockquote>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/20751.html">Python-OpenCV学习笔记——图片写入及图片质量</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2018年07月20日 - 22:46:32</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/20751.html" data-id="ckkp2xtid002lf8tl9w4t4cjn" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxUlEQVR42u3aS47DIBAFwNz/0pntSJHxa9rNZKRiZSkOFF6g/vB6xeO9HL/f+Xxez/aaGLi4uG1uTvlc4Or9qw0k86/nxMXFPcm9OjHWC6/R1c2sDbi4uN/PzeOQfMO4uLj/nZsEPUl4hIuL+83cvOSRJDP5cTaYq+Hi4ja4eZVy7nmkvouLi7vFfRfHU22V99bAxcU9w90rc3TKIv15cHFxp7nJ3/YCl2rqEs2Ai4t7nLuHTgqv1YOsEJHh4uKOcedKnNXPcbMuLi7uQW7n+kXSTO00TgrJDy4u7kPcdUFzD7fXsi2UYHBxcYe56+WTbXTKH8mvl8kPLi7uGPfZA6i8ZGddXFzcYe5eETMHddqumw0VXFzcNjdPeDrXqtYBU7Vtg4uLO83tFD2rx1x1G+XiCC4u7gC3E5T0W7OF5AcXF/c4N6HslT/6RVVcXNxpbid1earVWmjG4OLiHuHmY6/FkrdUq58DFxd3mttpr+bBUHLYFe6R4eLiHuF2miudyxnJuoUqDi4u7p9y+9cp8hTrgYMMFxd3mLt35OVh040QFxf3ILda3EzSob3LFjcfCxcX9wi336etTpcHNK36Li4u7g73B3yVSOfKqgrGAAAAAElFTkSuQmCC">分享</a><div class="tags"><a href="/tags/Python/">Python</a><a href="/tags/计算机视觉/">计算机视觉</a><a href="/tags/OpenCV/">OpenCV</a></div><div class="post-nav"><a class="pre" href="/posts/42084.html">使用七牛插件自动上传图片</a><a class="next" href="/posts/12a01be2.html">Python-OpenCV学习笔记——图片读取、展示和写入</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/d566ce3c.html" target="_blank">Python-OpenCV学习笔记——像素读取和写入</a></li><li><a href="https://wiki.hushhw.cn/posts/42084.html" target="_blank">使用七牛插件自动上传图片</a></li><li><a href="https://wiki.hushhw.cn/posts/12a01be2.html" target="_blank">Python-OpenCV学习笔记——图片读取、展示和写入</a></li><li><a href="https://wiki.hushhw.cn/posts/23537.html" target="_blank">Anaconda+python3+opencv3+TensorFlow的安装</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

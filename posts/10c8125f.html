@@ -1,0 +1,278 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>Markdown中Latex数学公式基本语法 | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Markdown中Latex数学公式基本语法</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">Markdown中Latex数学公式基本语法</h1><div class="post-meta">2018-05-18<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 688</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 3</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/10c8125f.html#vcomment"><span class="valine-comment-count" data-xid="/posts/10c8125f.html"></span><span> 条评论</span></a><div class="post-content"><blockquote>
+<p>因为不经常要用到Latex数学公式，</p>
+<p>每次要用到的时候语法都忘记了，</p>
+<p>所以特别自己做了一次整理。</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="1-公式排版"><a href="#1-公式排版" class="headerlink" title="1. 公式排版"></a>1. 公式排版</h3><p>分为两种排版： </p>
+<ul>
+<li><p>行内公式：用\或者$包裹公式</p>
+</li>
+<li><p>独立公式：用$$包裹公式</p>
+<p>例如:<br><code>\sum_{i=0}^{n}i^2</code> 用不同符号包裹的行内和独立：     $  \sum_{i=0}^{n}i^2 $</p>
+<script type="math/tex; mode=display">
+\sum_{i=0}^{n}i^2</script><p><code>&quot;\boxed&quot;</code>命令给公式加一个方框<br><code>E = mc^2</code> ：</p>
+<script type="math/tex; mode=display">
+E = mc^2</script></li>
+</ul>
+<p><code>\boxed{E=mc^2}</code> ：</p>
+<script type="math/tex; mode=display">
+\boxed{E=mc^2}</script><h3 id="2-常用总结"><a href="#2-常用总结" class="headerlink" title="2. 常用总结"></a>2. 常用总结</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">符号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">上标</td>
+<td style="text-align:center"><code>^</code></td>
+</tr>
+<tr>
+<td style="text-align:center">下标</td>
+<td style="text-align:center"><code>_</code></td>
+</tr>
+<tr>
+<td style="text-align:center">空格</td>
+<td style="text-align:center"><code>\quad</code></td>
+</tr>
+<tr>
+<td style="text-align:center">双空格</td>
+<td style="text-align:center"><code>\qquad</code></td>
+</tr>
+<tr>
+<td style="text-align:center">大空格</td>
+<td style="text-align:center"><code>\</code></td>
+</tr>
+<tr>
+<td style="text-align:center">中空格</td>
+<td style="text-align:center"><code>\:</code></td>
+</tr>
+<tr>
+<td style="text-align:center">小空格</td>
+<td style="text-align:center"><code>\,</code></td>
+</tr>
+<tr>
+<td style="text-align:center">紧贴</td>
+<td style="text-align:center"><code>\!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">根号</td>
+<td style="text-align:center"><code>\sqrt[2]{x}</code></td>
+</tr>
+<tr>
+<td style="text-align:center">分数</td>
+<td style="text-align:center"><code>\frac{1}{2}</code></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"><code>\dfrac</code> 字号为独立公式大小</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"><code>\tfrac</code> 字号为行间公式大小</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="3-运算符"><a href="#3-运算符" class="headerlink" title="3. 运算符"></a>3. 运算符</h3><p>+ - * / = 直接输入，特殊运算则用以下特殊命令 </p>
+<p><code>\pm\</code>=&gt; $ \pm\ $</p>
+<p><code>\times\</code>=&gt; $ \times\ ​$</p>
+<p><code>\div\</code>=&gt; $ \div\ ​$</p>
+<p><code>\cdot\</code>=&gt; $ \cdot\ $</p>
+<p><code>\cap\</code>=&gt; $ \cap\ $</p>
+<p><code>\cup\</code>=&gt; $ \cup\ $</p>
+<p><code>\geq\</code>=&gt; $ \geq\ $</p>
+<p><code>\leq\</code>=&gt; $ \leq\ $</p>
+<p><code>\neq\</code>=&gt; $ \neq\ $</p>
+<p><code>\approx\</code>=&gt; $ \approx\ $</p>
+<p><code>\equiv\</code>=&gt; $ \equiv\ $</p>
+<p>和、积、极限、积分等运算符在行内公式被压缩以适应行高，可以通过 <code>\limits</code> 和 <code>\nolimits</code> 命令显示制动是否压缩。 </p>
+<p><code>\sum\</code>=&gt; $ \sum\ ​$</p>
+<p><code>\prod\</code>=&gt; $ \prod\ ​$</p>
+<p><code>\lim\</code>=&gt; $ \lim\ ​$</p>
+<p><code>\int\</code>=&gt; $ \int\ $</p>
+<script type="math/tex; mode=display">
+\sum\ \prod\ \lim\ \int\</script><p>​    </p>
+<h3 id="4-箭头"><a href="#4-箭头" class="headerlink" title="4. 箭头"></a>4. 箭头</h3><p><code>\leftarrow</code> =&gt; $ \leftarrow $　　　　 　         <code>\rightarrow</code> 表示$ \rightarrow $</p>
+<p><code>\leftrightarrow</code>表示　$ \leftrightarrow $　　　     <code>\Leftarrow</code>表示$\Leftarrow$</p>
+<p><code>\Rightarrow</code> 表示$\Rightarrow$                    <code>\Leftrightarrow</code>表示$ \Leftrightarrow$</p>
+<p><code>\longleftarrow</code>表示 $ \longleftarrow $             <code>\longleftarrow</code>表示$ \longleftarrow $</p>
+<p><code>\longleftrightarrow</code>表示$ \longleftrightarrow $         <code>\Longleftarrow</code>表示$ \Longleftarrow $</p>
+<p><code>\Longrightarrow</code>表示$\Longrightarrow$             <code>\Longleftrightarrow</code>表示$\Longleftrightarrow$</p>
+<p><code>\xleftarrow和\xrightarrow</code>可根据内容自动调整</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\xleftarrow&#123;x+y+z&#125; \quad \xrightarrow[x&lt;y]&#123;x+y+z&#125;</span><br></pre></td></tr></table></figure>
+<p>结果如下:</p>
+<script type="math/tex; mode=display">
+ \xleftarrow{x+y+z} \quad \xrightarrow[x<y]{x+y+z}</script><h3 id="5-省略号"><a href="#5-省略号" class="headerlink" title="5. 省略号"></a>5. 省略号</h3><p>省略号用 <code>\dots \cdots \vdots \ddots</code>表示 ，<code>\dots</code> 和 <code>\cdots</code>的纵向位置不同，前者一般用于有下标的序列</p>
+<p><code>x_1, x_2, \dots, x_n\quad 1,2,\cdots,n\quad \vdots\quad \ddots</code></p>
+<p>结果如下：</p>
+<script type="math/tex; mode=display">
+x_1, x_2, \dots, x_n\quad 1,2,\cdots,n\quad \vdots\quad \ddots</script><h3 id="6-多行公式"><a href="#6-多行公式" class="headerlink" title="6. 多行公式"></a>6. 多行公式</h3><h4 id="6-1-长公式"><a href="#6-1-长公式" class="headerlink" title="6.1.  长公式"></a>6.1.  长公式</h4><p>无需对齐可使用<code>multline</code>，需要对齐使用<code>split</code>，用<code>\\和&amp;</code>来分行和设置对齐的位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;multline&#125;</span><br><span class="line">	x = a+b+c+ \\</span><br><span class="line">   		 d+e+f+g</span><br><span class="line">  \end&#123;multline&#125;</span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">
+\begin{multline}
+    x = a+b+c+ \\
+            d+e+f+g
+  \end{multline}</script><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;split&#125;</span><br><span class="line">x = &#123;&#125; &amp; a + b + c +&#123;&#125;\\</span><br><span class="line">	&amp;d + e + f + g</span><br><span class="line">\end&#123;split&#125;</span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">
+\begin{split}
+x = {} & a + b + c +{}\\
+    &d + e + f + g
+\end{split}</script><h4 id="6-2-公式组"><a href="#6-2-公式组" class="headerlink" title="6.2. 公式组"></a>6.2. 公式组</h4><p>不需要对齐的公式组用<code>gather</code>，需要对齐使用<code>align</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;gather&#125;</span><br><span class="line">a = b+c+d\\</span><br><span class="line">x=y+z</span><br><span class="line">\end&#123;gather&#125;</span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">
+\begin{gather}
+a = b+c+d\\
+x=y+z
+\end{gather}</script><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;align&#125;</span><br><span class="line">a &amp;=b+c+d \\</span><br><span class="line">x &amp;=y+z</span><br><span class="line">\end&#123;align&#125;</span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">
+\begin{align}
+a &=b+c+d \\
+x &=y+z
+\end{align}</script><h4 id="6-3-分支公式"><a href="#6-3-分支公式" class="headerlink" title="6.3. 分支公式"></a>6.3. 分支公式</h4><p>分段函数通常用cases</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">y=\begin&#123;cases&#125;</span><br><span class="line">-x,\quad x\leq 0\\</span><br><span class="line">x, \quad x&gt;0</span><br><span class="line">\end&#123;cases&#125;</span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">
+y=\begin{cases}
+-x,\quad x\leq 0\\
+x, \quad x>0
+\end{cases}</script><p>​          </p>
+<h3 id="7-常用希腊字母"><a href="#7-常用希腊字母" class="headerlink" title="7. 常用希腊字母"></a>7. 常用希腊字母</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">小写命令</th>
+<th style="text-align:center">小写显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\alpha</td>
+<td style="text-align:center">α</td>
+</tr>
+<tr>
+<td style="text-align:center">\beta</td>
+<td style="text-align:center">β</td>
+</tr>
+<tr>
+<td style="text-align:center">\gamma</td>
+<td style="text-align:center">γ</td>
+</tr>
+<tr>
+<td style="text-align:center">\theta</td>
+<td style="text-align:center">θ</td>
+</tr>
+<tr>
+<td style="text-align:center">\delta</td>
+<td style="text-align:center">δ</td>
+</tr>
+<tr>
+<td style="text-align:center">\epsilon</td>
+<td style="text-align:center">ϵ</td>
+</tr>
+<tr>
+<td style="text-align:center">\zeta</td>
+<td style="text-align:center">ζ</td>
+</tr>
+<tr>
+<td style="text-align:center">\eta</td>
+<td style="text-align:center">η</td>
+</tr>
+<tr>
+<td style="text-align:center">\iota</td>
+<td style="text-align:center">ι</td>
+</tr>
+<tr>
+<td style="text-align:center">\kappa</td>
+<td style="text-align:center">κ</td>
+</tr>
+<tr>
+<td style="text-align:center">\lambda</td>
+<td style="text-align:center">λ</td>
+</tr>
+<tr>
+<td style="text-align:center">\mu</td>
+<td style="text-align:center">μ</td>
+</tr>
+<tr>
+<td style="text-align:center">\nu</td>
+<td style="text-align:center">ν</td>
+</tr>
+<tr>
+<td style="text-align:center">\pi</td>
+<td style="text-align:center">π</td>
+</tr>
+<tr>
+<td style="text-align:center">\rho</td>
+<td style="text-align:center">ρ</td>
+</tr>
+<tr>
+<td style="text-align:center">\sigma</td>
+<td style="text-align:center">σ</td>
+</tr>
+<tr>
+<td style="text-align:center">\tau</td>
+<td style="text-align:center">τ</td>
+</tr>
+<tr>
+<td style="text-align:center">\phi</td>
+<td style="text-align:center">ϕ</td>
+</tr>
+<tr>
+<td style="text-align:center">\omega</td>
+<td style="text-align:center">ω</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Tips </strong><br>如果使用大写的希腊字母，把命令的首字母变成大写即可，例如 \Gamma 输出的是 $\Gamma​$ 。 </p>
+<p>如果使用斜体大写希腊字母，再在大写希腊字母的 LaTeX 命令前加上 var ，例如 <code>\varGamma</code> 生成 $\varGamma$ 。 </p>
+<p>​         </p>
+<h3 id="8-矩阵"><a href="#8-矩阵" class="headerlink" title="8. 矩阵"></a>8. 矩阵</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">X = \left[</span><br><span class="line">	\begin&#123;matrix&#125;</span><br><span class="line">	\cdots &#123;x^&#123;(1)&#125;&#125;^T \cdots \\</span><br><span class="line">	\cdots &#123;x^&#123;(2)&#125;&#125;^T \cdots \\</span><br><span class="line">	\vdots  \\</span><br><span class="line">	\cdots &#123;x^&#123;(m)&#125;&#125;^T \cdots \\</span><br><span class="line">	\end&#123;matrix&#125;</span><br><span class="line">\right]</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<script type="math/tex; mode=display">
+X = \left[
+    \begin{matrix}
+    \cdots {x^{(1)}}^T \cdots \\
+    \cdots {x^{(2)}}^T \cdots \\
+    \vdots  \\
+    \cdots {x^{(m)}}^T \cdots \\
+    \end{matrix}
+\right]</script></div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/10c8125f.html">Markdown中Latex数学公式基本语法</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2018年05月18日 - 14:56:04</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/10c8125f.html" data-id="ckkp2xti4001tf8tl3xfslgdx" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwUlEQVR42u3aSW7DMBAEwPz/0wqQa2ylm5sVoHgyZC3Fy2AWfn3F6/pZ99evX+v+bff3TC1cXNxp7nW73rHebWPs2cSAi4t7npsHqfuwtWrbb6/j4uI+jNs+1W4eFxf3P3Lvr7R0XFzc53OT1OSemBQ2eUtlQa2Gi4s7wW0bpjt+b+zv4uLiltyrXHlgalur0ddxcXGPcMdaHskGkmRorFGCi4t7hjsTXMbKpFXHOHBxcfdxk4FovrGZYWqUPOHi4h7hJulOno609KlQiIuLu4G74JhUXKiMDU5edHFwcXE3c8cSl+TDeZI0UzLh4uLu4ObhIz940V6pSx1cXNwj3Pb4VBIE2+NcUUDExcX9KDcPbW1QG3sPLi7uZ7nzic7Y8ayIjouLe4S7ahozk8S0gQ8XF3c3t8XNpEF5EwQXF/cJ3LGh6arSqHgzLi7uQW6+2ibpTFgsJsC4uLhLuW1AaT/fFjljIxxcXNwd3GLMuagEat+Di4v7Ke5Y8GqTlSSC/nEPLi7uw7jJ4CQprvKvv/gXFxf3kdwkzLVbKhqvuLi4B7lJ8TM2QB1rjixoi+Di4k5w24ZpO2TNiyJcXNwHcL8BKWCVjIBlH40AAAAASUVORK5CYII=">分享</a><div class="tags"><a href="/tags/markdown/">markdown</a></div><div class="post-nav"><a class="pre" href="/posts/52367.html">【动态规划-递推】HDU 1143 Tri Tiling</a><a class="next" href="/posts/2d0b2197.html">卡特兰数(catalan number)</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/19ad55f3.html" target="_blank">HIAR制作第一个简易的 AR 应用</a></li><li><a href="https://wiki.hushhw.cn/posts/52367.html" target="_blank">【动态规划-递推】HDU 1143 Tri Tiling</a></li><li><a href="https://wiki.hushhw.cn/posts/2d0b2197.html" target="_blank">卡特兰数(catalan number)</a></li><li><a href="https://wiki.hushhw.cn/posts/90250c4.html" target="_blank">hdu 2056 一个人的旅行（最短路径）</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-公式排版"><span class="toc-text">1. 公式排版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-常用总结"><span class="toc-text">2. 常用总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-运算符"><span class="toc-text">3. 运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-箭头"><span class="toc-text">4. 箭头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-省略号"><span class="toc-text">5. 省略号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-多行公式"><span class="toc-text">6. 多行公式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-长公式"><span class="toc-text">6.1.  长公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-公式组"><span class="toc-text">6.2. 公式组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-分支公式"><span class="toc-text">6.3. 分支公式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-常用希腊字母"><span class="toc-text">7. 常用希腊字母</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-矩阵"><span class="toc-text">8. 矩阵</span></a></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

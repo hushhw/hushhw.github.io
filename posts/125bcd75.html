@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>iOS 砸壳总结 | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">iOS 砸壳总结</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">iOS 砸壳总结</h1><div class="post-meta">2020-01-16<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1,074</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 4</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/125bcd75.html#vcomment"><span class="valine-comment-count" data-xid="/posts/125bcd75.html"></span><span> 条评论</span></a><div class="post-content"><h2 id="dumpdecrypted-砸壳"><a href="#dumpdecrypted-砸壳" class="headerlink" title="dumpdecrypted 砸壳"></a>dumpdecrypted 砸壳</h2><h3 id="1-应用场景"><a href="#1-应用场景" class="headerlink" title="1. 应用场景"></a>1. 应用场景</h3><p>应用上传 appstore 后，苹果会对应用的代码部分进行加密，当应用运行的时候才会动态解密，所以市面上的应用即使我们可以拿到 ipa 包也无法对二进制程序进行分析，这时可以使用 dumpdecrypted 时dump 内存中解密后的代码。</p>
+<h3 id="2-环境配置"><a href="#2-环境配置" class="headerlink" title="2. 环境配置"></a>2. 环境配置</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">手机</th>
+<th>越狱设备（iOS11以下越狱比较好做）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Cydia 依赖</td>
+<td>安装 cycript</td>
+</tr>
+<tr>
+<td style="text-align:center">PC 端</td>
+<td>正常mac环境 + ssh client</td>
+</tr>
+<tr>
+<td style="text-align:center">PC 端依赖</td>
+<td>Classdump下载 + xcode</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="3-砸壳步骤"><a href="#3-砸壳步骤" class="headerlink" title="3. 砸壳步骤"></a>3. 砸壳步骤</h3><ol>
+<li><p>打开一个 mac 终端窗口用于生成 <code>dumpdecrypted.dylib</code> 动态库文件（砸壳的锤子）</p>
+<ol>
+<li>终端命令：git clone <a href="https://github.com/stefanesser/dumpdecrypted.git" target="_blank" rel="noopener">https://github.com/stefanesser/dumpdecrypted.git</a></li>
+<li>cd dumpdecrypted 文件目录下执行命令 <code>make</code> 既可。</li>
+</ol>
+</li>
+<li><p>ssh 连接手机</p>
+<ol>
+<li>方法一：iOS 8 和 iOS 9 的越狱设备在手机上安装 OpenSSH，在 Wifi 设置中当前连接 Wi-Fi 获取到 IP 地址，如：10.28.173.46。再打开一个 mac 终端窗口用于连接手机，输入：ssh root@192.168.2.202，回车后输入”yes”，再回车输入密码”qwert”（默认密码为“alpine”）。</li>
+<li>方法二：通过 USB 登录。打开一个 mac 终端安装 libimobiledevice，输入：brew install libimobiledevice，安装完成后使用里面提供的工具 iproxy 把本地端口 2222 映射到设备的 TCP 端口 22，执行命令：iproxy 2222 22，当看到 waiting for connection 时，另开一个 Mac 终端窗口，执行 ssh root@localhost -p 2222 来连接手机，后面同样输入密码等操作。</li>
+</ol>
+</li>
+<li><p>查找要反编译的 app 的路径，在连接到手机的 mac 终端窗口进行下面操作：</p>
+<ol>
+<li><p>ps -e 获取手机中当前运行的进程</p>
+</li>
+<li><p>抓取手机上运行的 APP 进程：</p>
+<ol>
+<li>直接执行 ps -A | grep mobile 命令，可自动抓取手机上运行的 APP进程</li>
+<li>或者知道应用的名称，直接执行 ps -e | grep PostalSavingsBankOfChina （这里以邮政银行为例）来抓取该应用进程。若不知道应用名称，可以在所有进程中找到带有 <code>bundle</code> 路径的进程，该进程就是我们正在打开的应用，路径最后即该应用的名称。</li>
+</ol>
+</li>
+<li><p>使用 cycript 找出反编译 APP 的 Documents 目录路径：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cycript -p PostalSavingsBankOfChina </span><br><span class="line">cy# directory = NSHomeDirectory()</span><br></pre></td></tr></table></figure>
+<p>这样就得到了 Data 目录，在后面加上 /Documents 即可。</p>
+</li>
+<li><p>拷贝 dumpdecrypted.dylib 到 iPhone 该应用的 Documents 文件夹下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp /users/bupt/test1127/dumpdecrypted/dumpdecrypted.dylib root@10.28.173.46:/var/mobile/Containers/Data/Application/BD1E0C3F-6C65-4A2B-B881-2BBA9E3B3594/Documents</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>砸壳，打开连接到 iPhone 的终端窗口，cd 到 Data 路径的 Document 目录前面放 dumpdecrypted.dylib 文件夹下，执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DYLD_INSERT_LIBRARIES=dumpdecrypted.dylib /var/containers/Bundle/Application/AB511F0D-D3D4-46A6-86BD-DFB017F07A87/PostalSavingsBankOfChina.app/PostalSavingsBankOfChina</span><br></pre></td></tr></table></figure>
+<p>砸壳成功后，用 ls 命令查看 PostalSavingsBankOfChina.decrypted 文件即我们要破解的文件。</p>
+</li>
+<li><p>拷贝生成的 decryption 文件到电脑</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r root@10.28.173.46:/var/mobile/Containers/Data/Application/BD1E0C3F-6C65-4A2B-B881-2BBA9E3B3594/Documents/PostalSavingsBankOfChina.decrypted /Users/bupt/Desktop/PostalSavingsBankOfChina</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="frida-ios-dump-砸壳使用总结"><a href="#frida-ios-dump-砸壳使用总结" class="headerlink" title="frida-ios-dump 砸壳使用总结"></a>frida-ios-dump 砸壳使用总结</h2><p>   该工具基于 frida 提供的强大功能通过注入 js 实现内存 dump 然后通过 python 自动拷贝到电脑生成 ipa 文件。</p>
+<h3 id="1-越狱手机配置"><a href="#1-越狱手机配置" class="headerlink" title="1. 越狱手机配置"></a>1. 越狱手机配置</h3><p>   1、打开<code>cydia</code>添加源：<a href="http://build.frida.re" target="_blank" rel="noopener">http://build.frida.re</a> 并在搜索中下载安装<code>frida</code>。</p>
+<p>   2、安装完成后在<code>Mac</code>端执行<code>frida-ps -U</code>查看是否可以工作。</p>
+<h3 id="2-Mac-配置"><a href="#2-Mac-配置" class="headerlink" title="2. Mac 配置"></a>2. Mac 配置</h3><p>   安装 <code>frida</code>：</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install frida –-upgrade –-ignore-installed six</span><br></pre></td></tr></table></figure>
+<p>   克隆项目<a href="https://github.com/AloneMonkey/frida-ios-dump" target="_blank" rel="noopener">frida-ios-dump</a>：</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/AloneMonkey/frida-ios-dump</span><br></pre></td></tr></table></figure>
+<p>   cd 到 <code>frida-ios-dump</code> 文件夹下，安装脚本依赖环境，执行：</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install -r requirements.txt --upgrade</span><br></pre></td></tr></table></figure>
+<p>   修改 <code>dump.py</code> 配置：</p>
+   <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">User = <span class="string">'root'</span></span><br><span class="line">Password = <span class="string">'qwert'</span> <span class="comment">#我们修改了ssh默认密码，故需要修改</span></span><br><span class="line">Host = <span class="string">'localhost'</span></span><br><span class="line">Port = <span class="number">2222</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-使用"><a href="#3-使用" class="headerlink" title="3. 使用"></a>3. 使用</h3><p>   默认采用 USB 方式连接 ssh，将<code>22</code>映射到电脑上的<code>2222端口</code>：</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iproxy 2222 22</span><br></pre></td></tr></table></figure>
+<p>   到 frida-ios-dump 文件夹下执行<code>dump.py -l</code>，查看安装的应用的名字和bundle id：</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python dump.py -l</span><br></pre></td></tr></table></figure>
+<p>   执行<code>dump.py 应用名或包名</code>，即可砸壳生成 ipa 文件在当前目录下。例如：</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python dump.py 个人所得税</span><br></pre></td></tr></table></figure>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python dump.py cn.gov.tax.its</span><br></pre></td></tr></table></figure>
+<p>   生成的 ipa 文件需解压后打开包内容查看同名文件，该文件仅为砸壳成功的 arm64 位。</p>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/125bcd75.html">iOS 砸壳总结</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2020年01月16日 - 10:15:09</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/125bcd75.html" data-id="ckkp2xthp000zf8tl19pik8y1" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABzUlEQVR42u3aS27DMAwFwNz/0u62QBLpUZQFtxitjMSJxl4Q/Oj1itf1a71//u36/f7k2w0LFxe3zb2Ga3xPvv3a/3/4T1xc3IPcbxuMg9T4nrUgOLHh4uI+mNvZePyouLi4/5WbJCu4uLjP5ybFyfhXSfsjT5s21Gq4uLgNbt6lvO/6lv4uLi7uEvcqrmpJkwfBaHdcXNwj3DygrKUd+TCmMNzFxcW9mZsULbsGJ50Hi/o3uLi4m7hRg7LdGK0GskLIw8XFvYGbN0YnWVJc0uSZ14drXFzcI9xWerEU+NYGsbi4uCe5+QGI/sgkH6JEtRouLu5B7uJhqWJ6lIfFSSDDxcW9mds/bNEZ00bNWVxc3OPc6kGKasj7hthQ/ODi4m7lJj+rDlDHrGqq9OEeXFzc49x8fFLdvtokjQIZLi7uQW61LEnKm2qZNBmy4uLiHudWD2H0x7GFO3FxcW/mdsJK/3hW9YFxcXHPcPNVTWU6x7YmDVNcXNwj3Gr5cTVW8gombxQXF/cgt3MII09WNpRJuLi4j+R22iXVYIeLi/tXuMn1Wls2EuLi4h7krjU3x0XL2mGLyYvAxcU9wq2Gkk5IqnZtW/1dXFzcFe4P8iZxsE/OReAAAAAASUVORK5CYII=">分享</a><div class="tags"><a href="/tags/iOS逆向/">iOS逆向</a><a href="/tags/移动安全/">移动安全</a><a href="/tags/iOS安全/">iOS安全</a></div><div class="post-nav"><a class="next" href="/posts/5b0e059c.html">常见 APK 恶意行为的代码特征总结</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/5b0e059c.html" target="_blank">常见 APK 恶意行为的代码特征总结</a></li><li><a href="https://wiki.hushhw.cn/posts/f2b20d45.html" target="_blank">机器学习中评估分类器性能</a></li><li><a href="https://wiki.hushhw.cn/posts/6adc5586.html" target="_blank">使用virtualenv创建隔离环境</a></li><li><a href="https://wiki.hushhw.cn/posts/d30e9e5e.html" target="_blank">HTTPS协议 &amp; TLS协议</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#dumpdecrypted-砸壳"><span class="toc-text">dumpdecrypted 砸壳</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-应用场景"><span class="toc-text">1. 应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-环境配置"><span class="toc-text">2. 环境配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-砸壳步骤"><span class="toc-text">3. 砸壳步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#frida-ios-dump-砸壳使用总结"><span class="toc-text">frida-ios-dump 砸壳使用总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-越狱手机配置"><span class="toc-text">1. 越狱手机配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Mac-配置"><span class="toc-text">2. Mac 配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-使用"><span class="toc-text">3. 使用</span></a></li></ol></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

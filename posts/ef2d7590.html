@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>吴恩达《机器学习》笔记（一）——介绍 | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">吴恩达《机器学习》笔记（一）——介绍</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">吴恩达《机器学习》笔记（一）——介绍</h1><div class="post-meta">2019-07-16<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1,004</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 4</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/ef2d7590.html#vcomment"><span class="valine-comment-count" data-xid="/posts/ef2d7590.html"></span><span> 条评论</span></a><div class="post-content"><blockquote>
+<p> 本系列学习笔记用来记录我学习吴恩达教授的《机器学习》课程，课程版本为在 Coursera 版，在 B 站、网易云课堂都可以找到相应的视频资源，配合 <a href="https://github.com/fengdu78" target="_blank" rel="noopener">@fengdu78</a> 整理的笔记「<a href="https://github.com/fengdu78/Coursera-ML-AndrewNg-Notes" target="_blank" rel="noopener"><strong>Coursera-ML-AndrewNg-Notes</strong></a>」来学习。</p>
+<p> 限于本人是机器学习的初学者，在笔记过程中难免有思考不周之处，读者请自行查阅吴恩达教授课程内容。</p>
+<p>本文内容包括对「机器学习」定义的阐述，及「监督学习」和「非监督学习」的基本理解。</p>
+</blockquote>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h3 id="1-1-What-is-Machine-Learning"><a href="#1-1-What-is-Machine-Learning" class="headerlink" title="1.1 What is Machine Learning"></a>1.1 What is Machine Learning</h3><p>什么是机器学习？即使是在机器学习的专业人士中，也不存在一个被广泛认可的定义来准确定义机器学习。</p>
+<p><strong>1. Arthur Samue 提出的定义：</strong></p>
+<blockquote>
+<p>“The field of study that gives computers the ability to learn without being explicitly programmed.”</p>
+</blockquote>
+<p>在进行特定编程的情况下，给予计算机学习能力的领域。</p>
+<p><strong>2. Tom Mitchell 提出的定义：</strong></p>
+<blockquote>
+<p>“A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.”</p>
+</blockquote>
+<p>一个好的学习问题定义如下，一个程序被认为能从经验 E 中学习，解决任务 T，达到性能度量值 P，当且仅当，有了经验 E 后，经过 P 评判，程序在处理 T 时的性能有所提升。</p>
+<p>​         </p>
+<h3 id="1-2-Supervised-Learning"><a href="#1-2-Supervised-Learning" class="headerlink" title="1.2 Supervised Learning"></a>1.2 Supervised Learning</h3><blockquote>
+<p>In supervised learning, we are given a data set and already know what our correct output should look like, having the idea that there is a relationship between the input and the output.</p>
+</blockquote>
+<p>在监督学习中，我们已经得到了一个数据集，并且数据集中的每一个样本都是“正确答案”，再根据这些样本来做出预测。</p>
+<p>监督学习的问题被分为<strong>“回归（regression）</strong>和<strong>“分类（classification）”</strong>两类。</p>
+<ul>
+<li>在回归问题中，我们尝试预测出<strong>连续的</strong>输出。</li>
+<li>在分类问题中，我们尝试预测出<strong>离散的</strong>输出。</li>
+</ul>
+<p>在这种监督学习模式下，我们有输入模块叫<strong>特征（features）</strong>，和输出模块叫<strong>目标（target）</strong>。学习的目的是基于给定的输入和对应的标签训练模型，然后用训练好的模型对给定的新输入来预测输出。</p>
+<p>为此，我们收集一个训练<strong>数据集（training set）</strong>，在这个数据集中，我们有许多成对的<strong>训练样本</strong>，每对样本包含<strong>特征向量（feature vector）</strong>作为输入（用符号 X 表示所有的特征向量）及其相应的<strong>目标（output）</strong>作为输出（用符号 Y 表示所有的目标值）。 由于每一个输入都有来自事实对应的标签，我们将这种学习称为监督学习（supervised learning），同时将训练好的模型称为<strong>假设（hypothesis）</strong>。 </p>
+<p>​       </p>
+<h3 id="1-3-Unsupervised-Learning"><a href="#1-3-Unsupervised-Learning" class="headerlink" title="1.3 Unsupervised Learning"></a>1.3 Unsupervised Learning</h3><blockquote>
+<p>Unsupervised learning, allows us to approach problems with little or no idea what our results should look like. We can derive structure from data where we don’t necessarily know the effect of the variables.</p>
+</blockquote>
+<p>无监督学习中，我们对对已知的数据集不知道如何处理，未被告知每一个数据点是什么。我们可以在不知道变量的具体影响的情况下，从数据中提取出结构（structure）。</p>
+<p>我们可以根据数据中的变量关系对数据进行<strong>聚类（clustering）</strong>，来提取出数据的结构。</p>
+<p><img src="https://photo.hushhw.cn/20190716112626.png" alt></p>
+<p>聚类应用的例子，如在谷歌新闻中，将同一主题的新闻事件聚类在一起显示。我们没有提前告知算法一些信息，算法自动地聚类，我们没有算法正确答案来回应数据集中的数据。</p>
+<h2 id="专业名词整理"><a href="#专业名词整理" class="headerlink" title="专业名词整理"></a>专业名词整理</h2><ul>
+<li><code>supervised learning</code>：监督学习</li>
+<li><code>regresssion</code>：回归</li>
+<li><code>classification</code>：分类</li>
+<li><code>horizontal axis</code>：横轴、<code>vertical axis</code>：纵轴</li>
+<li><code>quadratic function</code>：二次函数、<code>cubic function</code>：三次函数</li>
+<li><code>discrete value</code>：离散值、<code>continuous value</code>：连续值</li>
+<li><code>training set</code>：训练集、<code>data set</code>：数据集</li>
+<li><code>unsupervised learning</code>：非监督学习</li>
+<li><code>cluster</code>：簇、<code>clustering algorithm</code>：聚类算法</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="https://www.zhouyongyi.com/andrew-ng-machine-learning-notes-1/" target="_blank" rel="noopener">驿舟小站</a></p>
+<p><a href="https://github.com/fengdu78/Coursera-ML-AndrewNg-Notes" target="_blank" rel="noopener">Coursera-ML-AndrewNg-Notes</a></p>
+<p><a href="https://www.coursera.org/course/ml" target="_blank" rel="noopener">斯坦福大学 2014 机器学习</a></p>
+</blockquote>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/ef2d7590.html">吴恩达《机器学习》笔记（一）——介绍</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2019年07月16日 - 9:30:01</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/ef2d7590.html" data-id="ckkp2xtk20069f8tlr8j1c7yx" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwUlEQVR42u3aQZLCMAwEQP7/afbCbRczkmIDW50TRSV2w0FljXK7xdc9vn7fv17ttuPCxcUdc6vbr79PiPk6f6yGi4t7kPtsg2efk+K13vjZ+i9suLi4H8ldP5vjcHFx/xO3d5T5iLqLi4tb5CbNSS/aWP/sjb0aLi7ugJunlPs+b8l3cXFxW9x78Up+xvoo09v3sQIuLu4Rbl5Q5keQ3rO4uLjv5c6HJcn4JD9CRb0aLi7uNm6yxLy07bgTFxd3B7fXulQLUPIPrSNaXFzck9x5nDGJXPNBLC4u7nnuPMpMWqB8iFL4U3BxcbdxrzqO5KUwb7de5Lu4uLgbuNUXsJIWpXpMycsiLi7uGW6v6Fz1csao+cHFxd3M7bUu+QbVKDYqYbi4uAe5SfFKhh/VkKWQe+Di4h7nVqOKpBHKhyhR84OLi3uQWx2R5s9efCcuLu5mbq+s5PHopInCxcV9F7f6WlUv7qwWx8KLWbi4uNu41fZjErDmTVTzoIOLi3spt1do8qCk12jh4uJ+C7dXtqqtES4u7ndxex1VUuYiIS4u7kHuvIGpDmXzIQ0uLu55bm/wmQcoSbAyKZG4uLiXcn8Axd2QnwwZeDQAAAAASUVORK5CYII=">分享</a><div class="tags"><a href="/tags/Machine-Learning/">Machine Learning</a></div><div class="post-nav"><a class="pre" href="/posts/df3b9948.html">吴恩达《机器学习》笔记（二）——单变量线性回归</a><a class="next" href="/posts/feaace02.html">《图解密码技术》学习笔记之密码(二)</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/92253a1a.html" target="_blank">吴恩达《机器学习》笔记（三）——多变量线性回归</a></li><li><a href="https://wiki.hushhw.cn/posts/df3b9948.html" target="_blank">吴恩达《机器学习》笔记（二）——单变量线性回归</a></li><li><a href="https://wiki.hushhw.cn/posts/feaace02.html" target="_blank">《图解密码技术》学习笔记之密码(二)</a></li><li><a href="https://wiki.hushhw.cn/posts/6fbc30d9.html" target="_blank">虚拟机 VMware 中安装 Ubuntu 操作系统</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-text">Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-What-is-Machine-Learning"><span class="toc-text">1.1 What is Machine Learning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Supervised-Learning"><span class="toc-text">1.2 Supervised Learning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Unsupervised-Learning"><span class="toc-text">1.3 Unsupervised Learning</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#专业名词整理"><span class="toc-text">专业名词整理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

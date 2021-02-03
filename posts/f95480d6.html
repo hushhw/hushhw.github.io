@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>吴恩达《机器学习》笔记（九）——支持向量机SVM | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">吴恩达《机器学习》笔记（九）——支持向量机SVM</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">吴恩达《机器学习》笔记（九）——支持向量机SVM</h1><div class="post-meta">2019-08-23<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 726</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 3</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/f95480d6.html#vcomment"><span class="valine-comment-count" data-xid="/posts/f95480d6.html"></span><span> 条评论</span></a><div class="post-content"><h2 id="Support-Vector-Machines"><a href="#Support-Vector-Machines" class="headerlink" title="Support Vector Machines"></a>Support Vector Machines</h2><h3 id="12-1-Optimization-Objective"><a href="#12-1-Optimization-Objective" class="headerlink" title="12.1. Optimization Objective"></a>12.1. Optimization Objective</h3><p><strong>支持向量机（Support Vector Machines，SVM）</strong>在学习复杂的非线性方程时提供了一种更为清晰更为强大的方式，属于监督学习算法。</p>
+<p>为了描述 SVM，我们从 logistic 回归开始，下图是回顾 logistic 回归的假设函数的一些特性：</p>
+<p><img src="https://photo.hushhw.cn/20190906130133.png" alt></p>
+<p>再看看 logistic 回归的代价函数：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+J(\theta) &= \frac{1}{m}\sum^{m}_{i=1}\left[-y^{(i)}log\ h_{\theta}(x^{(i)}) - (1-y^{(i)})log(1-h_{\theta}(x^{(i)}))\right] \\
+&= \frac{1}{m}\sum^{m}_{i=1}\left[-y^{(i)}log\left( \frac1{1+e^{-\theta^Tx^{(i)}}}\right) - (1-y^{(i)})log\left(1-\frac1{1+e^{-\theta^Tx^{(i)}}}\right)\right]
+\end{align}</script><p>令 $z=\theta^Tx​$ 后画出两条光滑的 sigmoid 函数曲线如下图：</p>
+<p><img src="https://photo.hushhw.cn/20190906132048.png" alt></p>
+<p>用两条粉色线段代替曲线，这被称为 hinge loss 函数。</p>
+<ul>
+<li><p>当 y = 1 时，命名为 $cost_1(z)$ ，当 z 大于 1 时为零，小于 1 时斜率可以不用考虑。</p>
+</li>
+<li><p>当 y = 0 时，命名为 $cost_0(z)$ ，当 z 小于 -1 时为零，大于 -1 时斜率可以不用考虑。</p>
+</li>
+</ul>
+<p>logistic 回归正则化后的待见函数为：</p>
+<script type="math/tex; mode=display">
+J(\theta) = \frac{1}{m}\sum^{m}_{i=1}\left[y^{(i)}\left(-log\ h_{\theta}(x^{(i)})\right) + (1-y^{(i)})\left(-log(1-h_{\theta}(x^{(i)}))\right)\right] + \frac{\lambda}{2m}\sum^n_{j=1}\theta^2_j</script><p>用命名后的线段代替 logistic 回归代价函数的第一项和第二项得到：</p>
+<script type="math/tex; mode=display">
+J(\theta) = \frac{1}{m}\sum^{m}_{i=1}\left[y^{(i)}cost_1(\theta^Tx^{(i)}) + (1-y^{(i)})cost_0(\theta^Tx^{(i)})\right] + \frac{\lambda}{2m}\sum^n_{j=1}\theta^2_j</script><p>现在我们考虑去掉 1/m 这一项，去掉后依然可以得到同样的 𝜃 最优值，因为 1/m 仅是一个常量。我们做一下变形，乘以一个 m/λ：</p>
+<script type="math/tex; mode=display">
+J(\theta) = \frac{1}{\lambda}\sum^{m}_{i=1}\left[y^{(i)}cost_1(\theta^Tx^{(i)}) + (1-y^{(i)})cost_0(\theta^Tx^{(i)})\right] + \frac12\sum^n_{j=1}\theta^2_j</script><p>最后我们记 C=1/λ，得到：</p>
+<script type="math/tex; mode=display">
+J(\theta) = C\sum^{m}_{i=1}\left[y^{(i)}cost_1(\theta^Tx^{(i)}) + (1-y^{(i)})cost_0(\theta^Tx^{(i)})\right] + \frac12\sum^n_{j=1}\theta^2_j</script><p>这就是通常使用的 SVM 代价函数，这个系数 C 本质上和 λ 一样，都是改变普通代价函数项和正则项的权重关系。也就是说，如果我们想要加强正则化强度来处理过拟合，那么减小 C；如果想要减少正则化强度来处理欠拟合，那么增大 C。</p>
+<p>最后，有别于 logistic 回归的一点是 SVM 算法的假设函数并不代表 y = 0 或 1 的概率，而只是输出 0 或 1：</p>
+<script type="math/tex; mode=display">
+h_{\theta}(x)= \begin{cases}
+1 \quad if\: \theta^Tx\geq0 \\
+0 \quad otherwise
+\end{cases}</script><p>​           </p>
+<h3 id="12-2-Large-Margin-Intuition"><a href="#12-2-Large-Margin-Intuition" class="headerlink" title="12.2. Large Margin Intuition"></a>12.2. Large Margin Intuition</h3><p>把 SVM 算法当作<strong>大间距分类器（Large Margin Classifier）</strong>来理解是比较直观的理解方式。</p>
+<p>下图回顾了 SVM 算法的最小化代价函数的结论：</p>
+<p><img src="https://photo.hushhw.cn/20190906144938.png" alt></p>
+<p>如果代价函数中的 C 被设置的非常非常大，想要是的代价函数最小，就必须让代价函数项为 0 ，即：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+J(\theta) &= C\cdot0 + \frac12\sum^n_{j=1}\theta^2_j \\
+when: \quad&\theta^Tx^{(i)}\geq 1 \quad if \:y^{(i)}=1 \\
+&\theta^Tx^{(i)}\leq -1 \quad if \:y^{(i)}=0 \\
+\end{align}</script><p><img src="https://photo.hushhw.cn/20190906150428.png" alt></p>
+<p>在上图的决策边界选择中，黑线决策边界的选择是符合 SVM 算法要求的，黑线有与正负数据集更大的距离，这个距离叫做支持向量机的<strong>间距（margin）</strong>，因此支持向量机有时被称为<strong>大间距分类器（Large Margin Classifier）</strong>。在 SVM 算法中，决策边界的性质是尽可能地远离正数据集与负数据集。</p>
+<p>事实上，支持向量机 SVM 现在比大间距分类器要成熟得多，使用大间距分类器的学习算法容易受到异常点（outlier）的影响，如下图中会因为一个异常点导致决策边界发生很大的偏移。</p>
+<p><img src="https://photo.hushhw.cn/20190906151419.png" alt></p>
+<p>如果想要使得这些异常点不过分影响决策边界，这时应该减小 C 的数值。</p>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/f95480d6.html">吴恩达《机器学习》笔记（九）——支持向量机SVM</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2019年08月23日 - 12:32:50</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/f95480d6.html" data-id="ckkp2xthg000sf8tlxbuav1k9" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABy0lEQVR42u3aQW7EIBAEwP3/p50HRMbdYNCuVJyi2MFFDi2Y4fOJx3Uz/r/z//3xbJ8dAxcXd5l7DcfdB8b08QKS2W5nxsXFPchNPtYixrF1N+eDDRcX9yu5KwsbxyIuLu6vc/ODzVcEGS4u7hQ3OZy0BY7xPNvPari4uAvcvEq57+ct9V1cXNwp7lWOdiuT/G3xdVxc3CPcPFDaxcy1aaMtFC4u7nHuSpDlzde2HVt3bnFxcV/lrpQ4kyJIfmmj2OLg4uJu485dzxpHTx5qeWkVFxf3DHeufJmE0b6NFC4u7j5uu01pr2u0LduH+MPFxT3CfTekkoUl0FyCi4u7g9uWP/JCRrv4KPhwcXGPcFeKF/mWJbmcUSwVFxf3CDcPrzz4ckpyiPrkL+Hi4r7EbUulbQmjvdT18A/CxcU9yJ1roLZllKsc9eEHFxf3Ve56MCWRl4dj9BgXF3cDdyVW2qcr17ZwcXFPct+9htV+sm3S4OLinuTWx4/4EsbKsWpyo4OLi/sqtw2atl3atmPrx7i4uF/AnSuXtG0VXFzcX+HOFUnnrnM9tFJwcXE3c+eKm+1vkq3SQ4zi4uIe4c4VN/OyyHoU4uLiHuT+AcCq4jFRpdGUAAAAAElFTkSuQmCC">分享</a><div class="tags"><a href="/tags/Machine-Learning/">Machine Learning</a></div><div class="post-nav"><a class="pre" href="/posts/d30e9e5e.html">HTTPS协议 &amp; TLS协议</a><a class="next" href="/posts/18a3eba2.html">吴恩达《机器学习》笔记（七）——神经网络的学习</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/6adc5586.html" target="_blank">使用virtualenv创建隔离环境</a></li><li><a href="https://wiki.hushhw.cn/posts/d30e9e5e.html" target="_blank">HTTPS协议 &amp; TLS协议</a></li><li><a href="https://wiki.hushhw.cn/posts/18a3eba2.html" target="_blank">吴恩达《机器学习》笔记（七）——神经网络的学习</a></li><li><a href="https://wiki.hushhw.cn/posts/e75b0cdb.html" target="_blank">吴恩达《机器学习》笔记（六）——神经网络的表述</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Support-Vector-Machines"><span class="toc-text">Support Vector Machines</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#12-1-Optimization-Objective"><span class="toc-text">12.1. Optimization Objective</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-2-Large-Margin-Intuition"><span class="toc-text">12.2. Large Margin Intuition</span></a></li></ol></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

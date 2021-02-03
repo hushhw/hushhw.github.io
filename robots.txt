@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /categories/
+Allow: /about/
+Allow: /books/
+Allow: /music/
+Allow: /photos/
+Allow: /poems/
+Allow: /movies/
+
+Sitemap: https://wiki.hushhw.cn/sitemap.xml
+Sitemap: https://wiki.hushhw.cn/baidusitemap.xml

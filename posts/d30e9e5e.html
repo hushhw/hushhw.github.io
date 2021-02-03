@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>HTTPS协议 &amp; TLS协议 | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">HTTPS协议 &amp; TLS协议</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">HTTPS协议 &amp; TLS协议</h1><div class="post-meta">2019-10-11<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1,252</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 4</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/d30e9e5e.html#vcomment"><span class="valine-comment-count" data-xid="/posts/d30e9e5e.html"></span><span> 条评论</span></a><div class="post-content"><h2 id="1-HTTPS协议"><a href="#1-HTTPS协议" class="headerlink" title="1. HTTPS协议"></a>1. HTTPS协议</h2><h3 id="1-1-HTTP-和-HTTPS-协议的区别"><a href="#1-1-HTTP-和-HTTPS-协议的区别" class="headerlink" title="1.1 HTTP 和 HTTPS 协议的区别"></a>1.1 HTTP 和 HTTPS 协议的区别</h3><p>HTTP 协议存在一定的缺点：</p>
+<ul>
+<li>通信使用明文，不提供任何方式的数据加密，内容可能被窃听（重要密码泄露）</li>
+<li>不验证通信方身份，有可能遭遇伪装（跨站点请求伪造）</li>
+<li>无法证明报文的完整性，有可能已遭篡改（运营商劫持）</li>
+</ul>
+<p>为了解决 HTTP 存在的这些漏洞使数据传输更加安全，引入了另一种协议 HTTPS，HTTPS 协议是在 HTTP 协议的基础上加入了加密处理和认证机制和完整性保护，只是 HTTP 通信接口部分用 SSL/TLS 协议代替而已，简单讲就是 HTTP 的安全版，通常 HTTP 直接和 TCP 通信，当使用 SSL 时，就演变成先与 SSL 通信，再由 SSL 和 TCP 通信。</p>
+<p><img src="https://photo.hushhw.cn/20190923193436.png" alt></p>
+<p>HTTP 和 HTTPS 的区别：</p>
+<ul>
+<li>HTTPS 协议需要到 CA 申请证书，一般免费证书较少，因而需要一定费用；</li>
+<li>HTTP 是超文本传输协议，信息是明文传输，HTTPS 则是安全性的 SSL 加密传输协议；</li>
+<li>HTTP 和 HTTPS 使用的是完全不同的连接方式，用的端口不一样，前者是 80，后者是 443；</li>
+<li><p>HTTP 的连接很简单，是无状态的，HTTPS 协议是由 SSL + HTTP 协议构建的可进行加密传输、身份认证的网络协议，比 HTTP 协议安全。</p>
+<p>​        </p>
+</li>
+</ul>
+<h3 id="1-2-HTTPS-的工作原理"><a href="#1-2-HTTPS-的工作原理" class="headerlink" title="1.2 HTTPS 的工作原理"></a>1.2 HTTPS 的工作原理</h3><ul>
+<li><p>客户用 HTTPS 的 URL 访问 Web 服务器，要求与 Web 服务器建立 SSL 连接；</p>
+</li>
+<li><p>Web 服务器收到客户端请求后，会将网站的证书信息（证书中包含公钥）传送一份给客户端；</p>
+</li>
+<li><p>客户端的浏览器与 Web 服务器开始协商 SSL 连接的安全等级，也就是信息加密的等级；</p>
+</li>
+<li><p>客户端的浏览器根据双方同意的安全等级，建立会话密钥，然后利用网站的公钥将会话密钥加密，并传送给网站；</p>
+</li>
+<li><p>Web 服务器利用自己的私钥解密出会话密钥；</p>
+</li>
+<li><p>Web 服务器利用会话密钥加密与客户端之间的通信；</p>
+<p>​           </p>
+</li>
+</ul>
+<h2 id="2-TLS-协议"><a href="#2-TLS-协议" class="headerlink" title="2. TLS 协议"></a>2. TLS 协议</h2><blockquote>
+<p>SSL/TLS 是保护计算机网络通讯安全的一类加密协议，它们在传输层上给原先非安全的应用层协议提供加密保护，如非安全的 HTTP 协议即可被 SSL/TLS 保护形成安全的 HTTPS 协议。</p>
+<p>TLS 可以理解为 SSL（Secure Socket Layer）安全套接字层的后续版本，TLS 协议是继承了 SSL 协议并写入 RFC 标准化后的产物。</p>
+</blockquote>
+<p><strong>SSL (Secure Socket Layer)安全套接字层协议</strong></p>
+<ul>
+<li><p>SSL通过互相认证、使用数字签名确保完整性、使用加密确保私密性，以实现客户端和服务器之间的安全通讯。</p>
+</li>
+<li><p>分为SSL记录协议和SSL握手协议。</p>
+</li>
+</ul>
+<p><strong>TLS(Transport Layer Security)传输层安全协议</strong></p>
+<ul>
+<li>用于两个应用程序之间提供保密性和数据完整性。</li>
+<li><p>分为TLS记录协议和TLS握手协议。 </p>
+<p>​       </p>
+</li>
+</ul>
+<h3 id="2-1-TLS-通信握手过程"><a href="#2-1-TLS-通信握手过程" class="headerlink" title="2.1 TLS 通信握手过程"></a>2.1 TLS 通信握手过程</h3><ul>
+<li>客户端给出协议版本号、一个客户端生成的随机数（Client random），以及客户端支持的加密方法列表；</li>
+<li>服务器从算法列表中选择一种加密算法确认双方使用的加密方法，并给出包含服务器公钥的数字证书、以及一个服务器生成的随机数（Server random）；</li>
+<li>客户端确认数字证书有效，然后生成一个新的随机数（Premaster secret），并使用数字证书中的公钥加密这个随机数，将加密后的信息发给服务器；</li>
+<li>服务器使用自己的私钥，获取客户端发来的随机数（即Premaster secret）；</li>
+<li>客户端和服务器根据约定的加密方法，使用前面的三个随机数，生成「对话密钥」（session key），用来加密接下来的整个对话过程。</li>
+</ul>
+<p><img src="https://photo.hushhw.cn/20190924150109.png" alt></p>
+<p>握手阶段有三点需要注意：</p>
+<ul>
+<li>「对话密钥」由前面提到的三个随机数一起组成。</li>
+<li>握手之后的对话使用「对话密钥」加密，属于对称加密；服务器的公钥和私钥只用于加密和解密「对话密钥」，为非对称加密。</li>
+<li>服务器的公钥放在服务器的数字证书之中，只要证书是可信的公钥就是可信的，保证了公钥不被篡改。</li>
+<li>每一次对话（session），客户端和服务器端都生成一个「对话密钥」（session key），用它来加密信息。由于”对话密钥”是对称加密，所以运算速度非常快，而服务器公钥只用于加密”对话密钥”本身，这样就减少了加密运算的消耗时间。</li>
+</ul>
+<p>​           </p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="https://www.cnblogs.com/jesse131/p/9080925.html" target="_blank" rel="noopener">我是这样理解HTTP和HTTPS区别的</a></p>
+<p><a href="https://www.freebuf.com/articles/network/116497.html" target="_blank" rel="noopener">传输层安全协议抓包分析之SSL/TLS</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html" target="_blank" rel="noopener">图解SSL/TLS协议</a></p>
+<p><a href="https://www.cnblogs.com/snowater/p/7804889.html" target="_blank" rel="noopener">HTTPS协议、TLS协议、证书认证过程解析</a> </p>
+</blockquote>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/d30e9e5e.html">HTTPS协议 &amp; TLS协议</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2019年10月11日 - 19:22:47</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/d30e9e5e.html" data-id="ckkp2xthh000vf8tl8fl3d52w" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABvklEQVR42u3aS24CMRAFQO5/abIlihje8w+IyqsR8uDyLFrubt9u8bg/jGROPvO2Y+Di4k5z75fjeoG/c9pVcgMuLu557rMFctb172NbxcXF/Rbu9bv5v+Hi4v4n7vVi+WEFFxf387lJcjJTBMk/wbJcDRcXd4KbVyn3PW+p7+Li4g5x7+XIA1CSINWr4+LiHuHmASU/+iSlkPz4gouLe547k4q0jZP2CPXiu+Li4m7jJkeQmbwjv35RzMTFxd3MTcJHHpKSTbbv/nrGxcV9K3eekrRU85IKLi7uSW57faq9aDVTTImSKFxc3A3ctmUy9SXKAuvTuIuLi7uZm5c8ZtBjRZCn6+Li4h7htgHlzDGoaMzg4uJu4La4dgN56SQ6WuHi4h7n5k3QJDqONWVfbBUXF/c4t01mroPOqmscuLi47+KO5UyrSqXFTFxc3M3cBWGlvFrRHqdwcXHPc/OxoOHRlj/KQImLi7uW21LyEupMEjV40MHFxV3KzQPN4DJxsKs7wLi4uB/JzVOaNtjh4uJ+CzcvtibXMuoSKi4u7kFuHp7Gmij5ZYsXHwsXF/cId6zxOVY0mdkqLi7uEe4PAGFI58az5UEAAAAASUVORK5CYII=">分享</a><div class="tags"><a href="/tags/TLS/">TLS</a><a href="/tags/Encrypted-Traffic-Analytics/">Encrypted Traffic Analytics</a></div><div class="post-nav"><a class="pre" href="/posts/6adc5586.html">使用virtualenv创建隔离环境</a><a class="next" href="/posts/f95480d6.html">吴恩达《机器学习》笔记（九）——支持向量机SVM</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/f2b20d45.html" target="_blank">机器学习中评估分类器性能</a></li><li><a href="https://wiki.hushhw.cn/posts/6adc5586.html" target="_blank">使用virtualenv创建隔离环境</a></li><li><a href="https://wiki.hushhw.cn/posts/f95480d6.html" target="_blank">吴恩达《机器学习》笔记（九）——支持向量机SVM</a></li><li><a href="https://wiki.hushhw.cn/posts/18a3eba2.html" target="_blank">吴恩达《机器学习》笔记（七）——神经网络的学习</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-HTTPS协议"><span class="toc-number">1.</span> <span class="toc-text">1. HTTPS协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-HTTP-和-HTTPS-协议的区别"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 HTTP 和 HTTPS 协议的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-HTTPS-的工作原理"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 HTTPS 的工作原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-TLS-协议"><span class="toc-number">2.</span> <span class="toc-text">2. TLS 协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-TLS-通信握手过程"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 TLS 通信握手过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

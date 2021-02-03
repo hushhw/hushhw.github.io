@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>使用七牛插件自动上传图片 | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">使用七牛插件自动上传图片</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">使用七牛插件自动上传图片</h1><div class="post-meta">2018-07-21<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1,572</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 6</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/42084.html#vcomment"><span class="valine-comment-count" data-xid="/posts/42084.html"></span><span> 条评论</span></a><div class="post-content"><blockquote>
+<p>之前使用七牛云都是手动打开网页传图片，</p>
+<p>复制图片网址来用，</p>
+<p>最近才发现这个插件可以直接本地上传，</p>
+<p>记录一下备之后使用。</p>
+</blockquote>
+<a id="more"></a>
+<p>​       </p>
+<p><img src="https://photo.hushhw.cn/images/qiniu.png alt:图片来源网络" alt></p>
+<p>​        </p>
+<h3 id="设置hexo-qiniu-sync插件"><a href="#设置hexo-qiniu-sync插件" class="headerlink" title="设置hexo-qiniu-sync插件"></a>设置<code>hexo-qiniu-sync</code>插件</h3><ol>
+<li><p>安装插件：在hexo主目录下运行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-qiniu-sync --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加插件配置信息到<code>_config.yml</code>文件中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">plugins:</span><br><span class="line">  - hexo-qiniu-sync</span><br><span class="line"></span><br><span class="line">#七牛云存储设置</span><br><span class="line">##offline       是否离线. 离线状态将使用本地地址渲染</span><br><span class="line">##sync          是否同步</span><br><span class="line">##bucket        空间名称.</span><br><span class="line">##access_key    上传密钥AccessKey</span><br><span class="line">##secret_key    上传密钥SecretKey</span><br><span class="line">##secret_file   秘钥文件路径，可以将上述两个属性配置到文件内，防止泄露，json格式。绝对路径相对路径均可</span><br><span class="line">##dirPrefix     上传的资源子目录前缀.如设置，需与urlPrefix同步 </span><br><span class="line">##urlPrefix     外链前缀.</span><br><span class="line">##local_dir     本地目录.</span><br><span class="line">##update_exist  是否更新已经上传过的文件(仅文件大小不同或在上次上传后进行更新的才会重新上传)</span><br><span class="line">##image/js/css  子参数folder为不同静态资源种类的目录名称，一般不需要改动</span><br><span class="line">##image.extend  这是个特殊参数，用于生成缩略图或加水印等操作。具体请参考http://developer.qiniu.com/docs/v6/api/reference/fop/image/ </span><br><span class="line">##              可使用基本图片处理、高级图片处理、图片水印处理这3个接口。例如 ?imageView2/2/w/500 即生成宽度最多500px的缩略图</span><br><span class="line"></span><br><span class="line">qiniu:</span><br><span class="line">  offline: false</span><br><span class="line">  sync: true</span><br><span class="line">  bucket: bucket_name</span><br><span class="line">  secret_file: sec/qn.json or C:</span><br><span class="line">  access_key: AccessKey</span><br><span class="line">  secret_key: SecretKey</span><br><span class="line">  dirPrefix: static</span><br><span class="line">  urlPrefix: http://bucket_name.qiniudn.com/static</span><br><span class="line">  local_dir: static</span><br><span class="line">  update_exist: true</span><br><span class="line">  image: </span><br><span class="line">    folder: images</span><br><span class="line">    extend: </span><br><span class="line">  js:</span><br><span class="line">    folder: js</span><br><span class="line">  css:</span><br><span class="line">    folder: css</span><br></pre></td></tr></table></figure>
+<p>几个需要注意修改的地方：</p>
+<ul>
+<li><p><code>bucket</code>：修改为你申请的七牛空间名称</p>
+</li>
+<li><p><code>access_key</code>、<code>secret_key</code>：上传密钥AK和SK，可以在七牛个人空间找到。</p>
+<p><img src="https://photo.hushhw.cn/images/qiniu_ak_sk.png" alt></p>
+</li>
+<li><p><code>urlPrefix</code> : 七牛空间地址的前缀。上面的示例是复制的github文档写的，还是使用的二级域名表示的，但现在七牛已经取消了二级域名，而需要自己建的空间中找分配的七牛测试域名然后填写在这里，也可以查看一个已上传的文件外链地址，确认前缀无误。例如我的是<code>http://p86wg7kc2.bkt.clouddn.com</code>。</p>
+</li>
+<li><p><code>dirPrefix</code>：资源将上传到七牛空间的此目录下，也可以设置为空，该参数会影响外链地址，如设置为非空值，例如默认的<code>static</code>，则 <code>urlPrefix</code> 为保持一致需加上目录后缀 <code>/static</code> ，改为 <code>http://p86wg7kc2.bkt.clouddn.com/static</code> 。</p>
+</li>
+<li><p><code>local_dir</code> ：本地资源储存目录。在本例中，待上传的资源都储存在hexo主目录中的 <code>cdn</code> 文件夹（也就是与 <code>source</code> 目录平级）中。</p>
+</li>
+<li><p><code>update_exist</code> ：设置为 <code>true</code> ，则会在文件更新之后重新上传并更新七牛空间上中的原有文件。</p>
+</li>
+<li><p><code>image</code> : <code>extend</code> 参数：这是个特殊参数，是文章内使用 <code>qnimg</code> 标签引用图片的默认图片处理操作。可以使用 基本图片处理（imageView2）、高级图片处理（imageMogr2）、图片水印处理（watermark） 这三个图片处理接口，多个接口内容之间用 <code>|</code> 间隔。例如 <code>?imageView2/2/w/500</code> 即生成宽度最多500px的缩略图。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>​      </p>
+<h3 id="配置本地目录"><a href="#配置本地目录" class="headerlink" title="配置本地目录"></a>配置本地目录</h3><p>本地目录名需要与<code>local_dir</code>参数的值一致，本例中在hexo主目录下新建与source平级的目录cdn，用于存放需要上传到七牛的资源。</p>
+<p>在 <code>cdn</code> 目录下创建子目录： <code>css</code> 、 <code>images</code> 、 <code>js</code> ，与 <code>image/js/css</code> 子参数 <code>folder</code> 保持一致，待上传的css、图片、js文件应该存储到相应子目录。我的Hexo主目录结构如下：</p>
+<blockquote>
+<p>├─.deploy_git<br>├─cdn<br>│ ├─css<br>│ ├─images<br>│ └─js<br>├─node_modules<br>├─public<br>├─scaffolds<br>├─source<br>└─theme</p>
+</blockquote>
+<p>​     </p>
+<h3 id="引用七牛资源"><a href="#引用七牛资源" class="headerlink" title="引用七牛资源"></a>引用七牛资源</h3><p>在文中需要放图片的地方插入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](https://photo.hushhw.cn/images/ImgFile)</span><br></pre></td></tr></table></figure>
+<p>其中<code>ImgFile</code>为放在本地images文件下的图片名称，例如我这里插入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](https://photo.hushhw.cn/images/xiaoanphoto.jpg)</span><br></pre></td></tr></table></figure>
+<p>就会显示图片：</p>
+<p><img src="https://photo.hushhw.cn/images/xiaoanphoto.jpg" alt></p>
+<p>这里生成的图片外链被自动转为 <code>urlPrefix</code> + <code>/</code> + <code>image.folder</code> + <code>/</code> + <code>ImgFile</code> ，这里我插入的这张图片的链接为：<code>http://p86wg7kc2.bkt.clouddn.com/images/xiaoanphoto.jpg</code>。</p>
+<p>​    </p>
+<p>高级用法的通用模板：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](https://photo.hushhw.cn/images/imageFile attr1:value1 attr2:value2 &apos;attr3:value31 value32 value3n&apos; [extend:... | normal:yes])</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>[]</code> 表示可选项，按需添加，也可以不写</li>
+<li><code>|</code> 表示二选一<ul>
+<li><code>extend:...</code> 图片处理参数，表示对图片进行某种特定处理，可以使用 基本图片处理（imageView2）、高级图片处理（imageMogr2）、图片水印处理（watermark） 这三个图片处理接口，多个处理之间用 <code>|</code> 间隔。</li>
+<li><code>normal:yes</code> 表示使用原图，忽略 <code>_config.yml</code> 文件中的 <code>image.extend</code> 设置</li>
+</ul>
+</li>
+</ul>
+<p>比如下面这个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](https://photo.hushhw.cn/images/xiaoanphoto.jpg title:图片来源@小安 alt:@小安 &apos;class:class1 class2&apos; extend:?imageView2/2/w/600)</span><br></pre></td></tr></table></figure>
+<p>将被渲染成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img title=&quot;图片来源@小安&quot; alt=&quot;@小安&quot; class=&quot;class1 class2&quot; src=&quot;http://p86wg7kc2.bkt.clouddn.com/images/xiaoanphoto.jpg?imageView2/2/w/600&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>如果你在 <code>_config.yml</code> 文件中配置了 <code>extend</code> 字段，则默认会对插入的图片进行对应的处理。<br>如果不想对一个图片进行处理，则可在 <code>qnimg</code> 标签内增加 <code>normal:yes</code> 参数，则使用原图，不进行图片处理。<br>如果只对当前图片进行处理，则可在 <code>qnimg</code> 标签内增加 <code>extend:?imageView2/2/w/600</code> 样式的配置参数。<br>当 <code>_config.yml</code> 文件中和 <code>qnimg</code> 标签内都定义了 <code>extend</code> 参数，则只会使用 <code>qnimg</code> 标签的 <code>extend</code> 参数。</p>
+<h3 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h3><p><strong>作为一个带命令行功能的插件，漏掉了命令行的使用说明不是好习惯。</strong> 本插件命令行为 <code>hexo qiniu</code> ，所支持的子命令有：</p>
+<ul>
+<li><code>info</code> (简写 <code>i</code> )</li>
+</ul>
+<blockquote>
+<p>功能：显示插件版本，作者及Github地址信息等</p>
+</blockquote>
+<ul>
+<li><code>sync</code> (简写 <code>s</code> )</li>
+</ul>
+<blockquote>
+<p>功能：同步静态资源到七牛空间</p>
+</blockquote>
+<ul>
+<li><code>sync2</code> (简写 <code>s2</code> )</li>
+</ul>
+<blockquote>
+<p>功能：同步静态资源到七牛空间，且会同步上传那些本地与七牛空间有差异的文件。<br><strong>这个命令会无视 update_exist 配置</strong>。<br>对比规则请看 <code>update_exist</code> 配置参数说明。</p>
+</blockquote>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><blockquote>
+<p><a href="https://github.com/gyk001/hexo-qiniu-sync" target="_blank" rel="noopener">https://github.com/gyk001/hexo-qiniu-sync</a> <code>hexo-qiniu-sync</code> 的官方说明文档部分内容已过时</p>
+<p><a href="https://yuchen-lea.github.io/2016-01-21-use-qiniu-store-file-for-hexo" target="_blank" rel="noopener">https://yuchen-lea.github.io/2016-01-21-use-qiniu-store-file-for-hexo</a></p>
+</blockquote>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/42084.html">使用七牛插件自动上传图片</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2018年07月21日 - 19:20:38</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/42084.html" data-id="ckkp2xtif002of8tlye4b94s3" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxklEQVR42u3aS27DMAwFwN7/0u42QBH7kZTUtBitgia1Rl4Q/OjrK17Xy7r/+/VmvX778/PihYuLO+Zetyvf5h06P8b9b3Bxcc9zk+3vWQkief6DDRcX94O5kzCHi4v7n7jz5AYXF/dvcSfFSZ7cVFMlXFzc3+LmXcp9n7f0d3FxcVvcq7jyIyVlT3l3XFzcI9zeKCUJQ73maXRgXFzcI9zelpOsau2rwcXFXcutJjTzMWp1l0JGhouLu4g7uZ6VbFMdpeQvAhcXdx+3F7CqI9JqKvPQEMHFxd3M7Q1RJmlN3gRZNl7FxcXdwJ0Eml6bdfGbxsXFHXDXBp28sEl2X1Bp4eLixtw8rCSPywubasL00BbBxcVdyp2XIknjo5pVPfwSFxf3CDcpVHYgqoEPFxf3JDcZafSKlt4TyvMfXFzcbdz8ylR+XaOcuFQzMlxc3A3cq7jycqgaFqP/wsXFPcLtjVfz0FNtyC67ioGLizvm9oJXPlyphqqof4OLi3uEOx+yJhcvFoROXFzcj+TmFy96lzAebLi4uB/JrQay5MCFFiouLu5BbvWKVVLMFEanweFxcXFPcieDz94GeVE06u/i4uJ2uN/37QEvBXA9MQAAAABJRU5ErkJggg==">分享</a><div class="tags"><a href="/tags/工具/">工具</a><a href="/tags/hexo/">hexo</a><a href="/tags/七牛云/">七牛云</a></div><div class="post-nav"><a class="pre" href="/posts/d566ce3c.html">Python-OpenCV学习笔记——像素读取和写入</a><a class="next" href="/posts/20751.html">Python-OpenCV学习笔记——图片写入及图片质量</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/28187ef7.html" target="_blank">Hexo折腾笔记</a></li><li><a href="https://wiki.hushhw.cn/posts/d566ce3c.html" target="_blank">Python-OpenCV学习笔记——像素读取和写入</a></li><li><a href="https://wiki.hushhw.cn/posts/20751.html" target="_blank">Python-OpenCV学习笔记——图片写入及图片质量</a></li><li><a href="https://wiki.hushhw.cn/posts/12a01be2.html" target="_blank">Python-OpenCV学习笔记——图片读取、展示和写入</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置hexo-qiniu-sync插件"><span class="toc-number">1.</span> <span class="toc-text">设置hexo-qiniu-sync插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置本地目录"><span class="toc-number">2.</span> <span class="toc-text">配置本地目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引用七牛资源"><span class="toc-number">3.</span> <span class="toc-text">引用七牛资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同步"><span class="toc-number">4.</span> <span class="toc-text">同步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文档"><span class="toc-number">5.</span> <span class="toc-text">参考文档</span></a></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

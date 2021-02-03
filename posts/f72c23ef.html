@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>吴恩达《机器学习》笔记（四）——Logistic回归 | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">吴恩达《机器学习》笔记（四）——Logistic回归</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">吴恩达《机器学习》笔记（四）——Logistic回归</h1><div class="post-meta">2019-07-21<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1,720</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 6</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/f72c23ef.html#vcomment"><span class="valine-comment-count" data-xid="/posts/f72c23ef.html"></span><span> 条评论</span></a><div class="post-content"><blockquote>
+<p>本文内容介绍「logistic 回归」解决分类问题。</p>
+</blockquote>
+<h2 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h2><h3 id="6-1-Classification"><a href="#6-1-Classification" class="headerlink" title="6.1. Classification"></a>6.1. Classification</h3><p>与回归问题不同的是，分类问题中输出 y 不是连续的值，只能是 0 或者 1。并且 0 一般用来代表负向类（negative class），1 代表正向类（positive class），当然也可以任意指定。</p>
+<p>如果我们要用线性回归算法来解决一个分类问题，对于分类， 𝑦 取值为 0 或者 1，那么假设函数的输出值可能远大于 1，或者远小于 0，即使所有训练样本的标签 𝑦 都等于 0 或 1。尽管我们知道标签应该取值 0 或者 1，但是如果算法得到的值远大于 1 或者远小于 0 的话，就会感觉很奇怪。所以我们在接下来的要研究的算法就叫做 <strong>Logistic 回归</strong>，这个算法的性质是：它的输出值永远在 0 到 1 之间。 </p>
+<p>​        </p>
+<h3 id="6-2-Hypothesis-Representation"><a href="#6-2-Hypothesis-Representation" class="headerlink" title="6.2 Hypothesis Representation"></a>6.2 Hypothesis Representation</h3><p>在分类问题中，要用什么样的函数来表示我们的假设。希望我们的分类器的输出值在 0 和 1 之间，因此，我们希望想出一个满足某个性质的假设函数，这个性质是它的预测值要在 0 和 1 之间，于是我们引入了一个新的模型——逻辑回归（Logistic Regression），该模型的输出变量范围式中在 0 和 1 之间。</p>
+<p>logistic 回归模型的假设是：$h_{\theta}(x) = g(\theta^TX)$，其中 X 代表特征向量，g 代表 logistic 函数（logistic function）是一个常用的逻辑函数为 <strong>sigmoid 函数（Sigmoid function）</strong>，公式为：$g(z)= \frac1{1+e^{-z}} $，该函数图像如下图：</p>
+<p> <img src="https://photo.hushhw.cn/20190721154842.png" alt></p>
+<p>下面我们来理解一下 logistic 回归模型的假设：</p>
+<script type="math/tex; mode=display">
+h_{\theta}(x) = \frac1{1+e^{-\theta^Tx}}</script><p>其中，h 表示对于给定的输入变量，根据选择的参数计算输出变量为 1 的可能性（estimated probablity），即 $ℎ_𝜃(𝑥) = 𝑃(𝑦 = 1|𝑥;𝜃)​$。</p>
+<p>例如，如果对于给定的 𝑥，通过已经确定的参数计算得出 $ℎ_𝜃(𝑥) = 0.7​$，则表示有 70% 的几率 𝑦 为正向类，相应地 𝑦 为负向类的几率为 1-0.7=0.3。 </p>
+<p>​           </p>
+<h3 id="6-3-Decision-Boundary"><a href="#6-3-Decision-Boundary" class="headerlink" title="6.3. Decision Boundary"></a>6.3. Decision Boundary</h3><p>这一节讨论<strong>决策边界（Decision Boundary）</strong>问题，根据上面 sigmoid 函数的图像我们知道，当 $z\geq 0​$ 时 $g(z) \geq 0.5​$，反之小于 0.5，对应的 logistic 回归模型的假设得到：</p>
+<script type="math/tex; mode=display">
+\theta^Tx \geq 0\ 时，预测\ y = 1\\
+\theta^Tx < 0 \ 时，预测\ y=0</script><p>假设有一个模型其假设函数为：$h_{\theta}(x) = g(\theta_0 + \theta_1x_1 + \theta_2x_2)​$，并且假设我们已经得到了参数 𝜃 的转置向量为 [-3 1 1]。则当 $-3 + x_1 + x_2 \geq 0​$，即 $x_1 + x_2 \geq 3​$ 时，模型将预测 y = 1。我们绘制出这条直线 $x_1 + x_2 = 3​$，这条线便是模型的分界线，即<strong>决策边界</strong>。</p>
+<p><img src="https://photo.hushhw.cn/20190721162039.png" alt></p>
+<p>更进一步，若假设函数是非线性的，$h_θ=g(θ_0+θ_1x_1+θ_2x_2+θ_3x^2_1+θ_4x^2_2)​$，当我们通过算法得出 θ 后，画出图形如下，此时决策边界不一定是直线了：</p>
+<p><img src="https://photo.hushhw.cn/20190721162441.png" alt></p>
+<p>​           </p>
+<h3 id="6-4-Cost-Function"><a href="#6-4-Cost-Function" class="headerlink" title="6.4. Cost Function"></a>6.4. Cost Function</h3><p>如何拟合 logistic 回归模型的参数 θ 呢？我们定义用来拟合参数的优化目标或者叫代价函数（cost function）。</p>
+<p>在线性回归模型中，我们定义的代价函数是所有模型误差的平方和，即代价函数为：</p>
+<script type="math/tex; mode=display">
+J(\theta) = \frac{1}{2m}\sum^m_{i=1}(h^{(i)}_{\theta}-y^{(i)})^2</script><p>它的结构形式可以写成：</p>
+<script type="math/tex; mode=display">
+J(\theta) = \frac{1}{m}\sum^m_{i=1}\frac12(h^{(i)}_{\theta}-y^{(i)})^2 \\
+=\frac{1}{m}\sum^m_{i=1}Cost(h_{\theta}(x^{(i)}),y)</script><p>理论上来说，我们也可以对逻辑回归模型沿用这个定义，但是问题在于当我们将 $h_{\theta}(x) = \frac1{1+e^{-\theta^Tx}}$ 带入到这样定义了的代价函数中时，我们得到的代价函数将是一个<strong>非凸函数（non-convex）</strong>。 </p>
+<p><img src="https://photo.hushhw.cn/20190731144737.png" alt></p>
+<p>这意味着我们的代价函数有许多局部最小值，这将影响梯度下降算法寻找全局最小值。</p>
+<p>这里 Andrew Ng 不加证明的重新给出了代价函数：</p>
+<script type="math/tex; mode=display">
+Cost(h_{\theta}(x),y) = 
+\begin{cases}
+\begin{align}
+-log(h_{\theta}(x)) \qquad if\quad y=1 \\
+-log(1-h_{\theta}(x)) \qquad if\quad y=0
+\end{align}
+\end{cases}</script><p>$h_{\theta}(x)​$ 与代价函数之间的关系如下图：</p>
+<p><img src="https://photo.hushhw.cn/20190731150435.png" alt></p>
+<p><img src="https://photo.hushhw.cn/20190731150528.png" alt></p>
+<p>这样构建的代价函数的特点是：</p>
+<ul>
+<li><p>当实际的 y = 1 时，$h_{\theta}(x)$ 为 1 时误差为 0，不为 1 时误差随着趋于 0 而变大；</p>
+</li>
+<li><p>当实际的 y = 0 时，$h_{\theta}(x)$ 为 0 时误差为 0，不为 0 时误差随着趋于 1 而变大。</p>
+</li>
+</ul>
+<p>由于 y 只能取 0 或 1，可以把这个式子整合成：</p>
+<script type="math/tex; mode=display">
+Cost(h_{\theta}(x), y) = -ylog(h_{\theta}(x)) - (1-y)log(1-h_{\theta}(x))</script><p>即 logistic 回归的代价函数为：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+J(\theta) &= \frac{1}{m}\sum^{m}_{i=1}Cost(h_{\theta}(x^{(i)}),y^{(i)}) \\
+&= -\frac{1}{m}\sum^{m}_{i=1}\left[y^{(i)}log\ h_{\theta}(x^{(i)}) + (1-y^{(i)})log(1-h_{\theta}(x^{(i)}))\right]
+\end{align}</script><p>​            </p>
+<h3 id="6-5-Gradient-Descent"><a href="#6-5-Gradient-Descent" class="headerlink" title="6.5. Gradient Descent"></a>6.5. Gradient Descent</h3><p>在得到这样一个代价函数后，我们便可以用<strong>梯度下降算法</strong>来求得使代价函数最小的参数了，即最小化 J(𝜃)。</p>
+<p>梯度下降算法前面我们已经用过，用循环运算表达的形式如下：</p>
+<script type="math/tex; mode=display">
+\theta_j:=\theta_j-\alpha\frac{∂}{∂\theta_j}J(\theta)</script><p>用上面的式子来不断更新所有的 𝜃 值，如果将 J(θ) 的偏导数带入后，我们得到：</p>
+<script type="math/tex; mode=display">
+\theta_j:=\theta_j-\alpha\sum^{m}_{i=1}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}_j</script><p>现在，如果你把这个更新规则和我们之前用在线性回归上的进行比较的话，你会惊讶地发现，这个式子正是我们用来做线性回归梯度下降的。 但是线性回归和 logistic 回归并不一样，因为两者的假设函数 $h_{\theta}(x)$ 不一样。</p>
+<hr>
+<p><strong>代价函数偏导数的过程</strong></p>
+<p>首先计算 sigmoid 函数的导数：</p>
+<script type="math/tex; mode=display">
+\begin{split}
+σ(x)^{'} &=(\frac{1}{1+e^{-x}})^{'} 
+=\frac{e^{-x}}{(1+e^{-x})^2}=(\frac{1}{1+e^{-x}})(\frac{e^{-x}}{1+e^{-x}})=σ(x)(\frac{1+e^{-x}-1}{1+e^{-x}}) \\
+&= σ(x)(1-σ(x))
+\end{split}</script><p>再来对代价函数求偏导：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\frac{∂}{∂θ_j}J(θ) 
+&= \frac{∂}{∂θ_j}\frac{-1}{m}\sum^{m}_{i=1}\left[y^{(i)}log\ h_{\theta}(x^{(i)}) + (1-y^{(i)})log(1-h_{\theta}(x^{(i)}))\right] \\
+&= -\frac1m\sum^{m}_{i=1}\left[y^{(i)}\frac{∂}{∂θ_j}log\ h_{\theta}(x^{(i)}) + (1-y^{(i)})\frac{∂}{∂θ_j}log(1-h_{\theta}(x^{(i)}))\right] \\
+&= -\frac1m\sum^{m}_{i=1}\left[y^{(i)}\frac{\frac{∂}{∂θ_j}h_{\theta}(x^{(i)})}{h_{\theta}(x^{(i)})} + (1-y^{(i)})\frac{\frac{∂}{∂θ_j}(1-h_{\theta}(x^{(i)}))}{1-h_{\theta}(x^{(i)})}\right] \\
+&= -\frac1m\sum^{m}_{i=1}\left[y^{(i)}\frac{\frac{∂}{∂θ_j}σ({\theta}^Tx^{(i)})}{σ({\theta}^Tx^{(i)})} + (1-y^{(i)})\frac{\frac{∂}{∂θ_j}(1-σ({\theta}^Tx^{(i)}))}{1-σ({\theta}^Tx^{(i)})}\right] \\
+&= -\frac1m\sum^{m}_{i=1}\left[y^{(i)}\frac{σ(1-σ)\frac{∂}{∂θ_j}({\theta}^Tx^{(i)})}{σ} + (1-y^{(i)})\frac{σ(1-σ)\frac{∂}{∂θ_j}(1-{\theta}^Tx^{(i)})}{1-σ}\right] \\
+&= -\frac1m\sum^{m}_{i=1}\left[y^{(i)}(1-σ)x^{(i)}_j - (1-y^{(i)})σx^{(i)}_j\right] \\
+&= -\frac1m\sum^{m}_{i=1}\left[y^{(i)}(1-h_{\theta}(x^{(i)})) - (1-y^{(i)})h_{\theta}(x^{(i)})\right]x^{(i)}_j \\
+&= -\frac1m\sum^{m}_{i=1}\left[y^{(i)}-y^{(i)}h_{\theta}(x^{(i)}) - h_{\theta}(x^{(i)})+y^{(i)}h_{\theta}(x^{(i)})\right]x^{(i)}_j \\
+&= -\frac1m\sum^{m}_{i=1}\left[y^{(i)} - h_{\theta}(x^{(i)})\right]x^{(i)}_j \\
+&= \frac1m\sum^{m}_{i=1}\left[h_{\theta}(x^{(i)})-y^{(i)}\right]x^{(i)}_j \\
+\end{align}</script><p>​             </p>
+<h3 id="6-6-Advanced-Optimization"><a href="#6-6-Advanced-Optimization" class="headerlink" title="6.6. Advanced Optimization"></a>6.6. Advanced Optimization</h3><p>上面我们讨论了用梯度下降的方法最小化逻辑回归中代价函数 𝐽(𝜃)。这一节介绍一些一些高级优化算法和一些高级的优化概念，利用这些方法我们就能够使通过梯度下降进行 logistic 回归的速度大大提高，而这也将使算法更加适合解决大型的机器学习问题。</p>
+<p> 如果我们能用这些方法来计算代价函数 𝐽(𝜃) 和偏导数项的话，那么这些算法就是为我们优化代价函数的不同方法，<strong>共轭梯度法</strong>、<strong>BFGS（变尺度法）</strong>和 <strong>L-BFGS（限制变尺度法）</strong>就是其中一些更高级的优化算法，它们需要有一种方法来计算 𝐽(𝜃) 以及需要一种方法计算导数项，然后使用比梯度下降更复杂的算法来最小化代价函数。</p>
+<p>他们相对比较复杂，优势主要有两点</p>
+<ul>
+<li>不需要选择学习率α，算法会自适应</li>
+<li>经常比梯度下降算法快</li>
+</ul>
+<p>​           </p>
+<h3 id="6-7-Multi-class-classification-One-vs-all"><a href="#6-7-Multi-class-classification-One-vs-all" class="headerlink" title="6.7. Multi-class classification: One-vs-all"></a>6.7. Multi-class classification: One-vs-all</h3><p>前面我们讨论的分类问题都是<strong>二元分类（Binary classification）</strong>，这一节介绍使用 logistic 回归来解决<strong>多类别分类（Multi-class classfication）</strong>问题，具体来说讨论「一对多」的分类问题。</p>
+<p><img src="https://photo.hushhw.cn/20190801162235.png" alt></p>
+<p>解决多类别分类问题的思路是将其分成多个二元分类问题。</p>
+<p><img src="https://photo.hushhw.cn/20190801162837.png" alt></p>
+<p>​                               </p>
+<h2 id="专业名词整理"><a href="#专业名词整理" class="headerlink" title="专业名词整理"></a>专业名词整理</h2><ul>
+<li><code>dependent variable</code>：因变量</li>
+<li><code>convex function</code>：凸函数、<code>non-convex function</code>：非凸函数</li>
+<li><code>maximum likelihood estimation</code>：极大似然估计</li>
+<li><code>binary classification</code>：二元分类、<code>multi-class classfication</code>：多类别分类</li>
+</ul>
+<p>​             </p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="https://www.zhouyongyi.com/andrew-ng-machine-learning-notes-4/" target="_blank" rel="noopener">驿舟小站</a></p>
+<p><a href="https://github.com/fengdu78/Coursera-ML-AndrewNg-Notes" target="_blank" rel="noopener">Coursera-ML-AndrewNg-Notes</a></p>
+<p><a href="https://www.coursera.org/course/ml" target="_blank" rel="noopener">斯坦福大学 2014 机器学习</a></p>
+</blockquote>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/f72c23ef.html">吴恩达《机器学习》笔记（四）——Logistic回归</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2019年07月21日 - 14:50:05</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/f72c23ef.html" data-id="ckkp2xupn00fqf8tlc012nuzw" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABvklEQVR42u3aQXKDMAwFUO5/aXqANvBlYZV2nleZQJJHFhrry8cRr/Nyfbon+bZjx8LFxW1zq5RP37D2K7kBFxd3nnuNyAvT9zuv388NuLi4b+Z+KkPV17i4uP+Vm2yGXlTIcHFxi9wEcb3FSa5W/wJcXNzf4uYp5b7XW/JdXFzcJe5ZXMljJJ89lxYuLu4MtzMIeWo2mn8KFxd3hpuHGjsOYeQF8cgTF1xc3Da3WmKqV/OYteDBxcUd5+YD0erhqvwAx02AgouLO8jtjEbyNqYToODi4s5w15qf5CH7I9vHejVcXNyltDOpdknxqpaz5Gqh7uLi4m7gJqPQfSciCoUPFxd3M7fTxnQanjxC/aH5wcXF3cytjj+TApc0VNfbnbxNwsXF3cftPE0SlFS3PjePiouLO8h9tjB1BrGFXg0XF3ecu7YpWYtKC3fi4uJu5nbizk6EmgeyuLi489xqk5Mfzug3TouBKS4u7kPcavuRHMvIm6X8flxc3HluXmg6m5UH2iRcXNwXc6uboWprhIuL+xe5yc8k5a8coeLi4g5y83Cz2rpUD1vclE5cXNwRbn9Ouxam5I0QLi7uIPcLAZ8p+CxAY+UAAAAASUVORK5CYII=">分享</a><div class="tags"><a href="/tags/Machine-Learning/">Machine Learning</a></div><div class="post-nav"><a class="pre" href="/posts/4884afb4.html">Google Hacking 语法使用总结</a><a class="next" href="/posts/92253a1a.html">吴恩达《机器学习》笔记（三）——多变量线性回归</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/76f89b87.html" target="_blank">吴恩达《机器学习》笔记（五）——正则化</a></li><li><a href="https://wiki.hushhw.cn/posts/4884afb4.html" target="_blank">Google Hacking 语法使用总结</a></li><li><a href="https://wiki.hushhw.cn/posts/92253a1a.html" target="_blank">吴恩达《机器学习》笔记（三）——多变量线性回归</a></li><li><a href="https://wiki.hushhw.cn/posts/df3b9948.html" target="_blank">吴恩达《机器学习》笔记（二）——单变量线性回归</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Logistic-Regression"><span class="toc-text">Logistic Regression</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-Classification"><span class="toc-text">6.1. Classification</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-Hypothesis-Representation"><span class="toc-text">6.2 Hypothesis Representation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-Decision-Boundary"><span class="toc-text">6.3. Decision Boundary</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-Cost-Function"><span class="toc-text">6.4. Cost Function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-5-Gradient-Descent"><span class="toc-text">6.5. Gradient Descent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-6-Advanced-Optimization"><span class="toc-text">6.6. Advanced Optimization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-7-Multi-class-classification-One-vs-all"><span class="toc-text">6.7. Multi-class classification: One-vs-all</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#专业名词整理"><span class="toc-text">专业名词整理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

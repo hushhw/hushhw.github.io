@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>Python-OpenCV学习笔记——图片读取、展示和写入 | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Python-OpenCV学习笔记——图片读取、展示和写入</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">Python-OpenCV学习笔记——图片读取、展示和写入</h1><div class="post-meta">2018-07-18<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 710</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 3</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/12a01be2.html#vcomment"><span class="valine-comment-count" data-xid="/posts/12a01be2.html"></span><span> 条评论</span></a><div class="post-content"><blockquote>
+<p>把环境搭建之后，就开始记录学习笔记了，</p>
+<p>这是本系列第一篇，</p>
+<p>内容都非常基础，只是整理给自己，</p>
+<p>基础的东西很久不用就会忘记的。</p>
+</blockquote>
+<a id="more"></a>
+<p>​        </p>
+<p><img src="https://photo.hushhw.cn/images/xiaoanphoto.jpg title:图片来自微博@小安" alt></p>
+<p>​          </p>
+<h3 id="引入OpenCV"><a href="#引入OpenCV" class="headerlink" title="引入OpenCV"></a>引入OpenCV</h3><p>读取图像首先要导入OpenCV包，方法为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br></pre></td></tr></table></figure>
+<h3 id="调用API"><a href="#调用API" class="headerlink" title="调用API"></a>调用API</h3><h4 id="1-读取图片"><a href="#1-读取图片" class="headerlink" title="1. 读取图片"></a>1. 读取图片</h4><p>读取图片使用<code>cv2.imread()</code> ，可以按照不同的模式读取，一般最常用到的是读取单通道灰度图，或者直接默认读取多通道。</p>
+<blockquote>
+<p>Python: retval = cv.imread(filename, [flags])</p>
+<p>简单理解，第一个参数为图片名称，第二个是读取图片的格式，主要有以下参数</p>
+<ul>
+<li>cv2.IMREAD_COLOR：彩色模式，可用数字1代表</li>
+<li>cv2.IMREA_GRAYSCALE：灰度图，即数字0</li>
+<li>cv2.IMREAD_UNCHANGED</li>
+</ul>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">'image0.jpg'</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>这里读取图片实际上经历了四个步骤：</p>
+<ul>
+<li><p>文件的读取</p>
+</li>
+<li><p>封装格式的解析（如jpg、png格式，都是文件封装格式）</p>
+<p>这里我们一般把文件分成两部分来看待，<code>文件头</code>和<code>文件数据</code>，不同的jpg、png有不同的文件头和文件数据。这里描述的文件数据不是图片的原始数据，而是图片被压缩编码后的数据，大部分的文件头则描述的是数据部分的解码信息以及附加信息，解码器可以根据这些附加信息把数据还原成原始数据。</p>
+</li>
+<li><p>数据解码</p>
+</li>
+<li><p>数据加载</p>
+</li>
+</ul>
+<h4 id="2-创建窗体"><a href="#2-创建窗体" class="headerlink" title="2. 创建窗体"></a>2. 创建窗体</h4><p>使用imshow()常见一个窗体展示图片，第一个参数为窗体名称，第二个是展示内容</p>
+<blockquote>
+<p>Python: None = cv.imshow(winname, mat)</p>
+</blockquote>
+<p>这里创建一个叫”image”的窗体来展示上面的img</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.imshow(&apos;image&apos;, img)</span><br></pre></td></tr></table></figure>
+<h4 id="3-图片写入"><a href="#3-图片写入" class="headerlink" title="3. 图片写入"></a>3. 图片写入</h4><p>保存图像很简单，直接用cv2.imwrite即可。</p>
+<p>cv2.imwrite(“images.jpg”, img)</p>
+<p>第一个参数是保存的路径及文件名，第二个是图片数据（图像矩阵）。</p>
+<h3 id="暂停程序"><a href="#暂停程序" class="headerlink" title="暂停程序"></a>暂停程序</h3><p>最后要加<code>cv2.waitKey(0)</code> 来把程序暂停，如果不添最后一句程序会是一闪而过。</p>
+<p>cv2.waitKey()函数等待键盘响应，键盘按下之后退出，一般里面的参数都是0，也接受键盘的输入。</p>
+<p>下面就做一个简单判断，来执行关闭窗口或保存图片并关闭窗口。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">k = cv2.waitKey(<span class="number">0</span>) &amp; <span class="number">0xFF</span> <span class="comment">#64位的电脑需要加 &amp;0xFF</span></span><br><span class="line"><span class="keyword">if</span> k == <span class="number">27</span>: <span class="comment"># ESC键</span></span><br><span class="line">    cv2.destroyAllWindows()</span><br><span class="line"><span class="keyword">elif</span> k == ord(<span class="string">'s'</span>):</span><br><span class="line">    cv2.imwrite(<span class="string">'images.jpg'</span>,img)</span><br><span class="line">    cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p>完整代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'image0.jpg'</span>,<span class="number">1</span>)</span><br><span class="line">cv2.imshow(<span class="string">'image'</span>,img)</span><br><span class="line">k = cv2.waitKey(<span class="number">0</span>) &amp; <span class="number">0xFF</span> <span class="comment">#64位的电脑需要加 &amp;0xFF</span></span><br><span class="line"><span class="keyword">if</span> k == <span class="number">27</span>: <span class="comment"># ESC键</span></span><br><span class="line">    cv2.destroyAllWindows()</span><br><span class="line"><span class="keyword">elif</span> k == ord(<span class="string">'s'</span>):</span><br><span class="line">    cv2.imwrite(<span class="string">'images.jpg'</span>,img)</span><br><span class="line">    cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>本文整理自：</p>
+<p>《OpenCV文档》</p>
+<p>《OpenCV+TensorFlow 入门人工智能图像处理》系列课程视频</p>
+<p><a href="https://blog.csdn.net/poi7777/article/details/39700163" target="_blank" rel="noopener">https://blog.csdn.net/poi7777/article/details/39700163</a></p>
+</blockquote>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/12a01be2.html">Python-OpenCV学习笔记——图片读取、展示和写入</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2018年07月18日 - 22:49:54</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/12a01be2.html" data-id="ckkp2xtic002if8tlhzsv55v6" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABw0lEQVR42u3aOXLDMAwFUN//0kqTLkPmA1wcZx4rjSWLTyowWPR6xev5sUZnR7/Mr9+8cHFxl7nPdM25o1/yXXIDLi7ufe5og/k1vTCX3x8XF/ezuKOz+TEuLu5/4s43ywshXFzcv89NipMk3UnaJfOH3Far4eLiLnDzjc8dH+nv4uLitrhPcb3rv993wMXFvcLNA0ov6UmSmOq+uLi4d7j5KLQ6VllJoaL74OLiHuOeTmiqgSxKcXBxcY9xkyC13h5NQluUQuHi4l7hzol5eZOXMdXBSVSr4eLiXuEmoS3/5CJ/+ELxg4uLe4ybfyzVC3a9lspwF1xc3DdxE3Q1YPWaIFGthouLe4BbHZHmAajXNFkqfnBxcbdyq2POXmjL053oNeHi4h7mJm2OJLj0kpjq68DFxb3JTRoTyWP00ppm8YOLi3uRm49Od5VPhVIKFxf3MLcXVvIHnr+C8qvBxcW9ws1XknysjFTXP/zCxcXdy62WH+vFTB7gytEXFxd3K3cl0OQxMh/HHqm0cHFxD3Or4ak3VsHFxf0sbrW18cuAJBfi4uJe5CbFTx6kqv/Kj3Fxce9we4PPlTTlxJW4uLibuF/E+Zp5e0M57QAAAABJRU5ErkJggg==">分享</a><div class="tags"><a href="/tags/Python/">Python</a><a href="/tags/计算机视觉/">计算机视觉</a><a href="/tags/OpenCV/">OpenCV</a></div><div class="post-nav"><a class="pre" href="/posts/20751.html">Python-OpenCV学习笔记——图片写入及图片质量</a><a class="next" href="/posts/23537.html">Anaconda+python3+opencv3+TensorFlow的安装</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/42084.html" target="_blank">使用七牛插件自动上传图片</a></li><li><a href="https://wiki.hushhw.cn/posts/20751.html" target="_blank">Python-OpenCV学习笔记——图片写入及图片质量</a></li><li><a href="https://wiki.hushhw.cn/posts/23537.html" target="_blank">Anaconda+python3+opencv3+TensorFlow的安装</a></li><li><a href="https://wiki.hushhw.cn/posts/61ebe669.html" target="_blank">Google 搜索引擎设置搜索结果，在新的标签页打开</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#引入OpenCV"><span class="toc-number">1.</span> <span class="toc-text">引入OpenCV</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调用API"><span class="toc-number">2.</span> <span class="toc-text">调用API</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-读取图片"><span class="toc-number">2.1.</span> <span class="toc-text">1. 读取图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-创建窗体"><span class="toc-number">2.2.</span> <span class="toc-text">2. 创建窗体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-图片写入"><span class="toc-number">2.3.</span> <span class="toc-text">3. 图片写入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#暂停程序"><span class="toc-number">3.</span> <span class="toc-text">暂停程序</span></a></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

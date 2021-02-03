@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>欧几里得算法与拓展欧几里得算法 | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">欧几里得算法与拓展欧几里得算法</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">欧几里得算法与拓展欧几里得算法</h1><div class="post-meta">2019-03-17<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 857</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 4</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/cd2c8225.html#vcomment"><span class="valine-comment-count" data-xid="/posts/cd2c8225.html"></span><span> 条评论</span></a><div class="post-content"><h2 id="欧几里得算法-gcd"><a href="#欧几里得算法-gcd" class="headerlink" title="欧几里得算法 (gcd)"></a>欧几里得算法 (gcd)</h2><blockquote>
+<p>正整数 a 与 b 的最大公约数指的是 a 与 b 的所有公约数中最大的那个公约数，如 4 和 6 的最大公约数是 2。</p>
+<p>一般用 <code>gcd(a,b)</code> 来表示 a 和 b 的最大公约数，而求解最大公约数常用的<strong>欧几里得算法</strong>（即辗转相除法）。</p>
+</blockquote>
+<p>欧几里得算法基于定理：<strong>设 a、b 均为正整数，则 gcd(a, b) = gcd(b, a%b)。</strong></p>
+<ul>
+<li><p>如果 a&lt;b，那么定理的结构就是将 a 和 b 交换；</p>
+</li>
+<li><p>如果 a&gt;b，那么通过这个定理总可以将数据规模变小，并且减小的非常快。</p>
+</li>
+</ul>
+<p>这样似乎可以很快就得到结果，只要还需要一个东西：<strong>递归边界</strong>，即数据规模减小到什么程度使得可以算出结果来。我们知道 0 和任意一个整数 a 的最大公约数都是 a（注意：不是 0），这个结论就可以当作递归的边界。</p>
+<p>由此很容易想到将其写为递归的形式，因为递归的两个关键已经得到：</p>
+<p><strong>1.递归式：gcd(a, b) = gcd(b, a%b).</strong></p>
+<p><strong>2.递归边界：gcd(a, 0) = a.</strong></p>
+<p>于是可以得到下面的求解最大公约数的代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(b == <span class="number">0</span>) <span class="keyword">return</span> a;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">return</span> gcd(b, a%b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>更简洁的写法是：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> !b ? a : gcd(b, a%b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​            </p>
+<h2 id="拓展欧几里得算法-extend-gcd"><a href="#拓展欧几里得算法-extend-gcd" class="headerlink" title="拓展欧几里得算法 (extend_gcd)"></a>拓展欧几里得算法 (extend_gcd)</h2><blockquote>
+<p>欧几里得算法是为了解决这样一个问题：给定两个非零的整数 a 和 b，求一组正整数 (x, y)，使得 ax+ by = gcd(a, b) 成立，其中 gcd(a, b) 表示 a 和 b 的最大公约数。</p>
+</blockquote>
+<p>由前面用到的欧几里得算法求最大公约数的方法可知，它总是把 gcd(a, b) 转化为求解 gcd(b, a%b)，当 b 变为 0 的时候返回 a，此时 a 就等于gcd。</p>
+<p>也就是说欧几里得算法结束的时候变量 a 中存放的是 gcd，变量 b 中存放的是 0，因此此时显然有 <code>a*1 + b*0 = gcd(a, b)</code> 成立，此时有 x = 1, y = 0 成立。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(b == <span class="number">0</span>) <span class="keyword">return</span> a;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">return</span> gcd(b, a%b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以，不妨我们用上面的欧几里得算法的过程来计算 x 和 y。</p>
+<p>当计算 gcd(a, b) 时，有 $ax_1 + by_1 = gcd​$ 成立；</p>
+<p>而在下一步计算 gcd(b, a%b) 时，又有 $bx_2 + (a\%b)y_2 = gcd​$ 成立。</p>
+<p>由此 $ax_1 + by_1 = bx_2 + (a\%b)y_2$ 成立。</p>
+<p>又考虑到有关系 $a\%b = a - (a/b)* b$ 成立，</p>
+<p>因此 $ax_1 + by_1 = bx_2 + (a - (a/b)*b)y_2$ 成立。</p>
+<p>整理式子之后得到 $ax_1 + by_1 = ay_2 + b(x_2 - (a/b)y_2)​$。</p>
+<p>因此，对比等号左右两边可以马上得到下面的推到公式：</p>
+<p>$x1 = y2​$</p>
+<p>$y_1 = x_2 - (a /b)y_2​$</p>
+<p>由此便可以通过 $x_2$ 和 ​$y_2$ 来反推 $x_1$ 和 $y_1$ 了。于是只需要到达递归边界、不断退出的过程中根据上面的公式计算 x 和 y，就可以得到一组解。代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">exGcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> &amp;x, <span class="keyword">int</span> &amp;y)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(b == <span class="number">0</span>)&#123; x = <span class="number">1</span>; y = <span class="number">0</span>; <span class="keyword">return</span> a;&#125;</span><br><span class="line">  <span class="keyword">int</span> g = exGcd(b, a%b, x, y);  <span class="comment">//递归计算exGcd(b,a%b)</span></span><br><span class="line">  <span class="keyword">int</span> temp = x;  <span class="comment">//存放x的数值</span></span><br><span class="line">  x = y;</span><br><span class="line">  y = temp - (a/b)*y;</span><br><span class="line">  <span class="keyword">return</span> g;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>首发在：</p>
+<p><a href="https://blog.csdn.net/hushhw/article/details/76165522" target="_blank" rel="noopener">https://blog.csdn.net/hushhw/article/details/76165522</a></p>
+<p><a href="https://blog.csdn.net/hushhw/article/details/76216286" target="_blank" rel="noopener">https://blog.csdn.net/hushhw/article/details/76216286</a></p>
+</blockquote>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/cd2c8225.html">欧几里得算法与拓展欧几里得算法</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2019年03月17日 - 10:45:36</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/cd2c8225.html" data-id="ckkp2xtjn0053f8tlpp764oik" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABsklEQVR42u3aQZLCMAwEQP7/afYBW4SRZBtCtU/Uko07HFTWKI9HvJ7/1qtvX/3l+vrFCxcXd8x9Xq7rDZLHuN4lN+Di4p7nvqoY1597uN49cXFx78jtPQwuLu6vcnuHFVxc3O/nJs1JUsiSuGTykLi4uGe4+cb7Pm/Jd3FxcVvcZ3H1/iuJWaM74OLiHuHmBSU/APXukB+ScHFxz3AnQ5GkzPWOUIU74OLibuAWwso42uiNXaMrcXFxj3B7la/XJs2jVVxc3N3cagnL25K1g1hcXNxPcSeBaa9lygOU8hPj4uIu4s7ntHn5y799U3dxcXE/xJ0HH6uaKFxc3O/h5mOP6pULejVcXNwN3HzLZLyasCajGlxc3PPcamBRbV2qIembQoaLi3uQm+Dy8DQ/1hQCVlxc3IPcVa9KTOLU6EpcXNzN3F5ZyZufVa9t4eLinuRWB6i9EWkevPb2xcXF3cGtth/zCLV3H1xc3PPcSaHJm6IFbRIuLu5NuNUXMqovb+Hi4t6LWy1P1Zi1PPnBxcVdyu2Fm3mDlI9s3/xYuLi4R7jzOW11y/xAM8p3cXFxO9w/BLBSwQOvAKcAAAAASUVORK5CYII=">分享</a><div class="tags"><a href="/tags/算法笔记/">算法笔记</a><a href="/tags/gcd/">gcd</a></div><div class="post-nav"><a class="pre" href="/posts/689f6bc0.html">计算几何简单总结</a><a class="next" href="/posts/bcc9f05e.html">编程的一些小知识点总结</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/83505976.html" target="_blank">全排列算法总结</a></li><li><a href="https://wiki.hushhw.cn/posts/689f6bc0.html" target="_blank">计算几何简单总结</a></li><li><a href="https://wiki.hushhw.cn/posts/bcc9f05e.html" target="_blank">编程的一些小知识点总结</a></li><li><a href="https://wiki.hushhw.cn/posts/3824aca0.html" target="_blank">北邮复试机考模板</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#欧几里得算法-gcd"><span class="toc-number">1.</span> <span class="toc-text">欧几里得算法 (gcd)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拓展欧几里得算法-extend-gcd"><span class="toc-number">2.</span> <span class="toc-text">拓展欧几里得算法 (extend_gcd)</span></a></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

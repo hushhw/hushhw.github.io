@@ -1,0 +1,153 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>《数据库系统概论》学习笔记之绪论 | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">《数据库系统概论》学习笔记之绪论</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">《数据库系统概论》学习笔记之绪论</h1><div class="post-meta">2019-03-21<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 3,398</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 12</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/b8222433.html#vcomment"><span class="valine-comment-count" data-xid="/posts/b8222433.html"></span><span> 条评论</span></a><div class="post-content"><blockquote>
+<p>整理《数据库系统概论》学习笔记，方便日后回顾整理。</p>
+</blockquote>
+<h2 id="1-1-数据库系统概述"><a href="#1-1-数据库系统概述" class="headerlink" title="1.1 数据库系统概述"></a>1.1 数据库系统概述</h2><h3 id="1-1-1-数据库-4个基本概念"><a href="#1-1-1-数据库-4个基本概念" class="headerlink" title="1.1.1 数据库 4个基本概念"></a>1.1.1 数据库 4个基本概念</h3><ol>
+<li>数据 (Data)：数据是数据库中存储的基本对象，也定义为描述事物的符号记录。此外，数据的含义称为数据的语义，数据与其语义是不可分的。</li>
+<li>数据库 (DB)：数据库是长期储存在计算机内、有组织的、可共享的大量数据的集合。数据库中的数据按一定的数据模型组织、描述和储存，具有较小的冗余度、较高的数据独立性和易扩展性，并可为各种用户共享。 数据库数据具有永久存储、有组织和可共享三个基本特点。</li>
+<li>数据库管理系统 (DBMS)：位于用户与操作系统之间的一层数据管理软件，用于管理数据库，主要功能：数据定义功能、数据组织、存储和管理、数据操纵、数据库的事务管理和运行管理、数据库的建立和维护功能等等。</li>
+<li>数据库系统 (DBS)：数据库系统是由数据库、数据库管理系统（及其应用开发工具）、应用程序和数据库管理员组成的存储、管理、处理和维护数据的系统。</li>
+</ol>
+<h3 id="1-1-2-数据库管理技术的产生和发展"><a href="#1-1-2-数据库管理技术的产生和发展" class="headerlink" title="1.1.2 数据库管理技术的产生和发展"></a>1.1.2 数据库管理技术的产生和发展</h3><ol>
+<li>人工管理阶段</li>
+<li>文件系统阶段 </li>
+<li>数据库系统阶段</li>
+</ol>
+<h3 id="1-1-3-数据库系统的特点"><a href="#1-1-3-数据库系统的特点" class="headerlink" title="1.1.3 数据库系统的特点"></a>1.1.3 数据库系统的特点</h3><ol>
+<li>数据结构化：这事数据库的主要特征之一，也是数据库系统和文件系统的本质区别；</li>
+<li>数据的共享性高、冗余度低且易扩充；</li>
+<li>数据独立性高：包括「物理独立性」和「逻辑独立性」，物理独立性是指用户的应用程序和数据库中数据的物理存储是相互独立的。逻辑独立性是指用户的应用程序和数据库的逻辑结构是相互独立的；</li>
+<li>数据由数据库管理系统 (DBMS) 统一管理和控制，这能解决共享导致的安全隐患，它能提供数据的安全性（Security）保护，数据的完整性（Integrity）检查，并发（Concurrency）控制，数据库恢复（Recovery）。</li>
+</ol>
+<p>综上，数据库是长期存储在计算机内有组织、大量、共享的数据集合。它可以供各种用户共享，具有最小冗余度和较高的数据独立性。数据库管理系统在数据库建立、运用和维护时对数据库进行统一控制，以保证数据的完整性和安全性，并在多用户同时使用数据库时进行兵法控制，在发生故障后对数据库进行恢复。</p>
+<h2 id="1-2-数据模型"><a href="#1-2-数据模型" class="headerlink" title="1.2 数据模型"></a>1.2 数据模型</h2><p>在数据库中用数据模型来抽象、表示和处理现实世界中的事物，用来描述数据、组织数据和对数据进行操作的。数据模型是数据库系统的核心和基础。</p>
+<h3 id="1-2-1-两大类数据模型"><a href="#1-2-1-两大类数据模型" class="headerlink" title="1.2.1 两大类数据模型"></a>1.2.1 两大类数据模型</h3><ol>
+<li>概念模型：又称信息模型，它按用户的观点来对数据和信息建模，主要用于数据库（DB）设计。</li>
+<li>逻辑模型和物理模型：按照计算机系统的观点对数据建模，用于数据库管理系统（DBMS）的实现。逻辑模型主要包括层次模型、网状模型、关系模型、面向对象数据模型和对象关系数据模型、半结构化模型等。物理模型是对数据最底层的抽象，描述数据在系统内部的表示方式和存取方法，在磁盘或磁带上的存储方式和存取方式。</li>
+</ol>
+<h3 id="1-2-2-数据模型的组成要素"><a href="#1-2-2-数据模型的组成要素" class="headerlink" title="1.2.2 数据模型的组成要素"></a>1.2.2 数据模型的组成要素</h3><p>数据模型一般由数据结构、数据操作和数据完整性约束条件三部分组成。</p>
+<ol>
+<li>数据结构：描述数据库的组成对象，以及对象之间的联系。数据结构是对系统静态特性的描述。</li>
+<li>数据操作：对数据库中各种对象（型）的实例（值）允许执行的操作及有关的操作规则。如查询、更新（包括插入、删除、修改）。数据操作是对系统动态特性的描述。</li>
+<li>完整性约束条件：一组完整性规则的集合。完整性规则为给定的数据模型中数据及其联系所具有的制约和储存规则，用以限定符号数据模型的数据库状态以及状态的变化，以保证数据的正确、有效、相容。</li>
+</ol>
+<h3 id="1-2-3-概念模型"><a href="#1-2-3-概念模型" class="headerlink" title="1.2.3 概念模型"></a>1.2.3 概念模型</h3><p>概念模型用于信息世界的建模，是现实世界到机器世界的一个中间层次，是数据库设计的有力工具，数据库设计人员和用户之间进行交流的语言。于是，要求概念模型有较强的语义表达能力，能够方便、直接地表达应用中的各种语义知识，简单、清晰、易于用户理解。</p>
+<p>信息世界中的基本概念：</p>
+<ol>
+<li>实体 (Entity)：客观存在并可互相区别的事物称为实体。（具体的一个事物，例如一个学生）</li>
+<li>属性 (Attribute)：实体所具有的某一特性称为属性。（一个实体可以由若干个属性来刻画，例如学生实体可以由学号、性别、姓名等来刻画）</li>
+<li>码 (Key)：唯一标识实体的属性集称为码。（学号可以作为学生实体的码，来唯一区分）</li>
+<li>域 (Domain)：属性的取值范围称为该属性的域。</li>
+<li>实体型 (Entity Type)：用实体名及其属性名集合来抽象和刻画同类实体，称为实体型。例如（学生（学号，姓名，性别，出生年月）就是一个实体型）</li>
+<li>实体集 (Entity Set)：同一类型实体的集合称为实体集（例如全体学生就是一个实体集）</li>
+<li>联系 (Relationship)：实体之间的联系通常指不同实体集之间的联系，实体之间的联系有一对一、一对多和多对多等多种类型</li>
+</ol>
+<p>概念模型一般采用实体-联系方法，也就是E-R图来描述</p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-03-21_11-14-34.png" alt></p>
+<h3 id="1-2-4-最常用的数据模型"><a href="#1-2-4-最常用的数据模型" class="headerlink" title="1.2.4 最常用的数据模型"></a>1.2.4 最常用的数据模型</h3><ol>
+<li><p>格式化模型</p>
+<ol>
+<li><a href="#1-2-5-层次模型">层次模型（Hierarchical Model）</a></li>
+<li><a href="#1-2-6-网状模型">网状模型（Network Model）</a></li>
+</ol>
+<p>格式化模型的共同缺点：记录之间的联系是通过存取路径实现的，应用程序在访问数据时必须选择适当的存取路径，用户必须了解系统结构的细节，加重了编写应用程序的负担。不支持集合处理，即未提供一个处理多个记录的功能。</p>
+</li>
+<li><a href="#1-2-7-关系模型">关系模型（Relational Model）</a></li>
+<li>面向对象模型（Object Oriented Model）</li>
+<li>对象关系模型（Object Relational Model）</li>
+</ol>
+<h3 id="1-2-5-层次模型"><a href="#1-2-5-层次模型" class="headerlink" title="1.2.5 层次模型"></a>1.2.5 层次模型</h3><p>层次模型是数据库系统中最早出现的数据模型，层次数据库系统的典型代表是 IBM 公司的 IMS 数据库管理系统。</p>
+<p>层次模型用树形结构来表示各类实体以及实体间的联系，这棵树需要满足以下两个条件：</p>
+<ol>
+<li><p>有且只有一个结点没有双亲结点，这个节点称为根结点；</p>
+</li>
+<li><p>根以外的其他结点有且只有一个双亲结点。</p>
+</li>
+</ol>
+<p>优点：数据结构比较简单清晰；查询效率高，性能优于关系模型，不低于网状模型；提供了良好的完整性支持。</p>
+<p>缺点：多对多联系表示不自然；对插入和删除操作的限制多，应用程序的编写比较复杂；查询子女结点必须通过双亲结点；由于结构严密，层次命令趋于程序化。</p>
+<h3 id="1-2-6-网状模型"><a href="#1-2-6-网状模型" class="headerlink" title="1.2.6 网状模型"></a>1.2.6 网状模型</h3><p>网状数据库系统采用网状模型作为数据的组织方式，典型代表：DBTG系统，亦称为CODASYL系统。<br>满足下列两个条件的基本层次联系的集合：</p>
+<ol>
+<li>允许一个以上的结点无双亲；</li>
+<li>一个结点可以有多于一个的双亲。</li>
+</ol>
+<p>层次模型比较：网状模型具有更宽松的规则，更具有普遍性，实际上层次模型是网状模型的一个特例。<br>优点：能够更为直接描述现实世界；良好的性能，存取效率较高。<br>缺点：结构复杂，而且随着应用环境的扩大，数据库的结构就变得越复杂，不利于最终用户掌握；网状模型的 DDL、DML 语言复杂，用户不易使用；记录类型联系变动后涉及链接指针的调整，扩充和维护都比较复杂。</p>
+<h3 id="1-2-7-关系模型"><a href="#1-2-7-关系模型" class="headerlink" title="1.2.7 关系模型"></a>1.2.7 关系模型</h3><p>关系数据库采用关系模型作为数据的组织方式，关系模型建立在严格的数学概念的基础上，在用户观点下，关系模型中的数据的逻辑结构是一张二维表，它由行和列组成。</p>
+<ol>
+<li>关系：一个关系对应通常说的一张表；</li>
+<li>元组：表中的一行即为一个组元组；</li>
+<li>属性：表中的一列即为一个属性，给每个属性取一个名称即为属性名；</li>
+<li>主码：表中的某个属性组，它可以唯一确定一个元组。</li>
+<li>域：属性的取值范围。</li>
+<li>分量：元组中的一个属性值。</li>
+<li>关系模式：对关系的描述，一般表示为 关系名（属性1，属性2，……，属性n）</li>
+</ol>
+<p>关系模型要求关系必须是规范化的，关系的每一个分量必须是一个不可分的数据项。</p>
+<p>优点：建立在严格的数学概念上；可以描述一对一、一对多和多对多的联系；概念单一；存取路径对用户透明，数据结构简单、清晰，用户易懂易用，开发方便。</p>
+<p>缺点：存取路径对用户透明导致查询效率往往不如非关系数据模型；为了提高性能，必须对用户的查询请求进行优化增加了开发 DBMS 的难度。</p>
+<h2 id="1-3-数据库系统结构"><a href="#1-3-数据库系统结构" class="headerlink" title="1.3 数据库系统结构"></a>1.3 数据库系统结构</h2><p>从数据库最终用户角度看（数据库系统外部的体系结构） ，数据库系统的结构分为:</p>
+<ul>
+<li><p>单用户结构</p>
+</li>
+<li><p>主从式结构</p>
+</li>
+<li><p>分布式结构</p>
+</li>
+<li><p>客户／服务器</p>
+</li>
+<li><p>浏览器／应用服务器／数据库服务器多层结构等</p>
+</li>
+</ul>
+<p>从数据库管理系统角度看，数据库系统通常采用三级模式结构，是数据库系统内部的系统结构。</p>
+<h3 id="1-3-1-数据库系统模式的概念"><a href="#1-3-1-数据库系统模式的概念" class="headerlink" title="1.3.1 数据库系统模式的概念"></a>1.3.1 数据库系统模式的概念</h3><ol>
+<li>“型”和“值”的概念：型（Type）是指对某一类数据的结构和属性的说明，值（Value）是型的一个具体赋值。例如一个学生记录型为（学号，姓名，性别，系别，年龄，籍贯），而一个记录值为（900201，李明，男，计算机，22，江苏）。</li>
+<li>模式：数据库中全体数据的逻辑结构和特征描述，是型的描述，反映的是数据的结构及其联系，模式是相对稳定的。</li>
+<li>实例：模式的一个具体值称为模式的一个实例，反映数据库某一时刻的状态，同一个模式可以有很多实例，实例是相对变动的。</li>
+</ol>
+<h3 id="1-3-2-数据库系统的三级模式结构"><a href="#1-3-2-数据库系统的三级模式结构" class="headerlink" title="1.3.2 数据库系统的三级模式结构"></a>1.3.2 数据库系统的三级模式结构</h3><p>数据库系统的三级模式结构：外模式、模式和内模式三级构成。</p>
+<ul>
+<li>模式：也称逻辑模式，是数据库中全体数据的逻辑结构和特征的描述，是所有用户的公共数据视图，综合了所有用户的需求。模式是数据库系统模式结构的中间层。</li>
+<li>外模式：也称子模式或用户模式，它是数据库用户能够看见和使用的局部数据的逻辑结构和特征的描述，是数据库用户的数据视图，是与某一应用有关的数据的逻辑表示。外模式介于模式与应用之间。</li>
+<li>内模式：也称存储模式，一个数据库只有一个内模式。它是数据物理结构和存储方式的描述，是数据在数据库内部的组织方式。</li>
+</ul>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-03-21_12-47-19.png" alt></p>
+<h3 id="1-3-3-数据库的二级映像功能与数据独立性"><a href="#1-3-3-数据库的二级映像功能与数据独立性" class="headerlink" title="1.3.3 数据库的二级映像功能与数据独立性"></a>1.3.3 数据库的二级映像功能与数据独立性</h3><p>三级模式是对数据的三个抽象级别，二级映像在 DBMS 内部实现这三个抽象层次的联系和转换。数据库的二级映象功能：</p>
+<ul>
+<li>外模式／模式映象：当模式改变时，由数据库管理员对各个外模式／模式的映象作相应改变，可以使外模式保持不变。应用程序是依据数据的外模式编写的，从而应用程序不必修改，保证了数据与程序的逻辑独立性，简称数据的「逻辑独立性」。</li>
+<li>模式／内模式映象：当数据库的存储结构改变时，由数据库管理员对模式／内模式映象作相应改变，可以使模式保持不变，从而应用程序也不必改变，保证了数据与程序的物理独立性，简称数据的「物理独立性」。  </li>
+</ul>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/b8222433.html">《数据库系统概论》学习笔记之绪论</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2019年03月21日 - 10:23:03</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/b8222433.html" data-id="ckkp2xuqy00h7f8tl6ojdkdaq" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABvElEQVR42u3aMXLDMAwEQP//007rIpHvQJPWZJaVhpbElQsMQPDxiMfzZbzOXP/6OnP9tg8PXFzcZe7zclwvkMxcr5IbcHFxz3P/WmB2T7Jw+35cXNz7c6+hydtwcXH/K3clWcHFxb0/NylOrl8920zZWKvh4uIucPOF911v2d/FxcUdcZ/lyJObZFO1Xh0XF/cINw8oLbFtpeRJEi4u7nluHrDaD2tTqKjJiouLu427Qs8/LA9kRcjDxcXdwM0fngWgPCRFW6u4uLjHuW0xMyt+Zo1YXFzck9y2Fdq2SbaUT7i4uJu5s+Qmn09m8qYLLi7uSe5sa2N2OqJ96pfiBxcX9zg3SXpmx6qSYxx1IMPFxd3AzQuY2YGMhJK3c3Bxcb/FbYNO23xtP+NNIMPFxf0SN0l9VuaL4gcXF/dL3BbaFj8fuBMXF3czdxZWktIlD0/FgQ9cXNwj3Nl2Z36oIm+pJh+Pi4t7kttSPhWq8nRq6Z/DxcVd4LaBZpayJBG0qNVwcXFvw20bJ+uHt3Bxce/PbYPd+pbrm84PLi7uNm5exuw7npVc4+LinuG2oWR9yTyhWdrfxcXFnXB/AEs0kJ8f6SEvAAAAAElFTkSuQmCC">分享</a><div class="tags"><a href="/tags/复习笔记/">复习笔记</a><a href="/tags/数据库/">数据库</a></div><div class="post-nav"><a class="pre" href="/posts/ac7121e8.html">《数据库系统概论》学习笔记之关系数据库</a><a class="next" href="/posts/83505976.html">全排列算法总结</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/5fe5cd41.html" target="_blank">北邮网研院复试笔试整理——人工智能</a></li><li><a href="https://wiki.hushhw.cn/posts/ac7121e8.html" target="_blank">《数据库系统概论》学习笔记之关系数据库</a></li><li><a href="https://wiki.hushhw.cn/posts/83505976.html" target="_blank">全排列算法总结</a></li><li><a href="https://wiki.hushhw.cn/posts/689f6bc0.html" target="_blank">计算几何简单总结</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-数据库系统概述"><span class="toc-text">1.1 数据库系统概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-数据库-4个基本概念"><span class="toc-text">1.1.1 数据库 4个基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-数据库管理技术的产生和发展"><span class="toc-text">1.1.2 数据库管理技术的产生和发展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-3-数据库系统的特点"><span class="toc-text">1.1.3 数据库系统的特点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-数据模型"><span class="toc-text">1.2 数据模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-两大类数据模型"><span class="toc-text">1.2.1 两大类数据模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-数据模型的组成要素"><span class="toc-text">1.2.2 数据模型的组成要素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-3-概念模型"><span class="toc-text">1.2.3 概念模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-4-最常用的数据模型"><span class="toc-text">1.2.4 最常用的数据模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-5-层次模型"><span class="toc-text">1.2.5 层次模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-6-网状模型"><span class="toc-text">1.2.6 网状模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-7-关系模型"><span class="toc-text">1.2.7 关系模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-数据库系统结构"><span class="toc-text">1.3 数据库系统结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-1-数据库系统模式的概念"><span class="toc-text">1.3.1 数据库系统模式的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-2-数据库系统的三级模式结构"><span class="toc-text">1.3.2 数据库系统的三级模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-3-数据库的二级映像功能与数据独立性"><span class="toc-text">1.3.3 数据库的二级映像功能与数据独立性</span></a></li></ol></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="hushhw × Wiki"><meta name="google-site-verification"><meta name="baidu-site-verification"><title>Three.js 入坑笔记 | hushhw × Wiki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-132675789-2','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '972cc0516975a00c2c5900eb5e98039d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet"><script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0];if (curProtocol === 'https') {bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';} else {bp.src = 'http://push.zhanzhang.baidu.com/push.js';}var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp, s);})();</script></head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-132675789-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-132675789-2');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Three.js 入坑笔记</h1><a id="logo" href="/.">hushhw × Wiki</a><p class="description"></p></div><div id="nav-menu"><a href="/tech/"><i class="fa fa-battery-full"> 技术</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tag"> 标签</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">Three.js 入坑笔记</h1><div class="post-meta">2019-04-03<script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async></script><span class="busuanzi_container_page_pv"> • <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> • </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1,664</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> • <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 6</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/posts/ae8c05d6.html#vcomment"><span class="valine-comment-count" data-xid="/posts/ae8c05d6.html"></span><span> 条评论</span></a><div class="post-content"><blockquote>
+<p>关于一些函数的参数用一次忘一次，参考系这些东西每次都到用的时候想半天，所以还是写一篇笔记来记录，方便查阅，不至于每次都去 Google 浪费时间。</p>
+</blockquote>
+<h2 id="1-坐标系"><a href="#1-坐标系" class="headerlink" title="1. 坐标系"></a>1. 坐标系</h2><p><code>three.js</code> 中使用的是右手坐标系，X 轴水平向右，Y 轴垂直向上，Z 轴的方向就是屏幕由里往外的方向：</p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-04-03_15-37-08.png" alt></p>
+<h2 id="2-照相机"><a href="#2-照相机" class="headerlink" title="2. 照相机"></a>2. 照相机</h2><h3 id="2-1-什么是照相机？"><a href="#2-1-什么是照相机？" class="headerlink" title="2.1 什么是照相机？"></a>2.1 什么是照相机？</h3><p>我们使用的 <code>Three.js</code> 创建的场景是三维的，而通常情况下显示器是二维的，那么三维的场景怎么在二维的显示器上显示呢？照相机就是一个抽象，它定义了三维空间到二维屏幕投影的方式，用「照相机」这样一个类比，可以使我们直观地理解这一投影方式。</p>
+<p>而针对<code>投影方式</code>的不同，照相机又分为<code>正交投影照相机</code>与<code>透视投影照相机</code>。我们需要为自己的程序选择合适的照相机。</p>
+<h3 id="2-2-正交投影和透视投影"><a href="#2-2-正交投影和透视投影" class="headerlink" title="2.2 正交投影和透视投影"></a>2.2 正交投影和透视投影</h3><p>举个简单的例子来说明正交投影与透视投影照相机的区别。使用<code>透视投影照相</code>机获得的结果是<code>类似人眼在真实世界中看到的有“近大远小”</code>的效果（如下图中的 (a)）；而使用<code>正交投影照相机</code>获得的结果就像我们在数学几何学课上老师教我们画的效果，对于<code>三维空间内平行的线</code>，投影到<code>二维空间中也一定是平行的</code>（如下图中的 (b)）。</p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-04-03_15-23-54.png" alt="image"></p>
+<p>一般说来，对于<code>制图、建模软</code>通常使<code>正交投影</code>，这样不会因为投影而改变物体比例；而<code>对于其他大多数应用</code>，通常使用<code>透视投影</code>，因为这更接近人眼的观察效果。当然，照相机的选择并没有对错之分，你可以更具应用的特性，选择一个效果更佳的照相机。</p>
+<h3 id="2-3-正交投影照相机"><a href="#2-3-正交投影照相机" class="headerlink" title="2.3 正交投影照相机"></a>2.3 正交投影照相机</h3><h4 id="2-3-1-参数介绍"><a href="#2-3-1-参数介绍" class="headerlink" title="2.3.1 参数介绍"></a>2.3.1 参数介绍</h4><blockquote>
+<p>正交投影照相机(<code>Orthographic Camera</code>)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">THREE.OrthographicCamera(left, right, top, bottom, near, far)</span><br></pre></td></tr></table></figure>
+<p>这六个参数分别代表正交投影照相机拍摄到的空间的六个面的位置，这六个面围成一个长方体，我们称其<code>视景体(Frustum)</code>。只有在视景体内部（下图中的灰色部分）的物体才可能显示在屏幕上，而视景体外的物体会在显示之前被裁减掉。</p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-04-03_15-25-27.png" alt="image"></p>
+<p>为了保持照相机的横竖比例，需要保证<code>(right - left)与(top - bottom)</code>的比例与<code>Canvas宽度与高度的比例(800/600)</code>一致。</p>
+<p><code>near与far</code>都是指到照相机位置在深度平面的位置，而照相机不应该拍摄到其后方的物体，因此这两个值应该均为<code>正值</code>。为了保证场景中的物体不会因为太近或太远而被照相机忽略，一般<code>near的值设置得较小</code>，<code>far的值设置得较大</code>，具体值视场景中物体的位置等决定。</p>
+<h4 id="2-3-2-示例代码"><a href="#2-3-2-示例代码" class="headerlink" title="2.3.2 示例代码"></a>2.3.2 示例代码</h4><p>下面我们通过一个具体的例子来了解正交投影照相机的设置</p>
+<p><strong>基本设置</strong></p>
+<p>设置照相机：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> camera = <span class="keyword">new</span> THREE.OrthographicCamera(<span class="number">-2</span>, <span class="number">2</span>, <span class="number">1.5</span>, <span class="number">-1.5</span>, <span class="number">1</span>, <span class="number">10</span>);</span><br><span class="line">camera.poaition.set(<span class="number">0</span>,<span class="number">0</span>,<span class="number">5</span>);</span><br><span class="line">scene.add(camera);</span><br></pre></td></tr></table></figure>
+<p>在原点处创建一个边长为1的正方体，为了和透视效果做对比，这里我们使用<code>wireframe</code>而不是实心的材质，以便看到正方体后方的边：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cube = <span class="keyword">new</span> THREE.Mesh(<span class="keyword">new</span> THREE.CubeGeometry(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>), </span><br><span class="line">    <span class="keyword">new</span> THREE.MeshBasicMaterial(&#123;</span><br><span class="line">        color: <span class="number">0xff0000</span>,</span><br><span class="line">        wireframe: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">);</span><br><span class="line">scene.add(cube);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>效果图：</li>
+</ul>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-04-03_15-29-55.png" alt></p>
+<p>我们看到正交投影的结果是一个正方形，后面的边与前面完全重合了，这也就是正交投影与透视投影的区别所在。</p>
+<p><strong>长宽比例</strong></p>
+<p>这里，我们的Canvas宽度是 800px，高度是 600px，照相机水平方向距离 4，垂直方向距离 3，因此长宽比例保持不变。为了试验长宽比例变化时的效果，我们将照相机水平方向的距离减小为 2 (right-left = 2)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var camera = new THREE.OrthographicCamera(-1, 1, 1.5, -1.5, 1, 10);</span><br></pre></td></tr></table></figure>
+<p>效果图(此时水平方向的距离就被拉长了)：</p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-04-03_15-31-42.png" alt></p>
+<h3 id="2-4-透视投影照相机"><a href="#2-4-透视投影照相机" class="headerlink" title="2.4 透视投影照相机"></a>2.4 透视投影照相机</h3><h4 id="2-4-1-参数介绍"><a href="#2-4-1-参数介绍" class="headerlink" title="2.4.1 参数介绍"></a>2.4.1 参数介绍</h4><blockquote>
+<p>透视投影照相机(<code>Perspective Camera</code>)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">THREE.PerspectiveCamera(fov, aspect, near, far)</span><br></pre></td></tr></table></figure>
+<p>让我们通过一张透视照相机投影的图来了解这些参数。</p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-04-03_15-39-39.png" alt></p>
+<ul>
+<li><p>透视图中，灰色的部分是<code>视景体</code>，是可能被渲染的物体所在的区域。<code>fov</code>是视景体竖直方向上的<code>张角</code>（是角度制而非弧度制），如侧视图所示。</p>
+</li>
+<li><p><code>aspect</code>等于<code>width / height</code>，是照相机水平方向和竖直方向长度的比值，通常设为Canvas的<code>横纵比例</code>。</p>
+</li>
+<li><p><code>near</code>和<code>far</code>分别是照相机到视景体 最近、最远的距离，均为正值，且far应大于near。</p>
+</li>
+</ul>
+<h4 id="2-4-2-示例代码"><a href="#2-4-2-示例代码" class="headerlink" title="2.4.2 示例代码"></a>2.4.2 示例代码</h4><p>下面我们通过一个例子来学习透视投影照相机</p>
+<p><strong>基本设置</strong></p>
+<p>设置透视投影照相机，这里Canvas长<code>800px</code>，宽<code>600px</code>，所以<code>aspect</code>设为<code>800 / 600</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> camera = <span class="keyword">new</span> THREE.PerspectiveCamera(<span class="number">45</span>, <span class="number">800</span> / <span class="number">600</span>, <span class="number">1</span>, <span class="number">10</span>);</span><br><span class="line">camera.position.set(<span class="number">0</span>, <span class="number">0</span>, <span class="number">5</span>);</span><br><span class="line">scene.add(camera);</span><br></pre></td></tr></table></figure>
+<p>设置一个在原点处的边长为1的正方体：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cube = <span class="keyword">new</span> THREE.Mesh(<span class="keyword">new</span> THREE.CubeGeometry(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">        <span class="keyword">new</span> THREE.MeshBasicMaterial(&#123;</span><br><span class="line">            color: <span class="number">0xff0000</span>,</span><br><span class="line">            wireframe: <span class="literal">true</span></span><br><span class="line">        &#125;)</span><br><span class="line">);</span><br><span class="line">scene.add(cube);</span><br></pre></td></tr></table></figure>
+<p>效果图：</p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-04-03_15-41-29.png" alt></p>
+<p>对比正交透视照相机下正方形的效果，透视投影可以看到<code>全部的12条边</code>，而且有<code>近大远小</code>的效果，这也就是与正交投影的区别。</p>
+<p><strong>竖直张角</strong></p>
+<ul>
+<li>接下来，我们来看下<code>fov</code>的改变对渲染效果的影响。我们将原来的<code>45改为60</code>：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> camera = <span class="keyword">new</span> THREE.PerspectiveCamera(<span class="number">60</span>, <span class="number">800</span> / <span class="number">600</span>, <span class="number">1</span>, <span class="number">10</span>);</span><br><span class="line">camera.position.set(<span class="number">0</span>, <span class="number">0</span>, <span class="number">5</span>);</span><br><span class="line">scene.add(camera);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>效果图：</li>
+</ul>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-04-03_15-42-39.png" alt></p>
+<p>为什么正方体显得更小了呢？我们从下面的侧视图来看，虽然正方体的实际大小并未改变，但是将照相机的<code>竖直张角</code>设置得<code>更大</code>时，<code>视景体变大了</code>，因而<code>正方体</code>相对于<code>整个视景体</code>的大小就<code>变小</code>了，看起来正方形就显得变小了。</p>
+<p><img src="https://photo.hushhw.cn/images/Snipaste_2019-04-03_15-43-15.png" alt></p>
+<p>注意，<code>改变fov</code>并<code>不会</code>引<code>起画面横竖比例</code>的变化，而<code>改变aspect</code>则<code>会</code>改变横竖比例。</p>
+<h2 id="参考文档整理"><a href="#参考文档整理" class="headerlink" title="参考文档整理"></a>参考文档整理</h2><ul>
+<li><p><a href="https://techbrood.com/threejs/docs/" target="_blank" rel="noopener">TechbrooD 对 Three.js 在线文档的汉化</a> </p>
+</li>
+<li><p><a href="http://test.domojyun.net/MEMO/3D/threejs.html" target="_blank" rel="noopener">3D 網站開發入門筆記＿Three.js 入門</a> </p>
+</li>
+</ul>
+<blockquote>
+<p>本文整理自</p>
+<p>开源书籍：《Three.js 入门指南》</p>
+</blockquote>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>hushhw</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/posts/ae8c05d6.html">Three.js 入坑笔记</a></li><li class="post-copyright-date"><strong>发布时间：</strong>2019年04月03日 - 15:09:57</li><li class="post-copyright-updated"><strong>更新时间：</strong>2021年02月03日 - 6:56:56</li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://wiki.hushhw.cn/posts/ae8c05d6.html" data-id="ckkp2xtjx005tf8tl98vymytg" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABw0lEQVR42u3aQZKDMAwEwPz/0+yVkxlJ4JCt9jEE3PigQmN/PvE4TuP8y/rq+Zf1024euLi4Y+6xHMl/1qz1E3IDLi7ufm4yWV5bkrKVPB8XF/dXuOtp8rtwcXH/EzdpipJGCBcX9/3cpDlJXnJSEG/u1XBxcQfce6ecfB7dnO/i4uK2uEdx9MLTdVBSmB0XF3cLNy8o+ZZJtQqV58XFxX2Y2ytP+cbJpEG6WFdcXNzHuL0Jehsk1UMbF2uMi4v7GLe6WZJPU12I5FVxcXG/y80PV00i1zxSwcXF3clNNlCTR+ShahKjRM0PLi7uRu4k0Kw2TsnVcpaDi4s75ubbn72odBKCXDQ/uLi4D3N7Ien8rmavhouL+zC3+uGSHL3q3ZW3Xri4uHu4yW3V7dX8o6f68ri4uDu5SbjZK3D5JkoUsOLi4r6AmxeyvAhOQlVcXNynuZOyUr1ajV9xcXG/xa0eq6rGndU4NZkXFxd3D7faflRXIg9NohXFxcXdyJ20OutiV22Bol4NFxf39dy8DPUOb+Hi4v4id9I+lSNUXFzcjdw83Oy1Pflhi4sFwsXF3cLtbXwmHyXVg1w357u4uLgd7h98Z+Ixq2+f8wAAAABJRU5ErkJggg==">分享</a><div class="tags"><a href="/tags/ThreeJS/">ThreeJS</a></div><div class="post-nav"><a class="pre" href="/posts/83650eb4.html">《图解密码技术》学习笔记目录</a><a class="next" href="/posts/4884afb4.html">二叉树遍历题型汇总</a></div><div class="recommended_posts"><h2>相关文章：</h2><li><a href="https://wiki.hushhw.cn/posts/418f8d38.html" target="_blank">《图解密码技术》学习笔记之密码(一)</a></li><li><a href="https://wiki.hushhw.cn/posts/83650eb4.html" target="_blank">《图解密码技术》学习笔记目录</a></li><li><a href="https://wiki.hushhw.cn/posts/4884afb4.html" target="_blank">二叉树遍历题型汇总</a></li><li><a href="https://wiki.hushhw.cn/posts/5fe5cd41.html" target="_blank">北邮网研院复试笔试整理——人工智能</a></li></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//photo.hushhw.cn/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YVxvrCNxpTLOcs83UfKCUOaI-gzGzoHsz',
+  appKey:'5eaXH2FJm2nxSBIQL4INFBbW',
+  placeholder:'居然什么也不说，哼',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-坐标系"><span class="toc-text">1. 坐标系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-照相机"><span class="toc-text">2. 照相机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-什么是照相机？"><span class="toc-text">2.1 什么是照相机？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-正交投影和透视投影"><span class="toc-text">2.2 正交投影和透视投影</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-正交投影照相机"><span class="toc-text">2.3 正交投影照相机</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-参数介绍"><span class="toc-text">2.3.1 参数介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-示例代码"><span class="toc-text">2.3.2 示例代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-透视投影照相机"><span class="toc-text">2.4 透视投影照相机</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-1-参数介绍"><span class="toc-text">2.4.1 参数介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-2-示例代码"><span class="toc-text">2.4.2 示例代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文档整理"><span class="toc-text">参考文档整理</span></a></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© 2018 - 2021 | <span class="footicon"><i class="fa fa-meh-o"></i></span><a rel="nofollow" target="_blank" href="https://wiki.hushhw.cn">hushhw × Wiki</a> | <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备17007175号-1</a><br> 
+Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo | </a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho | </a>Accelerated by <a rel="nofollow" target="_blank" href="https://www.upyun.com/index.html"><img class="upyunimg" src="https://photo.hushhw.cn/images/又拍云120180930001119303.png"></a><br> <script src="https://photo.hushhw.cn/busuanzi.pure.mini.js" async="async"></script><span id="busuanzi_container_site_uv"></span><i class="fa fa-user-md"></i><span> 访问人数<span id="busuanzi_value_site_uv"></span></span> | <span id="busuanzi_container_site_pv"> </span><span class="footicon"><i class="fa fa-eye"></i></span><span> 访问量<span id="busuanzi_value_site_pv"></span></span></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script><script type="text/javascript" src="/js/toc.js?v=0.0.0" async></script></div></body></html>
